@@ -209,7 +209,7 @@ class ContextRetriever:
                              'Confirm the customer account: supplied identifiers are missing, ambiguous or conflicting.',
                              sorted(evidence))
 
-    def prepare(self, selection, attachment_sources=()):
+    def prepare(self, selection, attachment_sources=(), *, attachment_results=()):
         email_id = selection['email_id']
         if email_id not in self.emails:
             raise ValueError(f'Unknown trigger email: {email_id}')
@@ -260,6 +260,17 @@ class ContextRetriever:
             alert('spreadsheet_customer_unresolved', 'Spreadsheet customer match unresolved',
                   'Potentially relevant spreadsheet entries have uncertain customer names; check them before use.')
         attachment_paths = {self.sources[item['source_id']].relative_path for item in email['attachments']}
+        attachment_sources = list(attachment_sources)
+        attachment_results = list(attachment_results)
+        processed_paths = set()
+        for result in attachment_results:
+            if result.relative_path not in attachment_paths:
+                raise ValueError(f'Attachment result outside trigger email: {result.relative_path}')
+            processed_paths.add(result.relative_path)
+            attachment_sources.extend(result.sources)
+            for error in result.errors:
+                alert('attachment_extraction_failed', 'Attachment could not be fully read',
+                      result.relative_path + ': ' + error)
         attachment_evidence = []
         for source in attachment_sources:
             if source.relative_path not in attachment_paths:
@@ -269,11 +280,18 @@ class ContextRetriever:
             if any(item.source_id == source.source_id and item != source for item in attachment_evidence):
                 raise ValueError(f'Conflicting attachment evidence: {source.source_id}')
             attachment_evidence.append(source)
-        extracted_paths = {source.relative_path for source in attachment_evidence if source.text}
+            if source.extraction_error:
+                alert('attachment_page_failed', 'Attachment page could not be fully read',
+                      source.display_name + ': ' + source.extraction_error)
+            elif source.requires_review:
+                alert('ocr_review_required', 'Scanned page requires manual verification',
+                      source.display_name + ': OCR can omit or misread content. Check every line, '
+                      'quantity, product, price and date against the original page; confidence is not approval.')
+        extracted_paths = {source.relative_path for source in attachment_evidence if source.text and not source.extraction_error}
         for attachment in email['attachments']:
             if not attachment['available']:
                 alert('missing_attachment', 'Attachment unavailable', attachment['path'])
-            elif self.sources[attachment['source_id']].relative_path not in extracted_paths:
+            elif self.sources[attachment['source_id']].relative_path not in extracted_paths | processed_paths:
                 alert('attachment_extraction_pending', 'Attachment content not yet extracted',
                       attachment['filename'] + ': PDF extraction is a separate component.')
         request_text = ' '.join([email['subject'], email['body']] + [s.text or '' for s in attachment_evidence])
@@ -305,5 +323,6 @@ class ContextRetriever:
                 'customer_notes': notes, 'general_account_notes': self.general_notes,
                 'open_items': items, 'unresolved_open_items': uncertain_items,
                 'catalogue_candidates': catalogue, 'stock_records': stock, 'attachments': email['attachments'],
+                'attachment_extractions': attachment_results,
                 'report_alerts': alerts, 'sources': evidence,
                 'source_limitations': self.data.warnings}

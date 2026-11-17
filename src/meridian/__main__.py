@@ -15,7 +15,19 @@ def main() -> None:
                         help="Inbox path relative to input root")
     parser.add_argument("--include-internal", action="store_true",
                         help="Also load reference files, CSVs and read-only Orbit snapshot")
+    parser.add_argument("--pdf", help="Extract one PDF, relative to input root, then exit")
     args = parser.parse_args()
+    if args.pdf:
+        from dataclasses import asdict
+        from .attachments import extract_pdf
+        try:
+            result = extract_pdf(args.input_root, args.pdf)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"PDF extraction failed: {exc}\n")
+        print(json.dumps({**asdict(result), "all_pages_extracted": result.complete}, indent=2))
+        if not result.complete:
+            parser.exit(1)
+        return
     try:
         loaded = load_inbox(args.input_root, args.inbox)
         internal = load_internal(args.input_root) if args.include_internal else None

@@ -13,6 +13,9 @@ class Source:
     locator: str
     timestamp: str | None
     text: str | None = None
+    extraction_method: str | None = None
+    requires_review: bool = False
+    extraction_error: str | None = None
 
 
 def resolve_source(root: Path, relative_path: str) -> Path:
