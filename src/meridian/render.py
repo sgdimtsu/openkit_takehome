@@ -1,4 +1,5 @@
 """Render saved rule-review results as self-contained, retained HTML."""
+from .policy import percent_text
 import hashlib
 import html
 import json
@@ -359,7 +360,7 @@ class _Report:
                 result.append(f'<div class="notice"><strong>Incomplete calculation.</strong> Known lines only: £{esc(totals["known_lines_net_subtotal"])} ex VAT. '
                               f'{esc(totals["reason"])}</div>')
             else:
-                result.append('<div class="totals"><dl><dt>Net</dt><dd>£' + esc(totals['net']) + '</dd><dt>VAT (20%)</dt><dd>£'
+                result.append('<div class="totals"><dl><dt>Net</dt><dd>£' + esc(totals['net']) + '</dd><dt>VAT (' + esc(percent_text(totals['vat_rate'])) + '%)</dt><dd>£'
                               + esc(totals['vat']) + '</dd><dt class="grand">Gross total</dt><dd class="grand">£'
                               + esc(totals['gross']) + '</dd></dl></div><p class="calculation-note">'
                               + esc(totals.get('basis', '')) + '</p>')

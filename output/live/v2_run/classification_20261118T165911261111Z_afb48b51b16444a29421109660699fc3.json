@@ -1,0 +1,334 @@
+{
+  "actions": [
+    {
+      "email_id": "MSG-001",
+      "customer": {
+        "name_as_stated": "Harbour View Hotel",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "HV-2291",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits purchase order HV-2291 for supply.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-006",
+      "customer": {
+        "name_as_stated": "Pasta Fresca",
+        "account_id_as_stated": null
+      },
+      "action_type": "uncertain",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": "48,028"
+      },
+      "related_email_ids": [],
+      "reason": "Requests a remedy for an item missing from a delivered order; it is unclear whether this requires a customer-order amendment or a fulfillment correction.",
+      "uncertainties": [
+        "Whether sending the missing item requires a customer-order entry or amendment, rather than a fulfillment remedy, is not established."
+      ]
+    },
+    {
+      "email_id": "MSG-011",
+      "customer": {
+        "name_as_stated": "St Anne's C of E Primary School",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "SA-7781",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits purchase order SA-7781 for supply.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-012",
+      "customer": {
+        "name_as_stated": "Willow Lodge Care",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests an order for the customer.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-015",
+      "customer": {
+        "name_as_stated": "Riverside Brasserie",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of an order by Friday.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-016",
+      "customer": {
+        "name_as_stated": "Fenland Hotel Group",
+        "account_id_as_stated": null
+      },
+      "action_type": "uncertain",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests collection and replacement of a damaged delivered fridge; whether this requires a customer-order amendment or another process is unclear.",
+      "uncertainties": [
+        "The email does not establish whether the replacement requires a customer-order amendment or is handled through a service or claims process."
+      ]
+    },
+    {
+      "email_id": "MSG-017",
+      "customer": {
+        "name_as_stated": "Grafham Kitchen",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of an order while asking to use the previous site's account.",
+      "uncertainties": [
+        "The prior owner's account is not identified, and eligibility to use it is not established."
+      ]
+    },
+    {
+      "email_id": "MSG-019",
+      "customer": {
+        "name_as_stated": "Greenacres",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Automated fax notification carries an attachment named as a Greenacres purchase order.",
+      "uncertainties": [
+        "The fax contents are not included in the supplied email data, so further order identifiers cannot be extracted."
+      ]
+    },
+    {
+      "email_id": "MSG-020",
+      "customer": {
+        "name_as_stated": "Harbour View Hotel",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "HV-2291",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [
+        "MSG-001"
+      ],
+      "reason": "Submits a revised purchase order and requests changes to the existing order.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-021",
+      "customer": {
+        "name_as_stated": "Bramley Care Group",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "BCG-1102",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits purchase order BCG-1102 for supply.",
+      "uncertainties": [
+        "The customer's statements about account approval and the credit hold are unverified."
+      ]
+    },
+    {
+      "email_id": "MSG-024",
+      "customer": {
+        "name_as_stated": "Pasta Fresca Hills Road",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Places an order for delivery to the Hills Road location.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-028",
+      "customer": {
+        "name_as_stated": "The Royal Oak",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "ROY-5530",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits an attached order for supply.",
+      "uncertainties": [
+        "The attachment contents are not included in the supplied email data."
+      ]
+    },
+    {
+      "email_id": "MSG-037",
+      "customer": {
+        "name_as_stated": "The Salt Kitchen",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "TSK-88",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits purchase order TSK-88 for supply.",
+      "uncertainties": [
+        "The attachment contents are not included in the supplied email data."
+      ]
+    },
+    {
+      "email_id": "MSG-038",
+      "customer": {
+        "name_as_stated": "Rachel Tunney",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of an order before half term.",
+      "uncertainties": [
+        "The requested fridge is identified by a description referencing a previous purchase; its exact specification is not stated."
+      ]
+    },
+    {
+      "email_id": "MSG-039",
+      "customer": {
+        "name_as_stated": "Oakfield Academy Trust",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "OAK-301",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits purchase order OAK-301 for supply.",
+      "uncertainties": [
+        "The attachment contents are not included in the supplied email data."
+      ]
+    },
+    {
+      "email_id": "MSG-041",
+      "customer": {
+        "name_as_stated": "Steve Ruddock",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Explicitly requests supply against reference KH/2026/131.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-042",
+      "customer": {
+        "name_as_stated": "Fenland Hotel Group",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests a change to the destination of an existing order while asking about its delivery date.",
+      "uncertainties": [
+        "The email does not identify FHG-4422 as a customer PO or Orbit order number."
+      ]
+    },
+    {
+      "email_id": "MSG-045",
+      "customer": {
+        "name_as_stated": "The Royal Oak",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "ROY-5530",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [
+        "MSG-028"
+      ],
+      "reason": "Requests changes to the existing order's delivery location and timing.",
+      "uncertainties": []
+    }
+  ],
+  "schema_version": "1.0",
+  "metadata": {
+    "extracted_at": "2026-11-18T16:59:11.255692+00:00",
+    "total_emails_read": 45,
+    "total_emails_requiring_action": 18,
+    "total_emails_excluded": 27,
+    "breakdown_by_action": {
+      "new_order_request": 13,
+      "amendment_request": 3,
+      "resend": 0,
+      "uncertain": 2
+    },
+    "processing_duration_seconds": 56.023401584000005,
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 56.022345084,
+      "response_id": "resp_0bdbcf9fa38f337b016afdd92951c887d291bf6bd78e97bda3",
+      "usage": {
+        "input_tokens": 7687,
+        "input_tokens_details": {
+          "cache_write_tokens": 7684,
+          "cached_tokens": 0,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 7684
+          }
+        },
+        "output_tokens": 6307,
+        "output_tokens_details": {
+          "reasoning_tokens": 4774
+        },
+        "total_tokens": 13994
+      }
+    }
+  }
+}

@@ -5,6 +5,9 @@ from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
 
+from .policy import load_policy
+from functools import partial
+
 from .normalise import canonical_unit, decimal_number, money, money_text
 
 
@@ -15,8 +18,9 @@ class PriceQuote:
     basis: str
     evidence_ids: list[str]
 
-    def display(self):
-        return {'unit_price_ex_vat': money_text(self.amount), 'currency': 'GBP',
+    def display(self, *, policy=None):
+        policy = policy if policy is not None else load_policy()
+        return {'unit_price_ex_vat': money_text(self.amount, policy=policy), 'currency': policy.pricing.currency,
                 'unit': self.unit, 'basis': self.basis, 'discount_already_included': True,
                 'instruction': 'This is a net unit price. Do not apply the band/contract discount again.',
                 'evidence_ids': self.evidence_ids}
@@ -32,7 +36,9 @@ def _month(text):
 
 
 class PricingRules:
-    def __init__(self, context):
+    def __init__(self, context, *, policy=None):
+        self.policy = policy if policy is not None else load_policy()
+        self.money = partial(money, policy=self.policy)
         self.account = context['customer_record']
         self.catalogue = {row['sku']: row for row in context['catalogue_candidates']}
         self.contracts = []
@@ -112,10 +118,10 @@ class PricingRules:
                 raise ValueError('Recorded contract does not cover the request date; confirm current terms')
             if contract['kind'] == 'fixed':
                 unit = canonical_unit(contract['unit'], row['unit'])
-                quotes.append(PriceQuote(money(contract['amount']), unit, 'Fixed contract price; overrides band',
+                quotes.append(PriceQuote(self.money(contract['amount']), unit, 'Fixed contract price; overrides band',
                                          [row['source_id'], contract['source_id']]))
             else:
-                amount = money(decimal_number(row['list_price_gbp']) * (1 - contract['rate']))
+                amount = self.money(decimal_number(row['list_price_gbp']) * (1 - contract['rate']))
                 quotes.append(PriceQuote(amount, row['unit'],
                                          f"Contract {contract['rate'] * 100}% off list; replaces band",
                                          [row['source_id'], contract['source_id']]))
@@ -129,7 +135,7 @@ class PricingRules:
         column = 'list_price_gbp' if band.lower() in {'l', 'list'} else f'band_{band.lower()}_gbp'
         if column not in row or not row[column]:
             raise ValueError(f'No supplied price for account band {band!r}')
-        price = money(row[column])
+        price = self.money(row[column])
         if price < 0:
             raise ValueError('Catalogue price cannot be negative')
         return PriceQuote(price, row['unit'], f'Recorded band {band}; already net of band discount',

@@ -1,0 +1,1783 @@
+{
+  "schema_version": "1.0",
+  "report_id": "81f0729fb51445d48771b6468ef0eebc",
+  "generated_at": "2026-11-18T17:03:43.042876+00:00",
+  "status": "prepared",
+  "business_rules_applied": false,
+  "requires_human_review": true,
+  "trigger": {
+    "email_id": "MSG-019",
+    "received_at": "2026-10-07T07:30:00+01:00"
+  },
+  "classification": {
+    "email_id": "MSG-019",
+    "customer": {
+      "name_as_stated": "Greenacres",
+      "account_id_as_stated": null
+    },
+    "action_type": "new_order_request",
+    "references": {
+      "customer_po": null,
+      "orbit_order_number": null
+    },
+    "related_email_ids": [],
+    "reason": "Automated fax notification carries an attachment named as a Greenacres purchase order.",
+    "uncertainties": [
+      "The fax contents are not included in the supplied email data, so further order identifiers cannot be extracted."
+    ]
+  },
+  "context": {
+    "email_id": "MSG-019",
+    "action_type": "new_order_request",
+    "customer_match": {
+      "status": "unresolved",
+      "account_id": null,
+      "candidate_account_ids": [],
+      "reason": "Confirm the customer account: supplied identifiers are missing, ambiguous or conflicting.",
+      "evidence_ids": []
+    },
+    "customer_record": null,
+    "current_request": {
+      "id": "MSG-019",
+      "received": "2026-10-07T07:30:00+01:00",
+      "from": "Fax2Mail <noreply@faxmail-gateway.co.uk>",
+      "to": "orders@meridiancatering.co.uk",
+      "subject": "Fax from 01480496220 (2 pages)",
+      "body": "You have received a 2 page fax from 01480496220 at 07/10/2026 07:28.\n\nThe fax is attached as a PDF.\n\nThis is an automated message from Fax2Mail. Please do not reply.",
+      "attachments": [
+        {
+          "filename": "PO_GREENACRES_fax.pdf",
+          "path": "05_orders/PO_GREENACRES_fax.pdf",
+          "source_id": "file:05_orders/PO_GREENACRES_fax.pdf",
+          "available": true
+        }
+      ],
+      "in_reply_to": null,
+      "source_id": "email:MSG-019:body"
+    },
+    "explicitly_matched_orders": [],
+    "supporting_history": [],
+    "history_limit": 3,
+    "customer_notes": [],
+    "general_account_notes": {
+      "source_id": "file:04_reference/customer_account_notes.md:preamble",
+      "relative_path": "04_reference/customer_account_notes.md",
+      "display_name": "customer_account_notes.md — introductory notes",
+      "locator": "Before first customer heading",
+      "timestamp": null,
+      "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+      "extraction_method": null,
+      "requires_review": false,
+      "extraction_error": null
+    },
+    "account_constraints": [],
+    "export_parameters": {
+      "VATRT": {
+        "PKEY": "VATRT",
+        "PVAL": "17.5",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+      },
+      "LASTEXP": {
+        "PKEY": "LASTEXP",
+        "PVAL": "20261008 231502",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+      },
+      "ACSTCDS": {
+        "PKEY": "ACSTCDS",
+        "PVAL": "A,H,C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+      },
+      "STATCDS": {
+        "PKEY": "STATCDS",
+        "PVAL": "N,P,D,I,X,H",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+      }
+    },
+    "open_items": [],
+    "unresolved_open_items": [],
+    "catalogue_candidates": [
+      {
+        "sku": "FR-UC-2D",
+        "description": "Counter fridge, 2 door, 1360mm",
+        "category": "Refrigeration",
+        "unit": "each",
+        "list_price_gbp": "1195.00",
+        "band_b_gbp": "1135.25",
+        "band_t_gbp": "1075.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:8"
+      },
+      {
+        "sku": "FR-UC-3D",
+        "description": "Counter fridge, 3 door, 1795mm",
+        "category": "Refrigeration",
+        "unit": "each",
+        "list_price_gbp": "1445.00",
+        "band_b_gbp": "1372.75",
+        "band_t_gbp": "1300.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:9"
+      },
+      {
+        "sku": "HC-30",
+        "description": "Hot cupboard, 3 door",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "795.00",
+        "band_b_gbp": "755.25",
+        "band_t_gbp": "715.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:30"
+      },
+      {
+        "sku": "CON-BR-6",
+        "description": "Blue centrefeed roll, case of 6",
+        "category": "Consumables",
+        "unit": "case",
+        "list_price_gbp": "18.95",
+        "band_b_gbp": "18.00",
+        "band_t_gbp": "17.06",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:50"
+      },
+      {
+        "sku": "CON-GL-BL-M",
+        "description": "Nitrile gloves, blue, medium, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:52"
+      },
+      {
+        "sku": "CON-GL-BL-L",
+        "description": "Nitrile gloves, blue, large, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:53"
+      },
+      {
+        "sku": "CON-CF-450",
+        "description": "Cling film, 450mm x 300m",
+        "category": "Consumables",
+        "unit": "roll",
+        "list_price_gbp": "9.95",
+        "band_b_gbp": "9.45",
+        "band_t_gbp": "8.96",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:54"
+      },
+      {
+        "sku": "SW-GN13-100",
+        "description": "Gastronorm pan 1/3, 100mm, stainless",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "7.95",
+        "band_b_gbp": "7.55",
+        "band_t_gbp": "7.16",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:64"
+      }
+    ],
+    "stock_records": [
+      {
+        "STKCD": "CON-BR-6",
+        "DESC1": "BLUE ROLL C/FEED",
+        "DESC2": "CASE 6",
+        "UOM": "CS",
+        "LSTPR": 1895,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6"
+      },
+      {
+        "STKCD": "CON-CF-450",
+        "DESC1": "CLINGFILM 450",
+        "DESC2": "",
+        "UOM": "RL",
+        "LSTPR": 995,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450"
+      },
+      {
+        "STKCD": "CON-GL-BL-L",
+        "DESC1": "GLOVES NITRILE BLUE L",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+      },
+      {
+        "STKCD": "CON-GL-BL-M",
+        "DESC1": "GLOVES NITRILE BLUE M",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M"
+      },
+      {
+        "STKCD": "FR-UC-2D",
+        "DESC1": "COUNTER FRIDGE 2DR",
+        "DESC2": "1360MM",
+        "UOM": "EA",
+        "LSTPR": 119500,
+        "SUPCD": "NGR",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-2D"
+      },
+      {
+        "STKCD": "FR-UC-3D",
+        "DESC1": "COUNTER FRIDGE 3DR",
+        "DESC2": "1795MM",
+        "UOM": "EA",
+        "LSTPR": 144500,
+        "SUPCD": "NGR",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-3D"
+      },
+      {
+        "STKCD": "HC-30",
+        "DESC1": "HOT CUPBOARD 3DR",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 79500,
+        "SUPCD": "KLD",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:HC-30"
+      },
+      {
+        "STKCD": "SW-GN13-100",
+        "DESC1": "GN PAN 1/3 100MM",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 795,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+      }
+    ],
+    "attachments": [
+      {
+        "filename": "PO_GREENACRES_fax.pdf",
+        "path": "05_orders/PO_GREENACRES_fax.pdf",
+        "source_id": "file:05_orders/PO_GREENACRES_fax.pdf",
+        "available": true
+      }
+    ],
+    "attachment_extractions": [
+      {
+        "relative_path": "05_orders/PO_GREENACRES_fax.pdf",
+        "pages": [
+          {
+            "source": {
+              "source_id": "file:05_orders/PO_GREENACRES_fax.pdf:page:1",
+              "relative_path": "05_orders/PO_GREENACRES_fax.pdf",
+              "display_name": "PO_GREENACRES_fax.pdf — page 1",
+              "locator": "Page 1",
+              "timestamp": null,
+              "text": "07/10/2026 07:28 FROM 01480496220 To 01480220401 P12\nFAX\nTo:\nMeridian - Orders\nFrom:\nGCH - Maureen\nTel:\n01480 496220\nDate:\n6/10\nPages:\n2 inc. this one\nMessage:\nOrder attached - pls deliver Thurs/Fri Thanks M",
+              "extraction_method": "ocr",
+              "requires_review": true,
+              "extraction_error": null
+            },
+            "page_number": 1,
+            "method": "ocr",
+            "status": "extracted",
+            "words": [
+              {
+                "text": "07/10/2026",
+                "confidence": 96.0,
+                "left": 115,
+                "top": 22,
+                "width": 113,
+                "height": 20
+              },
+              {
+                "text": "07:28",
+                "confidence": 76.0,
+                "left": 236,
+                "top": 27,
+                "width": 55,
+                "height": 17
+              },
+              {
+                "text": "FROM",
+                "confidence": 85.0,
+                "left": 313,
+                "top": 30,
+                "width": 55,
+                "height": 17
+              },
+              {
+                "text": "01480496220",
+                "confidence": 96.0,
+                "left": 384,
+                "top": 33,
+                "width": 138,
+                "height": 20
+              },
+              {
+                "text": "To",
+                "confidence": 95.0,
+                "left": 542,
+                "top": 39,
+                "width": 28,
+                "height": 16
+              },
+              {
+                "text": "01480220401",
+                "confidence": 93.0,
+                "left": 583,
+                "top": 41,
+                "width": 138,
+                "height": 21
+              },
+              {
+                "text": "P12",
+                "confidence": 0.0,
+                "left": 744,
+                "top": 47,
+                "width": 44,
+                "height": 17
+              },
+              {
+                "text": "FAX",
+                "confidence": 95.0,
+                "left": 114,
+                "top": 161,
+                "width": 223,
+                "height": 89
+              },
+              {
+                "text": "To:",
+                "confidence": 96.0,
+                "left": 102,
+                "top": 316,
+                "width": 55,
+                "height": 28
+              },
+              {
+                "text": "Meridian",
+                "confidence": 93.0,
+                "left": 324,
+                "top": 320,
+                "width": 150,
+                "height": 35
+              },
+              {
+                "text": "-",
+                "confidence": 91.0,
+                "left": 488,
+                "top": 342,
+                "width": 10,
+                "height": 4
+              },
+              {
+                "text": "Orders",
+                "confidence": 96.0,
+                "left": 512,
+                "top": 328,
+                "width": 117,
+                "height": 33
+              },
+              {
+                "text": "From:",
+                "confidence": 95.0,
+                "left": 101,
+                "top": 396,
+                "width": 110,
+                "height": 30
+              },
+              {
+                "text": "GCH",
+                "confidence": 92.0,
+                "left": 322,
+                "top": 400,
+                "width": 87,
+                "height": 32
+              },
+              {
+                "text": "-",
+                "confidence": 92.0,
+                "left": 421,
+                "top": 420,
+                "width": 10,
+                "height": 3
+              },
+              {
+                "text": "Maureen",
+                "confidence": 96.0,
+                "left": 444,
+                "top": 405,
+                "width": 154,
+                "height": 35
+              },
+              {
+                "text": "Tel:",
+                "confidence": 96.0,
+                "left": 95,
+                "top": 476,
+                "width": 68,
+                "height": 29
+              },
+              {
+                "text": "01480",
+                "confidence": 96.0,
+                "left": 319,
+                "top": 481,
+                "width": 109,
+                "height": 32
+              },
+              {
+                "text": "496220",
+                "confidence": 96.0,
+                "left": 439,
+                "top": 486,
+                "width": 134,
+                "height": 32
+              },
+              {
+                "text": "Date:",
+                "confidence": 96.0,
+                "left": 95,
+                "top": 556,
+                "width": 104,
+                "height": 30
+              },
+              {
+                "text": "6/10",
+                "confidence": 96.0,
+                "left": 315,
+                "top": 561,
+                "width": 77,
+                "height": 30
+              },
+              {
+                "text": "Pages:",
+                "confidence": 96.0,
+                "left": 91,
+                "top": 636,
+                "width": 129,
+                "height": 36
+              },
+              {
+                "text": "2",
+                "confidence": 95.0,
+                "left": 310,
+                "top": 640,
+                "width": 24,
+                "height": 29
+              },
+              {
+                "text": "inc.",
+                "confidence": 95.0,
+                "left": 344,
+                "top": 641,
+                "width": 56,
+                "height": 31
+              },
+              {
+                "text": "this",
+                "confidence": 96.0,
+                "left": 418,
+                "top": 644,
+                "width": 58,
+                "height": 31
+              },
+              {
+                "text": "one",
+                "confidence": 96.0,
+                "left": 489,
+                "top": 655,
+                "width": 65,
+                "height": 23
+              },
+              {
+                "text": "Message:",
+                "confidence": 96.0,
+                "left": 86,
+                "top": 774,
+                "width": 165,
+                "height": 37
+              },
+              {
+                "text": "Order",
+                "confidence": 96.0,
+                "left": 104,
+                "top": 832,
+                "width": 100,
+                "height": 33
+              },
+              {
+                "text": "attached",
+                "confidence": 91.0,
+                "left": 213,
+                "top": 839,
+                "width": 152,
+                "height": 32
+              },
+              {
+                "text": "-",
+                "confidence": 91.0,
+                "left": 377,
+                "top": 858,
+                "width": 9,
+                "height": 5
+              },
+              {
+                "text": "pls",
+                "confidence": 87.0,
+                "left": 397,
+                "top": 844,
+                "width": 53,
+                "height": 38
+              },
+              {
+                "text": "deliver",
+                "confidence": 93.0,
+                "left": 461,
+                "top": 846,
+                "width": 118,
+                "height": 34
+              },
+              {
+                "text": "Thurs/Fri",
+                "confidence": 43.0,
+                "left": 593,
+                "top": 851,
+                "width": 155,
+                "height": 36
+              },
+              {
+                "text": "Thanks",
+                "confidence": 92.0,
+                "left": 770,
+                "top": 858,
+                "width": 123,
+                "height": 35
+              },
+              {
+                "text": "M",
+                "confidence": 92.0,
+                "left": 906,
+                "top": 864,
+                "width": 34,
+                "height": 30
+              }
+            ],
+            "error": null
+          },
+          {
+            "source": {
+              "source_id": "file:05_orders/PO_GREENACRES_fax.pdf:page:2",
+              "relative_path": "05_orders/PO_GREENACRES_fax.pdf",
+              "display_name": "PO_GREENACRES_fax.pdf — page 2",
+              "locator": "Page 2",
+              "timestamp": null,
+              "text": "07/10/2026 07:29 FROM: 01480496220 To: 01480220401 P22\nGREENACRES CARE HOME\n45 Hartford Road, Huntingdon PE29 1XQ\nORDER FORM\nOrder no: GCH 0412\n| Gloves - blue - medium (boxes) RT\nSanitiser 5 itr\n3\nMicr\nowave - same as the Ig one\n1\nSing aa —__\nCling film\n2\nee\nSigned:\nM O'Neill\nDate:\n6/10/26\nDeliver to kitchen door at side. Ring bell.",
+              "extraction_method": "ocr",
+              "requires_review": true,
+              "extraction_error": null
+            },
+            "page_number": 2,
+            "method": "ocr",
+            "status": "extracted",
+            "words": [
+              {
+                "text": "07/10/2026",
+                "confidence": 96.0,
+                "left": 110,
+                "top": 25,
+                "width": 113,
+                "height": 19
+              },
+              {
+                "text": "07:29",
+                "confidence": 68.0,
+                "left": 232,
+                "top": 29,
+                "width": 54,
+                "height": 17
+              },
+              {
+                "text": "FROM:",
+                "confidence": 81.0,
+                "left": 309,
+                "top": 32,
+                "width": 61,
+                "height": 17
+              },
+              {
+                "text": "01480496220",
+                "confidence": 96.0,
+                "left": 380,
+                "top": 34,
+                "width": 138,
+                "height": 20
+              },
+              {
+                "text": "To:",
+                "confidence": 92.0,
+                "left": 538,
+                "top": 40,
+                "width": 32,
+                "height": 15
+              },
+              {
+                "text": "01480220401",
+                "confidence": 93.0,
+                "left": 579,
+                "top": 41,
+                "width": 138,
+                "height": 20
+              },
+              {
+                "text": "P22",
+                "confidence": 0.0,
+                "left": 739,
+                "top": 47,
+                "width": 45,
+                "height": 16
+              },
+              {
+                "text": "GREENACRES",
+                "confidence": 95.0,
+                "left": 107,
+                "top": 119,
+                "width": 324,
+                "height": 44
+              },
+              {
+                "text": "CARE",
+                "confidence": 96.0,
+                "left": 451,
+                "top": 131,
+                "width": 126,
+                "height": 37
+              },
+              {
+                "text": "HOME",
+                "confidence": 96.0,
+                "left": 599,
+                "top": 137,
+                "width": 142,
+                "height": 37
+              },
+              {
+                "text": "45",
+                "confidence": 96.0,
+                "left": 105,
+                "top": 177,
+                "width": 30,
+                "height": 20
+              },
+              {
+                "text": "Hartford",
+                "confidence": 95.0,
+                "left": 147,
+                "top": 178,
+                "width": 104,
+                "height": 23
+              },
+              {
+                "text": "Road,",
+                "confidence": 96.0,
+                "left": 264,
+                "top": 182,
+                "width": 68,
+                "height": 24
+              },
+              {
+                "text": "Huntingdon",
+                "confidence": 92.0,
+                "left": 346,
+                "top": 185,
+                "width": 147,
+                "height": 27
+              },
+              {
+                "text": "PE29",
+                "confidence": 92.0,
+                "left": 514,
+                "top": 191,
+                "width": 62,
+                "height": 21
+              },
+              {
+                "text": "1XQ",
+                "confidence": 85.0,
+                "left": 587,
+                "top": 193,
+                "width": 53,
+                "height": 24
+              },
+              {
+                "text": "ORDER",
+                "confidence": 96.0,
+                "left": 102,
+                "top": 259,
+                "width": 138,
+                "height": 30
+              },
+              {
+                "text": "FORM",
+                "confidence": 96.0,
+                "left": 256,
+                "top": 264,
+                "width": 114,
+                "height": 30
+              },
+              {
+                "text": "Order",
+                "confidence": 96.0,
+                "left": 723,
+                "top": 283,
+                "width": 78,
+                "height": 23
+              },
+              {
+                "text": "no:",
+                "confidence": 90.0,
+                "left": 812,
+                "top": 291,
+                "width": 39,
+                "height": 17
+              },
+              {
+                "text": "GCH",
+                "confidence": 90.0,
+                "left": 876,
+                "top": 278,
+                "width": 87,
+                "height": 32
+              },
+              {
+                "text": "0412",
+                "confidence": 93.0,
+                "left": 974,
+                "top": 283,
+                "width": 88,
+                "height": 31
+              },
+              {
+                "text": "|",
+                "confidence": 94.0,
+                "left": 89,
+                "top": 470,
+                "width": 16,
+                "height": 92
+              },
+              {
+                "text": "Gloves",
+                "confidence": 93.0,
+                "left": 127,
+                "top": 470,
+                "width": 100,
+                "height": 92
+              },
+              {
+                "text": "-",
+                "confidence": 88.0,
+                "left": 242,
+                "top": 515,
+                "width": 8,
+                "height": 4
+              },
+              {
+                "text": "blue",
+                "confidence": 67.0,
+                "left": 273,
+                "top": 470,
+                "width": 60,
+                "height": 92
+              },
+              {
+                "text": "-",
+                "confidence": 71.0,
+                "left": 349,
+                "top": 519,
+                "width": 7,
+                "height": 4
+              },
+              {
+                "text": "medium",
+                "confidence": 91.0,
+                "left": 380,
+                "top": 470,
+                "width": 116,
+                "height": 92
+              },
+              {
+                "text": "(boxes)",
+                "confidence": 73.0,
+                "left": 518,
+                "top": 470,
+                "width": 131,
+                "height": 92
+              },
+              {
+                "text": "RT",
+                "confidence": 20.0,
+                "left": 945,
+                "top": 474,
+                "width": 231,
+                "height": 82
+              },
+              {
+                "text": "Sanitiser",
+                "confidence": 92.0,
+                "left": 110,
+                "top": 571,
+                "width": 146,
+                "height": 33
+              },
+              {
+                "text": "5",
+                "confidence": 96.0,
+                "left": 265,
+                "top": 578,
+                "width": 22,
+                "height": 27
+              },
+              {
+                "text": "itr",
+                "confidence": 59.0,
+                "left": 297,
+                "top": 578,
+                "width": 32,
+                "height": 28
+              },
+              {
+                "text": "3",
+                "confidence": 96.0,
+                "left": 886,
+                "top": 597,
+                "width": 24,
+                "height": 33
+              },
+              {
+                "text": "Micr",
+                "confidence": 80.0,
+                "left": 113,
+                "top": 645,
+                "width": 73,
+                "height": 30
+              },
+              {
+                "text": "owave",
+                "confidence": 60.0,
+                "left": 184,
+                "top": 656,
+                "width": 105,
+                "height": 23
+              },
+              {
+                "text": "-",
+                "confidence": 90.0,
+                "left": 302,
+                "top": 668,
+                "width": 9,
+                "height": 3
+              },
+              {
+                "text": "same",
+                "confidence": 96.0,
+                "left": 323,
+                "top": 661,
+                "width": 90,
+                "height": 22
+              },
+              {
+                "text": "as",
+                "confidence": 96.0,
+                "left": 424,
+                "top": 664,
+                "width": 39,
+                "height": 21
+              },
+              {
+                "text": "the",
+                "confidence": 96.0,
+                "left": 475,
+                "top": 658,
+                "width": 50,
+                "height": 29
+              },
+              {
+                "text": "Ig",
+                "confidence": 22.0,
+                "left": 536,
+                "top": 660,
+                "width": 59,
+                "height": 43
+              },
+              {
+                "text": "one",
+                "confidence": 93.0,
+                "left": 605,
+                "top": 671,
+                "width": 60,
+                "height": 21
+              },
+              {
+                "text": "1",
+                "confidence": 80.0,
+                "left": 902,
+                "top": 673,
+                "width": 13,
+                "height": 31
+              },
+              {
+                "text": "Sing",
+                "confidence": 53.0,
+                "left": 119,
+                "top": 672,
+                "width": 79,
+                "height": 93
+              },
+              {
+                "text": "aa",
+                "confidence": 24.0,
+                "left": 212,
+                "top": 672,
+                "width": 396,
+                "height": 93
+              },
+              {
+                "text": "—__",
+                "confidence": 5.0,
+                "left": 1003,
+                "top": 672,
+                "width": 163,
+                "height": 93
+              },
+              {
+                "text": "Cling",
+                "confidence": 96.0,
+                "left": 112,
+                "top": 725,
+                "width": 83,
+                "height": 38
+              },
+              {
+                "text": "film",
+                "confidence": 96.0,
+                "left": 208,
+                "top": 728,
+                "width": 55,
+                "height": 30
+              },
+              {
+                "text": "2",
+                "confidence": 95.0,
+                "left": 894,
+                "top": 748,
+                "width": 27,
+                "height": 32
+              },
+              {
+                "text": "ee",
+                "confidence": 7.0,
+                "left": 80,
+                "top": 838,
+                "width": 1084,
+                "height": 67
+              },
+              {
+                "text": "Signed:",
+                "confidence": 93.0,
+                "left": 78,
+                "top": 971,
+                "width": 100,
+                "height": 28
+              },
+              {
+                "text": "M",
+                "confidence": 92.0,
+                "left": 229,
+                "top": 967,
+                "width": 38,
+                "height": 34
+              },
+              {
+                "text": "O'Neill",
+                "confidence": 90.0,
+                "left": 279,
+                "top": 968,
+                "width": 128,
+                "height": 37
+              },
+              {
+                "text": "Date:",
+                "confidence": 96.0,
+                "left": 76,
+                "top": 1041,
+                "width": 71,
+                "height": 24
+              },
+              {
+                "text": "6/10/26",
+                "confidence": 96.0,
+                "left": 227,
+                "top": 1037,
+                "width": 132,
+                "height": 33
+              },
+              {
+                "text": "Deliver",
+                "confidence": 96.0,
+                "left": 73,
+                "top": 1121,
+                "width": 84,
+                "height": 21
+              },
+              {
+                "text": "to",
+                "confidence": 96.0,
+                "left": 165,
+                "top": 1125,
+                "width": 21,
+                "height": 18
+              },
+              {
+                "text": "kitchen",
+                "confidence": 96.0,
+                "left": 197,
+                "top": 1126,
+                "width": 85,
+                "height": 20
+              },
+              {
+                "text": "door",
+                "confidence": 97.0,
+                "left": 293,
+                "top": 1129,
+                "width": 53,
+                "height": 19
+              },
+              {
+                "text": "at",
+                "confidence": 96.0,
+                "left": 355,
+                "top": 1133,
+                "width": 23,
+                "height": 17
+              },
+              {
+                "text": "side.",
+                "confidence": 95.0,
+                "left": 387,
+                "top": 1133,
+                "width": 52,
+                "height": 19
+              },
+              {
+                "text": "Ring",
+                "confidence": 96.0,
+                "left": 452,
+                "top": 1134,
+                "width": 50,
+                "height": 25
+              },
+              {
+                "text": "bell.",
+                "confidence": 59.0,
+                "left": 512,
+                "top": 1137,
+                "width": 48,
+                "height": 19
+              }
+            ],
+            "error": null
+          }
+        ],
+        "errors": [],
+        "duration_seconds": 1.5285177089999706
+      }
+    ],
+    "report_alerts": [
+      {
+        "code": "customer_match_unresolved",
+        "title": "Customer match unresolved — do not proceed",
+        "message": "Confirm the correct account before entry. No customer history assigned. Candidates: none established",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      },
+      {
+        "code": "ocr_review_required",
+        "title": "Scanned page requires manual verification",
+        "message": "PO_GREENACRES_fax.pdf — page 1: OCR can omit or misread content. Check every line, quantity, product, price and date against the original page; confidence is not approval.",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      },
+      {
+        "code": "ocr_review_required",
+        "title": "Scanned page requires manual verification",
+        "message": "PO_GREENACRES_fax.pdf — page 2: OCR can omit or misread content. Check every line, quantity, product, price and date against the original page; confidence is not approval.",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "sources": {
+      "csv:04_reference/price_list.csv:record:30": {
+        "source_id": "csv:04_reference/price_list.csv:record:30",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 30",
+        "locator": "CSV record 30 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"HC-30\", \"description\": \"Hot cupboard, 3 door\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"795.00\", \"band_b_gbp\": \"755.25\", \"band_t_gbp\": \"715.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:50": {
+        "source_id": "csv:04_reference/price_list.csv:record:50",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 50",
+        "locator": "CSV record 50 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-BR-6\", \"description\": \"Blue centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"18.95\", \"band_b_gbp\": \"18.00\", \"band_t_gbp\": \"17.06\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:52": {
+        "source_id": "csv:04_reference/price_list.csv:record:52",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 52",
+        "locator": "CSV record 52 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-M\", \"description\": \"Nitrile gloves, blue, medium, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:53": {
+        "source_id": "csv:04_reference/price_list.csv:record:53",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 53",
+        "locator": "CSV record 53 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:54": {
+        "source_id": "csv:04_reference/price_list.csv:record:54",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 54",
+        "locator": "CSV record 54 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-CF-450\", \"description\": \"Cling film, 450mm x 300m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"9.95\", \"band_b_gbp\": \"9.45\", \"band_t_gbp\": \"8.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:64": {
+        "source_id": "csv:04_reference/price_list.csv:record:64",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 64",
+        "locator": "CSV record 64 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:8": {
+        "source_id": "csv:04_reference/price_list.csv:record:8",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 8",
+        "locator": "CSV record 8 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FR-UC-2D\", \"description\": \"Counter fridge, 2 door, 1360mm\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"1195.00\", \"band_b_gbp\": \"1135.25\", \"band_t_gbp\": \"1075.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:9": {
+        "source_id": "csv:04_reference/price_list.csv:record:9",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 9",
+        "locator": "CSV record 9 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FR-UC-3D\", \"description\": \"Counter fridge, 3 door, 1795mm\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"1445.00\", \"band_b_gbp\": \"1372.75\", \"band_t_gbp\": \"1300.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "email:MSG-019:body": {
+        "source_id": "email:MSG-019:body",
+        "relative_path": "03_inbox_export/inbox.json",
+        "display_name": "MSG-019 — Fax2Mail <noreply@faxmail-gateway.co.uk> — Fax from 01480496220 (2 pages)",
+        "locator": "JSON record 19, body",
+        "timestamp": "2026-10-07T07:30:00+01:00",
+        "text": "You have received a 2 page fax from 01480496220 at 07/10/2026 07:28.\n\nThe fax is attached as a PDF.\n\nThis is an automated message from Fax2Mail. Please do not reply.",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:preamble": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_GREENACRES_fax.pdf": {
+        "source_id": "file:05_orders/PO_GREENACRES_fax.pdf",
+        "relative_path": "05_orders/PO_GREENACRES_fax.pdf",
+        "display_name": "PO_GREENACRES_fax.pdf",
+        "locator": "Whole file",
+        "timestamp": null,
+        "text": null,
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-BR-6",
+        "locator": "STK: STKCD=CON-BR-6",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-BR-6\", \"DESC1\": \"BLUE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1895, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-CF-450",
+        "locator": "STK: STKCD=CON-CF-450",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-CF-450\", \"DESC1\": \"CLINGFILM 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 995, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+        "locator": "STK: STKCD=CON-GL-BL-L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-M",
+        "locator": "STK: STKCD=CON-GL-BL-M",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-M\", \"DESC1\": \"GLOVES NITRILE BLUE M\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-2D": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-2D",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FR-UC-2D",
+        "locator": "STK: STKCD=FR-UC-2D",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FR-UC-2D\", \"DESC1\": \"COUNTER FRIDGE 2DR\", \"DESC2\": \"1360MM\", \"UOM\": \"EA\", \"LSTPR\": 119500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-3D": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-3D",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FR-UC-3D",
+        "locator": "STK: STKCD=FR-UC-3D",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FR-UC-3D\", \"DESC1\": \"COUNTER FRIDGE 3DR\", \"DESC2\": \"1795MM\", \"UOM\": \"EA\", \"LSTPR\": 144500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:HC-30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:HC-30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=HC-30",
+        "locator": "STK: STKCD=HC-30",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"HC-30\", \"DESC1\": \"HOT CUPBOARD 3DR\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 79500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-GN13-100",
+        "locator": "STK: STKCD=SW-GN13-100",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+        "locator": "SYSPARM: PKEY=ACSTCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+        "locator": "SYSPARM: PKEY=LASTEXP",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+        "locator": "SYSPARM: PKEY=STATCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=VATRT",
+        "locator": "SYSPARM: PKEY=VATRT",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_GREENACRES_fax.pdf:page:1": {
+        "source_id": "file:05_orders/PO_GREENACRES_fax.pdf:page:1",
+        "relative_path": "05_orders/PO_GREENACRES_fax.pdf",
+        "display_name": "PO_GREENACRES_fax.pdf — page 1",
+        "locator": "Page 1",
+        "timestamp": null,
+        "text": "07/10/2026 07:28 FROM 01480496220 To 01480220401 P12\nFAX\nTo:\nMeridian - Orders\nFrom:\nGCH - Maureen\nTel:\n01480 496220\nDate:\n6/10\nPages:\n2 inc. this one\nMessage:\nOrder attached - pls deliver Thurs/Fri Thanks M",
+        "extraction_method": "ocr",
+        "requires_review": true,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_GREENACRES_fax.pdf:page:2": {
+        "source_id": "file:05_orders/PO_GREENACRES_fax.pdf:page:2",
+        "relative_path": "05_orders/PO_GREENACRES_fax.pdf",
+        "display_name": "PO_GREENACRES_fax.pdf — page 2",
+        "locator": "Page 2",
+        "timestamp": null,
+        "text": "07/10/2026 07:29 FROM: 01480496220 To: 01480220401 P22\nGREENACRES CARE HOME\n45 Hartford Road, Huntingdon PE29 1XQ\nORDER FORM\nOrder no: GCH 0412\n| Gloves - blue - medium (boxes) RT\nSanitiser 5 itr\n3\nMicr\nowave - same as the Ig one\n1\nSing aa —__\nCling film\n2\nee\nSigned:\nM O'Neill\nDate:\n6/10/26\nDeliver to kitchen door at side. Ring bell.",
+        "extraction_method": "ocr",
+        "requires_review": true,
+        "extraction_error": null
+      }
+    },
+    "source_limitations": [
+      "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+      "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+      "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+    ]
+  },
+  "report_alerts": [
+    {
+      "code": "customer_match_unresolved",
+      "title": "Customer match unresolved — do not proceed",
+      "message": "Confirm the correct account before entry. No customer history assigned. Candidates: none established",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "ocr_review_required",
+      "title": "Scanned page requires manual verification",
+      "message": "PO_GREENACRES_fax.pdf — page 1: OCR can omit or misread content. Check every line, quantity, product, price and date against the original page; confidence is not approval.",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "ocr_review_required",
+      "title": "Scanned page requires manual verification",
+      "message": "PO_GREENACRES_fax.pdf — page 2: OCR can omit or misread content. Check every line, quantity, product, price and date against the original page; confidence is not approval.",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "entry_details_unresolved",
+      "title": "Entry details require confirmation",
+      "message": "Not established: L1.quantity, L2.sku, L2.unit, L3.sku, L3.unit, L4.sku, L4.quantity, L4.unit, L5.unit",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    }
+  ],
+  "llm": {
+    "call_count": 1,
+    "model": "gpt-6-luna",
+    "duration_seconds": 28.383883208999976,
+    "response_id": "resp_0341814d2c573169016afdda53439087d2983d40c097bf5f2c",
+    "usage": {
+      "input_tokens": 15009,
+      "input_tokens_details": {
+        "cache_write_tokens": 12102,
+        "cached_tokens": 2904,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 12102
+        }
+      },
+      "output_tokens": 3097,
+      "output_tokens_details": {
+        "reasoning_tokens": 783
+      },
+      "total_tokens": 18106
+    }
+  },
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    }
+  },
+  "policy_sha256": "9d40bce82f1d75dc6a32108728800d84dd91b3c2619074e34ea923e5f8d55643",
+  "proposal": {
+    "email_id": "MSG-019",
+    "action_type": "new_order_request",
+    "summary": "Faxed order form requests an order for Greenacres Care Home. The attachment is OCR-extracted and requires manual verification; customer account match is unresolved.",
+    "customer_po": {
+      "value": "GCH 0412",
+      "basis": "explicit_request",
+      "evidence_ids": [
+        "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+      ]
+    },
+    "new_order": {
+      "header": {
+        "delivery_destination": {
+          "value": "Greenacres Care Home, 45 Hartford Road, Huntingdon PE29 1XQ",
+          "basis": "explicit_request",
+          "evidence_ids": [
+            "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+          ]
+        },
+        "requested_delivery_date": {
+          "value": "Thurs/Fri",
+          "basis": "explicit_request",
+          "evidence_ids": [
+            "file:05_orders/PO_GREENACRES_fax.pdf:page:1"
+          ]
+        },
+        "delivery_instructions": {
+          "value": "Deliver to kitchen door at side. Ring bell.",
+          "basis": "explicit_request",
+          "evidence_ids": [
+            "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "line_id": "L1",
+          "description": {
+            "value": "Gloves - blue - medium",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ]
+          },
+          "sku": {
+            "value": "CON-GL-BL-M",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2",
+              "csv:04_reference/price_list.csv:record:52"
+            ],
+            "reason": "Catalogue description matches blue medium gloves; confirm against the original fax."
+          },
+          "unit": {
+            "value": "boxes",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ]
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "L2",
+          "description": {
+            "value": "Sanitiser 5 itr",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ]
+          },
+          "quantity": {
+            "value": "3",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ],
+            "reason": "OCR places this quantity alongside the sanitiser row; verify on the original fax."
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "L3",
+          "description": {
+            "value": "Microwave - same as the Ig one",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ]
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ],
+            "reason": "OCR reads quantity 1; verify against the original fax."
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "L4",
+          "description": {
+            "value": "Sing aa —__",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ],
+            "reason": "Preserved as OCR text; the product cannot be reliably identified."
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "L5",
+          "description": {
+            "value": "Cling film",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ]
+          },
+          "sku": {
+            "value": "CON-CF-450",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2",
+              "csv:04_reference/price_list.csv:record:54"
+            ],
+            "reason": "Catalogue has a cling film product; the requested width and length are not stated, so confirm the match."
+          },
+          "quantity": {
+            "value": "2",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+            ],
+            "reason": "OCR reads quantity 2; verify against the original fax."
+          },
+          "quantity_basis": "order_total"
+        }
+      ],
+      "customer_quoted_totals": [],
+      "customer_discounts": []
+    },
+    "uncertainties": [
+      {
+        "question": "What is the confirmed Greenacres customer account?",
+        "affected_fields": [
+          "customer_match",
+          "new_order"
+        ],
+        "next_action": "Confirm the correct account in Orbit before entry; no account is established by the supplied match result.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      },
+      {
+        "question": "What is the exact requested delivery date represented by “Thurs/Fri”?",
+        "affected_fields": [
+          "new_order.header.requested_delivery_date"
+        ],
+        "next_action": "Check the fax and confirm the intended day and date before entry.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:1"
+        ]
+      },
+      {
+        "question": "What is the gloves quantity, and what does the OCR text “RT” on that row mean?",
+        "affected_fields": [
+          "new_order.lines.L1.quantity",
+          "new_order.lines.L1"
+        ],
+        "next_action": "Read the gloves row on the original fax and verify its quantity and any adjacent marks.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      },
+      {
+        "question": "Does “5 itr” mean a particular sanitiser size, and what is its order unit?",
+        "affected_fields": [
+          "new_order.lines.L2.description",
+          "new_order.lines.L2.unit"
+        ],
+        "next_action": "Verify the sanitiser wording and unit on the original fax.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      },
+      {
+        "question": "What product is meant by “same as the Ig one” for the microwave?",
+        "affected_fields": [
+          "new_order.lines.L3.description",
+          "new_order.lines.L3.sku"
+        ],
+        "next_action": "Check the original fax for legible wording and obtain clarification if it does not identify the microwave.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      },
+      {
+        "question": "What product is written in the unclear “Sing aa —__” row, and is a quantity shown?",
+        "affected_fields": [
+          "new_order.lines.L4"
+        ],
+        "next_action": "Inspect that row on the original fax and clarify the product and quantity before entry.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      },
+      {
+        "question": "What cling film size and order unit are requested?",
+        "affected_fields": [
+          "new_order.lines.L5.sku",
+          "new_order.lines.L5.unit"
+        ],
+        "next_action": "Check the original fax for product specification and unit; confirm the suggested catalogue match.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "category": "customer_match_unresolved",
+        "description": "The customer account is unresolved; the attachment name and order-form text do not establish an Orbit account match.",
+        "affected_fields": [
+          "customer_match",
+          "new_order"
+        ],
+        "next_action": "Confirm the correct customer account in Orbit before entry.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      },
+      {
+        "category": "ocr_manual_review_required",
+        "description": "Both pages are OCR-extracted and may omit or misread order details. Manually verify every line, quantity, product, and date against the original fax.",
+        "affected_fields": [
+          "new_order.header",
+          "new_order.lines",
+          "customer_po"
+        ],
+        "next_action": "Review both original fax pages before any manual entry.",
+        "evidence_ids": [
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:1",
+          "file:05_orders/PO_GREENACRES_fax.pdf:page:2"
+        ]
+      }
+    ]
+  }
+}

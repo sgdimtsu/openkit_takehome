@@ -1,15 +1,17 @@
 """Explicit numerical/date normalisation; no float arithmetic for money."""
 import re
 from datetime import datetime, timedelta
-from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
+from decimal import Decimal, InvalidOperation
 
 from .context import order_date
-
-CENT = Decimal('0.01')
-VAT_RATE = Decimal('0.20')  # User-approved prototype rule; export conflicts are surfaced.
+from .policy import load_policy
 
 
 def decimal_number(value):
+    if isinstance(value, Decimal):
+        if not value.is_finite():
+            raise ValueError('Numeric values must be finite')
+        return value
     if isinstance(value, bool) or value is None:
         raise ValueError('A numeric value is required')
     text = str(value).strip().replace('£', '').strip()
@@ -24,12 +26,15 @@ def decimal_number(value):
     return number
 
 
-def money(value):
-    return decimal_number(value).quantize(CENT, rounding=ROUND_HALF_UP)
+def money(value, *, policy=None):
+    policy = policy if policy is not None else load_policy()
+    quantum = Decimal(1).scaleb(-policy.pricing.decimal_places)
+    return decimal_number(value).quantize(quantum, rounding=policy.pricing.rounding)
 
 
-def money_text(value):
-    return format(Decimal(value).quantize(CENT, rounding=ROUND_HALF_UP), '.2f')
+def money_text(value, *, policy=None):
+    policy = policy if policy is not None else load_policy()
+    return format(money(value, policy=policy), f'.{policy.pricing.decimal_places}f')
 
 
 def quantity(value, *, allow_zero=False):
@@ -53,22 +58,24 @@ def discount_rate(value):
     return rate
 
 
-def orbit_net_price(line):
+def orbit_net_price(line, *, policy=None):
+    policy = policy if policy is not None else load_policy()
     # UPRC is pence before the separately recorded DISC, as approved by the user.
     base = decimal_number(line['UPRC']) / 100
     if base < 0:
         raise ValueError('Recorded price cannot be negative')
-    return money(base * (1 - discount_rate(line['DISC'])))
+    return money(base * (1 - discount_rate(line['DISC'])), policy=policy)
 
 
-def exclusive_amount(amount, vat_basis):
+def exclusive_amount(amount, vat_basis, *, policy=None):
+    policy = policy if policy is not None else load_policy()
     value = decimal_number(amount)
     if value < 0:
         raise ValueError('Quoted amount cannot be negative')
     if vat_basis == 'inclusive':
-        return money(value / (1 + VAT_RATE))
+        return money(value / (1 + policy.vat_rate), policy=policy)
     if vat_basis == 'exclusive':
-        return money(value)
+        return money(value, policy=policy)
     raise ValueError('Quoted VAT basis is unknown')
 
 

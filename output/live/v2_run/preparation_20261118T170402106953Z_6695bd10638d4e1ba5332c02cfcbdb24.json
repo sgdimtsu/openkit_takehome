@@ -1,0 +1,1693 @@
+{
+  "schema_version": "1.0",
+  "report_id": "2aba956942aa4bcd908ac3261bb8fd43",
+  "generated_at": "2026-11-18T17:04:02.066216+00:00",
+  "status": "prepared",
+  "business_rules_applied": false,
+  "requires_human_review": true,
+  "trigger": {
+    "email_id": "MSG-020",
+    "received_at": "2026-10-07T08:05:00+01:00"
+  },
+  "classification": {
+    "email_id": "MSG-020",
+    "customer": {
+      "name_as_stated": "Harbour View Hotel",
+      "account_id_as_stated": null
+    },
+    "action_type": "amendment_request",
+    "references": {
+      "customer_po": "HV-2291",
+      "orbit_order_number": null
+    },
+    "related_email_ids": [
+      "MSG-001"
+    ],
+    "reason": "Submits a revised purchase order and requests changes to the existing order.",
+    "uncertainties": []
+  },
+  "context": {
+    "email_id": "MSG-020",
+    "action_type": "amendment_request",
+    "customer_match": {
+      "status": "matched",
+      "account_id": "HARB01",
+      "candidate_account_ids": [
+        "HARB01"
+      ],
+      "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+      "evidence_ids": [
+        "file:04_reference/customer_account_notes.md:section:1",
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:HARB01",
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48177"
+      ]
+    },
+    "customer_record": {
+      "CUSNO": "HARB01",
+      "CUSNM": "HARBOUR VIEW HOTEL",
+      "ADR1": "The Esplanade",
+      "ADR2": "Felixstowe",
+      "PCODE": "IP11 2AF",
+      "TELNO": "01394 280415",
+      "ACSTAT": "A",
+      "CRLIM": 25000,
+      "PRCBND": "B",
+      "DTOPEN": "14/03/2011",
+      "NOTE1": "PO REQD",
+      "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:HARB01"
+    },
+    "current_request": {
+      "id": "MSG-020",
+      "received": "2026-10-07T08:05:00+01:00",
+      "from": "Sarah Kemp <purchasing@harbourviewhotel.co.uk>",
+      "to": "orders@meridiancatering.co.uk",
+      "subject": "RE: PO HV-2291 - REVISED",
+      "body": "Hi,\n\nRevised PO attached for HV-2291. Can we move delivery to Wednesday 21st please, and I've added 2 more boxes of the medium gloves. Everything else is the same.\n\nThanks,\nSarah",
+      "attachments": [
+        {
+          "filename": "PO_HV-2291_rev.pdf",
+          "path": "05_orders/PO_HV-2291_rev.pdf",
+          "source_id": "file:05_orders/PO_HV-2291_rev.pdf",
+          "available": true
+        }
+      ],
+      "in_reply_to": "MSG-001",
+      "source_id": "email:MSG-020:body"
+    },
+    "explicitly_matched_orders": [
+      {
+        "header": {
+          "ORDNO": 48177,
+          "CUSNO": "HARB01",
+          "CUSREF": "HV-2291",
+          "ORDDT": "20261005",
+          "STAT": "N",
+          "DELDT": "20261014",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48177"
+        },
+        "lines": [
+          {
+            "ORDNO": 48177,
+            "LNNO": 10,
+            "STKCD": "CON-GL-BL-M",
+            "QTY": 10,
+            "QTYDS": 0,
+            "UPRC": 645,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:10"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 20,
+            "STKCD": "CON-BR-6",
+            "QTY": 6,
+            "QTYDS": 0,
+            "UPRC": 1895,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:20"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 30,
+            "STKCD": "CON-DT-5L",
+            "QTY": 4,
+            "QTYDS": 0,
+            "UPRC": 1495,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:30"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 40,
+            "STKCD": "CON-RA-5L",
+            "QTY": 2,
+            "QTYDS": 0,
+            "UPRC": 1595,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:40"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 50,
+            "STKCD": "SW-GN11-65",
+            "QTY": 12,
+            "QTYDS": 0,
+            "UPRC": 1195,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:50"
+          }
+        ],
+        "order_date_normalised": "2026-10-05"
+      }
+    ],
+    "supporting_history": [
+      {
+        "header": {
+          "ORDNO": 48177,
+          "CUSNO": "HARB01",
+          "CUSREF": "HV-2291",
+          "ORDDT": "20261005",
+          "STAT": "N",
+          "DELDT": "20261014",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48177"
+        },
+        "lines": [
+          {
+            "ORDNO": 48177,
+            "LNNO": 10,
+            "STKCD": "CON-GL-BL-M",
+            "QTY": 10,
+            "QTYDS": 0,
+            "UPRC": 645,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:10"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 20,
+            "STKCD": "CON-BR-6",
+            "QTY": 6,
+            "QTYDS": 0,
+            "UPRC": 1895,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:20"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 30,
+            "STKCD": "CON-DT-5L",
+            "QTY": 4,
+            "QTYDS": 0,
+            "UPRC": 1495,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:30"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 40,
+            "STKCD": "CON-RA-5L",
+            "QTY": 2,
+            "QTYDS": 0,
+            "UPRC": 1595,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:40"
+          },
+          {
+            "ORDNO": 48177,
+            "LNNO": 50,
+            "STKCD": "SW-GN11-65",
+            "QTY": 12,
+            "QTYDS": 0,
+            "UPRC": 1195,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:50"
+          }
+        ],
+        "order_date_normalised": "2026-10-05"
+      },
+      {
+        "header": {
+          "ORDNO": 48132,
+          "CUSNO": "HARB01",
+          "CUSREF": "HV-2270",
+          "ORDDT": "20260930",
+          "STAT": "P",
+          "DELDT": "20261006",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48132"
+        },
+        "lines": [
+          {
+            "ORDNO": 48132,
+            "LNNO": 10,
+            "STKCD": "FR-UC-SD",
+            "QTY": 2,
+            "QTYDS": 0,
+            "UPRC": 49500,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:10"
+          },
+          {
+            "ORDNO": 48132,
+            "LNNO": 20,
+            "STKCD": "CON-CF-450",
+            "QTY": 6,
+            "QTYDS": 0,
+            "UPRC": 995,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:20"
+          },
+          {
+            "ORDNO": 48132,
+            "LNNO": 30,
+            "STKCD": "CON-FOIL-450",
+            "QTY": 4,
+            "QTYDS": 0,
+            "UPRC": 2150,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:30"
+          }
+        ],
+        "order_date_normalised": "2026-09-30"
+      },
+      {
+        "header": {
+          "ORDNO": 47990,
+          "CUSNO": "HARB01",
+          "CUSREF": "HV-2265",
+          "ORDDT": "20260918",
+          "STAT": "I",
+          "DELDT": "20260922",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47990"
+        },
+        "lines": [
+          {
+            "ORDNO": 47990,
+            "LNNO": 10,
+            "STKCD": "CON-FOIL-450",
+            "QTY": 2,
+            "QTYDS": 2,
+            "UPRC": 2150,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:10"
+          },
+          {
+            "ORDNO": 47990,
+            "LNNO": 20,
+            "STKCD": "DW-PT-500",
+            "QTY": 1,
+            "QTYDS": 1,
+            "UPRC": 349500,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:20"
+          },
+          {
+            "ORDNO": 47990,
+            "LNNO": 30,
+            "STKCD": "CON-BIN-BLK",
+            "QTY": 1,
+            "QTYDS": 1,
+            "UPRC": 2250,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:30"
+          }
+        ],
+        "order_date_normalised": "2026-09-18"
+      }
+    ],
+    "history_limit": 3,
+    "customer_notes": [
+      {
+        "source_id": "file:04_reference/customer_account_notes.md:section:1",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "Harbour View Hotel (Felixstowe)",
+        "locator": "Section: Harbour View Hotel (Felixstowe)",
+        "timestamp": null,
+        "text": "Harbour View Hotel (Felixstowe)\n- Orbit account: HARB01. Band B.\n- Orders come from Sarah Kemp (purchasing@). Always a PDF PO, numbered HV-xxxx. Dan Whitlock is head chef and chases deliveries.\n- Deliveries to goods-in at the rear, before 11am.\n\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      }
+    ],
+    "general_account_notes": {
+      "source_id": "file:04_reference/customer_account_notes.md:preamble",
+      "relative_path": "04_reference/customer_account_notes.md",
+      "display_name": "customer_account_notes.md — introductory notes",
+      "locator": "Before first customer heading",
+      "timestamp": null,
+      "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+      "extraction_method": null,
+      "requires_review": false,
+      "extraction_error": null
+    },
+    "account_constraints": [],
+    "export_parameters": {
+      "VATRT": {
+        "PKEY": "VATRT",
+        "PVAL": "17.5",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+      },
+      "LASTEXP": {
+        "PKEY": "LASTEXP",
+        "PVAL": "20261008 231502",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+      },
+      "ACSTCDS": {
+        "PKEY": "ACSTCDS",
+        "PVAL": "A,H,C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+      },
+      "STATCDS": {
+        "PKEY": "STATCDS",
+        "PVAL": "N,P,D,I,X,H",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+      }
+    },
+    "open_items": [
+      {
+        "Date": "2026-09-15",
+        "Customer": "Harbour View",
+        "Order / PO": "HV-2244",
+        "Issue": "short 2 x foil",
+        "Who": "PS",
+        "Status": "Closed",
+        "Notes": "sent on van 1",
+        "Closed": "17/9",
+        "source_id": "csv:02_open_items_log.csv:record:4"
+      },
+      {
+        "Date": "2 Oct",
+        "Customer": "Harbour View",
+        "Order / PO": "HV-2270",
+        "Issue": "u/c fridges - due 6th",
+        "Who": "PS",
+        "Status": "open",
+        "Notes": "",
+        "Closed": "",
+        "source_id": "csv:02_open_items_log.csv:record:41"
+      },
+      {
+        "Date": "06/10",
+        "Customer": "Harbour View",
+        "Order / PO": "HV-2270",
+        "Issue": "Dan chasing - late",
+        "Who": "KH",
+        "Status": "open",
+        "Notes": "",
+        "Closed": "",
+        "source_id": "csv:02_open_items_log.csv:record:49"
+      },
+      {
+        "Date": "07/10/26",
+        "Customer": "Harbour View",
+        "Order / PO": "HV-2291",
+        "Issue": "change del date to 21st + 2 gloves",
+        "Who": "PS",
+        "Status": "open",
+        "Notes": "",
+        "Closed": "",
+        "source_id": "csv:02_open_items_log.csv:record:55"
+      }
+    ],
+    "unresolved_open_items": [],
+    "catalogue_candidates": [
+      {
+        "sku": "FR-UC-SD",
+        "description": "Undercounter fridge, single door, 150L",
+        "category": "Refrigeration",
+        "unit": "each",
+        "list_price_gbp": "495.00",
+        "band_b_gbp": "470.25",
+        "band_t_gbp": "445.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:6"
+      },
+      {
+        "sku": "DW-PT-500",
+        "description": "Pass-through dishwasher, 500mm",
+        "category": "Warewashing",
+        "unit": "each",
+        "list_price_gbp": "3495.00",
+        "band_b_gbp": "3320.25",
+        "band_t_gbp": "3145.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:34"
+      },
+      {
+        "sku": "CON-BR-6",
+        "description": "Blue centrefeed roll, case of 6",
+        "category": "Consumables",
+        "unit": "case",
+        "list_price_gbp": "18.95",
+        "band_b_gbp": "18.00",
+        "band_t_gbp": "17.06",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:50"
+      },
+      {
+        "sku": "CON-WR-6",
+        "description": "White centrefeed roll, case of 6",
+        "category": "Consumables",
+        "unit": "case",
+        "list_price_gbp": "17.95",
+        "band_b_gbp": "17.05",
+        "band_t_gbp": "16.16",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:51"
+      },
+      {
+        "sku": "CON-GL-BL-M",
+        "description": "Nitrile gloves, blue, medium, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:52"
+      },
+      {
+        "sku": "CON-GL-BL-L",
+        "description": "Nitrile gloves, blue, large, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:53"
+      },
+      {
+        "sku": "CON-CF-450",
+        "description": "Cling film, 450mm x 300m",
+        "category": "Consumables",
+        "unit": "roll",
+        "list_price_gbp": "9.95",
+        "band_b_gbp": "9.45",
+        "band_t_gbp": "8.96",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:54"
+      },
+      {
+        "sku": "CON-FOIL-450",
+        "description": "Catering foil, 450mm x 75m",
+        "category": "Consumables",
+        "unit": "roll",
+        "list_price_gbp": "21.50",
+        "band_b_gbp": "20.43",
+        "band_t_gbp": "19.35",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:55"
+      },
+      {
+        "sku": "CON-DT-5L",
+        "description": "Dishwasher detergent, 5L",
+        "category": "Consumables",
+        "unit": "each",
+        "list_price_gbp": "14.95",
+        "band_b_gbp": "14.20",
+        "band_t_gbp": "13.46",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:56"
+      },
+      {
+        "sku": "CON-RA-5L",
+        "description": "Rinse aid, 5L",
+        "category": "Consumables",
+        "unit": "each",
+        "list_price_gbp": "15.95",
+        "band_b_gbp": "15.15",
+        "band_t_gbp": "14.36",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:57"
+      },
+      {
+        "sku": "CON-BIN-BLK",
+        "description": "Black bin liners, heavy duty, box of 200",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "22.50",
+        "band_b_gbp": "21.38",
+        "band_t_gbp": "20.25",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:59"
+      },
+      {
+        "sku": "CON-APRON-WH",
+        "description": "Disposable aprons, white, pack of 100",
+        "category": "Consumables",
+        "unit": "pack",
+        "list_price_gbp": "9.50",
+        "band_b_gbp": "9.03",
+        "band_t_gbp": "8.55",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:60"
+      },
+      {
+        "sku": "CON-HN-100",
+        "description": "Hairnets, white, pack of 100",
+        "category": "Consumables",
+        "unit": "pack",
+        "list_price_gbp": "4.95",
+        "band_b_gbp": "4.70",
+        "band_t_gbp": "4.46",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:61"
+      },
+      {
+        "sku": "SW-GN11-65",
+        "description": "Gastronorm pan 1/1, 65mm, stainless",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "11.95",
+        "band_b_gbp": "11.35",
+        "band_t_gbp": "10.75",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:62"
+      },
+      {
+        "sku": "SW-GN11-100",
+        "description": "Gastronorm pan 1/1, 100mm, stainless",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "14.50",
+        "band_b_gbp": "13.77",
+        "band_t_gbp": "13.05",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:63"
+      },
+      {
+        "sku": "SW-GN13-100",
+        "description": "Gastronorm pan 1/3, 100mm, stainless",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "7.95",
+        "band_b_gbp": "7.55",
+        "band_t_gbp": "7.16",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:64"
+      },
+      {
+        "sku": "SW-CB-SET",
+        "description": "Colour coded chopping boards, set of 6",
+        "category": "Smallwares",
+        "unit": "set",
+        "list_price_gbp": "79.00",
+        "band_b_gbp": "75.05",
+        "band_t_gbp": "71.10",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:65"
+      }
+    ],
+    "stock_records": [
+      {
+        "STKCD": "CON-APRON-WH",
+        "DESC1": "APRON DISP WHITE",
+        "DESC2": "PK100",
+        "UOM": "PK",
+        "LSTPR": 950,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-APRON-WH"
+      },
+      {
+        "STKCD": "CON-BIN-BLK",
+        "DESC1": "BIN LINER BLK HD",
+        "DESC2": "BX200",
+        "UOM": "BX",
+        "LSTPR": 2250,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BIN-BLK"
+      },
+      {
+        "STKCD": "CON-BR-6",
+        "DESC1": "BLUE ROLL C/FEED",
+        "DESC2": "CASE 6",
+        "UOM": "CS",
+        "LSTPR": 1895,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6"
+      },
+      {
+        "STKCD": "CON-CF-450",
+        "DESC1": "CLINGFILM 450",
+        "DESC2": "",
+        "UOM": "RL",
+        "LSTPR": 995,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450"
+      },
+      {
+        "STKCD": "CON-DT-5L",
+        "DESC1": "DW DETERGENT 5L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1495,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L"
+      },
+      {
+        "STKCD": "CON-FOIL-450",
+        "DESC1": "FOIL 450",
+        "DESC2": "",
+        "UOM": "RL",
+        "LSTPR": 2150,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450"
+      },
+      {
+        "STKCD": "CON-GL-BL-L",
+        "DESC1": "GLOVES NITRILE BLUE L",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+      },
+      {
+        "STKCD": "CON-GL-BL-M",
+        "DESC1": "GLOVES NITRILE BLUE M",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M"
+      },
+      {
+        "STKCD": "CON-HN-100",
+        "DESC1": "HAIRNET WHITE",
+        "DESC2": "PK100",
+        "UOM": "PK",
+        "LSTPR": 495,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-HN-100"
+      },
+      {
+        "STKCD": "CON-RA-5L",
+        "DESC1": "RINSE AID 5L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1595,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-RA-5L"
+      },
+      {
+        "STKCD": "CON-WR-6",
+        "DESC1": "WHITE ROLL C/FEED",
+        "DESC2": "CASE 6",
+        "UOM": "CS",
+        "LSTPR": 1795,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+      },
+      {
+        "STKCD": "DW-PT-500",
+        "DESC1": "DISHWASHER PASS THRU",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 349500,
+        "SUPCD": "CWS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-PT-500"
+      },
+      {
+        "STKCD": "FR-UC-SD",
+        "DESC1": "FRIDGE U/C 1DR",
+        "DESC2": "150L",
+        "UOM": "EA",
+        "LSTPR": 49500,
+        "SUPCD": "NGR",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-SD"
+      },
+      {
+        "STKCD": "SW-CB-SET",
+        "DESC1": "CHOP BOARD SET 6",
+        "DESC2": "",
+        "UOM": "ST",
+        "LSTPR": 7900,
+        "SUPCD": "PRM",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-CB-SET"
+      },
+      {
+        "STKCD": "SW-GN11-100",
+        "DESC1": "GN PAN 1/1 100MM",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1450,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100"
+      },
+      {
+        "STKCD": "SW-GN11-65",
+        "DESC1": "GN PAN 1/1 65MM",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1195,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65"
+      },
+      {
+        "STKCD": "SW-GN13-100",
+        "DESC1": "GN PAN 1/3 100MM",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 795,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+      }
+    ],
+    "attachments": [
+      {
+        "filename": "PO_HV-2291_rev.pdf",
+        "path": "05_orders/PO_HV-2291_rev.pdf",
+        "source_id": "file:05_orders/PO_HV-2291_rev.pdf",
+        "available": true
+      }
+    ],
+    "attachment_extractions": [
+      {
+        "relative_path": "05_orders/PO_HV-2291_rev.pdf",
+        "pages": [
+          {
+            "source": {
+              "source_id": "file:05_orders/PO_HV-2291_rev.pdf:page:1",
+              "relative_path": "05_orders/PO_HV-2291_rev.pdf",
+              "display_name": "PO_HV-2291_rev.pdf — page 1",
+              "locator": "Page 1",
+              "timestamp": null,
+              "text": "Harbour View Hotel\r\nThe Esplanade, Felixstowe IP11 2AF\r\n01394 280415\r\nPURCHASE ORDER\r\nPO number: HV-2291 (REV 1)\r\nDate: 07/10/2026\r\nSupplier\r\nMeridian Catering Supplies Ltd\r\nUnit 7, Stukeley Meadows\r\nHuntingdon PE29 6FY\r\nDeliver to\r\nHarbour View Hotel, Goods In (rear)\r\nThe Esplanade, Felixstowe IP11 2AF\r\nRequired by: 21/10/2026\r\nCode Description Qty Unit £ Total £\r\nCON-GL-BL-M Nitrile gloves, blue, medium, box of 100 12 6.13 73.56\r\nCON-BR-6 Blue centrefeed roll, case of 6 6 18.00 108.00\r\nCON-DT-5L Dishwasher detergent, 5L 4 14.20 56.80\r\nCON-RA-5L Rinse aid, 5L 2 15.15 30.30\r\nSW-GN11-65 Gastronorm pan 1/1, 65mm, stainless 12 11.35 136.20\r\nNet 404.86\r\nVAT 20% 80.97\r\nTotal 485.83\r\nREVISION 1: supersedes PO HV-2291 dated 05/10/2026. Delivery date changed. Gloves qty changed.\r\nPlease quote our PO number on all delivery notes and invoices. Deliveries before 11am only.\r\nAuthorised: S. Kemp, Purchasing",
+              "extraction_method": "pdf_text",
+              "requires_review": false,
+              "extraction_error": null
+            },
+            "page_number": 1,
+            "method": "pdf_text",
+            "status": "extracted",
+            "words": [],
+            "error": null
+          }
+        ],
+        "errors": [],
+        "duration_seconds": 0.06525808300000335
+      }
+    ],
+    "report_alerts": [],
+    "sources": {
+      "csv:02_open_items_log.csv:record:4": {
+        "source_id": "csv:02_open_items_log.csv:record:4",
+        "relative_path": "02_open_items_log.csv",
+        "display_name": "02_open_items_log.csv — record 4",
+        "locator": "CSV record 4 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"Date\": \"2026-09-15\", \"Customer\": \"Harbour View\", \"Order / PO\": \"HV-2244\", \"Issue\": \"short 2 x foil\", \"Who\": \"PS\", \"Status\": \"Closed\", \"Notes\": \"sent on van 1\", \"Closed\": \"17/9\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:02_open_items_log.csv:record:41": {
+        "source_id": "csv:02_open_items_log.csv:record:41",
+        "relative_path": "02_open_items_log.csv",
+        "display_name": "02_open_items_log.csv — record 41",
+        "locator": "CSV record 41 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"Date\": \"2 Oct\", \"Customer\": \"Harbour View\", \"Order / PO\": \"HV-2270\", \"Issue\": \"u/c fridges - due 6th\", \"Who\": \"PS\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:02_open_items_log.csv:record:49": {
+        "source_id": "csv:02_open_items_log.csv:record:49",
+        "relative_path": "02_open_items_log.csv",
+        "display_name": "02_open_items_log.csv — record 49",
+        "locator": "CSV record 49 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"Date\": \"06/10\", \"Customer\": \"Harbour View\", \"Order / PO\": \"HV-2270\", \"Issue\": \"Dan chasing - late\", \"Who\": \"KH\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:02_open_items_log.csv:record:55": {
+        "source_id": "csv:02_open_items_log.csv:record:55",
+        "relative_path": "02_open_items_log.csv",
+        "display_name": "02_open_items_log.csv — record 55",
+        "locator": "CSV record 55 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"Date\": \"07/10/26\", \"Customer\": \"Harbour View\", \"Order / PO\": \"HV-2291\", \"Issue\": \"change del date to 21st + 2 gloves\", \"Who\": \"PS\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:34": {
+        "source_id": "csv:04_reference/price_list.csv:record:34",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 34",
+        "locator": "CSV record 34 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"DW-PT-500\", \"description\": \"Pass-through dishwasher, 500mm\", \"category\": \"Warewashing\", \"unit\": \"each\", \"list_price_gbp\": \"3495.00\", \"band_b_gbp\": \"3320.25\", \"band_t_gbp\": \"3145.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:50": {
+        "source_id": "csv:04_reference/price_list.csv:record:50",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 50",
+        "locator": "CSV record 50 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-BR-6\", \"description\": \"Blue centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"18.95\", \"band_b_gbp\": \"18.00\", \"band_t_gbp\": \"17.06\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:51": {
+        "source_id": "csv:04_reference/price_list.csv:record:51",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 51",
+        "locator": "CSV record 51 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-WR-6\", \"description\": \"White centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"17.95\", \"band_b_gbp\": \"17.05\", \"band_t_gbp\": \"16.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:52": {
+        "source_id": "csv:04_reference/price_list.csv:record:52",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 52",
+        "locator": "CSV record 52 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-M\", \"description\": \"Nitrile gloves, blue, medium, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:53": {
+        "source_id": "csv:04_reference/price_list.csv:record:53",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 53",
+        "locator": "CSV record 53 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:54": {
+        "source_id": "csv:04_reference/price_list.csv:record:54",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 54",
+        "locator": "CSV record 54 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-CF-450\", \"description\": \"Cling film, 450mm x 300m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"9.95\", \"band_b_gbp\": \"9.45\", \"band_t_gbp\": \"8.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:55": {
+        "source_id": "csv:04_reference/price_list.csv:record:55",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 55",
+        "locator": "CSV record 55 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-FOIL-450\", \"description\": \"Catering foil, 450mm x 75m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"21.50\", \"band_b_gbp\": \"20.43\", \"band_t_gbp\": \"19.35\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:56": {
+        "source_id": "csv:04_reference/price_list.csv:record:56",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 56",
+        "locator": "CSV record 56 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-DT-5L\", \"description\": \"Dishwasher detergent, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"14.95\", \"band_b_gbp\": \"14.20\", \"band_t_gbp\": \"13.46\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:57": {
+        "source_id": "csv:04_reference/price_list.csv:record:57",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 57",
+        "locator": "CSV record 57 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-RA-5L\", \"description\": \"Rinse aid, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"15.95\", \"band_b_gbp\": \"15.15\", \"band_t_gbp\": \"14.36\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:59": {
+        "source_id": "csv:04_reference/price_list.csv:record:59",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 59",
+        "locator": "CSV record 59 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-BIN-BLK\", \"description\": \"Black bin liners, heavy duty, box of 200\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"22.50\", \"band_b_gbp\": \"21.38\", \"band_t_gbp\": \"20.25\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:6": {
+        "source_id": "csv:04_reference/price_list.csv:record:6",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 6",
+        "locator": "CSV record 6 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FR-UC-SD\", \"description\": \"Undercounter fridge, single door, 150L\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"495.00\", \"band_b_gbp\": \"470.25\", \"band_t_gbp\": \"445.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:60": {
+        "source_id": "csv:04_reference/price_list.csv:record:60",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 60",
+        "locator": "CSV record 60 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-APRON-WH\", \"description\": \"Disposable aprons, white, pack of 100\", \"category\": \"Consumables\", \"unit\": \"pack\", \"list_price_gbp\": \"9.50\", \"band_b_gbp\": \"9.03\", \"band_t_gbp\": \"8.55\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:61": {
+        "source_id": "csv:04_reference/price_list.csv:record:61",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 61",
+        "locator": "CSV record 61 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-HN-100\", \"description\": \"Hairnets, white, pack of 100\", \"category\": \"Consumables\", \"unit\": \"pack\", \"list_price_gbp\": \"4.95\", \"band_b_gbp\": \"4.70\", \"band_t_gbp\": \"4.46\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:62": {
+        "source_id": "csv:04_reference/price_list.csv:record:62",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 62",
+        "locator": "CSV record 62 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-GN11-65\", \"description\": \"Gastronorm pan 1/1, 65mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"11.95\", \"band_b_gbp\": \"11.35\", \"band_t_gbp\": \"10.75\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:63": {
+        "source_id": "csv:04_reference/price_list.csv:record:63",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 63",
+        "locator": "CSV record 63 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-GN11-100\", \"description\": \"Gastronorm pan 1/1, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"14.50\", \"band_b_gbp\": \"13.77\", \"band_t_gbp\": \"13.05\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:64": {
+        "source_id": "csv:04_reference/price_list.csv:record:64",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 64",
+        "locator": "CSV record 64 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:65": {
+        "source_id": "csv:04_reference/price_list.csv:record:65",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 65",
+        "locator": "CSV record 65 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-CB-SET\", \"description\": \"Colour coded chopping boards, set of 6\", \"category\": \"Smallwares\", \"unit\": \"set\", \"list_price_gbp\": \"79.00\", \"band_b_gbp\": \"75.05\", \"band_t_gbp\": \"71.10\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "email:MSG-020:body": {
+        "source_id": "email:MSG-020:body",
+        "relative_path": "03_inbox_export/inbox.json",
+        "display_name": "MSG-020 — Sarah Kemp <purchasing@harbourviewhotel.co.uk> — RE: PO HV-2291 - REVISED",
+        "locator": "JSON record 20, body",
+        "timestamp": "2026-10-07T08:05:00+01:00",
+        "text": "Hi,\n\nRevised PO attached for HV-2291. Can we move delivery to Wednesday 21st please, and I've added 2 more boxes of the medium gloves. Everything else is the same.\n\nThanks,\nSarah",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:preamble": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:section:1": {
+        "source_id": "file:04_reference/customer_account_notes.md:section:1",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "Harbour View Hotel (Felixstowe)",
+        "locator": "Section: Harbour View Hotel (Felixstowe)",
+        "timestamp": null,
+        "text": "Harbour View Hotel (Felixstowe)\n- Orbit account: HARB01. Band B.\n- Orders come from Sarah Kemp (purchasing@). Always a PDF PO, numbered HV-xxxx. Dan Whitlock is head chef and chases deliveries.\n- Deliveries to goods-in at the rear, before 11am.\n\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_HV-2291_rev.pdf": {
+        "source_id": "file:05_orders/PO_HV-2291_rev.pdf",
+        "relative_path": "05_orders/PO_HV-2291_rev.pdf",
+        "display_name": "PO_HV-2291_rev.pdf",
+        "locator": "Whole file",
+        "timestamp": null,
+        "text": null,
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:HARB01": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:HARB01",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit CUST — CUSNO=HARB01",
+        "locator": "CUST: CUSNO=HARB01",
+        "timestamp": "20261008 231502",
+        "text": "{\"CUSNO\": \"HARB01\", \"CUSNM\": \"HARBOUR VIEW HOTEL\", \"ADR1\": \"The Esplanade\", \"ADR2\": \"Felixstowe\", \"PCODE\": \"IP11 2AF\", \"TELNO\": \"01394 280415\", \"ACSTAT\": \"A\", \"CRLIM\": 25000, \"PRCBND\": \"B\", \"DTOPEN\": \"14/03/2011\", \"NOTE1\": \"PO REQD\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47990": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47990",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=47990",
+        "locator": "OHDR: ORDNO=47990",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47990, \"CUSNO\": \"HARB01\", \"CUSREF\": \"HV-2265\", \"ORDDT\": \"20260918\", \"STAT\": \"I\", \"DELDT\": \"20260922\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48132": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48132",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=48132",
+        "locator": "OHDR: ORDNO=48132",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48132, \"CUSNO\": \"HARB01\", \"CUSREF\": \"HV-2270\", \"ORDDT\": \"20260930\", \"STAT\": \"P\", \"DELDT\": \"20261006\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48177": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48177",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=48177",
+        "locator": "OHDR: ORDNO=48177",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48177, \"CUSNO\": \"HARB01\", \"CUSREF\": \"HV-2291\", \"ORDDT\": \"20261005\", \"STAT\": \"N\", \"DELDT\": \"20261014\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47990, LNNO=10",
+        "locator": "OLIN: ORDNO=47990, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47990, \"LNNO\": 10, \"STKCD\": \"CON-FOIL-450\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 2150, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47990, LNNO=20",
+        "locator": "OLIN: ORDNO=47990, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47990, \"LNNO\": 20, \"STKCD\": \"DW-PT-500\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 349500, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47990:30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47990, LNNO=30",
+        "locator": "OLIN: ORDNO=47990, LNNO=30",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47990, \"LNNO\": 30, \"STKCD\": \"CON-BIN-BLK\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 2250, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48132, LNNO=10",
+        "locator": "OLIN: ORDNO=48132, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48132, \"LNNO\": 10, \"STKCD\": \"FR-UC-SD\", \"QTY\": 2, \"QTYDS\": 0, \"UPRC\": 49500, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48132, LNNO=20",
+        "locator": "OLIN: ORDNO=48132, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48132, \"LNNO\": 20, \"STKCD\": \"CON-CF-450\", \"QTY\": 6, \"QTYDS\": 0, \"UPRC\": 995, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48132:30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48132, LNNO=30",
+        "locator": "OLIN: ORDNO=48132, LNNO=30",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48132, \"LNNO\": 30, \"STKCD\": \"CON-FOIL-450\", \"QTY\": 4, \"QTYDS\": 0, \"UPRC\": 2150, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48177, LNNO=10",
+        "locator": "OLIN: ORDNO=48177, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48177, \"LNNO\": 10, \"STKCD\": \"CON-GL-BL-M\", \"QTY\": 10, \"QTYDS\": 0, \"UPRC\": 645, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48177, LNNO=20",
+        "locator": "OLIN: ORDNO=48177, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48177, \"LNNO\": 20, \"STKCD\": \"CON-BR-6\", \"QTY\": 6, \"QTYDS\": 0, \"UPRC\": 1895, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48177, LNNO=30",
+        "locator": "OLIN: ORDNO=48177, LNNO=30",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48177, \"LNNO\": 30, \"STKCD\": \"CON-DT-5L\", \"QTY\": 4, \"QTYDS\": 0, \"UPRC\": 1495, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:40": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:40",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48177, LNNO=40",
+        "locator": "OLIN: ORDNO=48177, LNNO=40",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48177, \"LNNO\": 40, \"STKCD\": \"CON-RA-5L\", \"QTY\": 2, \"QTYDS\": 0, \"UPRC\": 1595, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:50": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:50",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48177, LNNO=50",
+        "locator": "OLIN: ORDNO=48177, LNNO=50",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48177, \"LNNO\": 50, \"STKCD\": \"SW-GN11-65\", \"QTY\": 12, \"QTYDS\": 0, \"UPRC\": 1195, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-APRON-WH": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-APRON-WH",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-APRON-WH",
+        "locator": "STK: STKCD=CON-APRON-WH",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-APRON-WH\", \"DESC1\": \"APRON DISP WHITE\", \"DESC2\": \"PK100\", \"UOM\": \"PK\", \"LSTPR\": 950, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BIN-BLK": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BIN-BLK",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-BIN-BLK",
+        "locator": "STK: STKCD=CON-BIN-BLK",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-BIN-BLK\", \"DESC1\": \"BIN LINER BLK HD\", \"DESC2\": \"BX200\", \"UOM\": \"BX\", \"LSTPR\": 2250, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-BR-6",
+        "locator": "STK: STKCD=CON-BR-6",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-BR-6\", \"DESC1\": \"BLUE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1895, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-CF-450",
+        "locator": "STK: STKCD=CON-CF-450",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-CF-450\", \"DESC1\": \"CLINGFILM 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 995, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-DT-5L",
+        "locator": "STK: STKCD=CON-DT-5L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-DT-5L\", \"DESC1\": \"DW DETERGENT 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1495, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-FOIL-450",
+        "locator": "STK: STKCD=CON-FOIL-450",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-FOIL-450\", \"DESC1\": \"FOIL 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 2150, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+        "locator": "STK: STKCD=CON-GL-BL-L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-M",
+        "locator": "STK: STKCD=CON-GL-BL-M",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-M\", \"DESC1\": \"GLOVES NITRILE BLUE M\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-HN-100": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-HN-100",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-HN-100",
+        "locator": "STK: STKCD=CON-HN-100",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-HN-100\", \"DESC1\": \"HAIRNET WHITE\", \"DESC2\": \"PK100\", \"UOM\": \"PK\", \"LSTPR\": 495, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-RA-5L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-RA-5L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-RA-5L",
+        "locator": "STK: STKCD=CON-RA-5L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-RA-5L\", \"DESC1\": \"RINSE AID 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1595, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-WR-6",
+        "locator": "STK: STKCD=CON-WR-6",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-WR-6\", \"DESC1\": \"WHITE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1795, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-PT-500": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-PT-500",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=DW-PT-500",
+        "locator": "STK: STKCD=DW-PT-500",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"DW-PT-500\", \"DESC1\": \"DISHWASHER PASS THRU\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 349500, \"SUPCD\": \"CWS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-SD": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-SD",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FR-UC-SD",
+        "locator": "STK: STKCD=FR-UC-SD",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FR-UC-SD\", \"DESC1\": \"FRIDGE U/C 1DR\", \"DESC2\": \"150L\", \"UOM\": \"EA\", \"LSTPR\": 49500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-CB-SET": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-CB-SET",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-CB-SET",
+        "locator": "STK: STKCD=SW-CB-SET",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-CB-SET\", \"DESC1\": \"CHOP BOARD SET 6\", \"DESC2\": \"\", \"UOM\": \"ST\", \"LSTPR\": 7900, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-GN11-100",
+        "locator": "STK: STKCD=SW-GN11-100",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-GN11-100\", \"DESC1\": \"GN PAN 1/1 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1450, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-GN11-65",
+        "locator": "STK: STKCD=SW-GN11-65",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-GN11-65\", \"DESC1\": \"GN PAN 1/1 65MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1195, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-GN13-100",
+        "locator": "STK: STKCD=SW-GN13-100",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+        "locator": "SYSPARM: PKEY=ACSTCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+        "locator": "SYSPARM: PKEY=LASTEXP",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+        "locator": "SYSPARM: PKEY=STATCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=VATRT",
+        "locator": "SYSPARM: PKEY=VATRT",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_HV-2291_rev.pdf:page:1": {
+        "source_id": "file:05_orders/PO_HV-2291_rev.pdf:page:1",
+        "relative_path": "05_orders/PO_HV-2291_rev.pdf",
+        "display_name": "PO_HV-2291_rev.pdf — page 1",
+        "locator": "Page 1",
+        "timestamp": null,
+        "text": "Harbour View Hotel\r\nThe Esplanade, Felixstowe IP11 2AF\r\n01394 280415\r\nPURCHASE ORDER\r\nPO number: HV-2291 (REV 1)\r\nDate: 07/10/2026\r\nSupplier\r\nMeridian Catering Supplies Ltd\r\nUnit 7, Stukeley Meadows\r\nHuntingdon PE29 6FY\r\nDeliver to\r\nHarbour View Hotel, Goods In (rear)\r\nThe Esplanade, Felixstowe IP11 2AF\r\nRequired by: 21/10/2026\r\nCode Description Qty Unit £ Total £\r\nCON-GL-BL-M Nitrile gloves, blue, medium, box of 100 12 6.13 73.56\r\nCON-BR-6 Blue centrefeed roll, case of 6 6 18.00 108.00\r\nCON-DT-5L Dishwasher detergent, 5L 4 14.20 56.80\r\nCON-RA-5L Rinse aid, 5L 2 15.15 30.30\r\nSW-GN11-65 Gastronorm pan 1/1, 65mm, stainless 12 11.35 136.20\r\nNet 404.86\r\nVAT 20% 80.97\r\nTotal 485.83\r\nREVISION 1: supersedes PO HV-2291 dated 05/10/2026. Delivery date changed. Gloves qty changed.\r\nPlease quote our PO number on all delivery notes and invoices. Deliveries before 11am only.\r\nAuthorised: S. Kemp, Purchasing",
+        "extraction_method": "pdf_text",
+        "requires_review": false,
+        "extraction_error": null
+      }
+    },
+    "source_limitations": [
+      "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+      "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+      "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+    ]
+  },
+  "report_alerts": [],
+  "llm": {
+    "call_count": 1,
+    "model": "gpt-6-luna",
+    "duration_seconds": 18.894984749999992,
+    "response_id": "resp_09798f36bdfc56be016afdda6f530087d2a8aea2a574233262",
+    "usage": {
+      "input_tokens": 22483,
+      "input_tokens_details": {
+        "cache_write_tokens": 19576,
+        "cached_tokens": 2904,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 19576
+        }
+      },
+      "output_tokens": 1863,
+      "output_tokens_details": {
+        "reasoning_tokens": 860
+      },
+      "total_tokens": 24346
+    }
+  },
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    }
+  },
+  "policy_sha256": "9d40bce82f1d75dc6a32108728800d84dd91b3c2619074e34ea923e5f8d55643",
+  "proposal": {
+    "email_id": "MSG-020",
+    "action_type": "amendment_request",
+    "summary": "Revised PO HV-2291 requests delivery on 21/10/2026 and an increase of 2 boxes of medium blue nitrile gloves on matched Orbit order 48177. The revised PO lists 12 boxes total, consistent with the email's request to add 2 to the recorded 10. Other lines are unchanged.",
+    "customer_po": {
+      "value": "HV-2291",
+      "basis": "explicit_request",
+      "evidence_ids": [
+        "email:MSG-020:body",
+        "file:05_orders/PO_HV-2291_rev.pdf:page:1"
+      ]
+    },
+    "amendment": {
+      "changes": [
+        {
+          "change_id": "change-delivery-date",
+          "operation": "replace",
+          "field": "delivery_date",
+          "target": {
+            "orbit_order_number": 48177
+          },
+          "proposed_value": {
+            "value": "21/10/2026",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-020:body",
+              "file:05_orders/PO_HV-2291_rev.pdf:page:1"
+            ]
+          },
+          "evidence_ids": [
+            "email:MSG-020:body",
+            "file:05_orders/PO_HV-2291_rev.pdf:page:1",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48177"
+          ]
+        },
+        {
+          "change_id": "change-medium-gloves-quantity",
+          "operation": "replace",
+          "field": "line_quantity",
+          "target": {
+            "orbit_order_number": 48177,
+            "orbit_line_number": 10,
+            "sku": {
+              "value": "CON-GL-BL-M",
+              "basis": "recorded_internal",
+              "evidence_ids": [
+                "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:10"
+              ]
+            }
+          },
+          "proposed_value": {
+            "value": "2",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-020:body"
+            ],
+            "reason": "The email asks to add 2 more boxes. The revised PO shows 12 total, consistent with the recorded quantity of 10."
+          },
+          "unit": {
+            "value": "boxes",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-020:body",
+              "file:05_orders/PO_HV-2291_rev.pdf:page:1"
+            ]
+          },
+          "quantity_basis": "additional",
+          "evidence_ids": [
+            "email:MSG-020:body",
+            "file:05_orders/PO_HV-2291_rev.pdf:page:1",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48177:10"
+          ]
+        }
+      ]
+    },
+    "uncertainties": [],
+    "issues": [
+      {
+        "category": "manual_check",
+        "description": "Current credit status must be checked manually in Orbit; the supplied customer record is an export snapshot and does not establish current status.",
+        "affected_fields": [
+          "amendment"
+        ],
+        "next_action": "Verify current credit status in Orbit before entry.",
+        "owner": "Tom / credit control",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:HARB01"
+        ]
+      },
+      {
+        "category": "review",
+        "description": "The requested delivery-date change requires operations review; the proposal is not approval or a delivery commitment.",
+        "affected_fields": [
+          "delivery_date"
+        ],
+        "next_action": "Review the requested date change before entry.",
+        "owner": "Karen / operations",
+        "evidence_ids": [
+          "email:MSG-020:body",
+          "file:05_orders/PO_HV-2291_rev.pdf:page:1"
+        ]
+      }
+    ]
+  }
+}

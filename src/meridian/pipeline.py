@@ -9,10 +9,12 @@ from .internal import load_internal
 from .prepare import prepare_classification
 from .render import render_saved_reviews
 from .rules import validate_saved_preparations
+from .policy import load_policy
 from .artifacts import save_json_artifact
 
 
-def run_pipeline(*, input_root, output_dir, client, model, inbox_path='03_inbox_export/inbox.json'):
+def run_pipeline(*, input_root, output_dir, client, model, inbox_path='03_inbox_export/inbox.json', policy=None):
+    policy = policy if policy is not None else load_policy()
     started = perf_counter()
     inbox = load_inbox(Path(input_root), inbox_path)
     classification = classify_inbox(inbox, client=client, model=model)
@@ -20,12 +22,13 @@ def run_pipeline(*, input_root, output_dir, client, model, inbox_path='03_inbox_
     internal = load_internal(Path(input_root))
     preparations = prepare_classification(classification, inbox=inbox, internal=internal,
                                          input_root=input_root, output_dir=output_dir,
-                                         client=client, model=model)
-    validation = validate_saved_preparations(preparations['manifest_path'], output_dir)
+                                         client=client, model=model, policy=policy)
+    validation = validate_saved_preparations(preparations['manifest_path'], output_dir, policy=policy)
     rendered = render_saved_reviews(validation['manifest_path'], output_dir=output_dir, input_root=input_root)
     classifier_metrics = classification['metadata']['llm']
     classifier_usage = classifier_metrics.get('usage') or {}
-    summary = {'classification_path': str(classified_path.resolve()),
+    summary = {'shared_policy': policy.model_dump(), 'policy_sha256': policy.fingerprint,
+               'classification_path': str(classified_path.resolve()),
                'preparation_manifest_path': preparations['manifest_path'],
                'validation_manifest_path': validation['manifest_path'], 'html_path': rendered['path'],
                'selected_emails': classification['metadata']['total_emails_requiring_action'],

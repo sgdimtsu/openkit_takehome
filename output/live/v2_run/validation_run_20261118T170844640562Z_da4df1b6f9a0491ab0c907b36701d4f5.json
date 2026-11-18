@@ -1,0 +1,150 @@
+{
+  "results": [
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T165950038715Z_06d974a06a4a40f99b4494b3c84cab5a.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844583609Z_6b81ab2ca5b641019caac2648ae0ffea.json",
+      "email_id": "MSG-001",
+      "report_id": "e3e1bbd54fe24400b05b1dc01b67c220",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T165959829406Z_a722aeff5c5e460d8702181ccb2b2e57.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844586581Z_841c695bb3bd47888aa07f74186242f3.json",
+      "email_id": "MSG-006",
+      "report_id": "9498faa99aa2463b8435bcb166fd18d3",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170035565026Z_50bfb938aff6408aaaf2404bf8f6f5c9.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844591003Z_e0e55a61dcdd4160bf826e356506df75.json",
+      "email_id": "MSG-011",
+      "report_id": "5fb3e848cab94f7a81554601caccd506",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170059602221Z_8b6f5c9c543b4e0b81e6a124ccb7b83d.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844594144Z_1f5737469c3b4e0781ff5d0adbb6e17b.json",
+      "email_id": "MSG-012",
+      "report_id": "d2efa52a00384705a0497aa3c875e149",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170122290878Z_2f9cd266485740eea94aff8b6af4066b.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844596502Z_f51c22ff3a7f43e5997024a2d31ba4f6.json",
+      "email_id": "MSG-015",
+      "report_id": "6485f04243e141e7a4978ce6966f1aab",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170132440927Z_514fa0dd89414c66879f8ec25a562ea5.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844599022Z_2c8892cd96e2492c837577b7a2ac45db.json",
+      "email_id": "MSG-016",
+      "report_id": "035edbe287d64e93baf9aae3efa86326",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170313103987Z_72e9c8a9da6b43268d5dba3b1e12a794.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844599903Z_e0e3a59171b94570badf6ccc75795d3f.json",
+      "email_id": "MSG-017",
+      "report_id": "5d799a3285fa4af3929c36e444c23736",
+      "status": "failed",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170343061335Z_fbd50e908bac49208c1e5f7e02d264ed.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844605144Z_e1200290e2944277b8df69c64919e3cc.json",
+      "email_id": "MSG-019",
+      "report_id": "47cf97581c2646afa05ce49a3a16aa0b",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170402106953Z_6695bd10638d4e1ba5332c02cfcbdb24.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844608684Z_209362b367914686a625c505cbdc7658.json",
+      "email_id": "MSG-020",
+      "report_id": "16297bc2e9754bec81886cab721ead17",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170457603815Z_6ea9abdb8aab48d593385d50ee87510f.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844615592Z_c6bae2bd2bff472e8ccb59e67102b5f0.json",
+      "email_id": "MSG-021",
+      "report_id": "2014d321a5394e76b2b9dde195d50a3d",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170512399176Z_677268fd85e547178f29075010ed3c23.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844618956Z_fbc07057c49a42abafa02e495d54b65b.json",
+      "email_id": "MSG-024",
+      "report_id": "b673260bca2249b6bdbcab2e86b68f97",
+      "status": "validated",
+      "readiness": "Checks required"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170547468839Z_4ca62624a3fe4a43845c95f16d5aaeb6.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844623438Z_44892b01820f406a93dacf881bf0f4d9.json",
+      "email_id": "MSG-028",
+      "report_id": "49659ff127504013bb26079a187769b6",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170631887685Z_0f1ece4405f949388891aaf6e6a959db.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844627375Z_71943ec7190b4466ac7120a7afe09cfb.json",
+      "email_id": "MSG-037",
+      "report_id": "4d1c5885cc49437cb86f0612b4b376b0",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170656282103Z_2f40410e322a4c7ca7b61e92563f176b.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844630518Z_ffed70d12b8941c9abeb9527c491c987.json",
+      "email_id": "MSG-038",
+      "report_id": "59556559b3634fec8e1379dd0395fa01",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170756374119Z_806c22e173414dca84760f17e66c6f01.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844632385Z_7e3793b4f90e4b8a8c65959cd77255bd.json",
+      "email_id": "MSG-039",
+      "report_id": "b72482a42d6b447a8275304998f71913",
+      "status": "failed",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170820970406Z_4424cae403f144c8a0419209a20f2ed5.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844635390Z_a7a65920c7e44c5a8ee0475926726800.json",
+      "email_id": "MSG-041",
+      "report_id": "2ef5dfe73f92480ebd5a3db17f07c214",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170833265361Z_91e56ebaa7c14261a0d2730793f8dac4.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844637748Z_d4bc7a804e1c48f3a7628d1142549f7e.json",
+      "email_id": "MSG-042",
+      "report_id": "4816d74aec6f4fb4b9250ae3462f17e1",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    },
+    {
+      "source": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/preparation_20261118T170844396398Z_e54ac7b62d574f3eab6638979e6f5317.json",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v2_run/validated_preparation_20261118T170844640212Z_3d45daacadd647559e4016dae8b3ac8c.json",
+      "email_id": "MSG-045",
+      "report_id": "eab7aff9d4b64dd4bceb2e14526de7fc",
+      "status": "validated",
+      "readiness": "Do not proceed"
+    }
+  ],
+  "validated": 16,
+  "failed": 2
+}

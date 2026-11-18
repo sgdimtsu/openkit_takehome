@@ -11,6 +11,7 @@ from uuid import uuid4
 from .artifacts import save_json_artifact
 from .attachments import extract_attachments
 from .context import ContextRetriever
+from .policy import load_policy
 from .llm import CallMetrics, LLMCallError, call_structured
 from .preparation_schemas import PreparationOutput
 from .schemas import ClassificationOutput, validate_action_ids
@@ -122,7 +123,7 @@ def validate_preparation(output, context, selection):
             raise ValueError('Resend refers to unsupported related email IDs')
 
 
-def _record(selection, context, *, status, metrics):
+def _record(selection, context, *, status, metrics, policy):
     return {'schema_version': '1.0', 'report_id': uuid4().hex,
             'generated_at': datetime.now(timezone.utc).isoformat(),
             'status': status, 'business_rules_applied': False, 'requires_human_review': True,
@@ -130,21 +131,23 @@ def _record(selection, context, *, status, metrics):
                         'received_at': context['current_request']['received'] if context else None},
             'classification': selection, 'context': _plain(context) if context else None,
             'report_alerts': _plain(context['report_alerts']) if context else [],
-            'llm': asdict(metrics)}
+            'llm': asdict(metrics), 'shared_policy': policy.model_dump(), 'policy_sha256': policy.fingerprint}
 
 
-def prepare_email(selection, context, *, client, model):
+def prepare_email(selection, context, *, client, model, policy=None):
+    policy = policy if policy is not None else load_policy()
     if context['email_id'] != selection['email_id']:
         raise ValueError('Context belongs to a different email')
     prompt = files('meridian').joinpath('prompts/prepare.txt').read_text(encoding='utf-8')
     output, metrics = call_structured(client, model=model, prompt=prompt,
-                                     payload={'selection': selection, 'context': _plain(context)},
+                                     payload={'selection': selection, 'context': _plain(context),
+                                              'shared_policy': policy.model_dump()},
                                      output_type=PreparationOutput)
     try:
         validate_preparation(output, context, selection)
     except ValueError as exc:
         raise LLMCallError(f'Preparation validation failed: {exc}', metrics) from exc
-    result = _record(selection, context, status='prepared', metrics=metrics)
+    result = _record(selection, context, status='prepared', metrics=metrics, policy=policy)
     result['proposal'] = output.model_dump(exclude_none=True)
     # Keep missing entry information visible even if the model omits its question.
     missing = []
@@ -164,8 +167,9 @@ def prepare_email(selection, context, *, client, model):
     return result
 
 
-def prepare_classification(classification, *, inbox, internal, input_root, client, model, output_dir):
+def prepare_classification(classification, *, inbox, internal, input_root, client, model, output_dir, policy=None):
     """One isolated call and retained result/failure per selected email; no retries."""
+    policy = policy if policy is not None else load_policy()
     started = perf_counter()
     selected = ClassificationOutput.model_validate({'actions': classification['actions']})
     validate_action_ids(selected, {email['id'] for email in inbox.emails})
@@ -182,12 +186,12 @@ def prepare_classification(classification, *, inbox, internal, input_root, clien
             email = retriever.emails[selection['email_id']]
             attachments = extract_attachments(input_root, email)
             context = retriever.prepare(selection, attachment_results=attachments)
-            record = prepare_email(selection, context, client=client, model=model)
+            record = prepare_email(selection, context, client=client, model=model, policy=policy)
         except LLMCallError as exc:
-            record = _record(selection, context, status='failed', metrics=exc.metrics)
+            record = _record(selection, context, status='failed', metrics=exc.metrics, policy=policy)
             record['error'] = str(exc)
         except Exception as exc:
-            record = _record(selection, context, status='failed', metrics=CallMetrics(0, model))
+            record = _record(selection, context, status='failed', metrics=CallMetrics(0, model), policy=policy)
             record['error'] = f'Context/input preparation failed ({type(exc).__name__}): {exc}'
         record['trigger']['received_at'] = retriever.emails[selection['email_id']]['received']
         metrics_list.append(record['llm'])

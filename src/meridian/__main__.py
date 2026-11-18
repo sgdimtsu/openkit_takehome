@@ -40,7 +40,17 @@ def main() -> None:
     parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
     parser.add_argument("--review-date", type=date.fromisoformat,
                         help="Historical evaluation date (YYYY-MM-DD), available with --validate")
+    parser.add_argument("--policy", type=Path, help="Shared policy JSON for --run, --prepare or --validate")
     args = parser.parse_args()
+    if args.policy and not (args.run or args.prepare or args.validate):
+        parser.error("--policy requires --run, --prepare or --validate")
+    from .policy import load_policy
+    policy = None
+    if args.run or args.prepare or args.policy:
+        try:
+            policy = load_policy(args.policy)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"Invalid shared policy: {exc}\n")
     if args.review_date is not None and not args.validate:
         parser.error("--review-date requires --validate")
     if args.classification_schema:
@@ -60,7 +70,7 @@ def main() -> None:
             settings = OpenAISettings.from_env(args.model)
             with create_client(settings) as client:
                 summary = run_pipeline(input_root=args.input_root, output_dir=args.output_dir,
-                                       inbox_path=args.inbox, client=client, model=settings.model)
+                                       inbox_path=args.inbox, client=client, model=settings.model, policy=policy)
         except LLMCallError as exc:
             print(json.dumps({"status": "failed", "error": str(exc), "metrics": asdict(exc.metrics)}, indent=2))
             parser.exit(1)
@@ -83,7 +93,7 @@ def main() -> None:
     if args.validate:
         from .rules import validate_saved_preparations
         try:
-            summary = validate_saved_preparations(args.validate, args.output_dir, review_date=args.review_date)
+            summary = validate_saved_preparations(args.validate, args.output_dir, review_date=args.review_date, policy=policy)
         except (OSError, ValueError) as exc:
             parser.exit(1, f"Deterministic validation failed: {exc}\n")
         print(json.dumps(summary, indent=2, ensure_ascii=False))
@@ -117,7 +127,7 @@ def main() -> None:
             with create_client(settings) as client:
                 summary = prepare_classification(classification, inbox=loaded, internal=internal,
                                                  input_root=args.input_root, client=client,
-                                                 model=settings.model, output_dir=args.output_dir)
+                                                 model=settings.model, output_dir=args.output_dir, policy=policy)
         except (OSError, ValueError) as exc:
             parser.exit(1, f"Preparation failed: {exc}\n")
         print(json.dumps(summary, indent=2, ensure_ascii=False))
