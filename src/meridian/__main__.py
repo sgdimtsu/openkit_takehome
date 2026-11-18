@@ -1,6 +1,7 @@
 """Inspect local sources or explicitly classify the inbox with OpenAI."""
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from .inbox import load_inbox
@@ -21,6 +22,10 @@ def main() -> None:
                            help="Send inbox text/headers to OpenAI for one classification call")
     operation.add_argument("--classification-schema", action="store_true",
                            help="Print the generated classification JSON Schema without an API call")
+    operation.add_argument("--classification-input", type=Path,
+                           help="Validate/read a saved classification JSON without an API call")
+    parser.add_argument("--output-dir", type=Path, default=Path("output"),
+                        help="Directory for retained classification JSON (default: ./output)")
     parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
     args = parser.parse_args()
     if args.classification_schema:
@@ -43,6 +48,14 @@ def main() -> None:
         internal = load_internal(args.input_root) if args.include_internal else None
     except (OSError, ValueError) as exc:
         parser.exit(1, f"Input loading failed: {exc}\n")
+    if args.classification_input:
+        from .classification_artifacts import load_classification
+        try:
+            result = load_classification(args.classification_input, loaded)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"Saved classification loading failed: {exc}\n")
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return
     if args.classify:
         from dataclasses import asdict
         from .classify import classify_inbox
@@ -58,6 +71,12 @@ def main() -> None:
             print(json.dumps({"status": "failed", "error": str(exc),
                               "metrics": asdict(exc.metrics)}, indent=2))
             parser.exit(1)
+        from .classification_artifacts import save_classification
+        try:
+            path = save_classification(result, args.output_dir)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"Classification completed but could not save its JSON: {exc}\n")
+        print(f"Classification saved to {path.resolve()}", file=sys.stderr)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return
     summary = {"emails_loaded": len(loaded.emails),

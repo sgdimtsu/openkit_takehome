@@ -7,7 +7,7 @@ from time import perf_counter
 from typing import get_args
 
 from .llm import LLMCallError, call_structured
-from .schemas import ActionType, ClassificationOutput
+from .schemas import ActionType, ClassificationOutput, validate_action_ids
 
 
 def classify_inbox(inbox, *, client, model):
@@ -24,17 +24,10 @@ def classify_inbox(inbox, *, client, model):
     prompt = files('meridian').joinpath('prompts/classify.txt').read_text(encoding='utf-8')
     output, metrics = call_structured(client, model=model, prompt=prompt,
                                      payload={'emails': emails}, output_type=ClassificationOutput)
-    selected = set()
-    for action in output.actions:
-        if action.email_id not in email_ids:
-            raise LLMCallError(f'Classification references an unknown email ID: {action.email_id}', metrics)
-        if action.email_id in selected:
-            raise LLMCallError(f'Classification repeats email ID: {action.email_id}', metrics)
-        selected.add(action.email_id)
-        if (len(action.related_email_ids) != len(set(action.related_email_ids)) or
-                any(related not in email_ids or related == action.email_id
-                    for related in action.related_email_ids)):
-            raise LLMCallError(f'Classification has invalid related email IDs for {action.email_id}', metrics)
+    try:
+        selected = validate_action_ids(output, email_ids)
+    except ValueError as exc:
+        raise LLMCallError(str(exc), metrics) from exc
     counts = Counter(action.action_type for action in output.actions)
     return {
         'schema_version': '1.0',

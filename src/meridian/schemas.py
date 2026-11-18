@@ -33,3 +33,19 @@ class ClassificationAction(StructuredOutput):
 
 class ClassificationOutput(StructuredOutput):
     actions: list[ClassificationAction]
+
+
+def validate_action_ids(output, email_ids):
+    """Validate source references for both fresh and saved classifications."""
+    selected = set()
+    for action in output.actions:
+        if action.email_id not in email_ids:
+            raise ValueError(f'Classification references an unknown email ID: {action.email_id}')
+        if action.email_id in selected:
+            raise ValueError(f'Classification repeats email ID: {action.email_id}')
+        selected.add(action.email_id)
+        if (len(action.related_email_ids) != len(set(action.related_email_ids)) or
+                any(related not in email_ids or related == action.email_id
+                    for related in action.related_email_ids)):
+            raise ValueError(f'Classification has invalid related email IDs for {action.email_id}')
+    return selected

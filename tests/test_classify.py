@@ -1,4 +1,7 @@
 import copy
+import io
+import tempfile
+from contextlib import redirect_stdout, redirect_stderr
 import json
 import os
 import unittest
@@ -9,6 +12,7 @@ import httpx
 from openai import OpenAI
 
 from meridian.classify import classify_inbox
+from meridian.classification_artifacts import save_classification, load_classification
 from meridian.config import OpenAISettings
 from meridian.inbox import load_inbox
 from meridian.llm import LLMCallError, create_client
@@ -157,6 +161,55 @@ class ClassificationTests(unittest.TestCase):
         schema = ClassificationOutput.model_json_schema()
         self.assertFalse(schema['additionalProperties'])
         self.assertEqual(schema['required'], ['actions'])
+
+    def test_saved_output_round_trip_and_retention(self):
+        client, _ = self.client(response_body([action()]))
+        result = classify_inbox(self.inbox, client=client, model='synthetic-test-model')
+        with tempfile.TemporaryDirectory() as directory:
+            first = save_classification(result, directory)
+            original = first.read_bytes()
+            second = save_classification(result, directory)
+            self.assertNotEqual(first, second)
+            self.assertEqual(len(list(Path(directory).glob('classification_*.json'))), 2)
+            self.assertEqual(first.read_bytes(), original)
+            self.assertEqual(load_classification(first, self.inbox), result)
+
+    def test_saved_output_rejects_invalid_ids_schema_and_metadata(self):
+        client, _ = self.client(response_body([action()]))
+        result = classify_inbox(self.inbox, client=client, model='synthetic-test-model')
+        cases = []
+        bad = copy.deepcopy(result); bad['actions'][0]['email_id'] = 'UNKNOWN'; cases.append(bad)
+        bad = copy.deepcopy(result); bad['schema_version'] = 'unsupported'; cases.append(bad)
+        bad = copy.deepcopy(result); bad['metadata']['total_emails_requiring_action'] = 99; cases.append(bad)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'edited.json'
+            for bad in cases:
+                with self.subTest(bad=bad):
+                    path.write_text(json.dumps(bad))
+                    with self.assertRaises(ValueError):
+                        load_classification(path, self.inbox)
+
+    def test_cli_saves_a_separate_file_and_can_read_it_without_a_model_call(self):
+        from meridian.__main__ import main
+        client, requests = self.client(response_body([action()]))
+        with tempfile.TemporaryDirectory() as directory:
+            args = ['meridian', '--input-root', str(PACK), '--classify', '--output-dir', directory]
+            with patch('sys.argv', args), patch.dict(os.environ, {
+                    'OPENAI_API_KEY': 'synthetic-key', 'OPENAI_MODEL': 'synthetic-test-model'}), \
+                    patch('meridian.llm.create_client', return_value=client), \
+                    redirect_stdout(io.StringIO()) as stdout, redirect_stderr(io.StringIO()) as stderr:
+                main()
+            path = next(Path(directory).glob('classification_*.json'))
+            expected = json.loads(stdout.getvalue())
+            self.assertEqual(load_classification(path, self.inbox), expected)
+            self.assertIn(str(path.resolve()), stderr.getvalue())
+            with patch('sys.argv', ['meridian', '--input-root', str(PACK),
+                                    '--classification-input', str(path)]), \
+                    patch('meridian.llm.create_client') as create, redirect_stdout(io.StringIO()) as stdout:
+                main()
+                create.assert_not_called()
+            self.assertEqual(json.loads(stdout.getvalue()), expected)
+            self.assertEqual(len(requests), 1)
 
 
 if __name__ == '__main__':
