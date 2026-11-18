@@ -8,9 +8,14 @@ version = "0.1.0"
 description = "Read-only Meridian order preparation prototype"
 requires-python = ">=3.9"
 dependencies = [
+    "openai>=2,<3",
+    "pydantic>=2,<3",
     "pypdfium2>=4.30,<6",
     "pytesseract>=0.3.13,<0.4",
 ]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+meridian = ["prompts/*.txt"]

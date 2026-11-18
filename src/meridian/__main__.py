@@ -1,4 +1,4 @@
-"""Inspect inbox and optionally internal snapshots; no model calls or output files."""
+"""Inspect local sources or explicitly classify the inbox with OpenAI."""
 import argparse
 import json
 from pathlib import Path
@@ -15,8 +15,18 @@ def main() -> None:
                         help="Inbox path relative to input root")
     parser.add_argument("--include-internal", action="store_true",
                         help="Also load reference files, CSVs and read-only Orbit snapshot")
-    parser.add_argument("--pdf", help="Extract one PDF, relative to input root, then exit")
+    operation = parser.add_mutually_exclusive_group()
+    operation.add_argument("--pdf", help="Extract one PDF, relative to input root, then exit")
+    operation.add_argument("--classify", action="store_true",
+                           help="Send inbox text/headers to OpenAI for one classification call")
+    operation.add_argument("--classification-schema", action="store_true",
+                           help="Print the generated classification JSON Schema without an API call")
+    parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
     args = parser.parse_args()
+    if args.classification_schema:
+        from .schemas import ClassificationOutput
+        print(json.dumps(ClassificationOutput.model_json_schema(), indent=2))
+        return
     if args.pdf:
         from dataclasses import asdict
         from .attachments import extract_pdf
@@ -33,6 +43,23 @@ def main() -> None:
         internal = load_internal(args.input_root) if args.include_internal else None
     except (OSError, ValueError) as exc:
         parser.exit(1, f"Input loading failed: {exc}\n")
+    if args.classify:
+        from dataclasses import asdict
+        from .classify import classify_inbox
+        from .config import OpenAISettings
+        from .llm import LLMCallError, create_client
+        try:
+            settings = OpenAISettings.from_env(args.model)
+            with create_client(settings) as client:
+                result = classify_inbox(loaded, client=client, model=settings.model)
+        except ValueError as exc:
+            parser.exit(1, f"OpenAI configuration/input error: {exc}\n")
+        except LLMCallError as exc:
+            print(json.dumps({"status": "failed", "error": str(exc),
+                              "metrics": asdict(exc.metrics)}, indent=2))
+            parser.exit(1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return
     summary = {"emails_loaded": len(loaded.emails),
                       "sources_identified": len(loaded.sources),
                       "attachment_references": sum(len(e['attachments']) for e in loaded.emails),
