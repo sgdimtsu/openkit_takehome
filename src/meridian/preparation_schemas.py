@@ -1,7 +1,7 @@
 """Per-email proposal schema. Calculations and final readiness belong to code."""
-from typing import Literal, Optional
+from typing import Literal, Optional, get_args
 
-from pydantic import Field, model_validator
+from pydantic import Field, field_validator, model_validator
 
 from .schemas import ActionType, NonemptyText, StructuredOutput
 
@@ -58,13 +58,25 @@ class ChangeTarget(StructuredOutput):
 class ProposedChange(StructuredOutput):
     change_id: NonemptyText
     operation: Literal['replace', 'add_line', 'remove_line', 'cancel_order']
-    field: NonemptyText
+    field: Literal['delivery_date', 'delivery_destination', 'delivery_instructions',
+                   'line_quantity', 'line_product', 'line_unit_price', 'order_line', 'order', 'other'] = Field(
+        description='Use other for a request that does not fit a listed field; preserve the customer wording.')
     target: Optional[ChangeTarget] = None
     proposed_value: Optional[SupportedValue] = None
     unit: Optional[SupportedValue] = None
     quantity_basis: Optional[Literal['replacement_total', 'additional']] = None
     added_line: Optional[OrderLineProposal] = None
     evidence_ids: list[NonemptyText] = Field(min_length=1)
+
+    @field_validator('field', mode='before')
+    @classmethod
+    def canonical_field(cls, value):
+        if not isinstance(value, str):
+            return value
+        aliases = {'requested_delivery_date': 'delivery_date', 'quantity': 'line_quantity'}
+        canonical = aliases.get(value, value)
+        # Older saved proposals used free text. Preserve the original in the review artefact.
+        return canonical if canonical in get_args(cls.model_fields['field'].annotation) else 'other'
 
     @model_validator(mode='after')
     def check_operation(self):

@@ -72,17 +72,45 @@ def exclusive_amount(amount, vat_basis):
     raise ValueError('Quoted VAT basis is unknown')
 
 
-def requested_date(value):
+def requested_date(value, *, received_date=None):
     """Preserve deadlines/windows. Do not turn relative wording into a commitment."""
     raw = str(value).strip()
-    kind, date_text = 'exact_date', raw
+    if re.fullmatch(r'(?i)asap|as soon as possible|urgent(?:ly)?', raw):
+        return {'raw': raw, 'kind': 'urgency'}
+    # These qualifiers affect confirmation, not the date supplied by the customer.
+    clean = re.sub(r'(?i)\s*\((?:ideally|if possible|preferred)\)\s*$', '', raw)
+    kind, date_text = 'exact_date', clean
     for pattern, candidate in ((r'(?i)^w/c\s+', 'week_commencing'),
                                (r'(?i)^before\s+', 'before'),
                                (r'(?i)^(?:by|on)\s+', 'by' if raw.lower().startswith('by') else 'exact_date')):
-        if re.search(pattern, raw):
-            date_text = re.sub(pattern, '', raw).strip()
+        if re.search(pattern, clean):
+            date_text = re.sub(pattern, '', clean).strip()
             kind = candidate
             break
+    # Accept an explicit numeric date in parentheses only when the weekday and day agree.
+    weekdays = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')
+    weekday_date = re.fullmatch(
+        r'([a-z]+) (\d{1,2})(?:st|nd|rd|th)? \((\d{1,2}/\d{1,2}/\d{4})\)',
+        date_text, re.I)
+    if weekday_date:
+        weekday, day, stated = weekday_date.groups()
+        explicit = order_date(stated)
+        if weekdays[explicit.weekday()] != weekday.lower() or explicit.day != int(day):
+            raise ValueError(f'Conflicting day and date in {raw!r}')
+        date_text = stated
+    if received_date is not None and kind != 'week_commencing':
+        relative = date_text.casefold()
+        offsets = {'today': 0, 'tomorrow': 1, 'day after tomorrow': 2}
+        if relative in offsets:
+            resolved = received_date + timedelta(days=offsets[relative])
+        elif relative in weekdays and received_date.weekday() != weekdays.index(relative):
+            days = (weekdays.index(relative) - received_date.weekday()) % 7
+            resolved = received_date + timedelta(days=days)
+        else:
+            resolved = None
+        if resolved is not None:
+            return {'raw': raw, 'kind': kind, 'date': resolved.isoformat(),
+                    'relative_to': received_date.isoformat()}
     # Requested dates must state a year; Excel serials are for recorded Orbit dates only.
     if not (re.fullmatch(r'\d{8}', date_text) or re.search(r'\b\d{4}\b', date_text)
             or re.fullmatch(r'\d{1,2}/\d{1,2}/\d{2}', date_text)):

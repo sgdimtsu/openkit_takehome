@@ -8,7 +8,7 @@ from pathlib import Path
 from uuid import uuid4
 
 from .artifacts import save_json_artifact
-from .context import order_date, reference_key
+from .context import ContextRetriever, order_date, reference_key
 from .normalise import (VAT_RATE, canonical_unit, decimal_number, discount_rate,
                         exclusive_amount, money, money_text, orbit_net_price, quantity, requested_date)
 from .preparation_schemas import PreparationOutput
@@ -43,23 +43,40 @@ class _Review:
         if any(original.get(name) != value for name, value in row.items() if name != 'source_id'):
             raise ValueError('Internal record disagrees with its preserved source evidence')
 
-    def issue(self, code, description, next_action, *, owner='Order processor', block=False, evidence=(), origin='deterministic_rule'):
+    def issue(self, code, description, next_action, *, owner='Order processor', block=False, evidence=(), origin='deterministic_rule', affected_fields=()):
         ids = list(dict.fromkeys(evidence))
         if any(key not in self.context['sources'] for key in ids):
             raise ValueError(f'Rule {code} references unavailable source evidence')
         item = {'code': code, 'description': description, 'next_action': next_action,
                 'owner': owner, 'blocks_entry': block, 'evidence_ids': ids, 'origin': origin}
-        if item not in self.issues:
-            self.issues.append(item)
+        if affected_fields:
+            item['affected_fields'] = list(affected_fields)
+        for existing in self.issues:
+            if all(existing.get(key) == value for key, value in item.items() if key != 'evidence_ids'):
+                if existing.get('affected_fields') != item.get('affected_fields'):
+                    continue
+                existing['evidence_ids'] = list(dict.fromkeys(existing['evidence_ids'] + ids))
+                return
+        self.issues.append(item)
 
     def baseline(self):
         context, proposal = self.context, self.proposal
+        ocr_sources = [source.source_id for source in context['sources'].values()
+                       if source.requires_review and not source.extraction_error]
         for alert in context['report_alerts']:
+            if alert['code'] == 'ocr_review_required' and ocr_sources:
+                continue
+            next_action = 'Resolve the highlighted check before applying affected values.'
+            if alert['code'] == 'order_reference_unresolved' and not alert['blocks_entry']:
+                next_action = 'Search live Orbit for this PO before creating the order.'
             self.issue(alert['code'], alert.get('message', alert['title']),
-                       'Resolve the highlighted check before applying affected values.',
-                       block=alert['blocks_entry'])
+                       next_action, block=alert['blocks_entry'])
+        if ocr_sources:
+            self.issue('ocr_review_required', 'Scanned pages require manual verification.',
+                       'Compare every requested line, quantity, price and date with the original pages.',
+                       block=True, evidence=ocr_sources)
         for source in context['sources'].values():
-            if source.extraction_error or source.requires_review:
+            if source.extraction_error:
                 self.issue('unverified_attachment', source.extraction_error or 'OCR page requires manual verification.',
                            'Compare all requested details with the original page.', block=True,
                            evidence=[source.source_id])
@@ -136,21 +153,36 @@ class _Review:
                 self.issue('existing_order_not_established', 'No existing order match was established in the snapshot.',
                            'Search live Orbit before creating an order; snapshot absence does not establish that it is new.')
 
-    def date_value(self, supported):
-        result = requested_date(supported.value)
-        if date.fromisoformat(result['date']) < self.today:
-            self.issue('past_requested_date', f"Requested date/window starts on {result['date']}, before review date {self.today}.",
+    def date_value(self, supported, *, allow_urgency=False, field='Delivery date'):
+        result = requested_date(supported.value, received_date=self.request_date)
+        if result['kind'] == 'urgency':
+            if not allow_urgency:
+                raise ValueError('Urgency does not specify a replacement delivery date')
+            self.issue('delivery_urgency', f"Customer requested {result['raw']}; no calendar date was specified.",
+                       'Confirm delivery availability with Karen before entering a date.',
+                       owner='Karen / operations', evidence=supported.evidence_ids,
+                       affected_fields=[field])
+            return result
+        boundary = date.fromisoformat(result.get('end_date', result['date']))
+        expired = boundary < self.today or (result['kind'] == 'before' and boundary == self.today)
+        if expired:
+            self.issue('past_requested_date', f"Requested delivery date or window ({result['raw']}) has expired as of {self.today}.",
                        'Reconfirm current delivery requirements; do not promise or enter an expired date.',
-                       owner='Karen / operations', block=True, evidence=supported.evidence_ids)
-        if result['kind'] != 'exact_date' or supported.basis == 'inferred_suggestion':
-            self.issue('delivery_date_confirmation', 'The supplied value is a deadline/window or inferred date, not a confirmed delivery commitment.',
-                       'Confirm the intended date and delivery feasibility with Karen.', owner='Karen / operations', evidence=supported.evidence_ids)
+                       owner='Karen / operations', block=True, evidence=supported.evidence_ids,
+                       affected_fields=[field])
+        if result['kind'] != 'exact_date' or supported.basis == 'inferred_suggestion' or 'relative_to' in result:
+            self.issue('delivery_date_confirmation', 'The requested date needs confirmation before making a delivery commitment.',
+                       'Confirm the intended date and delivery feasibility with Karen.', owner='Karen / operations',
+                       evidence=supported.evidence_ids, affected_fields=[field])
         return result
 
     def line(self, proposed):
         item = {'line_id': proposed.line_id, 'requested_description': proposed.description.model_dump(exclude_none=True),
                 'field_basis': {field: getattr(proposed, field).basis for field in ('description', 'sku', 'quantity', 'unit')
                                 if getattr(proposed, field) is not None},
+                'field_evidence': {field: getattr(proposed, field).evidence_ids
+                                   for field in ('description', 'sku', 'quantity', 'unit')
+                                   if getattr(proposed, field) is not None},
                 'evidence_ids': list(dict.fromkeys(key for field in ('description', 'sku', 'quantity', 'unit')
                                                  if getattr(proposed, field) is not None
                                                  for key in getattr(proposed, field).evidence_ids))}
@@ -187,10 +219,13 @@ class _Review:
                     raise ValueError('Line price basis is unknown or is not a unit/line amount')
                 customer = exclusive_amount(quote.amount.value, quote.vat_basis)
                 item['customer_quoted_price_ex_vat'] = money_text(customer)
+                item['field_evidence']['quoted_price'] = quote.amount.evidence_ids
+                item['quoted_price_matches'] = customer == expected
                 if customer != expected:
                     self.issue('price_conflict', f'{sku}: customer amount {money_text(customer)} ex VAT differs from recorded {money_text(expected)} ({quote.price_basis}).',
                                'Karen must review the discrepancy before entry; do not treat the PO price as approval.',
-                               owner='Karen / operations', block=True, evidence=quote.amount.evidence_ids + price.evidence_ids)
+                               owner='Karen / operations', block=True, evidence=quote.amount.evidence_ids + price.evidence_ids,
+                               affected_fields=[f'Line {proposed.line_id} price'])
         except (ValueError, KeyError) as exc:
             self.issue('line_pricing_unresolved', f'Line {proposed.line_id}: {exc}',
                        'Confirm product, unit and pricing terms with Karen; do not guess.', owner='Karen / operations', block=True,
@@ -207,11 +242,14 @@ class _Review:
         if proposed.header.requested_delivery_date:
             value = proposed.header.requested_delivery_date
             try:
-                header['requested_delivery_date'] = {**self.date_value(value), 'basis': value.basis, 'evidence_ids': value.evidence_ids}
+                delivery = self.date_value(value, allow_urgency=True)
+                field = 'delivery_urgency' if delivery['kind'] == 'urgency' else 'requested_delivery_date'
+                header[field] = {**delivery, 'basis': value.basis, 'evidence_ids': value.evidence_ids}
             except ValueError as exc:
                 header['requested_delivery_date'] = value.model_dump(exclude_none=True)
                 self.issue('date_unresolved', str(exc), 'Confirm the requested delivery date/window.',
-                           owner='Karen / operations', block=True, evidence=value.evidence_ids)
+                           owner='Karen / operations', block=True, evidence=value.evidence_ids,
+                           affected_fields=['Delivery date'])
         if not header.get('delivery_destination') and self.account:
             address = ', '.join(self.account.get(key, '') for key in ('ADR1', 'ADR2', 'PCODE') if self.account.get(key))
             header['recorded_account_address'] = {'value': address, 'basis': 'recorded_internal',
@@ -224,7 +262,23 @@ class _Review:
         if not self.lines:
             self.issue('no_order_lines', 'No supported order lines were extracted.', 'Confirm the complete requested order.', block=True)
         self.changes = [{'operation': 'new_order', 'header': header, 'lines': self.lines}]
+        contract_sources = {contract['source_id'] for contract in self.pricing.contracts}
+        applied_contracts = {key for line in self.lines for key in line.get('price', {}).get('evidence_ids', [])
+                             if key in contract_sources}
         for discount in proposed.customer_discounts:
+            description = discount.description
+            is_reference = re.fullmatch(
+                r'prices? (?:per|as per) (?:the )?contract(?: [A-Z0-9]+(?:[-/][A-Z0-9]+)+)?[.]?',
+                description.value.strip(), re.I)
+            if (is_reference and discount.scope is None and applied_contracts
+                    and all(line.get('quoted_price_matches') for line in self.lines)
+                    and any(ContextRetriever._stated(description.value, self.context['sources'][key].text)
+                            for key in description.evidence_ids)):
+                self.issue('recorded_contract_reference', 'The PO refers to contract pricing and its line prices match the calculated prices.',
+                           'Verify the recorded terms in Orbit before entry.',
+                           owner='Karen / operations', evidence=description.evidence_ids + sorted(applied_contracts),
+                           affected_fields=['Order pricing'])
+                continue
             self.issue('customer_discount_unapproved', f'Customer-requested discount: {discount.description.value}. It has not been applied to calculated prices.',
                        'Karen must confirm any exception against recorded terms; do not layer it onto net band/contract prices.',
                        owner='Karen / operations', block=True, evidence=discount.description.evidence_ids)
@@ -235,10 +289,16 @@ class _Review:
                            'gross': money_text(net + vat), 'basis': 'Unit prices rounded first; VAT rounded on net total; no unapproved extra discounts.'}
             for quoted in proposed.customer_quoted_totals:
                 try:
-                    if quoted.currency.upper() != 'GBP' or quoted.price_basis != 'order_total':
-                        raise ValueError('Quoted total currency/price basis is not established')
                     label = (quoted.label or '').lower().strip()
-                    if label in {'vat', 'vat 20%', 'tax'}:
+                    tax = re.fullmatch(r'(?:vat|tax)(?:\s+([0-9]+(?:\.[0-9]+)?)\s*%)?', label)
+                    stated_tax = tax and any(ContextRetriever._stated(label, self.context['sources'][key].text)
+                                             for key in quoted.amount.evidence_ids)
+                    if quoted.currency.upper() != 'GBP' or (quoted.price_basis != 'order_total' and not (
+                            quoted.price_basis == 'unknown' and stated_tax)):
+                        raise ValueError('Quoted total currency/price basis is not established')
+                    if tax:
+                        if tax[1] and decimal_number(tax[1]) / 100 != VAT_RATE:
+                            raise ValueError('Quoted VAT rate differs from the calculation rate')
                         expected = vat
                         customer = money(quoted.amount.value)
                     elif quoted.vat_basis == 'inclusive':
@@ -288,7 +348,7 @@ class _Review:
                           'request_status': 'Unverified customer request — confirm before applying'}
                 if change.operation == 'replace' and change.field == 'delivery_date':
                     old = order_date(order['header']['DELDT']).isoformat() if order['header'].get('DELDT') else None
-                    new = self.date_value(change.proposed_value)
+                    new = self.date_value(change.proposed_value, field=f'{change.change_id} delivery date')
                     if new['kind'] == 'exact_date' and old == new['date']:
                         continue
                     record.update(old_value=old, old_raw_value=order['header'].get('DELDT'), proposed_value=new,
@@ -400,7 +460,9 @@ def apply_business_rules(record, *, today=None):
     """Return a new review artefact, preserving the exact preparation as evidence."""
     output = {'schema_version': '1.0', 'report_id': uuid4().hex,
               'generated_at': datetime.now(timezone.utc).isoformat(),
-              'preparation': copy.deepcopy(record), 'business_rules_applied': False}
+              'preparation': copy.deepcopy(record), 'business_rules_applied': False,
+              'review_date': (today or datetime.now(timezone.utc).date()).isoformat(),
+              'historical_review': today is not None}
     try:
         if record.get('status') != 'prepared':
             raise ValueError('Preparation failed; no successful proposal is available to validate. ' + str(record.get('error', '')))
@@ -420,16 +482,20 @@ def apply_business_rules(record, *, today=None):
             if alert not in context['report_alerts']:
                 context['report_alerts'].append(alert)
         validate_preparation(proposal, context, record['classification'])
-        output['validation'] = _Review(context, proposal, today or datetime.now(timezone.utc).date()).run()
+        output['validation'] = _Review(context, proposal, date.fromisoformat(output['review_date'])).run()
         output['business_rules_applied'] = True
     except (ValueError, KeyError, TypeError, AttributeError) as exc:
         output['validation'] = {'status': 'failed', 'readiness': 'Do not proceed',
                                 'entry_section_label': 'Proposed changes — do not apply yet',
                                 'error': str(exc), 'changes_to_apply': [], 'requires_human_review': True}
+        if record.get('status') != 'prepared':
+            output['validation']['failure_stage'] = 'preparation'
+            if 'APITimeoutError' in str(record.get('error', '')):
+                output['validation']['failure_reason'] = 'timeout'
     return output
 
 
-def validate_saved_preparations(input_path, output_dir):
+def validate_saved_preparations(input_path, output_dir, *, review_date=None):
     """Review one preparation JSON or its run manifest; never call OpenAI."""
     input_path = Path(input_path)
     document = json.loads(input_path.read_text(encoding='utf-8'))
@@ -456,7 +522,7 @@ def validate_saved_preparations(input_path, output_dir):
         jobs = [(input_path, document)]
     results = []
     for path, record in jobs:
-        reviewed = apply_business_rules(record)
+        reviewed = apply_business_rules(record, today=review_date)
         saved = save_json_artifact(reviewed, output_dir, prefix='validated_preparation')
         results.append({'source': str(path), 'path': str(saved.resolve()),
                         'email_id': reviewed['preparation'].get('trigger', {}).get('email_id'),

@@ -45,7 +45,7 @@ def _timestamp(value):
 
 def _human(field):
     labels = {'sku': 'Product code', 'delivery_date': 'Delivery date',
-              'requested_delivery_date': 'Requested delivery date', 'line_quantity': 'Line quantity',
+              'requested_delivery_date': 'Requested delivery date', 'delivery_urgency': 'Delivery urgency (for review)', 'line_quantity': 'Line quantity',
               'delivery_destination': 'Delivery destination', 'delivery_instructions': 'Delivery instructions',
               'recorded_account_address': 'Recorded account address — confirm delivery site',
               'line_unit_price': 'Line price', 'line_product': 'Product change'}
@@ -65,12 +65,16 @@ def _value(value):
     if isinstance(value, dict):
         if 'value' in value:
             return '<span class="copyable" tabindex="0">' + esc(value['value']) + '</span>'
+        if value.get('kind') == 'urgency':
+            return esc(value['raw'])
         if 'date' in value:
             kind = value.get('kind', 'exact_date')
             text = value.get('raw') or value['date']
             note = {'exact_date': value['date'], 'week_commencing': 'Requested week, not a confirmed delivery date',
                     'before': 'Requested deadline, not a confirmed delivery date',
                     'by': 'Requested deadline, not a confirmed delivery date'}.get(kind, '')
+            if 'relative_to' in value:
+                note = f"Interpreted as {value['date']} from email received {value['relative_to']}. {note}"
             return f'<span class="copyable" tabindex="0">{esc(text)}</span><div class="cell-note">{esc(note)}</div>'
         return '<br>'.join(f'{esc(_human(key))}: {esc(item)}' for key, item in value.items())
     return '<span class="copyable" tabindex="0">' + esc(value) + '</span>'
@@ -249,15 +253,24 @@ class _Report:
             row += f'<p class="next">{esc(item["next_action"])}</p>'
             if item.get('owner'):
                 row += f'<div class="owner">Responsible: {esc(item["owner"])}</div>'
+            if item.get('affected_fields'):
+                row += '<div class="cell-note">Affects: ' + esc(', '.join(item['affected_fields'])) + '</div>'
             row += self.refs(item.get('evidence_ids', [])) + '</li>'
             (issues if item.get('blocks_entry') or model else checks).append(row)
         for item in self.review.get('uncertainties', []):
             row = f'<li><p class="item-title">{esc(item["question"])}</p><p class="next">{esc(item["next_action"])}</p>'
+            if item.get('affected_fields'):
+                row += '<div class="cell-note">Affects: ' + esc(', '.join(item['affected_fields'])) + '</div>'
             row += self.refs(item.get('evidence_ids', [])) + '</li>'
             checks.append(row)
         if self.review.get('error'):
-            issues.insert(0, f'<li><p class="item-title">Validation failed</p><p class="next">{esc(self.review["error"])}</p>'
-                             '<p class="next">Resolve the failure and review again before entry.</p></li>')
+            preparation_failed = self.review.get('failure_stage') == 'preparation' or self.prep.get('status') == 'failed'
+            title = 'Preparation failed' if preparation_failed else 'Validation failed'
+            next_action = ('Retry preparation for this email before review.'
+                           if self.review.get('failure_reason') == 'timeout'
+                           else 'Resolve the failure and review again before entry.')
+            issues.insert(0, f'<li><p class="item-title">{title}</p><p class="next">{esc(self.review["error"])}</p>'
+                             f'<p class="next">{next_action}</p></li>')
         return (self.section(2, 'Things to confirm', '<ul class="checks-list">' + ''.join(checks) + '</ul>') if checks else '') + (
             self.section(3, 'Outstanding issues', '<ul class="issues-list">' + ''.join(issues) + '</ul>') if issues else '')
 
@@ -278,8 +291,14 @@ class _Report:
             if price:
                 price_html += f'<div class="cell-note">{esc(price["basis"])}. Discount already included; do not apply it again.</div>'
             total = '£' + _value(line['line_net']) if 'line_net' in line else _value(None)
-            refs = self.refs(line.get('evidence_ids', []) + price.get('evidence_ids', []))
-            rows.append(f'<tr><td>{product}{refs}</td><td>{count}</td><td>{price_html}</td><td>{total}</td></tr>')
+            evidence = line.get('field_evidence')
+            if evidence:
+                product += self.refs(evidence.get('description', []) + evidence.get('sku', []))
+                count += self.refs(evidence.get('quantity', []) + evidence.get('unit', []))
+                price_html += self.refs(price.get('evidence_ids', []) + evidence.get('quoted_price', []))
+            else:
+                product += self.refs(line.get('evidence_ids', []) + price.get('evidence_ids', []))
+            rows.append(f'<tr><td>{product}</td><td>{count}</td><td>{price_html}</td><td>{total}</td></tr>')
         if not rows:
             return '<p class="muted">No supported order lines were established.</p>'
         return ('<div class="table-wrap"><table class="lines"><thead><tr><th>Product / SKU</th><th>Total quantity</th>'
@@ -371,6 +390,9 @@ class _Report:
                 meta += '<div class="notice critical">Unverified extraction: check the original page. '
                 meta += esc(source.get('extraction_error') or 'OCR may omit or misread details.') + '</div>'
             text = source.get('text')
+            request = self.context.get('current_request') or {}
+            if key == request.get('source_id') and request.get('subject'):
+                meta += '<div class="source-meta">Email subject: ' + esc(request['subject']) + '</div>'
             content = '<pre>' + esc(text) + '</pre>' if text else '<p class="muted">No readable source content was retained.</p>'
             entries.append(f'<details class="evidence-item" id="{_anchor(self.id, key)}"><summary>{esc(self.label(key))}</summary>'
                            f'<div class="evidence-body">{meta}{link}{content}</div></details>')
@@ -398,11 +420,23 @@ class _Report:
         title = 'PO / reference ' + str(po) if po else 'Customer request · no PO/reference established'
         readiness = self.review['readiness']
         blocked = readiness == 'Do not proceed'
+        failed = self.review['status'] == 'failed'
+        badge = readiness
+        if failed:
+            badge = ('Preparation failed' if self.review.get('failure_stage') == 'preparation'
+                     or self.prep.get('status') == 'failed' else 'Validation failed')
         account_label = (str(self.account.get('CUSNM', '')) + ' · ' + str(self.account.get('CUSNO', ''))) if self.matched else 'Customer/account unresolved'
         html_parts = [f'<article class="report" id="{_anchor(self.id)}"><header class="report-header"><div><h3>{esc(title)}</h3>'
                       '<p class="meta">' + esc(account_label) + '</p></div>'
                       '<div class="badges"><span class="badge action">' + esc(ACTION_LABELS.get(self.action, 'Uncertain'))
-                      + '</span><span class="badge ' + ('blocked' if blocked else 'checks') + '">' + esc(readiness) + '</span></div></header>']
+                      + '</span><span class="badge ' + ('blocked' if blocked else 'checks') + '">' + esc(badge) + '</span></div></header>']
+        if self.doc.get('review_date'):
+            review_date = esc(self.doc['review_date'])
+            if self.doc.get('historical_review'):
+                html_parts.append(f'<div class="notice preview"><strong>Historical evaluation as of {review_date}.</strong> '
+                                  'Revalidate against the current date and Orbit before entry.</div>')
+            else:
+                html_parts.append(f'<p class="meta">Rules evaluated as of {review_date}</p>')
         if not self.matched:
             candidates = self.match.get('candidate_account_ids') or []
             html_parts.append('<div class="notice critical"><strong>Customer/account not established for validated entry.</strong> '
@@ -414,7 +448,8 @@ class _Report:
                           + esc(numbers) + '</div><div class="meta"><span class="label">Report generated</span>' + esc(_timestamp(self.doc.get('generated_at')))
                           + '</div><div class="meta"><span class="label">Report ID</span>' + esc(self.id) + '</div></div>')
         html_parts.append('<div class="notice ' + ('critical' if blocked else '') + '">' +
-                          ('Resolve the outstanding restrictions/checks before applying proposed values.' if blocked else
+                          ('Do not proceed. Resolve the failure before attempting entry.' if failed else
+                           'Resolve the outstanding restrictions/checks before applying proposed values.' if blocked else
                            'Complete the manual checks below before entering anything in Orbit. This is not automatic approval.') + '</div>')
         html_parts += [self.section(1, 'Current order status', self.status()), self.findings(),
                        self.section(4, self.review.get('entry_section_label', 'Proposed changes — do not apply yet'), self.changes()),
@@ -454,7 +489,10 @@ def render_html(reviews, *, input_root, output_dir, previous_files=(), notice=No
         heading += f'<div class="meta">{len(members)} separate report(s)</div></div>'
         sections.append(f'<section class="customer" id="{anchor}">{heading}' + ''.join(member.render() for member in members) + '</section>')
     now = datetime.now(timezone.utc).isoformat()
-    blocked = sum(report.review['readiness'] == 'Do not proceed' for report in reports)
+    failed = sum(report.review['status'] == 'failed' for report in reports)
+    blocked = sum(report.review['status'] == 'validated' and report.review['readiness'] == 'Do not proceed'
+                  for report in reports)
+    checks = len(reports) - failed - blocked
     css = files('meridian').joinpath('templates/report.css').read_text(encoding='utf-8')
     banner = '<div class="notice preview">' + esc(notice) + '</div>' if notice else ''
     earlier = ''
@@ -470,7 +508,8 @@ def render_html(reviews, *, input_root, output_dir, previous_files=(), notice=No
             '<p class="intro muted">Snapshot inputs · Human checks and manual Orbit entry · Stock and delivery are not guaranteed.</p>'
             '<p class="meta">HTML generated ' + esc(_timestamp(now)) + '. Report and source timestamps are shown separately.</p>'
             + banner + f'<div class="run-stats"><span class="stat">{len(reports)} separate reports</span><span class="stat">{len(groups)} customer groups</span>'
-            f'<span class="stat">{blocked} do not proceed</span></div></header><div class="layout"><nav class="contents" aria-label="Customer reports">'
+            f'<span class="stat">{blocked} do not proceed</span><span class="stat">{checks} checks required</span>'
+            f'<span class="stat">{failed} processing failures</span></div></header><div class="layout"><nav class="contents" aria-label="Customer reports">'
             '<p>Customers</p><ul>' + ''.join(contents) + '</ul></nav><main>' + body + '</main></div><footer class="footer">'
             '<p><strong>Manual review is always required.</strong> A newer report does not prove earlier changes were applied or superseded. '
             'Check current credit status in Orbit; Tom retains credit authority and Karen reviews pricing/delivery exceptions.</p>'

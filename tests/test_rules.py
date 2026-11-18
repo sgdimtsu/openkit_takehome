@@ -110,6 +110,29 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(result['calculations']['gross'], '636.07')
         self.assertTrue(all(line['price']['discount_already_included'] for line in lines))
 
+    def test_contract_reference_requires_matching_quoted_line_prices(self):
+        selected = selection('MSG-039', 'Oakfield Academy Trust', po='OAK-301')
+        record, evidence = self.new_record(
+            selected, [('CON-BIN-BLK', 10)], quotes={'CON-BIN-BLK': ('19.13', 'exclusive')})
+        order = record['proposal']['new_order']
+        order['customer_discounts'] = [
+            {'description': supported('Prices per contract OAT/MER/2024', evidence)}]
+        findings = {issue['code'] for issue in self.reviewed(record)['issues']}
+        self.assertIn('recorded_contract_reference', findings)
+        self.assertNotIn('customer_discount_unapproved', findings)
+        order['lines'][0]['customer_quoted_price']['amount']['value'] = '18.00'
+        findings = {issue['code'] for issue in self.reviewed(record)['issues']}
+        self.assertIn('customer_discount_unapproved', findings)
+        self.assertIn('price_conflict', findings)
+
+    def test_urgency_and_relative_dates_use_distinct_representations(self):
+        self.assertEqual(requested_date('ASAP'), {'raw': 'ASAP', 'kind': 'urgency'})
+        result = requested_date('by Friday', received_date=date(2026, 10, 6))
+        self.assertEqual((result['kind'], result['date'], result['relative_to']),
+                         ('by', '2026-10-09', '2026-10-06'))
+        with self.assertRaises(ValueError):
+            requested_date('by Friday', received_date=date(2026, 10, 9))
+
     def test_pasta_fixed_price_not_discounted_twice(self):
         selected = selection('MSG-024', 'Pasta Fresca')
         record, _ = self.new_record(selected, [('CON-BR-6', 4)])
@@ -270,7 +293,12 @@ class RuleTests(unittest.TestCase):
             requested_date('before half term')
         with self.assertRaises(ValueError):
             requested_date('Friday')
-        self.assertEqual(requested_date('w/c 19/10/2026')['end_date'], '2026-10-25')
+        raw = 'w/c 19/10/2026 (ideally)'
+        self.assertEqual(requested_date(raw)['end_date'], '2026-10-25')
+        self.assertEqual(requested_date(raw)['raw'], raw)
+        self.assertEqual(requested_date('Wednesday 21st (21/10/2026)')['date'], '2026-10-21')
+        with self.assertRaises(ValueError):
+            requested_date('Thursday 21st (21/10/2026)')
         self.assertEqual(requested_date('before 16/10/2026')['kind'], 'before')
         result = self.reviewed(self.amendment_record(), today=date(2026, 11, 18))
         self.assertIn('past_requested_date', {issue['code'] for issue in result['issues']})

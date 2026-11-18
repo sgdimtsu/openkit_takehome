@@ -28,6 +28,26 @@ class ContextTests(unittest.TestCase):
         cls.inbox = load_inbox(PACK)
         cls.retriever = ContextRetriever(cls.internal, cls.inbox)
 
+    def test_new_customer_po_miss_is_a_check_but_amendment_miss_blocks(self):
+        action = selection('MSG-041', "King's Hall School", 'KH/2026/131')
+        for action_type, blocked in [('new_order_request', False), ('amendment_request', True)]:
+            context = self.retriever.prepare({**action, 'action_type': action_type})
+            alert = next(a for a in context['report_alerts'] if a['code'] == 'order_reference_unresolved')
+            self.assertEqual(alert['blocks_entry'], blocked)
+
+    def test_account_notes_corroborate_documented_senders_and_sites(self):
+        for email_id, name, account in [
+            ('MSG-015', 'Luca Moretti', 'RIVR01'),
+            ('MSG-038', 'Rachel Tunney', 'MILL01'),
+            ('MSG-024', 'Pasta Fresca Hills Road', 'PAST01'),
+        ]:
+            with self.subTest(email_id=email_id):
+                result = self.retriever.prepare(selection(email_id, name))['customer_match']
+                self.assertEqual(result.account_id, account)
+                self.assertTrue(any('customer_account_notes.md:section:' in key for key in result.evidence_ids))
+        conflict = self.retriever.prepare(selection('MSG-038', 'Pasta Fresca'))
+        self.assertEqual(conflict['customer_match'].status, 'unresolved')
+
     def test_mixed_dates_and_serials(self):
         for value in ('01/04/2025', '20250401', '2025-04-01', '45748', 45748):
             self.assertEqual(order_date(value), date(2025, 4, 1))
@@ -155,7 +175,7 @@ class ContextTests(unittest.TestCase):
         internal = replace(self.internal, customers_by_id=customers)
         context = ContextRetriever(internal, self.inbox).prepare(selection('MSG-038', 'Shared Trading Name'))
         self.assertEqual(context['customer_match'].status, 'unresolved')
-        self.assertEqual(set(context['customer_match'].candidate_account_ids), {'HUNT01', 'CHER01'})
+        self.assertEqual(set(context['customer_match'].candidate_account_ids), {'HUNT01', 'CHER01', 'MILL01'})
         self.assertFalse(context['supporting_history'])
         self.assertTrue(context['report_alerts'][0]['blocks_entry'])
 

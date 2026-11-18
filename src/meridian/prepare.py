@@ -68,6 +68,8 @@ def validate_preparation(output, context, selection):
     check(output.model_dump())
     if output.customer_po and not any(
             ContextRetriever._stated(output.customer_po.value, sources[key].text or '')
+            or (key == request['source_id'] and
+                ContextRetriever._stated(output.customer_po.value, request.get('subject', '')))
             for key in output.customer_po.evidence_ids):
         raise ValueError('Customer PO identifier is not present in its cited evidence')
 

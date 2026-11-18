@@ -224,7 +224,8 @@ class RenderTests(unittest.TestCase):
             self.assertEqual(summary['validation_failures'], 1)
             text = Path(summary['html_path']).read_text()
             self.assertEqual(sum(tag == 'article' for tag, _ in ParsedHTML(text).tags), 2)
-            self.assertIn('Validation failed', text)
+            self.assertIn('Preparation failed', text)
+            self.assertIn('1 processing failures', text)
             self.assertIn('MSG-038', text)
             self.assertIn('No validated entry values', text)
 

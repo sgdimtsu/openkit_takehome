@@ -52,6 +52,8 @@ class ContextRetriever:
         self.emails = {email['id']: email for email in inbox.emails}
         self.sources = {**internal.sources, **inbox.sources}
         self.aliases = {}
+        self.contacts = {}
+        self.sites = {}
         self.notes_by_customer = {}
         for account, row in internal.customers_by_id.items():
             self._alias(re.sub(r'\([^)]*\)', '', row['CUSNM']), account, row['source_id'])
@@ -75,6 +77,18 @@ class ContextRetriever:
             if not positive:
                 for alias in aliases:
                     accounts.update(self.aliases.get(name_key(alias), {}))
+            if len(accounts) == 1:
+                account = next(iter(accounts))
+                # Account notes identify contacts in bullet leads or after "Orders come from".
+                for contact in re.findall(
+                        r"(?m)(?:^- |(?<=\. ))(?:Orders come from )?"
+                        r"([A-Z][a-z]+ [A-Z][a-z]+(?:['’][A-Z][a-z]+)?)(?=,| \(| orders\b)",
+                        body):
+                    self.contacts.setdefault(name_key(contact), {}).setdefault(account, set()).add(source_id)
+                for sites in re.findall(r'(?im)^- Sites:\s*(.+)$', body):
+                    for site in re.sub(r'\([^)]*\)', '', sites).split(','):
+                        if name_key(site):
+                            self.sites.setdefault(account, {}).setdefault(name_key(site), set()).add(source_id)
             for account in accounts:
                 self.notes_by_customer.setdefault(account, []).append(source)
             for alias in aliases:
@@ -155,7 +169,7 @@ class ContextRetriever:
                                    for i in range(len(actual) - len(wanted) + 1))
 
     def _references(self, email, references):
-        found, issues = {}, []
+        found, issues, unmatched_pos = {}, [], []
         text = email['subject'] + '\n' + email['body']
         for kind, value in references.items():
             if value is None:
@@ -172,10 +186,11 @@ class ContextRetriever:
                 order = self.data.orders_by_id.get(int(digits)) if digits.isdigit() else None
                 orders = [order] if order else []
             if not orders:
-                issues.append(f'No existing order match established for {kind} {value!r}; absence is not proof of a new order.')
+                message = f'No existing order match established for {kind} {value!r}; absence is not proof of a new order.'
+                (unmatched_pos if kind == 'customer_po' else issues).append(message)
             for order in orders:
                 found[order['ORDNO']] = order
-        return list(found.values()), issues
+        return list(found.values()), issues, unmatched_pos
 
     def match_customer(self, email, customer, referenced_orders):
         name, stated_id = customer.get('name_as_stated'), customer.get('account_id_as_stated')
@@ -203,13 +218,37 @@ class ContextRetriever:
                        re.findall(r'(?<!\d)0\d[\d -]{6,}\d(?!\d)', text)}
             candidates = {account for account, row in self.data.customers_by_id.items()
                           if re.sub(r'\D', '', row.get('TELNO', '')) in numbers}
-        for account in candidates:
-            if account in self.data.customers_by_id:
-                evidence.add(self.data.customers_by_id[account]['source_id'])
         for ids in self.aliases.get(name_key(name or ''), {}).values():
             evidence.update(ids)
-        # Prefix-only name matches are candidates, unless a referenced order corroborates.
-        if name and name_key(name) not in self.aliases and not owners:
+        sender = name_key(email['from'].split('<', 1)[0].strip(' "'))
+        contact_matches = self.contacts.get(sender, {})
+        corroborated = False
+        if len(contact_matches) == 1:
+            contact_account, note_ids = next(iter(contact_matches.items()))
+            if candidates and contact_account not in candidates:
+                candidates.add(contact_account)
+                evidence.update(note_ids)
+                unresolved = True
+            elif (not name or name_key(name) == sender) and not stated_id and not owners:
+                candidates.add(contact_account)
+                evidence.update(note_ids)
+                unresolved = False
+                corroborated = True
+        if len(candidates) == 1 and name and not unresolved and not corroborated:
+            account = next(iter(candidates))
+            text = email['subject'] + '\n' + email['body']
+            named = name_key(name)
+            for site, note_ids in self.sites.get(account, {}).items():
+                if named.endswith(' ' + site) and self._stated(site, text):
+                    base = named[:-(len(site) + 1)]
+                    if set(self.aliases.get(base, {})) == {account}:
+                        evidence.update(note_ids)
+                        corroborated = True
+                        break
+        for account in candidates:
+            evidence.add(self.data.customers_by_id[account]['source_id'])
+        # Prefix-only name matches are candidates unless independent evidence corroborates.
+        if name and name_key(name) not in self.aliases and not owners and not corroborated:
             unresolved = True
         if len(candidates) == 1 and not unresolved:
             account = next(iter(candidates))
@@ -227,7 +266,7 @@ class ContextRetriever:
             raise ValueError(f'Unknown trigger email: {email_id}')
         email = self.emails[email_id]
         references = selection.get('references', {})
-        referenced, reference_issues = self._references(email, references)
+        referenced, reference_issues, unmatched_pos = self._references(email, references)
         match = self.match_customer(email, selection.get('customer', {}), referenced)
         alerts = []
         def alert(code, title, message, blocks=True):
@@ -240,6 +279,9 @@ class ContextRetriever:
                   (', '.join(match.candidate_account_ids) or 'none established'))
         for message in reference_issues:
             alert('order_reference_unresolved', 'Order reference requires checking', message)
+        for message in unmatched_pos:
+            alert('order_reference_unresolved', 'Order reference requires checking', message,
+                  blocks=selection.get('action_type') != 'new_order_request')
         matched_orders = [self._order(order) for order in referenced if account and order['CUSNO'] == account]
         if len(matched_orders) > 1:
             alert('multiple_order_matches', 'Multiple existing orders matched',

@@ -2,6 +2,7 @@
 import argparse
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 from .inbox import load_inbox
@@ -37,7 +38,11 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("output"),
                         help="Directory for retained pipeline JSON (default: ./output)")
     parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
+    parser.add_argument("--review-date", type=date.fromisoformat,
+                        help="Historical evaluation date (YYYY-MM-DD), available with --validate")
     args = parser.parse_args()
+    if args.review_date is not None and not args.validate:
+        parser.error("--review-date requires --validate")
     if args.classification_schema:
         from .schemas import ClassificationOutput
         print(json.dumps(ClassificationOutput.model_json_schema(), indent=2))
@@ -78,7 +83,7 @@ def main() -> None:
     if args.validate:
         from .rules import validate_saved_preparations
         try:
-            summary = validate_saved_preparations(args.validate, args.output_dir)
+            summary = validate_saved_preparations(args.validate, args.output_dir, review_date=args.review_date)
         except (OSError, ValueError) as exc:
             parser.exit(1, f"Deterministic validation failed: {exc}\n")
         print(json.dumps(summary, indent=2, ensure_ascii=False))
