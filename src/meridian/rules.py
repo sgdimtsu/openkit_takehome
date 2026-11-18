@@ -446,7 +446,8 @@ def validate_saved_preparations(input_path, output_dir):
                 try:
                     record = json.loads(path.read_text(encoding='utf-8'))
                 except (OSError, ValueError) as exc:
-                    record = {'status': 'failed', 'error': f'Cannot load preparation: {exc}'}
+                    record = {'status': 'failed', 'error': f'Cannot load preparation: {exc}',
+                              'trigger': {'email_id': item.get('email_id', 'Unknown email')}}
                 jobs.append((path, record))
             else:
                 record = item.get('unsaved_result', {'status': 'failed', 'error': item.get('error', 'Preparation file missing')})
@@ -458,6 +459,10 @@ def validate_saved_preparations(input_path, output_dir):
         reviewed = apply_business_rules(record)
         saved = save_json_artifact(reviewed, output_dir, prefix='validated_preparation')
         results.append({'source': str(path), 'path': str(saved.resolve()),
+                        'email_id': reviewed['preparation'].get('trigger', {}).get('email_id'),
+                        'report_id': reviewed['report_id'],
                         'status': reviewed['validation']['status'], 'readiness': reviewed['validation']['readiness']})
-    return {'results': results, 'validated': sum(row['status'] == 'validated' for row in results),
-            'failed': sum(row['status'] == 'failed' for row in results)}
+    summary = {'results': results, 'validated': sum(row['status'] == 'validated' for row in results),
+               'failed': sum(row['status'] == 'failed' for row in results)}
+    manifest = save_json_artifact(summary, output_dir, prefix='validation_run')
+    return {**summary, 'manifest_path': str(manifest.resolve())}

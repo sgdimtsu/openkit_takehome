@@ -30,6 +30,10 @@ def main() -> None:
                            help="Print the preparation output schema without an API call")
     operation.add_argument("--validate", type=Path,
                            help="Apply deterministic rules to a saved preparation JSON or run manifest; no API call")
+    operation.add_argument("--render", type=Path,
+                           help="Render reviewed JSON, validation manifest or review folder as static HTML; no API call")
+    operation.add_argument("--run", action="store_true",
+                           help="Send inbox and per-email context to OpenAI, then validate and render the fixed pipeline")
     parser.add_argument("--output-dir", type=Path, default=Path("output"),
                         help="Directory for retained pipeline JSON (default: ./output)")
     parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
@@ -41,6 +45,35 @@ def main() -> None:
     if args.preparation_schema:
         from .preparation_schemas import PreparationOutput
         print(json.dumps(PreparationOutput.model_json_schema(), indent=2))
+        return
+    if args.run:
+        from dataclasses import asdict
+        from .config import OpenAISettings
+        from .llm import create_client, LLMCallError
+        from .pipeline import run_pipeline
+        try:
+            settings = OpenAISettings.from_env(args.model)
+            with create_client(settings) as client:
+                summary = run_pipeline(input_root=args.input_root, output_dir=args.output_dir,
+                                       inbox_path=args.inbox, client=client, model=settings.model)
+        except LLMCallError as exc:
+            print(json.dumps({"status": "failed", "error": str(exc), "metrics": asdict(exc.metrics)}, indent=2))
+            parser.exit(1)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"Pipeline failed: {exc}\n")
+        print(json.dumps(summary, indent=2))
+        if summary['preparation_failures'] or summary['validation_failures']:
+            parser.exit(1)
+        return
+    if args.render:
+        from .render import render_saved_reviews
+        try:
+            summary = render_saved_reviews(args.render, output_dir=args.output_dir, input_root=args.input_root)
+        except (OSError, ValueError, TypeError, KeyError) as exc:
+            parser.exit(1, f"HTML rendering failed: {exc}\n")
+        print(json.dumps(summary, indent=2))
+        if summary['validation_failures']:
+            parser.exit(1)
         return
     if args.validate:
         from .rules import validate_saved_preparations
