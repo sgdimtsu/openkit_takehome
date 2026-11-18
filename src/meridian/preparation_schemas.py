@@ -14,6 +14,7 @@ class SupportedValue(StructuredOutput):
 
 
 class QuotedPrice(StructuredOutput):
+    label: Optional[NonemptyText] = None
     amount: SupportedValue
     currency: NonemptyText
     vat_basis: Literal['exclusive', 'inclusive', 'unknown']

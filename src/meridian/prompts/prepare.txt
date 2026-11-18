@@ -31,6 +31,8 @@ suggestions at the individual-field level using basis. Every proposed value must
 cite readable evidence. Keep raw date wording and raw monetary values: code will
 normalise dates, calculate applicable prices, discounts and VAT, and decide readiness.
 Extract customer-quoted prices/discounts as unverified requests, not approved terms.
+Retain the original label for quoted totals (for example Net, VAT or Total); a
+VAT-only amount must not be presented as an order grand total.
 Do not calculate or propose an authoritative final price or total.
 
 Suggest a catalogue-supported SKU when useful evidence supports it; label an

@@ -82,6 +82,18 @@ class ContextRetriever:
                     self.aliases[name_key(alias)] = {}
                 for account in accounts:
                     self._alias(alias, account, source_id)
+        self.account_constraints = {}
+        for line_number, line in enumerate(notes.text.splitlines(), 1):
+            if not re.search(r"(?i)(?:don.t key|do not key|account closed|ceased trading)", line):
+                continue
+            for account in internal.customers_by_id:
+                if not re.search(r'(?<![A-Za-z0-9])' + re.escape(account) + r'(?![A-Za-z0-9])', line):
+                    continue
+                source_id = notes.source_id + f':account-restriction:{account}:line:{line_number}'
+                source = Source(source_id, notes.relative_path, f'Account restriction — {account}',
+                                f'Line {line_number}', notes.timestamp, line)
+                self.sources[source_id] = source
+                self.account_constraints.setdefault(account, []).append(source)
         self.orders_by_reference = {}
         for order in internal.orders_by_id.values():
             if order.get('CUSREF'):
@@ -297,10 +309,19 @@ class ContextRetriever:
         request_text = ' '.join([email['subject'], email['body']] + [s.text or '' for s in attachment_evidence])
         skus = {line['STKCD'] for order in history + matched_orders for line in order['lines']}
         words = set(name_key(request_text).split())
+        # Include catalogue records explicitly named by this customer's contract notes.
+        note_text = ' '.join(source.text or '' for source in notes)
+        skus.update(sku for sku in self.data.prices_by_sku if re.search(
+            r'(?<![A-Za-z0-9-])' + re.escape(sku) + r'(?![A-Za-z0-9-])', note_text))
         # Retrieve candidates only, never approve a product match at this stage.
+        def compound_description_match(row):
+            terms = name_key(row.get('description', '')).split()
+            # Join adjacent source words, rather than maintaining product alias answers.
+            return bool(words.intersection(a + b for a, b in zip(terms, terms[1:])))
         catalogue = [row for sku, row in self.data.prices_by_sku.items()
                      if sku in skus or sku.casefold() in request_text.casefold()
-                     or len(words.intersection(name_key(row.get('description', '')).split())) >= 2]
+                     or len(words.intersection(name_key(row.get('description', '')).split())) >= 2
+                     or compound_description_match(row)]
         # Follow explicitly recorded catalogue replacements; do not invent SKUs.
         candidates = {row['sku']: row for row in catalogue}
         for row in catalogue:
@@ -311,7 +332,12 @@ class ContextRetriever:
         stock = [self.data.stock_by_sku[sku] for sku in
                  sorted(skus | {row['sku'] for row in catalogue})
                  if sku in self.data.stock_by_sku]
+        constraints = self.account_constraints.get(account, []) if account else []
+        parameters = {key: self.data.parameters[key] for key in ('VATRT', 'LASTEXP', 'ACSTCDS', 'STATCDS')
+                      if key in self.data.parameters}
         used = {email['source_id'], self.general_notes.source_id, *match.evidence_ids}
+        used.update(source.source_id for source in constraints)
+        used.update(row['source_id'] for row in parameters.values())
         if account:
             used.add(self.data.customers_by_id[account]['source_id'])
         for order in history + matched_orders:
@@ -328,6 +354,7 @@ class ContextRetriever:
                 'current_request': email, 'explicitly_matched_orders': matched_orders,
                 'supporting_history': history, 'history_limit': HISTORY_LIMIT,
                 'customer_notes': notes, 'general_account_notes': self.general_notes,
+                'account_constraints': constraints, 'export_parameters': parameters,
                 'open_items': items, 'unresolved_open_items': uncertain_items,
                 'catalogue_candidates': catalogue, 'stock_records': stock, 'attachments': email['attachments'],
                 'attachment_extractions': attachment_results,

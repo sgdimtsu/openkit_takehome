@@ -28,6 +28,8 @@ def main() -> None:
                            help="Read classification JSON and send one preparation request per selected email")
     operation.add_argument("--preparation-schema", action="store_true",
                            help="Print the preparation output schema without an API call")
+    operation.add_argument("--validate", type=Path,
+                           help="Apply deterministic rules to a saved preparation JSON or run manifest; no API call")
     parser.add_argument("--output-dir", type=Path, default=Path("output"),
                         help="Directory for retained pipeline JSON (default: ./output)")
     parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
@@ -39,6 +41,16 @@ def main() -> None:
     if args.preparation_schema:
         from .preparation_schemas import PreparationOutput
         print(json.dumps(PreparationOutput.model_json_schema(), indent=2))
+        return
+    if args.validate:
+        from .rules import validate_saved_preparations
+        try:
+            summary = validate_saved_preparations(args.validate, args.output_dir)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"Deterministic validation failed: {exc}\n")
+        print(json.dumps(summary, indent=2, ensure_ascii=False))
+        if summary['failed']:
+            parser.exit(1)
         return
     if args.pdf:
         from dataclasses import asdict
