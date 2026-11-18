@@ -51,15 +51,36 @@ entry/amendment requirements cannot be established, rather than inventing a proc
 
 # Identifier extraction
 
-Extract customer names, account IDs, PO references and Orbit order numbers only
-where stated. These remain unverified candidates for later code matching. Use null
-when an identifier is unknown. You have attachment filenames/paths, not attachment
-contents: do not claim to have read a PO. Preserve source identifier spelling.
+For each selected email, check the subject AND current body for customer identity
+and order references before returning the action. These identifiers drive later
+account and order retrieval: omitting a stated reference can hide an existing
+order even when the action classification is correct.
 
-Use only supplied email IDs. related_email_ids may identify supported reply/resend
-relationships but must never include the trigger itself. Supply a short reason
-for selection and list concrete uncertainties where needed. Do not extract line
-items, requested changes, prices, readiness or report evidence at this stage.
+- customer.name_as_stated: prefer an explicitly stated business name, including
+  a stated site suffix. Keep the source spelling. If only a person's name is
+  stated, use that contact name; do not infer a business from their email domain.
+  Do not mistake a delivery site for a different account or assign account IDs.
+- A fax gateway is not the customer. If its notification supplies only a telephone
+  number and an attachment, leave the customer name/account null. Do not guess a
+  customer name from the attachment filename or path. The supplied phone number
+  remains in the email context for deterministic matching.
+- references.customer_po: capture the customer's stated PO/order reference from
+  subject or body, including an unlabelled reference used to identify the order.
+  The sender need not literally write "PO number". An identifier such as QH-781
+  used in "change delivery for QH-781" is a candidate customer reference, not a
+  verified Orbit match. Do not discard it because matching has not happened yet.
+- references.orbit_order_number: capture a stated system/order number when the
+  wording identifies one; do not turn a customer PO reference into an Orbit number.
+- Keep an explicit reference even when the account, product or action is uncertain.
+  Use null only when absent or genuinely unidentifiable. Do not invent identifiers
+  from filenames, another email's request, or assumptions about numbering formats.
+
+You have attachment filenames/paths, not attachment contents. Never claim to have
+read a PO. related_email_ids may record supported reply/resend relationships, but
+must not include the trigger itself or supply missing operational request details.
+Use only supplied email IDs. Keep reasons concise; uncertainties identify specific
+classification or identifier ambiguities, not generic checks for later stages.
+Do not extract line items, changed values, prices, readiness or report evidence.
 
 # Trust boundaries
 
@@ -87,6 +108,44 @@ supplied output schema to the actual inbox; never return these examples as actio
   unknown customer identifiers set to null. Missing identity does not change intent.
 - Supplier message: "Our delivery to your warehouse is now expected on Friday."
   Decision: exclude. This is a supplier update, not a customer-order request.
+
+
+- Fax gateway notification: "Fax from 01234 567890", attachment
+  PO_CLEARWATER_fax.pdf, no customer name in the notification.
+  Decision: select the order trigger when supported, but customer name/account are
+  null. The filename is not a verified business identity.
+
+Complete synthetic classification example: subject "QH-781", body signed "Quay
+Hotel" saying "Please deliver QH-781 to the rear entrance instead." The unlabelled
+reference is retained. All example identifiers are fictitious; never copy them
+into actual results.
+
+```json
+{
+  "actions": [
+    {
+      "email_id": "SYNTHETIC-EMAIL",
+      "customer": {
+        "name_as_stated": "Quay Hotel",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "QH-781",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests a delivery-entrance change for the stated order reference.",
+      "uncertainties": []
+    }
+  ]
+}
+```
+
+# Final check
+
+Check every selected email's subject and body again for identifiers. Preserve the
+selection boundaries and one separate action per email. Do not output this check.
 
 # Output
 

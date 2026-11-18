@@ -1,0 +1,70 @@
+{
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    }
+  },
+  "policy_sha256": "9d40bce82f1d75dc6a32108728800d84dd91b3c2619074e34ea923e5f8d55643",
+  "classification_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v3_run/classification_20261118T173427744060Z_4f9d051e9cb14382b70404a928bcb36e.json",
+  "preparation_manifest_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v3_run/preparation_run_20261118T174146984396Z_415dab9660f341faae6f30b84c3c005b.json",
+  "validation_manifest_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v3_run/validation_run_20261118T174147087512Z_72463ad328ca424fb2f7a14f50f36527.json",
+  "html_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v3_run/meridian_reports_20261118T174151674169Z_cb7d3b2ac44248d792c64db9dcf688e9.html",
+  "selected_emails": 18,
+  "preparation_failures": 4,
+  "validation_failures": 4,
+  "calls": {
+    "classification": 1,
+    "preparation": 18,
+    "total": 19
+  },
+  "usage_available_for_calls": 18,
+  "usage_totals_when_available": {
+    "input_tokens": 355294,
+    "output_tokens": 47202,
+    "total_tokens": 402496
+  },
+  "processing_duration_seconds": 481.418607791
+}

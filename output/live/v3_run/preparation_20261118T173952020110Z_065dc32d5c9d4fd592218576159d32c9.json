@@ -1,0 +1,1738 @@
+{
+  "schema_version": "1.0",
+  "report_id": "f81e4b4c278b4c32a74d0810f1083ede",
+  "generated_at": "2026-11-18T17:39:52.013645+00:00",
+  "status": "prepared",
+  "business_rules_applied": false,
+  "requires_human_review": true,
+  "trigger": {
+    "email_id": "MSG-037",
+    "received_at": "2026-10-09T08:10:00+01:00"
+  },
+  "classification": {
+    "email_id": "MSG-037",
+    "customer": {
+      "name_as_stated": "The Salt Kitchen",
+      "account_id_as_stated": null
+    },
+    "action_type": "new_order_request",
+    "references": {
+      "customer_po": "TSK-88",
+      "orbit_order_number": null
+    },
+    "related_email_ids": [],
+    "reason": "Submits purchase order TSK-88 for replacement and additional equipment.",
+    "uncertainties": []
+  },
+  "context": {
+    "email_id": "MSG-037",
+    "action_type": "new_order_request",
+    "customer_match": {
+      "status": "matched",
+      "account_id": "SALT01",
+      "candidate_account_ids": [
+        "SALT01"
+      ],
+      "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+      "evidence_ids": [
+        "file:04_reference/customer_account_notes.md:section:6",
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:SALT01"
+      ]
+    },
+    "customer_record": {
+      "CUSNO": "SALT01",
+      "CUSNM": "THE SALT KITCHEN",
+      "ADR1": "12 Market Hill",
+      "ADR2": "Cambridge",
+      "PCODE": "CB2 3NJ",
+      "TELNO": "01223 301144",
+      "ACSTAT": "A",
+      "CRLIM": 7500,
+      "PRCBND": "L",
+      "DTOPEN": "20230715",
+      "NOTE1": "",
+      "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:SALT01"
+    },
+    "current_request": {
+      "id": "MSG-037",
+      "received": "2026-10-09T08:10:00+01:00",
+      "from": "Josh Ainsley <josh@thesaltkitchen.co.uk>",
+      "to": "orders@meridiancatering.co.uk",
+      "subject": "PO TSK-88",
+      "body": "Hi,\n\nOur dishwasher has died. PO attached for a replacement (same as the one we got from you last year) plus a glasswasher and a softener for the bar.\n\nASAP please, we're washing up by hand!\n\nJosh",
+      "attachments": [
+        {
+          "filename": "PO_TSK-88.pdf",
+          "path": "05_orders/PO_TSK-88.pdf",
+          "source_id": "file:05_orders/PO_TSK-88.pdf",
+          "available": true
+        }
+      ],
+      "in_reply_to": null,
+      "source_id": "email:MSG-037:body"
+    },
+    "explicitly_matched_orders": [],
+    "supporting_history": [
+      {
+        "header": {
+          "ORDNO": 47970,
+          "CUSNO": "SALT01",
+          "CUSREF": "TSK-87",
+          "ORDDT": "20260917",
+          "STAT": "I",
+          "DELDT": "20260923",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47970"
+        },
+        "lines": [
+          {
+            "ORDNO": 47970,
+            "LNNO": 10,
+            "STKCD": "CON-APRON-WH",
+            "QTY": 12,
+            "QTYDS": 12,
+            "UPRC": 950,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:10"
+          },
+          {
+            "ORDNO": 47970,
+            "LNNO": 20,
+            "STKCD": "CON-HN-100",
+            "QTY": 10,
+            "QTYDS": 10,
+            "UPRC": 495,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:20"
+          },
+          {
+            "ORDNO": 47970,
+            "LNNO": 30,
+            "STKCD": "CON-BR-6",
+            "QTY": 4,
+            "QTYDS": 4,
+            "UPRC": 1895,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:30"
+          },
+          {
+            "ORDNO": 47970,
+            "LNNO": 40,
+            "STKCD": "CON-FOIL-450",
+            "QTY": 10,
+            "QTYDS": 10,
+            "UPRC": 2150,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:40"
+          }
+        ],
+        "order_date_normalised": "2026-09-17"
+      },
+      {
+        "header": {
+          "ORDNO": 47958,
+          "CUSNO": "SALT01",
+          "CUSREF": "TSK-86",
+          "ORDDT": "20260916",
+          "STAT": "I",
+          "DELDT": "20260922",
+          "OPID": "JD",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47958"
+        },
+        "lines": [
+          {
+            "ORDNO": 47958,
+            "LNNO": 10,
+            "STKCD": "CON-DT-5L",
+            "QTY": 2,
+            "QTYDS": 2,
+            "UPRC": 1495,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:10"
+          },
+          {
+            "ORDNO": 47958,
+            "LNNO": 20,
+            "STKCD": "CON-SAN-5L",
+            "QTY": 6,
+            "QTYDS": 6,
+            "UPRC": 1295,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:20"
+          },
+          {
+            "ORDNO": 47958,
+            "LNNO": 30,
+            "STKCD": "CON-APRON-WH",
+            "QTY": 6,
+            "QTYDS": 6,
+            "UPRC": 950,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:30"
+          }
+        ],
+        "order_date_normalised": "2026-09-16"
+      },
+      {
+        "header": {
+          "ORDNO": 47746,
+          "CUSNO": "SALT01",
+          "CUSREF": "TSK-85",
+          "ORDDT": "20260831",
+          "STAT": "I",
+          "DELDT": "20260902",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47746"
+        },
+        "lines": [
+          {
+            "ORDNO": 47746,
+            "LNNO": 10,
+            "STKCD": "CON-GL-BL-L",
+            "QTY": 12,
+            "QTYDS": 12,
+            "UPRC": 645,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47746:10"
+          },
+          {
+            "ORDNO": 47746,
+            "LNNO": 20,
+            "STKCD": "CON-APRON-WH",
+            "QTY": 12,
+            "QTYDS": 12,
+            "UPRC": 950,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47746:20"
+          }
+        ],
+        "order_date_normalised": "2026-08-31"
+      }
+    ],
+    "history_limit": 3,
+    "customer_notes": [
+      {
+        "source_id": "file:04_reference/customer_account_notes.md:section:6",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "The Salt Kitchen (Cambridge)",
+        "locator": "Section: The Salt Kitchen (Cambridge)",
+        "timestamp": null,
+        "text": "The Salt Kitchen (Cambridge)\n- Orbit: SALT01. List price.\n- Josh Ainsley, chef-owner. POs numbered TSK-xx.\n\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      }
+    ],
+    "general_account_notes": {
+      "source_id": "file:04_reference/customer_account_notes.md:preamble",
+      "relative_path": "04_reference/customer_account_notes.md",
+      "display_name": "customer_account_notes.md — introductory notes",
+      "locator": "Before first customer heading",
+      "timestamp": null,
+      "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+      "extraction_method": null,
+      "requires_review": false,
+      "extraction_error": null
+    },
+    "account_constraints": [],
+    "export_parameters": {
+      "VATRT": {
+        "PKEY": "VATRT",
+        "PVAL": "17.5",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+      },
+      "LASTEXP": {
+        "PKEY": "LASTEXP",
+        "PVAL": "20261008 231502",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+      },
+      "ACSTCDS": {
+        "PKEY": "ACSTCDS",
+        "PVAL": "A,H,C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+      },
+      "STATCDS": {
+        "PKEY": "STATCDS",
+        "PVAL": "N,P,D,I,X,H",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+      }
+    },
+    "open_items": [
+      {
+        "Date": "21/09",
+        "Customer": "Salt Kitchen",
+        "Order / PO": "",
+        "Issue": "dishwasher making noise - engineer?",
+        "Who": "KH",
+        "Status": "open",
+        "Notes": "told Josh to call CWS direct",
+        "Closed": "",
+        "source_id": "csv:02_open_items_log.csv:record:20"
+      }
+    ],
+    "unresolved_open_items": [],
+    "catalogue_candidates": [
+      {
+        "sku": "FR-UC-2D",
+        "description": "Counter fridge, 2 door, 1360mm",
+        "category": "Refrigeration",
+        "unit": "each",
+        "list_price_gbp": "1195.00",
+        "band_b_gbp": "1135.25",
+        "band_t_gbp": "1075.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:8"
+      },
+      {
+        "sku": "FR-UC-3D",
+        "description": "Counter fridge, 3 door, 1795mm",
+        "category": "Refrigeration",
+        "unit": "each",
+        "list_price_gbp": "1445.00",
+        "band_b_gbp": "1372.75",
+        "band_t_gbp": "1300.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:9"
+      },
+      {
+        "sku": "FR-BB-2D",
+        "description": "Back bar bottle cooler, 2 hinged doors",
+        "category": "Refrigeration",
+        "unit": "each",
+        "list_price_gbp": "685.00",
+        "band_b_gbp": "650.75",
+        "band_t_gbp": "616.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:10"
+      },
+      {
+        "sku": "HC-30",
+        "description": "Hot cupboard, 3 door",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "795.00",
+        "band_b_gbp": "755.25",
+        "band_t_gbp": "715.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:30"
+      },
+      {
+        "sku": "DW-400",
+        "description": "Dishwasher, 400mm basket (discontinued)",
+        "category": "Warewashing",
+        "unit": "each",
+        "list_price_gbp": "1595.00",
+        "band_b_gbp": "1515.25",
+        "band_t_gbp": "1435.50",
+        "status": "obsolete",
+        "replaced_by": "DW-410",
+        "source_id": "csv:04_reference/price_list.csv:record:32"
+      },
+      {
+        "sku": "DW-410",
+        "description": "Dishwasher, 500mm basket, drain pump",
+        "category": "Warewashing",
+        "unit": "each",
+        "list_price_gbp": "1745.00",
+        "band_b_gbp": "1657.75",
+        "band_t_gbp": "1570.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:33"
+      },
+      {
+        "sku": "GW-600",
+        "description": "Glasswasher, 400mm basket",
+        "category": "Warewashing",
+        "unit": "each",
+        "list_price_gbp": "895.00",
+        "band_b_gbp": "850.25",
+        "band_t_gbp": "805.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:35"
+      },
+      {
+        "sku": "GW-450",
+        "description": "Glasswasher, 450mm basket, drain pump",
+        "category": "Warewashing",
+        "unit": "each",
+        "list_price_gbp": "1045.00",
+        "band_b_gbp": "992.75",
+        "band_t_gbp": "940.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:36"
+      },
+      {
+        "sku": "WS-SOFT",
+        "description": "Water softener, manual regen",
+        "category": "Warewashing",
+        "unit": "each",
+        "list_price_gbp": "245.00",
+        "band_b_gbp": "232.75",
+        "band_t_gbp": "220.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:38"
+      },
+      {
+        "sku": "CON-BR-6",
+        "description": "Blue centrefeed roll, case of 6",
+        "category": "Consumables",
+        "unit": "case",
+        "list_price_gbp": "18.95",
+        "band_b_gbp": "18.00",
+        "band_t_gbp": "17.06",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:50"
+      },
+      {
+        "sku": "CON-GL-BL-L",
+        "description": "Nitrile gloves, blue, large, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:53"
+      },
+      {
+        "sku": "CON-FOIL-450",
+        "description": "Catering foil, 450mm x 75m",
+        "category": "Consumables",
+        "unit": "roll",
+        "list_price_gbp": "21.50",
+        "band_b_gbp": "20.43",
+        "band_t_gbp": "19.35",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:55"
+      },
+      {
+        "sku": "CON-DT-5L",
+        "description": "Dishwasher detergent, 5L",
+        "category": "Consumables",
+        "unit": "each",
+        "list_price_gbp": "14.95",
+        "band_b_gbp": "14.20",
+        "band_t_gbp": "13.46",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:56"
+      },
+      {
+        "sku": "CON-SAN-5L",
+        "description": "Food-safe sanitiser, 5L",
+        "category": "Consumables",
+        "unit": "each",
+        "list_price_gbp": "12.95",
+        "band_b_gbp": "12.30",
+        "band_t_gbp": "11.66",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:58"
+      },
+      {
+        "sku": "CON-APRON-WH",
+        "description": "Disposable aprons, white, pack of 100",
+        "category": "Consumables",
+        "unit": "pack",
+        "list_price_gbp": "9.50",
+        "band_b_gbp": "9.03",
+        "band_t_gbp": "8.55",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:60"
+      },
+      {
+        "sku": "CON-HN-100",
+        "description": "Hairnets, white, pack of 100",
+        "category": "Consumables",
+        "unit": "pack",
+        "list_price_gbp": "4.95",
+        "band_b_gbp": "4.70",
+        "band_t_gbp": "4.46",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:61"
+      },
+      {
+        "sku": "SW-GN13-100",
+        "description": "Gastronorm pan 1/3, 100mm, stainless",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "7.95",
+        "band_b_gbp": "7.55",
+        "band_t_gbp": "7.16",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:64"
+      },
+      {
+        "sku": "SW-TRAY-BAKE",
+        "description": "Baking tray, aluminium, 600 x 400",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "9.50",
+        "band_b_gbp": "9.03",
+        "band_t_gbp": "8.55",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:67"
+      }
+    ],
+    "stock_records": [
+      {
+        "STKCD": "CON-APRON-WH",
+        "DESC1": "APRON DISP WHITE",
+        "DESC2": "PK100",
+        "UOM": "PK",
+        "LSTPR": 950,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-APRON-WH"
+      },
+      {
+        "STKCD": "CON-BR-6",
+        "DESC1": "BLUE ROLL C/FEED",
+        "DESC2": "CASE 6",
+        "UOM": "CS",
+        "LSTPR": 1895,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6"
+      },
+      {
+        "STKCD": "CON-DT-5L",
+        "DESC1": "DW DETERGENT 5L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1495,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L"
+      },
+      {
+        "STKCD": "CON-FOIL-450",
+        "DESC1": "FOIL 450",
+        "DESC2": "",
+        "UOM": "RL",
+        "LSTPR": 2150,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450"
+      },
+      {
+        "STKCD": "CON-GL-BL-L",
+        "DESC1": "GLOVES NITRILE BLUE L",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+      },
+      {
+        "STKCD": "CON-HN-100",
+        "DESC1": "HAIRNET WHITE",
+        "DESC2": "PK100",
+        "UOM": "PK",
+        "LSTPR": 495,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-HN-100"
+      },
+      {
+        "STKCD": "CON-SAN-5L",
+        "DESC1": "SANITISER 5L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1295,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-SAN-5L"
+      },
+      {
+        "STKCD": "DW-400",
+        "DESC1": "DISHWASHER 400 BSKT",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 159500,
+        "SUPCD": "CWS",
+        "OBSFLG": "Y",
+        "RPLCD": "DW-410",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-400"
+      },
+      {
+        "STKCD": "DW-410",
+        "DESC1": "DISHWASHER 500 BSKT",
+        "DESC2": "DRAIN PUMP",
+        "UOM": "EA",
+        "LSTPR": 174500,
+        "SUPCD": "CWS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-410"
+      },
+      {
+        "STKCD": "FR-BB-2D",
+        "DESC1": "BOTTLE COOLER 2DR",
+        "DESC2": "BLACK",
+        "UOM": "EA",
+        "LSTPR": 68500,
+        "SUPCD": "NGR",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-BB-2D"
+      },
+      {
+        "STKCD": "FR-UC-2D",
+        "DESC1": "COUNTER FRIDGE 2DR",
+        "DESC2": "1360MM",
+        "UOM": "EA",
+        "LSTPR": 119500,
+        "SUPCD": "NGR",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-2D"
+      },
+      {
+        "STKCD": "FR-UC-3D",
+        "DESC1": "COUNTER FRIDGE 3DR",
+        "DESC2": "1795MM",
+        "UOM": "EA",
+        "LSTPR": 144500,
+        "SUPCD": "NGR",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-3D"
+      },
+      {
+        "STKCD": "GW-450",
+        "DESC1": "GLASSWASHER 450 BSKT",
+        "DESC2": "DRAIN PUMP",
+        "UOM": "EA",
+        "LSTPR": 104500,
+        "SUPCD": "CWS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GW-450"
+      },
+      {
+        "STKCD": "GW-600",
+        "DESC1": "GLASSWASHER 400 BSKT",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 89500,
+        "SUPCD": "CWS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GW-600"
+      },
+      {
+        "STKCD": "HC-30",
+        "DESC1": "HOT CUPBOARD 3DR",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 79500,
+        "SUPCD": "KLD",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:HC-30"
+      },
+      {
+        "STKCD": "SW-GN13-100",
+        "DESC1": "GN PAN 1/3 100MM",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 795,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+      },
+      {
+        "STKCD": "SW-TRAY-BAKE",
+        "DESC1": "BAKE TRAY 600X400",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 950,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-TRAY-BAKE"
+      },
+      {
+        "STKCD": "WS-SOFT",
+        "DESC1": "WATER SOFTENER",
+        "DESC2": "MANUAL",
+        "UOM": "EA",
+        "LSTPR": 24500,
+        "SUPCD": "CWS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:WS-SOFT"
+      }
+    ],
+    "attachments": [
+      {
+        "filename": "PO_TSK-88.pdf",
+        "path": "05_orders/PO_TSK-88.pdf",
+        "source_id": "file:05_orders/PO_TSK-88.pdf",
+        "available": true
+      }
+    ],
+    "attachment_extractions": [
+      {
+        "relative_path": "05_orders/PO_TSK-88.pdf",
+        "pages": [
+          {
+            "source": {
+              "source_id": "file:05_orders/PO_TSK-88.pdf:page:1",
+              "relative_path": "05_orders/PO_TSK-88.pdf",
+              "display_name": "PO_TSK-88.pdf — page 1",
+              "locator": "Page 1",
+              "timestamp": null,
+              "text": "The Salt Kitchen\r\n12 Market Hill, Cambridge CB2 3NJ\r\nPURCHASE ORDER\r\nPO number: TSK-88\r\nDate: 09/10/2026\r\nSupplier\r\nMeridian Catering Supplies Ltd\r\nUnit 7, Stukeley Meadows\r\nHuntingdon PE29 6FY\r\nDeliver to\r\nThe Salt Kitchen, 12 Market Hill\r\nCambridge CB2 3NJ (side door)\r\nRequired by: ASAP\r\nCode Description Qty Unit £ Total £\r\nDW-400 Dishwasher 400 basket (same as last one) 1 1,595.00 1,595.00\r\nGW-600 Glasswasher, 400mm basket 1 895.00 895.00\r\nWS-SOFT Water softener, manual regen 1 245.00 245.00\r\nRemoval of old dishwasher 1 TBC TBC\r\nNet 2,735.00\r\nVAT 20% 547.00\r\nTotal 3,282.00\r\nJosh Ainsley",
+              "extraction_method": "pdf_text",
+              "requires_review": false,
+              "extraction_error": null
+            },
+            "page_number": 1,
+            "method": "pdf_text",
+            "status": "extracted",
+            "words": [],
+            "error": null
+          }
+        ],
+        "errors": [],
+        "duration_seconds": 0.03540304199998445
+      }
+    ],
+    "report_alerts": [
+      {
+        "code": "order_reference_unresolved",
+        "title": "Order reference requires checking",
+        "message": "No existing order match established for customer_po 'TSK-88'; absence is not proof of a new order.",
+        "blocks_entry": false,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "sources": {
+      "csv:02_open_items_log.csv:record:20": {
+        "source_id": "csv:02_open_items_log.csv:record:20",
+        "relative_path": "02_open_items_log.csv",
+        "display_name": "02_open_items_log.csv — record 20",
+        "locator": "CSV record 20 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"Date\": \"21/09\", \"Customer\": \"Salt Kitchen\", \"Order / PO\": \"\", \"Issue\": \"dishwasher making noise - engineer?\", \"Who\": \"KH\", \"Status\": \"open\", \"Notes\": \"told Josh to call CWS direct\", \"Closed\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:10": {
+        "source_id": "csv:04_reference/price_list.csv:record:10",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 10",
+        "locator": "CSV record 10 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FR-BB-2D\", \"description\": \"Back bar bottle cooler, 2 hinged doors\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"685.00\", \"band_b_gbp\": \"650.75\", \"band_t_gbp\": \"616.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:30": {
+        "source_id": "csv:04_reference/price_list.csv:record:30",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 30",
+        "locator": "CSV record 30 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"HC-30\", \"description\": \"Hot cupboard, 3 door\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"795.00\", \"band_b_gbp\": \"755.25\", \"band_t_gbp\": \"715.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:32": {
+        "source_id": "csv:04_reference/price_list.csv:record:32",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 32",
+        "locator": "CSV record 32 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"DW-400\", \"description\": \"Dishwasher, 400mm basket (discontinued)\", \"category\": \"Warewashing\", \"unit\": \"each\", \"list_price_gbp\": \"1595.00\", \"band_b_gbp\": \"1515.25\", \"band_t_gbp\": \"1435.50\", \"status\": \"obsolete\", \"replaced_by\": \"DW-410\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:33": {
+        "source_id": "csv:04_reference/price_list.csv:record:33",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 33",
+        "locator": "CSV record 33 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"DW-410\", \"description\": \"Dishwasher, 500mm basket, drain pump\", \"category\": \"Warewashing\", \"unit\": \"each\", \"list_price_gbp\": \"1745.00\", \"band_b_gbp\": \"1657.75\", \"band_t_gbp\": \"1570.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:35": {
+        "source_id": "csv:04_reference/price_list.csv:record:35",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 35",
+        "locator": "CSV record 35 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"GW-600\", \"description\": \"Glasswasher, 400mm basket\", \"category\": \"Warewashing\", \"unit\": \"each\", \"list_price_gbp\": \"895.00\", \"band_b_gbp\": \"850.25\", \"band_t_gbp\": \"805.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:36": {
+        "source_id": "csv:04_reference/price_list.csv:record:36",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 36",
+        "locator": "CSV record 36 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"GW-450\", \"description\": \"Glasswasher, 450mm basket, drain pump\", \"category\": \"Warewashing\", \"unit\": \"each\", \"list_price_gbp\": \"1045.00\", \"band_b_gbp\": \"992.75\", \"band_t_gbp\": \"940.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:38": {
+        "source_id": "csv:04_reference/price_list.csv:record:38",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 38",
+        "locator": "CSV record 38 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"WS-SOFT\", \"description\": \"Water softener, manual regen\", \"category\": \"Warewashing\", \"unit\": \"each\", \"list_price_gbp\": \"245.00\", \"band_b_gbp\": \"232.75\", \"band_t_gbp\": \"220.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:50": {
+        "source_id": "csv:04_reference/price_list.csv:record:50",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 50",
+        "locator": "CSV record 50 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-BR-6\", \"description\": \"Blue centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"18.95\", \"band_b_gbp\": \"18.00\", \"band_t_gbp\": \"17.06\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:53": {
+        "source_id": "csv:04_reference/price_list.csv:record:53",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 53",
+        "locator": "CSV record 53 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:55": {
+        "source_id": "csv:04_reference/price_list.csv:record:55",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 55",
+        "locator": "CSV record 55 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-FOIL-450\", \"description\": \"Catering foil, 450mm x 75m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"21.50\", \"band_b_gbp\": \"20.43\", \"band_t_gbp\": \"19.35\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:56": {
+        "source_id": "csv:04_reference/price_list.csv:record:56",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 56",
+        "locator": "CSV record 56 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-DT-5L\", \"description\": \"Dishwasher detergent, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"14.95\", \"band_b_gbp\": \"14.20\", \"band_t_gbp\": \"13.46\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:58": {
+        "source_id": "csv:04_reference/price_list.csv:record:58",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 58",
+        "locator": "CSV record 58 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-SAN-5L\", \"description\": \"Food-safe sanitiser, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"12.95\", \"band_b_gbp\": \"12.30\", \"band_t_gbp\": \"11.66\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:60": {
+        "source_id": "csv:04_reference/price_list.csv:record:60",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 60",
+        "locator": "CSV record 60 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-APRON-WH\", \"description\": \"Disposable aprons, white, pack of 100\", \"category\": \"Consumables\", \"unit\": \"pack\", \"list_price_gbp\": \"9.50\", \"band_b_gbp\": \"9.03\", \"band_t_gbp\": \"8.55\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:61": {
+        "source_id": "csv:04_reference/price_list.csv:record:61",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 61",
+        "locator": "CSV record 61 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-HN-100\", \"description\": \"Hairnets, white, pack of 100\", \"category\": \"Consumables\", \"unit\": \"pack\", \"list_price_gbp\": \"4.95\", \"band_b_gbp\": \"4.70\", \"band_t_gbp\": \"4.46\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:64": {
+        "source_id": "csv:04_reference/price_list.csv:record:64",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 64",
+        "locator": "CSV record 64 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:67": {
+        "source_id": "csv:04_reference/price_list.csv:record:67",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 67",
+        "locator": "CSV record 67 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-TRAY-BAKE\", \"description\": \"Baking tray, aluminium, 600 x 400\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"9.50\", \"band_b_gbp\": \"9.03\", \"band_t_gbp\": \"8.55\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:8": {
+        "source_id": "csv:04_reference/price_list.csv:record:8",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 8",
+        "locator": "CSV record 8 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FR-UC-2D\", \"description\": \"Counter fridge, 2 door, 1360mm\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"1195.00\", \"band_b_gbp\": \"1135.25\", \"band_t_gbp\": \"1075.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:9": {
+        "source_id": "csv:04_reference/price_list.csv:record:9",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 9",
+        "locator": "CSV record 9 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FR-UC-3D\", \"description\": \"Counter fridge, 3 door, 1795mm\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"1445.00\", \"band_b_gbp\": \"1372.75\", \"band_t_gbp\": \"1300.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "email:MSG-037:body": {
+        "source_id": "email:MSG-037:body",
+        "relative_path": "03_inbox_export/inbox.json",
+        "display_name": "MSG-037 — Josh Ainsley <josh@thesaltkitchen.co.uk> — PO TSK-88",
+        "locator": "JSON record 37, body",
+        "timestamp": "2026-10-09T08:10:00+01:00",
+        "text": "Hi,\n\nOur dishwasher has died. PO attached for a replacement (same as the one we got from you last year) plus a glasswasher and a softener for the bar.\n\nASAP please, we're washing up by hand!\n\nJosh",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:preamble": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:section:6": {
+        "source_id": "file:04_reference/customer_account_notes.md:section:6",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "The Salt Kitchen (Cambridge)",
+        "locator": "Section: The Salt Kitchen (Cambridge)",
+        "timestamp": null,
+        "text": "The Salt Kitchen (Cambridge)\n- Orbit: SALT01. List price.\n- Josh Ainsley, chef-owner. POs numbered TSK-xx.\n\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_TSK-88.pdf": {
+        "source_id": "file:05_orders/PO_TSK-88.pdf",
+        "relative_path": "05_orders/PO_TSK-88.pdf",
+        "display_name": "PO_TSK-88.pdf",
+        "locator": "Whole file",
+        "timestamp": null,
+        "text": null,
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:SALT01": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:SALT01",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit CUST — CUSNO=SALT01",
+        "locator": "CUST: CUSNO=SALT01",
+        "timestamp": "20261008 231502",
+        "text": "{\"CUSNO\": \"SALT01\", \"CUSNM\": \"THE SALT KITCHEN\", \"ADR1\": \"12 Market Hill\", \"ADR2\": \"Cambridge\", \"PCODE\": \"CB2 3NJ\", \"TELNO\": \"01223 301144\", \"ACSTAT\": \"A\", \"CRLIM\": 7500, \"PRCBND\": \"L\", \"DTOPEN\": \"20230715\", \"NOTE1\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47746": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47746",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=47746",
+        "locator": "OHDR: ORDNO=47746",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47746, \"CUSNO\": \"SALT01\", \"CUSREF\": \"TSK-85\", \"ORDDT\": \"20260831\", \"STAT\": \"I\", \"DELDT\": \"20260902\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47958": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47958",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=47958",
+        "locator": "OHDR: ORDNO=47958",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47958, \"CUSNO\": \"SALT01\", \"CUSREF\": \"TSK-86\", \"ORDDT\": \"20260916\", \"STAT\": \"I\", \"DELDT\": \"20260922\", \"OPID\": \"JD\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47970": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47970",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=47970",
+        "locator": "OHDR: ORDNO=47970",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47970, \"CUSNO\": \"SALT01\", \"CUSREF\": \"TSK-87\", \"ORDDT\": \"20260917\", \"STAT\": \"I\", \"DELDT\": \"20260923\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47746:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47746:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47746, LNNO=10",
+        "locator": "OLIN: ORDNO=47746, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47746, \"LNNO\": 10, \"STKCD\": \"CON-GL-BL-L\", \"QTY\": 12, \"QTYDS\": 12, \"UPRC\": 645, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47746:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47746:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47746, LNNO=20",
+        "locator": "OLIN: ORDNO=47746, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47746, \"LNNO\": 20, \"STKCD\": \"CON-APRON-WH\", \"QTY\": 12, \"QTYDS\": 12, \"UPRC\": 950, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47958, LNNO=10",
+        "locator": "OLIN: ORDNO=47958, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47958, \"LNNO\": 10, \"STKCD\": \"CON-DT-5L\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 1495, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47958, LNNO=20",
+        "locator": "OLIN: ORDNO=47958, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47958, \"LNNO\": 20, \"STKCD\": \"CON-SAN-5L\", \"QTY\": 6, \"QTYDS\": 6, \"UPRC\": 1295, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47958:30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47958, LNNO=30",
+        "locator": "OLIN: ORDNO=47958, LNNO=30",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47958, \"LNNO\": 30, \"STKCD\": \"CON-APRON-WH\", \"QTY\": 6, \"QTYDS\": 6, \"UPRC\": 950, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47970, LNNO=10",
+        "locator": "OLIN: ORDNO=47970, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47970, \"LNNO\": 10, \"STKCD\": \"CON-APRON-WH\", \"QTY\": 12, \"QTYDS\": 12, \"UPRC\": 950, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47970, LNNO=20",
+        "locator": "OLIN: ORDNO=47970, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47970, \"LNNO\": 20, \"STKCD\": \"CON-HN-100\", \"QTY\": 10, \"QTYDS\": 10, \"UPRC\": 495, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47970, LNNO=30",
+        "locator": "OLIN: ORDNO=47970, LNNO=30",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47970, \"LNNO\": 30, \"STKCD\": \"CON-BR-6\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 1895, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:40": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47970:40",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47970, LNNO=40",
+        "locator": "OLIN: ORDNO=47970, LNNO=40",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47970, \"LNNO\": 40, \"STKCD\": \"CON-FOIL-450\", \"QTY\": 10, \"QTYDS\": 10, \"UPRC\": 2150, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-APRON-WH": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-APRON-WH",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-APRON-WH",
+        "locator": "STK: STKCD=CON-APRON-WH",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-APRON-WH\", \"DESC1\": \"APRON DISP WHITE\", \"DESC2\": \"PK100\", \"UOM\": \"PK\", \"LSTPR\": 950, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-BR-6",
+        "locator": "STK: STKCD=CON-BR-6",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-BR-6\", \"DESC1\": \"BLUE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1895, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-DT-5L",
+        "locator": "STK: STKCD=CON-DT-5L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-DT-5L\", \"DESC1\": \"DW DETERGENT 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1495, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-FOIL-450",
+        "locator": "STK: STKCD=CON-FOIL-450",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-FOIL-450\", \"DESC1\": \"FOIL 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 2150, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+        "locator": "STK: STKCD=CON-GL-BL-L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-HN-100": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-HN-100",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-HN-100",
+        "locator": "STK: STKCD=CON-HN-100",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-HN-100\", \"DESC1\": \"HAIRNET WHITE\", \"DESC2\": \"PK100\", \"UOM\": \"PK\", \"LSTPR\": 495, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-SAN-5L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-SAN-5L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-SAN-5L",
+        "locator": "STK: STKCD=CON-SAN-5L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-SAN-5L\", \"DESC1\": \"SANITISER 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1295, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-400": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-400",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=DW-400",
+        "locator": "STK: STKCD=DW-400",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"DW-400\", \"DESC1\": \"DISHWASHER 400 BSKT\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 159500, \"SUPCD\": \"CWS\", \"OBSFLG\": \"Y\", \"RPLCD\": \"DW-410\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-410": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:DW-410",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=DW-410",
+        "locator": "STK: STKCD=DW-410",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"DW-410\", \"DESC1\": \"DISHWASHER 500 BSKT\", \"DESC2\": \"DRAIN PUMP\", \"UOM\": \"EA\", \"LSTPR\": 174500, \"SUPCD\": \"CWS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-BB-2D": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-BB-2D",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FR-BB-2D",
+        "locator": "STK: STKCD=FR-BB-2D",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FR-BB-2D\", \"DESC1\": \"BOTTLE COOLER 2DR\", \"DESC2\": \"BLACK\", \"UOM\": \"EA\", \"LSTPR\": 68500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-2D": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-2D",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FR-UC-2D",
+        "locator": "STK: STKCD=FR-UC-2D",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FR-UC-2D\", \"DESC1\": \"COUNTER FRIDGE 2DR\", \"DESC2\": \"1360MM\", \"UOM\": \"EA\", \"LSTPR\": 119500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-3D": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-UC-3D",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FR-UC-3D",
+        "locator": "STK: STKCD=FR-UC-3D",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FR-UC-3D\", \"DESC1\": \"COUNTER FRIDGE 3DR\", \"DESC2\": \"1795MM\", \"UOM\": \"EA\", \"LSTPR\": 144500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GW-450": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GW-450",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=GW-450",
+        "locator": "STK: STKCD=GW-450",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"GW-450\", \"DESC1\": \"GLASSWASHER 450 BSKT\", \"DESC2\": \"DRAIN PUMP\", \"UOM\": \"EA\", \"LSTPR\": 104500, \"SUPCD\": \"CWS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GW-600": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GW-600",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=GW-600",
+        "locator": "STK: STKCD=GW-600",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"GW-600\", \"DESC1\": \"GLASSWASHER 400 BSKT\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 89500, \"SUPCD\": \"CWS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:HC-30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:HC-30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=HC-30",
+        "locator": "STK: STKCD=HC-30",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"HC-30\", \"DESC1\": \"HOT CUPBOARD 3DR\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 79500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-GN13-100",
+        "locator": "STK: STKCD=SW-GN13-100",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-TRAY-BAKE": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-TRAY-BAKE",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-TRAY-BAKE",
+        "locator": "STK: STKCD=SW-TRAY-BAKE",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-TRAY-BAKE\", \"DESC1\": \"BAKE TRAY 600X400\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 950, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:WS-SOFT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:WS-SOFT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=WS-SOFT",
+        "locator": "STK: STKCD=WS-SOFT",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"WS-SOFT\", \"DESC1\": \"WATER SOFTENER\", \"DESC2\": \"MANUAL\", \"UOM\": \"EA\", \"LSTPR\": 24500, \"SUPCD\": \"CWS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+        "locator": "SYSPARM: PKEY=ACSTCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+        "locator": "SYSPARM: PKEY=LASTEXP",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+        "locator": "SYSPARM: PKEY=STATCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=VATRT",
+        "locator": "SYSPARM: PKEY=VATRT",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:05_orders/PO_TSK-88.pdf:page:1": {
+        "source_id": "file:05_orders/PO_TSK-88.pdf:page:1",
+        "relative_path": "05_orders/PO_TSK-88.pdf",
+        "display_name": "PO_TSK-88.pdf — page 1",
+        "locator": "Page 1",
+        "timestamp": null,
+        "text": "The Salt Kitchen\r\n12 Market Hill, Cambridge CB2 3NJ\r\nPURCHASE ORDER\r\nPO number: TSK-88\r\nDate: 09/10/2026\r\nSupplier\r\nMeridian Catering Supplies Ltd\r\nUnit 7, Stukeley Meadows\r\nHuntingdon PE29 6FY\r\nDeliver to\r\nThe Salt Kitchen, 12 Market Hill\r\nCambridge CB2 3NJ (side door)\r\nRequired by: ASAP\r\nCode Description Qty Unit £ Total £\r\nDW-400 Dishwasher 400 basket (same as last one) 1 1,595.00 1,595.00\r\nGW-600 Glasswasher, 400mm basket 1 895.00 895.00\r\nWS-SOFT Water softener, manual regen 1 245.00 245.00\r\nRemoval of old dishwasher 1 TBC TBC\r\nNet 2,735.00\r\nVAT 20% 547.00\r\nTotal 3,282.00\r\nJosh Ainsley",
+        "extraction_method": "pdf_text",
+        "requires_review": false,
+        "extraction_error": null
+      }
+    },
+    "source_limitations": [
+      "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+      "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+      "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+    ]
+  },
+  "report_alerts": [
+    {
+      "code": "order_reference_unresolved",
+      "title": "Order reference requires checking",
+      "message": "No existing order match established for customer_po 'TSK-88'; absence is not proof of a new order.",
+      "blocks_entry": false,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "entry_details_unresolved",
+      "title": "Entry details require confirmation",
+      "message": "Not established: dishwasher-removal.sku, dishwasher-removal.unit",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    }
+  ],
+  "llm": {
+    "call_count": 1,
+    "model": "gpt-6-luna",
+    "duration_seconds": 34.774541459000034,
+    "response_id": "resp_0a347a4c06824396016afde2c5642887d29eb5e760e01ad580",
+    "usage": {
+      "input_tokens": 22829,
+      "input_tokens_details": {
+        "cache_write_tokens": 17932,
+        "cached_tokens": 4894,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 17932
+        }
+      },
+      "output_tokens": 4024,
+      "output_tokens_details": {
+        "reasoning_tokens": 1873
+      },
+      "total_tokens": 26853
+    }
+  },
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    }
+  },
+  "policy_sha256": "9d40bce82f1d75dc6a32108728800d84dd91b3c2619074e34ea923e5f8d55643",
+  "proposal": {
+    "email_id": "MSG-037",
+    "action_type": "new_order_request",
+    "summary": "New order PO TSK-88 requests a dishwasher, glasswasher, softener and dishwasher removal, ASAP. The requested dishwasher is discontinued and the removal charge is TBC.",
+    "customer_po": {
+      "value": "TSK-88",
+      "basis": "explicit_request",
+      "evidence_ids": [
+        "file:05_orders/PO_TSK-88.pdf:page:1"
+      ]
+    },
+    "new_order": {
+      "header": {
+        "delivery_destination": {
+          "value": "The Salt Kitchen, 12 Market Hill, Cambridge CB2 3NJ",
+          "basis": "explicit_request",
+          "evidence_ids": [
+            "file:05_orders/PO_TSK-88.pdf:page:1"
+          ]
+        },
+        "delivery_instructions": {
+          "value": "side door",
+          "basis": "explicit_request",
+          "evidence_ids": [
+            "file:05_orders/PO_TSK-88.pdf:page:1"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "line_id": "dishwasher",
+          "description": {
+            "value": "DW-400 Dishwasher 400 basket (same as last one)",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "sku": {
+            "value": "DW-400",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "recorded_internal",
+            "evidence_ids": [
+              "csv:04_reference/price_list.csv:record:32"
+            ]
+          },
+          "quantity_basis": "order_total",
+          "customer_quoted_price": {
+            "label": "Unit £",
+            "amount": {
+              "value": "1,595.00",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "file:05_orders/PO_TSK-88.pdf:page:1"
+              ]
+            },
+            "currency": "GBP",
+            "vat_basis": "exclusive",
+            "price_basis": "per_unit"
+          }
+        },
+        {
+          "line_id": "glasswasher",
+          "description": {
+            "value": "GW-600 Glasswasher, 400mm basket",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "sku": {
+            "value": "GW-600",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "recorded_internal",
+            "evidence_ids": [
+              "csv:04_reference/price_list.csv:record:35"
+            ]
+          },
+          "quantity_basis": "order_total",
+          "customer_quoted_price": {
+            "label": "Unit £",
+            "amount": {
+              "value": "895.00",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "file:05_orders/PO_TSK-88.pdf:page:1"
+              ]
+            },
+            "currency": "GBP",
+            "vat_basis": "exclusive",
+            "price_basis": "per_unit"
+          }
+        },
+        {
+          "line_id": "softener",
+          "description": {
+            "value": "WS-SOFT Water softener, manual regen",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "sku": {
+            "value": "WS-SOFT",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "recorded_internal",
+            "evidence_ids": [
+              "csv:04_reference/price_list.csv:record:38"
+            ]
+          },
+          "quantity_basis": "order_total",
+          "customer_quoted_price": {
+            "label": "Unit £",
+            "amount": {
+              "value": "245.00",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "file:05_orders/PO_TSK-88.pdf:page:1"
+              ]
+            },
+            "currency": "GBP",
+            "vat_basis": "exclusive",
+            "price_basis": "per_unit"
+          }
+        },
+        {
+          "line_id": "dishwasher-removal",
+          "description": {
+            "value": "Removal of old dishwasher",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "quantity_basis": "order_total"
+        }
+      ],
+      "customer_quoted_totals": [
+        {
+          "label": "Net",
+          "amount": {
+            "value": "2,735.00",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "currency": "GBP",
+          "vat_basis": "exclusive",
+          "price_basis": "order_total"
+        },
+        {
+          "label": "VAT 20%",
+          "amount": {
+            "value": "547.00",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "currency": "GBP",
+          "vat_basis": "unknown",
+          "price_basis": "order_total"
+        },
+        {
+          "label": "Total",
+          "amount": {
+            "value": "3,282.00",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "file:05_orders/PO_TSK-88.pdf:page:1"
+            ]
+          },
+          "currency": "GBP",
+          "vat_basis": "inclusive",
+          "price_basis": "order_total"
+        }
+      ],
+      "customer_discounts": []
+    },
+    "uncertainties": [
+      {
+        "question": "Will the customer accept DW-410, which has a 500mm basket and drain pump, instead of the requested DW-400 with a 400mm basket?",
+        "affected_fields": [
+          "new_order.lines[dishwasher].sku",
+          "new_order.lines[dishwasher].description"
+        ],
+        "next_action": "Ask the customer whether DW-410 meets their requirement or whether they need a different 400mm-basket dishwasher.",
+        "evidence_ids": [
+          "file:05_orders/PO_TSK-88.pdf:page:1",
+          "csv:04_reference/price_list.csv:record:32",
+          "csv:04_reference/price_list.csv:record:33"
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "category": "unpriced_service_line",
+        "description": "The PO requests removal of the old dishwasher, but gives the unit and total as TBC; no catalogue service SKU is established.",
+        "affected_fields": [
+          "new_order.lines[dishwasher-removal].sku",
+          "new_order.lines[dishwasher-removal].unit",
+          "new_order.lines[dishwasher-removal].customer_quoted_price"
+        ],
+        "next_action": "Check whether removal can be supplied and confirm its service entry and charge before entry.",
+        "owner": "order desk",
+        "evidence_ids": [
+          "file:05_orders/PO_TSK-88.pdf:page:1"
+        ]
+      }
+    ]
+  }
+}
