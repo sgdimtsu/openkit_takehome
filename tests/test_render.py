@@ -49,7 +49,7 @@ class RenderTests(unittest.TestCase):
     def html(self, reports):
         return render_html(reports, input_root=PACK, output_dir=PACK.parent / 'output')
 
-    def test_grouping_separate_triggers_and_fixed_sections(self):
+    def test_grouping_separate_triggers_and_action_specific_sections(self):
         second = copy.deepcopy(self.amendment)
         second['report_id'] = 'second-harbour-review'
         second['preparation']['trigger']['email_id'] = 'SECOND-TRIGGER'
@@ -59,7 +59,7 @@ class RenderTests(unittest.TestCase):
         groups = [attrs for tag, attrs in parsed.tags if tag == 'section' and attrs.get('class') == 'customer']
         self.assertEqual(len(articles), 3)
         self.assertEqual(len(groups), 2)
-        for title in ('Current order status', 'Outstanding issues', 'Evidence'):
+        for title in ('Recorded position', 'Before entry', 'Changes prepared', 'Source material'):
             self.assertIn(title, text)
         self.assertIn('SECOND-TRIGGER', text)
         self.assertIn('HARB01', text)
@@ -117,8 +117,8 @@ class RenderTests(unittest.TestCase):
         text = self.html([self.destination])
         self.assertIn('The Lamb', text)
         self.assertIn('Not available in the order export', text)
-        self.assertIn('Unverified customer request', text)
-        self.assertIn('Checks required', text)
+        self.assertIn('Prepared for entry', text)
+        self.assertIn('Replacement to enter', text)
 
     def test_unresolved_customer_prominent_and_unsupported_input_is_failure(self):
         selected = selection('MSG-017', 'Grafham Kitchen')
@@ -132,7 +132,8 @@ class RenderTests(unittest.TestCase):
         self.assertIn('No account assigned', text)
         self.assertEqual(sum(tag == 'article' for tag, _ in ParsedHTML(text).tags), 1)
         self.assertIn('Customer/account unresolved', text)
-        self.assertIn('Do not proceed', text)
+        self.assertIn('Decision required', text)
+        self.assertEqual(reviewed['validation']['readiness'], 'Do not proceed')
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'unvalidated.json'
             path.write_text(json.dumps(record))
@@ -241,6 +242,51 @@ class RenderTests(unittest.TestCase):
         for message in ['Blanket credit recheck', 'Blanket freshness warning', 'Blanket VAT warning']:
             self.assertNotIn(message, text)
         self.assertNotIn('Check current credit status in Orbit;', text)
+
+
+    def test_new_order_has_prepared_entry_fields_without_existing_order_status(self):
+        text = self.html([self.new])
+        self.assertIn('Fields for the new order', text)
+        self.assertIn('Start in Orbit', text)
+        self.assertIn('MILL01', text)
+        self.assertNotIn('Recorded position', text)
+        self.assertNotIn('Current order status', text)
+        self.assertNotIn('recorded status', text)
+        self.assertNotIn('Order number needed', text)
+        self.assertNotIn('Before entry', text)  # No empty decision section.
+        self.assertNotIn('Report ID', text)
+        self.assertNotIn('Model interpretation', text)
+        self.assertNotIn('input_tokens', text)
+
+    def test_blocked_date_is_not_presented_as_ready_to_enter(self):
+        text = self.html([self.amendment])
+        self.assertIn('Awaiting revised or confirmed date', text)
+        self.assertIn('Requested: 21/10/2026', text)
+        self.assertIn('Decision required', text)
+        self.assertIn('12 boxes total', text)
+
+    def test_field_evidence_includes_focused_excerpt_and_source_fallback(self):
+        text = self.html([self.new])
+        parsed = ParsedHTML(text)
+        links = [attrs for tag, attrs in parsed.tags if tag == 'a' and 'data-evidence' in attrs]
+        self.assertTrue(any('CON-BR-6' in attrs.get('data-excerpt', '') for attrs in links))
+        self.assertTrue(any(tag == 'dialog' and attrs.get('id') == 'source-dialog' for tag, attrs in parsed.tags))
+        self.assertIn('Full source text', text)
+        self.assertIn('Source material', text)
+
+    def test_unknown_action_has_specific_questions_without_order_entry_table(self):
+        record = copy.deepcopy(self.new_record)
+        record['classification']['action_type'] = 'uncertain'
+        record['proposal'] = {'email_id': record['trigger']['email_id'], 'action_type': 'uncertain',
+            'summary': 'Workflow decision required.', 'unresolved_action': {
+                'possible_action_types': ['new_order_request', 'amendment_request'],
+                'explanation': 'The remedy workflow is not established.', 'evidence_ids': []},
+            'uncertainties': [{'question': 'Replacement order or service remedy?', 'affected_fields': ['action_type'],
+                              'next_action': 'Order desk: select the remedy workflow.', 'evidence_ids': []}], 'issues': []}
+        text = self.html([apply_business_rules(record)])
+        self.assertIn('Replacement order or service remedy?', text)
+        self.assertNotIn('class="lines"', text)
+        self.assertNotIn('Fields for the new order', text)
 
 
 

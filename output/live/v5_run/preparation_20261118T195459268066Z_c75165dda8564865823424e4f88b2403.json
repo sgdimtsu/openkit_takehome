@@ -1,0 +1,970 @@
+{
+  "schema_version": "1.0",
+  "report_id": "b40c33cd04f144b0aae9d36e3c692dfd",
+  "generated_at": "2026-11-18T19:54:59.262254+00:00",
+  "status": "prepared",
+  "business_rules_applied": false,
+  "requires_human_review": true,
+  "trigger": {
+    "email_id": "MSG-024",
+    "received_at": "2026-10-07T12:40:00+01:00"
+  },
+  "classification": {
+    "email_id": "MSG-024",
+    "customer": {
+      "name_as_stated": "Pasta Fresca Hills Road",
+      "account_id_as_stated": null
+    },
+    "action_type": "new_order_request",
+    "references": {
+      "customer_po": null,
+      "orbit_order_number": null
+    },
+    "related_email_ids": [],
+    "reason": "Requests the usual order for delivery to the Hills Road site.",
+    "uncertainties": []
+  },
+  "context": {
+    "email_id": "MSG-024",
+    "action_type": "new_order_request",
+    "customer_match": {
+      "status": "matched",
+      "account_id": "PAST01",
+      "candidate_account_ids": [
+        "PAST01"
+      ],
+      "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+      "evidence_ids": [
+        "file:04_reference/customer_account_notes.md:section:9",
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01"
+      ]
+    },
+    "customer_record": {
+      "CUSNO": "PAST01",
+      "CUSNM": "PASTA FRESCA LTD",
+      "ADR1": "3 Regent Street",
+      "ADR2": "Cambridge",
+      "PCODE": "CB2 1AB",
+      "TELNO": "01223 312098",
+      "ACSTAT": "A",
+      "CRLIM": 15000,
+      "PRCBND": "B",
+      "DTOPEN": "17/05/2017",
+      "NOTE1": "3 SITES - CHECK DEL ADDR. CONTRACT BLUE ROLL",
+      "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01"
+    },
+    "current_request": {
+      "id": "MSG-024",
+      "received": "2026-10-07T12:40:00+01:00",
+      "from": "Anna Russo <hillsroad@pastafresca.co.uk>",
+      "to": "orders@meridiancatering.co.uk",
+      "subject": "Order for Hills Road",
+      "body": "Hi,\n\nUsual order for Hills Road please:\n4 cases blue roll\n2 boxes large gloves\n1 x 20L stockpot\n\nDelivery to HILLS ROAD not Regent St!!\n\nThanks\nAnna\nPasta Fresca Hills Road",
+      "attachments": [],
+      "in_reply_to": null,
+      "source_id": "email:MSG-024:body"
+    },
+    "explicitly_matched_orders": [],
+    "supporting_history": [
+      {
+        "header": {
+          "ORDNO": 48028,
+          "CUSNO": "PAST01",
+          "CUSREF": "PF/3391",
+          "ORDDT": "20260922",
+          "STAT": "I",
+          "DELDT": "20260925",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028"
+        },
+        "lines": [
+          {
+            "ORDNO": 48028,
+            "LNNO": 10,
+            "STKCD": "CON-BR-6",
+            "QTY": 4,
+            "QTYDS": 4,
+            "UPRC": 1550,
+            "DISC": 0.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10"
+          },
+          {
+            "ORDNO": 48028,
+            "LNNO": 20,
+            "STKCD": "CON-GL-BL-L",
+            "QTY": 4,
+            "QTYDS": 4,
+            "UPRC": 645,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20"
+          },
+          {
+            "ORDNO": 48028,
+            "LNNO": 30,
+            "STKCD": "SW-GN11-65",
+            "QTY": 6,
+            "QTYDS": 0,
+            "UPRC": 1195,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+          },
+          {
+            "ORDNO": 48028,
+            "LNNO": 40,
+            "STKCD": "SW-STOCK-20",
+            "QTY": 1,
+            "QTYDS": 1,
+            "UPRC": 4900,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40"
+          }
+        ],
+        "order_date_normalised": "2026-09-22"
+      },
+      {
+        "header": {
+          "ORDNO": 47927,
+          "CUSNO": "PAST01",
+          "CUSREF": "PF/3390",
+          "ORDDT": "20260914",
+          "STAT": "I",
+          "DELDT": "20260916",
+          "OPID": "JD",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47927"
+        },
+        "lines": [
+          {
+            "ORDNO": 47927,
+            "LNNO": 10,
+            "STKCD": "CON-CF-450",
+            "QTY": 1,
+            "QTYDS": 1,
+            "UPRC": 995,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47927:10"
+          }
+        ],
+        "order_date_normalised": "2026-09-14"
+      },
+      {
+        "header": {
+          "ORDNO": 47885,
+          "CUSNO": "PAST01",
+          "CUSREF": "PF/3387",
+          "ORDDT": "20260910",
+          "STAT": "I",
+          "DELDT": "20260915",
+          "OPID": "PS",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47885"
+        },
+        "lines": [
+          {
+            "ORDNO": 47885,
+            "LNNO": 10,
+            "STKCD": "CON-GL-BL-M",
+            "QTY": 6,
+            "QTYDS": 6,
+            "UPRC": 645,
+            "DISC": 5.0,
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47885:10"
+          }
+        ],
+        "order_date_normalised": "2026-09-10"
+      }
+    ],
+    "history_limit": 3,
+    "customer_notes": [
+      {
+        "source_id": "file:04_reference/customer_account_notes.md:section:9",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "Pasta Fresca Ltd (Cambridge, 3 sites)",
+        "locator": "Section: Pasta Fresca Ltd (Cambridge, 3 sites)",
+        "timestamp": null,
+        "text": "Pasta Fresca Ltd (Cambridge, 3 sites)\n- Orbit: PAST01. Band B. One account for all three sites. **Check which site it's for.**\n- Sites: Regent Street (main, account address), Hills Road, Mill Road.\n- **Contract: blue roll (CON-BR-6) fixed at £15.50 a case.**\n- Marco Bellini (ops) for anything that's gone wrong.\n\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      }
+    ],
+    "general_account_notes": {
+      "source_id": "file:04_reference/customer_account_notes.md:preamble",
+      "relative_path": "04_reference/customer_account_notes.md",
+      "display_name": "customer_account_notes.md — introductory notes",
+      "locator": "Before first customer heading",
+      "timestamp": null,
+      "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+      "extraction_method": null,
+      "requires_review": false,
+      "extraction_error": null
+    },
+    "account_constraints": [],
+    "export_parameters": {
+      "VATRT": {
+        "PKEY": "VATRT",
+        "PVAL": "17.5",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+      },
+      "LASTEXP": {
+        "PKEY": "LASTEXP",
+        "PVAL": "20261008 231502",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+      },
+      "ACSTCDS": {
+        "PKEY": "ACSTCDS",
+        "PVAL": "A,H,C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+      },
+      "STATCDS": {
+        "PKEY": "STATCDS",
+        "PVAL": "N,P,D,I,X,H",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+      }
+    },
+    "open_items": [],
+    "unresolved_open_items": [],
+    "catalogue_candidates": [
+      {
+        "sku": "FRY-2T-8",
+        "description": "Fryer, twin tank, 2 x 8L, electric",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "645.00",
+        "band_b_gbp": "612.75",
+        "band_t_gbp": "580.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:22"
+      },
+      {
+        "sku": "CON-BR-6",
+        "description": "Blue centrefeed roll, case of 6",
+        "category": "Consumables",
+        "unit": "case",
+        "list_price_gbp": "18.95",
+        "band_b_gbp": "18.00",
+        "band_t_gbp": "17.06",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:50"
+      },
+      {
+        "sku": "CON-GL-BL-M",
+        "description": "Nitrile gloves, blue, medium, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:52"
+      },
+      {
+        "sku": "CON-GL-BL-L",
+        "description": "Nitrile gloves, blue, large, box of 100",
+        "category": "Consumables",
+        "unit": "box",
+        "list_price_gbp": "6.45",
+        "band_b_gbp": "6.13",
+        "band_t_gbp": "5.81",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:53"
+      },
+      {
+        "sku": "CON-CF-450",
+        "description": "Cling film, 450mm x 300m",
+        "category": "Consumables",
+        "unit": "roll",
+        "list_price_gbp": "9.95",
+        "band_b_gbp": "9.45",
+        "band_t_gbp": "8.96",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:54"
+      },
+      {
+        "sku": "SW-GN11-65",
+        "description": "Gastronorm pan 1/1, 65mm, stainless",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "11.95",
+        "band_b_gbp": "11.35",
+        "band_t_gbp": "10.75",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:62"
+      },
+      {
+        "sku": "SW-STOCK-20",
+        "description": "Stockpot, 20L, with lid",
+        "category": "Smallwares",
+        "unit": "each",
+        "list_price_gbp": "49.00",
+        "band_b_gbp": "46.55",
+        "band_t_gbp": "44.10",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:72"
+      }
+    ],
+    "stock_records": [
+      {
+        "STKCD": "CON-BR-6",
+        "DESC1": "BLUE ROLL C/FEED",
+        "DESC2": "CASE 6",
+        "UOM": "CS",
+        "LSTPR": 1895,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6"
+      },
+      {
+        "STKCD": "CON-CF-450",
+        "DESC1": "CLINGFILM 450",
+        "DESC2": "",
+        "UOM": "RL",
+        "LSTPR": 995,
+        "SUPCD": "BCS",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450"
+      },
+      {
+        "STKCD": "CON-GL-BL-L",
+        "DESC1": "GLOVES NITRILE BLUE L",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+      },
+      {
+        "STKCD": "CON-GL-BL-M",
+        "DESC1": "GLOVES NITRILE BLUE M",
+        "DESC2": "BX100",
+        "UOM": "BX",
+        "LSTPR": 645,
+        "SUPCD": "BCS",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M"
+      },
+      {
+        "STKCD": "FRY-2T-8",
+        "DESC1": "FRYER 2 TANK 2X8L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 64500,
+        "SUPCD": "KLD",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8"
+      },
+      {
+        "STKCD": "SW-GN11-65",
+        "DESC1": "GN PAN 1/1 65MM",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 1195,
+        "SUPCD": "PRM",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65"
+      },
+      {
+        "STKCD": "SW-STOCK-20",
+        "DESC1": "STOCKPOT 20L",
+        "DESC2": "W/LID",
+        "UOM": "EA",
+        "LSTPR": 4900,
+        "SUPCD": "PRM",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-STOCK-20"
+      }
+    ],
+    "attachments": [],
+    "attachment_extractions": [],
+    "report_alerts": [],
+    "sources": {
+      "csv:04_reference/price_list.csv:record:22": {
+        "source_id": "csv:04_reference/price_list.csv:record:22",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 22",
+        "locator": "CSV record 22 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FRY-2T-8\", \"description\": \"Fryer, twin tank, 2 x 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"645.00\", \"band_b_gbp\": \"612.75\", \"band_t_gbp\": \"580.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:50": {
+        "source_id": "csv:04_reference/price_list.csv:record:50",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 50",
+        "locator": "CSV record 50 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-BR-6\", \"description\": \"Blue centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"18.95\", \"band_b_gbp\": \"18.00\", \"band_t_gbp\": \"17.06\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:52": {
+        "source_id": "csv:04_reference/price_list.csv:record:52",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 52",
+        "locator": "CSV record 52 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-M\", \"description\": \"Nitrile gloves, blue, medium, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:53": {
+        "source_id": "csv:04_reference/price_list.csv:record:53",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 53",
+        "locator": "CSV record 53 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:54": {
+        "source_id": "csv:04_reference/price_list.csv:record:54",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 54",
+        "locator": "CSV record 54 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"CON-CF-450\", \"description\": \"Cling film, 450mm x 300m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"9.95\", \"band_b_gbp\": \"9.45\", \"band_t_gbp\": \"8.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:62": {
+        "source_id": "csv:04_reference/price_list.csv:record:62",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 62",
+        "locator": "CSV record 62 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-GN11-65\", \"description\": \"Gastronorm pan 1/1, 65mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"11.95\", \"band_b_gbp\": \"11.35\", \"band_t_gbp\": \"10.75\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:72": {
+        "source_id": "csv:04_reference/price_list.csv:record:72",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 72",
+        "locator": "CSV record 72 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"SW-STOCK-20\", \"description\": \"Stockpot, 20L, with lid\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"49.00\", \"band_b_gbp\": \"46.55\", \"band_t_gbp\": \"44.10\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "email:MSG-024:body": {
+        "source_id": "email:MSG-024:body",
+        "relative_path": "03_inbox_export/inbox.json",
+        "display_name": "MSG-024 — Anna Russo <hillsroad@pastafresca.co.uk> — Order for Hills Road",
+        "locator": "JSON record 24, body",
+        "timestamp": "2026-10-07T12:40:00+01:00",
+        "text": "Hi,\n\nUsual order for Hills Road please:\n4 cases blue roll\n2 boxes large gloves\n1 x 20L stockpot\n\nDelivery to HILLS ROAD not Regent St!!\n\nThanks\nAnna\nPasta Fresca Hills Road",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:preamble": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:section:9": {
+        "source_id": "file:04_reference/customer_account_notes.md:section:9",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "Pasta Fresca Ltd (Cambridge, 3 sites)",
+        "locator": "Section: Pasta Fresca Ltd (Cambridge, 3 sites)",
+        "timestamp": null,
+        "text": "Pasta Fresca Ltd (Cambridge, 3 sites)\n- Orbit: PAST01. Band B. One account for all three sites. **Check which site it's for.**\n- Sites: Regent Street (main, account address), Hills Road, Mill Road.\n- **Contract: blue roll (CON-BR-6) fixed at £15.50 a case.**\n- Marco Bellini (ops) for anything that's gone wrong.\n\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit CUST — CUSNO=PAST01",
+        "locator": "CUST: CUSNO=PAST01",
+        "timestamp": "20261008 231502",
+        "text": "{\"CUSNO\": \"PAST01\", \"CUSNM\": \"PASTA FRESCA LTD\", \"ADR1\": \"3 Regent Street\", \"ADR2\": \"Cambridge\", \"PCODE\": \"CB2 1AB\", \"TELNO\": \"01223 312098\", \"ACSTAT\": \"A\", \"CRLIM\": 15000, \"PRCBND\": \"B\", \"DTOPEN\": \"17/05/2017\", \"NOTE1\": \"3 SITES - CHECK DEL ADDR. CONTRACT BLUE ROLL\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47885": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47885",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=47885",
+        "locator": "OHDR: ORDNO=47885",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47885, \"CUSNO\": \"PAST01\", \"CUSREF\": \"PF/3387\", \"ORDDT\": \"20260910\", \"STAT\": \"I\", \"DELDT\": \"20260915\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47927": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47927",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=47927",
+        "locator": "OHDR: ORDNO=47927",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47927, \"CUSNO\": \"PAST01\", \"CUSREF\": \"PF/3390\", \"ORDDT\": \"20260914\", \"STAT\": \"I\", \"DELDT\": \"20260916\", \"OPID\": \"JD\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OHDR — ORDNO=48028",
+        "locator": "OHDR: ORDNO=48028",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48028, \"CUSNO\": \"PAST01\", \"CUSREF\": \"PF/3391\", \"ORDDT\": \"20260922\", \"STAT\": \"I\", \"DELDT\": \"20260925\", \"OPID\": \"PS\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47885:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47885:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47885, LNNO=10",
+        "locator": "OLIN: ORDNO=47885, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47885, \"LNNO\": 10, \"STKCD\": \"CON-GL-BL-M\", \"QTY\": 6, \"QTYDS\": 6, \"UPRC\": 645, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47927:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47927:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=47927, LNNO=10",
+        "locator": "OLIN: ORDNO=47927, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 47927, \"LNNO\": 10, \"STKCD\": \"CON-CF-450\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 995, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48028, LNNO=10",
+        "locator": "OLIN: ORDNO=48028, LNNO=10",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48028, \"LNNO\": 10, \"STKCD\": \"CON-BR-6\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 1550, \"DISC\": 0.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48028, LNNO=20",
+        "locator": "OLIN: ORDNO=48028, LNNO=20",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48028, \"LNNO\": 20, \"STKCD\": \"CON-GL-BL-L\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 645, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48028, LNNO=30",
+        "locator": "OLIN: ORDNO=48028, LNNO=30",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48028, \"LNNO\": 30, \"STKCD\": \"SW-GN11-65\", \"QTY\": 6, \"QTYDS\": 0, \"UPRC\": 1195, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit OLIN — ORDNO=48028, LNNO=40",
+        "locator": "OLIN: ORDNO=48028, LNNO=40",
+        "timestamp": "20261008 231502",
+        "text": "{\"ORDNO\": 48028, \"LNNO\": 40, \"STKCD\": \"SW-STOCK-20\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 4900, \"DISC\": 5.0}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-BR-6",
+        "locator": "STK: STKCD=CON-BR-6",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-BR-6\", \"DESC1\": \"BLUE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1895, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-CF-450",
+        "locator": "STK: STKCD=CON-CF-450",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-CF-450\", \"DESC1\": \"CLINGFILM 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 995, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+        "locator": "STK: STKCD=CON-GL-BL-L",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=CON-GL-BL-M",
+        "locator": "STK: STKCD=CON-GL-BL-M",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"CON-GL-BL-M\", \"DESC1\": \"GLOVES NITRILE BLUE M\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FRY-2T-8",
+        "locator": "STK: STKCD=FRY-2T-8",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FRY-2T-8\", \"DESC1\": \"FRYER 2 TANK 2X8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 64500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-GN11-65",
+        "locator": "STK: STKCD=SW-GN11-65",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-GN11-65\", \"DESC1\": \"GN PAN 1/1 65MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1195, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-STOCK-20": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-STOCK-20",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=SW-STOCK-20",
+        "locator": "STK: STKCD=SW-STOCK-20",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"SW-STOCK-20\", \"DESC1\": \"STOCKPOT 20L\", \"DESC2\": \"W/LID\", \"UOM\": \"EA\", \"LSTPR\": 4900, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+        "locator": "SYSPARM: PKEY=ACSTCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+        "locator": "SYSPARM: PKEY=LASTEXP",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+        "locator": "SYSPARM: PKEY=STATCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=VATRT",
+        "locator": "SYSPARM: PKEY=VATRT",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      }
+    },
+    "source_limitations": [
+      "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+      "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+      "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+    ]
+  },
+  "report_alerts": [],
+  "llm": {
+    "call_count": 1,
+    "model": "gpt-6-luna",
+    "duration_seconds": 12.736257667000018,
+    "response_id": "resp_0f714121bea391cb016afe0286b06887d2bf81c5a79861827e",
+    "usage": {
+      "input_tokens": 15090,
+      "input_tokens_details": {
+        "cache_write_tokens": 9763,
+        "cached_tokens": 5324,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 9763
+        }
+      },
+      "output_tokens": 1633,
+      "output_tokens_details": {
+        "reasoning_tokens": 461
+      },
+      "total_tokens": 16723
+    }
+  },
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": false,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+  "proposal": {
+    "email_id": "MSG-024",
+    "action_type": "new_order_request",
+    "summary": "Prepare the Hills Road order; the full delivery address is not supplied.",
+    "new_order": {
+      "header": {
+        "delivery_destination": {
+          "value": "Hills Road",
+          "basis": "explicit_request",
+          "evidence_ids": [
+            "email:MSG-024:body",
+            "file:04_reference/customer_account_notes.md:section:9"
+          ],
+          "reason": "The email specifies Hills Road, and account notes identify it as one of the customer's sites."
+        }
+      },
+      "lines": [
+        {
+          "line_id": "blue-roll",
+          "description": {
+            "value": "blue roll",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "sku": {
+            "value": "CON-BR-6",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "email:MSG-024:body",
+              "csv:04_reference/price_list.csv:record:50",
+              "file:04_reference/customer_account_notes.md:section:9"
+            ],
+            "reason": "The requested blue roll matches the catalogue's blue centrefeed roll, case of 6; account notes identify CON-BR-6 as the contracted blue-roll item."
+          },
+          "quantity": {
+            "value": "4",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "unit": {
+            "value": "cases",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "large-gloves",
+          "description": {
+            "value": "large gloves",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "sku": {
+            "value": "CON-GL-BL-L",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "email:MSG-024:body",
+              "csv:04_reference/price_list.csv:record:53"
+            ],
+            "reason": "The requested large gloves match the catalogue's blue nitrile large gloves, sold in boxes of 100."
+          },
+          "quantity": {
+            "value": "2",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "unit": {
+            "value": "boxes",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "stockpot",
+          "description": {
+            "value": "20L stockpot",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "sku": {
+            "value": "SW-STOCK-20",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "email:MSG-024:body",
+              "csv:04_reference/price_list.csv:record:72"
+            ],
+            "reason": "The requested 20L stockpot matches the catalogue's 20L stockpot with lid."
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-024:body"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "csv:04_reference/price_list.csv:record:72"
+            ],
+            "reason": "The catalogue lists the 20L stockpot sales unit as each."
+          },
+          "quantity_basis": "order_total"
+        }
+      ],
+      "customer_quoted_totals": [],
+      "customer_discounts": []
+    },
+    "uncertainties": [
+      {
+        "question": "What is the full delivery address for the Hills Road site?",
+        "affected_fields": [
+          "new_order.header.delivery_destination"
+        ],
+        "next_action": "Ask the customer for the full Hills Road delivery address.",
+        "evidence_ids": [
+          "email:MSG-024:body",
+          "file:04_reference/customer_account_notes.md:section:9",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01"
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

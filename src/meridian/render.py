@@ -210,163 +210,264 @@ class _Report:
                 return f"Orbit export setting · {row['PKEY']}"
         return source.get('display_name') or source.get('relative_path') or str(key)
 
-    def refs(self, keys):
-        if not keys:
-            return ''
-        links = []
-        for key in dict.fromkeys(keys):
-            if key in self.sources:
-                links.append(f'<a data-evidence href="#{_anchor(self.id, key)}">{esc(self.label(key))}</a>')
-            else:
-                links.append(f'<span>{esc(self.label(key))}</span>')
-        return '<div class="source-refs">' + ''.join(links) + '</div>'
+    @property
+    def duplicate(self):
+        return self.action == 'resend' or any(item.get('code') == 'duplicate_entry_risk'
+                                            for item in self.review.get('issues', []))
 
-    def section(self, number, title, body):
-        return f'<section class="section"><h4><span class="section-number">{number}</span>{esc(title)}</h4>{body}</section>'
+    @property
+    def orders(self):
+        return self.context.get('explicitly_matched_orders', []) if self.review['status'] == 'validated' else []
+
+    @property
+    def po(self):
+        return ((self.proposal.get('customer_po') or {}).get('value')
+                or (self.prep.get('classification', {}).get('references') or {}).get('customer_po'))
+
+    def outcome(self):
+        if self.review['status'] == 'failed':
+            return 'Preparation failed' if self.prep.get('status') == 'failed' else 'Validation failed'
+        if self.duplicate:
+            return 'Existing order found' if self.orders else 'Locate original order'
+        return 'Decision required' if self.review['readiness'] == 'Do not proceed' else 'Prepared for entry'
+
+    def refs(self, keys, hint=None):
+        links = []
+        for key in dict.fromkeys(keys or []):
+            if key not in self.sources:
+                links.append('<span class="pending">Evidence unavailable</span>')
+                continue
+            source = self.sources[key]
+            full = self.label(key)
+            filename = Path(source.get('relative_path') or '').name
+            if key == self.context.get('current_request', {}).get('source_id'):
+                label = 'Email ' + str(self.trigger.get('email_id', ''))
+            elif key in self.matched_sources:
+                row = self.matched_sources[key]
+                label = 'Orbit line ' + str(row['LNNO']) if 'LNNO' in row else 'Order ' + str(row['ORDNO'])
+            elif filename == 'price_list.csv':
+                label = 'Price list'
+            elif filename == 'customer_account_notes.md':
+                label = 'Account notes'
+            elif filename.lower().endswith('.pdf'):
+                page = re.search(r'(?i)\bpage\s+(\d+)', source.get('locator', ''))
+                label = filename + (' · p' + page[1] if page else '')
+            else:
+                label = full
+            excerpt = ''
+            if hint:
+                lines = (source.get('text') or '').splitlines()
+                matches = [line for line in lines if str(hint).casefold() in line.casefold()]
+                excerpt = '\n'.join(matches)
+            links.append(f'<a class="evidence" data-evidence data-excerpt="{esc(excerpt)}" '
+                         f'href="#{_anchor(self.id, key)}" title="{esc(full)}">{esc(label)} ↗</a>')
+        return '<div class="source-refs">' + ''.join(links) + '</div>' if links else ''
+
+    def identity(self):
+        if not self.matched:
+            return ('<div class="record"><div><span class="label">Customer/account unresolved</span>'
+                    '<b>No account assigned</b><p>Customer/account not established for entry.</p></div>'
+                    '<div><span class="label">Request</span>' + esc(self.trigger.get('email_id', 'Unknown email')) + '</div></div>')
+        number = ', '.join(str(order['header']['ORDNO']) for order in self.orders)
+        if number and (self.duplicate or self.action != 'new_order_request'):
+            label = 'Open existing Orbit order' if self.duplicate else 'Open Orbit order'
+        else:
+            label, number = 'Start in Orbit · account', self.account['CUSNO']
+        reference = ('<div><span class="label">Customer PO / reference</span><b class="copyable">'
+                     + esc(self.po) + '</b></div>') if self.po else ''
+        return (f'<div class="record"><div><span class="label">{esc(label)}</span><strong class="record-number copyable">{esc(number)}</strong></div>'
+                '<div><span class="label">Account</span><b>' + esc(self.account['CUSNO']) + '</b><span>'
+                + esc(self.account['CUSNM']) + '</span></div>' + reference + '</div>')
 
     def status(self):
-        if self.review['status'] == 'failed':
-            return '<p class="muted">Order status could not be established because validation failed.</p>'
-        result = []
+        """Only relevant recorded facts for existing-order actions."""
+        if not self.orders:
+            return ''
+        targets = {item.get('sku') for item in self.review.get('changes_to_apply', []) if item.get('sku')}
+        facts = []
         for status in self.review.get('current_order_status', []):
-            if 'message' in status:
-                result.append(f'<p>{esc(status["message"])}</p>')
+            if 'orbit_order_number' not in status:
                 continue
-            result.append(f'<p><strong>Orbit order {esc(status["orbit_order_number"])}</strong> · recorded status '
-                          f'<span class="copyable">{esc(status.get("status_code_raw"))}</span> '
-                          f'<span class="muted">({esc(status.get("status_meaning", "Meaning unknown"))})</span><br>'
-                          f'<span class="meta">Snapshot: {esc(_timestamp(status.get("snapshot_timestamp_raw")))}</span></p>')
-            rows = ''.join(f'<tr><td>{esc(line["sku"])}</td><td>{esc(line["ordered_quantity_raw"])}</td>'
-                           f'<td>{esc(line["dispatched_quantity_raw"])}</td><td>{esc(line.get("recorded_unit_raw") or "Unknown")}</td></tr>'
-                           for line in status.get('lines', []))
-            if rows:
-                result.append('<div class="table-wrap"><table class="status"><thead><tr><th>Product</th><th>Ordered</th>'
-                              '<th>Dispatched</th><th>Unit (raw)</th></tr></thead><tbody>' + rows + '</tbody></table></div>')
-            result.append(self.refs(status.get('evidence_ids', [])))
-        return ''.join(result) or '<p>No recorded order status was supplied.</p>'
+            detail = f'Order {status["orbit_order_number"]} · recorded status {status.get("status_code_raw", "unknown")} (meaning not documented)'
+            facts.append('<span>' + esc(detail) + self.refs(status.get('evidence_ids')) + '</span>')
+            for line in status.get('lines', []):
+                if line.get('sku') in targets:
+                    facts.append('<span>' + esc(f'{line["sku"]}: {line["ordered_quantity_raw"]} ordered · {line["dispatched_quantity_raw"]} dispatched')
+                                 + self.refs(line.get('evidence_ids')) + '</span>')
+        return '<div class="order-facts"><b>Recorded position</b>' + ''.join(facts) + '</div>' if facts else ''
 
     def findings(self):
-        checks, issues = [], []
-        for item in self.review.get('issues', []):
-            if item.get('code') in {'manual_credit_check', 'snapshot_limitations', 'vat_conflict', 'vat_unknown'}:
+        ignored = {'manual_credit_check', 'snapshot_limitations', 'vat_conflict', 'vat_unknown',
+                   'inferred_product', 'existing_order_not_established', 'recorded_contract_reference'}
+        if self.duplicate:
+            ignored.update({'duplicate_entry_risk', 'resend'})
+        rows, seen = [], set()
+        for item in [*self.review.get('issues', []), *self.review.get('uncertainties', [])]:
+            if item.get('code') in ignored:
                 continue
-            model = item.get('origin') == 'llm_proposal'
-            origin = '<span class="origin inferred">Model-reported issue · verify</span>' if model else ''
-            row = f'<li><p class="item-title">{esc(item["description"])}</p>{origin}'
-            row += f'<p class="next">{esc(item["next_action"])}</p>'
-            if item.get('owner'):
-                row += f'<div class="owner">Responsible: {esc(item["owner"])}</div>'
-            if item.get('affected_fields'):
-                row += '<div class="cell-note">Affects: ' + esc(', '.join(item['affected_fields'])) + '</div>'
-            row += self.refs(item.get('evidence_ids', [])) + '</li>'
-            (issues if item.get('blocks_entry') or model else checks).append(row)
-        for item in self.review.get('uncertainties', []):
-            row = f'<li><p class="item-title">{esc(item["question"])}</p><p class="next">{esc(item["next_action"])}</p>'
-            if item.get('affected_fields'):
-                row += '<div class="cell-note">Affects: ' + esc(', '.join(item['affected_fields'])) + '</div>'
-            row += self.refs(item.get('evidence_ids', [])) + '</li>'
-            checks.append(row)
-        if self.review.get('error'):
-            preparation_failed = self.review.get('failure_stage') == 'preparation' or self.prep.get('status') == 'failed'
-            title = 'Preparation failed' if preparation_failed else 'Validation failed'
-            next_action = ('Retry preparation for this email before review.'
-                           if self.review.get('failure_reason') == 'timeout'
-                           else 'Resolve the failure and review again before entry.')
-            issues.insert(0, f'<li><p class="item-title">{title}</p><p class="next">{esc(self.review["error"])}</p>'
-                             f'<p class="next">{next_action}</p></li>')
-        return (self.section(2, 'Things to confirm', '<ul class="checks-list">' + ''.join(checks) + '</ul>') if checks else '') + (
-            self.section(3, 'Outstanding issues', '<ul class="issues-list">' + ''.join(issues) + '</ul>') if issues else '')
+            question = item.get('question') or item.get('description', '')
+            action = item.get('next_action', '')
+            if (question, action) in seen:
+                continue
+            seen.add((question, action))
+            owner = '<b>' + esc(item['owner']) + '</b> · ' if item.get('owner') else ''
+            rows.append('<li><h4>' + esc(question) + '</h4><p>' + owner + esc(action) + '</p>'
+                        + self.refs(item.get('evidence_ids', [])) + '</li>')
+        if not rows:
+            return ''
+        return ('<section class="decision"><div class="section-heading"><span class="step">1</span>'
+                '<h3>Before entry</h3></div><ul class="decisions">' + ''.join(rows) + '</ul></section>')
+
+    def date_pending(self):
+        return (any(item.get('blocks_entry') and item.get('code') in {'date_unresolved', 'past_requested_date'}
+                    for item in self.review.get('issues', []))
+                or any(item.get('blocks_entry') and any('date' in field for field in item.get('affected_fields', []))
+                       for item in self.review.get('uncertainties', [])))
 
     def line_table(self, lines):
         rows = []
         for line in lines:
-            basis = line.get('field_basis', {})
-            product = esc(line.get('description') or line.get('requested_description', {}).get('value', 'Product unresolved'))
-            product += f'<span class="sku">{esc(line.get("sku") or "SKU unresolved")}</span>' + _origin(line.get('sku_basis') or basis.get('sku'))
-            count = (_value(_quantity(line['quantity'], line.get('unit'), True)) if 'quantity' in line
-                     else '<span class="muted">Quantity/unit unresolved</span>')
-            count += '<br>' + _origin(basis.get('quantity'))
-            if basis.get('unit') == 'inferred_suggestion':
-                count += '<br>' + _origin(basis['unit'])
+            sku = line.get('sku')
+            description = line.get('description') or line.get('requested_description', {}).get('value', 'Product unresolved')
+            field = line.get('field_evidence', {})
+            product = '<b class="sku copyable">' + esc(sku or 'Product code needed') + '</b><span class="description">' + esc(description) + '</span>'
+            product += self.refs(field.get('sku', []) + field.get('description', []) or line.get('evidence_ids', []), sku)
+            qty = _value(line.get('quantity'))
+            qty += self.refs(field.get('quantity', []), sku)
+            unit = esc(line.get('unit') or 'Unit needed') + self.refs(field.get('unit', []), sku)
             price = line.get('price') or {}
-            amount = ('£' + str(price['unit_price_ex_vat']) + ' / ' + str(price['unit'])) if 'unit_price_ex_vat' in price else None
-            price_html = ('£' + _value(price['unit_price_ex_vat']) + ' / ' + esc(price['unit'])) if amount is not None else _value(None)
-            if price:
-                price_html += f'<div class="cell-note">{esc(price["basis"])}. Discount already included; do not apply it again.</div>'
-            total = '£' + _value(line['line_net']) if 'line_net' in line else _value(None)
-            evidence = line.get('field_evidence')
-            if evidence:
-                product += self.refs(evidence.get('description', []) + evidence.get('sku', []))
-                count += self.refs(evidence.get('quantity', []) + evidence.get('unit', []))
-                price_html += self.refs(price.get('evidence_ids', []) + evidence.get('quoted_price', []))
-            else:
-                product += self.refs(line.get('evidence_ids', []) + price.get('evidence_ids', []))
-            rows.append(f'<tr><td>{product}</td><td>{count}</td><td>{price_html}</td><td>{total}</td></tr>')
+            quoted = field.get('quoted_price', [])
+            price_html = ('£' + _value(price['unit_price_ex_vat'])) if 'unit_price_ex_vat' in price else '<span class="pending">Price needed</span>'
+            price_html += self.refs(price.get('evidence_ids', []) + quoted, sku)
+            net = '£' + esc(line['line_net']) if 'line_net' in line else '—'
+            rows.append(f'<tr><td>{product}</td><td class="number">{qty}</td><td>{unit}</td><td class="number">{price_html}</td><td class="number">{net}</td></tr>')
         if not rows:
-            return '<p class="muted">No supported order lines were established.</p>'
-        return ('<div class="table-wrap"><table class="lines"><thead><tr><th>Product / SKU</th><th>Total quantity</th>'
-                '<th>Unit price ex VAT</th><th>Line net</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>')
+            return '<p class="pending">No supported order lines were established.</p>'
+        return ('<div class="table-wrap"><table class="lines"><thead><tr><th>Product code &amp; description</th>'
+                '<th class="number">Qty</th><th>Sales unit</th><th class="number">Unit ex VAT</th><th class="number">Line net</th>'
+                '</tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>')
 
-    def changes(self):
-        if self.review['status'] == 'failed':
-            return '<p>No validated entry values. Resolve the failure before applying changes.</p>'
-        if self.action == 'resend':
-            return '<div class="notice critical"><strong>Do not create another order.</strong> Check the original submission and existing Orbit entry.</div>'
-        if self.action == 'uncertain':
-            return '<p>No entry values can be established until the requested action is clarified.</p>'
-        result, amendments = [], []
+    def totals(self):
+        totals = self.review.get('calculations')
+        if not totals:
+            return ''
+        if totals.get('complete') is False:
+            return ('<div class="completed"><b>Partial calculation</b><span>Known lines: £'
+                    + esc(totals['known_lines_net_subtotal']) + ' ex VAT. No complete order total is available.</span></div>')
+        return ('<dl class="totals"><dt>Net</dt><dd>£' + esc(totals['net']) + '</dd><dt>VAT ('
+                + esc(percent_text(totals['vat_rate'])) + '%)</dt><dd>£' + esc(totals['vat'])
+                + '</dd><dt class="grand">Order total</dt><dd class="grand">£' + esc(totals['gross']) + '</dd></dl>')
+
+    def new_order(self):
+        changes = [item for item in self.review.get('changes_to_apply', []) if item.get('operation') == 'new_order']
+        if not changes:
+            return '<p class="pending">No prepared order fields were established.</p>'
+        parts = []
+        for change in changes:
+            fields = []
+            if self.po:
+                fields.append('<div><span class="label">Customer PO / reference</span>' + _value(self.po) + '</div>')
+            for name, value in change.get('header', {}).items():
+                shown = _value(value)
+                if name == 'requested_delivery_date' and self.date_pending():
+                    shown = '<b class="pending">Awaiting revised or confirmed date</b><span class="description">Requested: ' + esc(value.get('raw') or value.get('value', 'Unknown')) + '</span>'
+                fields.append('<div class="' + ('wide' if 'destination' in name or 'address' in name else '') + '"><span class="label">'
+                              + esc(_human(name)) + '</span>' + shown + self.refs(value.get('evidence_ids')) + '</div>')
+            parts.append('<div class="fields">' + ''.join(fields) + '</div>' + self.line_table(change.get('lines', [])))
+            bases = list(dict.fromkeys(line['price']['basis'] for line in change.get('lines', []) if line.get('price')))
+            matched = bool(change.get('lines')) and all(line.get('quoted_price_matches') for line in change['lines'])
+            pricing = '<div><span class="label">Pricing prepared</span><p>' + '<br>'.join(esc(basis) for basis in bases)
+            if matched:
+                pricing += '<br><b>All quoted line prices match.</b>'
+            pricing += '<br>Prepared prices are net; do not apply another band/contract discount.</p></div>' if bases else '</p></div>'
+            parts.append('<div class="pricing-footer">' + (pricing if bases else '') + self.totals() + '</div>')
+        return ''.join(parts)
+
+    def amendments(self):
+        rows, retained_prices = [], []
         for change in self.review.get('changes_to_apply', []):
-            if change.get('operation') == 'new_order':
-                headers = []
-                for field, value in change.get('header', {}).items():
-                    headers.append(f'<dt>{esc(_human(field))}</dt><dd>{_value(value)}<br>{_origin(value.get("basis"))}'
-                                   + self.refs(value.get('evidence_ids', [])) + '</dd>')
-                if headers:
-                    result.append('<dl class="field-values">' + ''.join(headers) + '</dl>')
-                result.append(self.line_table(change.get('lines', [])))
-                continue
-            target = 'Orbit ' + str(change.get('orbit_order_number', 'target unresolved'))
+            label = _human(change.get('field', 'Requested change'))
+            if change.get('orbit_line_number') is not None:
+                label = 'Line ' + str(change['orbit_line_number']) + ' · ' + label
+            field = '<b>' + esc(label) + '</b>'
             if change.get('sku'):
-                target += ' · ' + str(change['sku'])
-            label = esc(_human(change.get('field', 'Requested change'))) + f'<div class="cell-note">{esc(target)}</div>'
+                field += '<span class="description">' + esc(change['sku']) + '</span>'
             if change.get('applicable') is False:
-                amendments.append(f'<tr><td>{label}</td><td>Not established</td><td>Manual review required; no applicable entry values supplied.'
-                                  + self.refs(change.get('evidence_ids', [])) + '</td></tr>')
-                continue
-            if change.get('operation') == 'add_line':
-                new = self.line_table([change['proposed_value']])
-                old = '<span class="muted">Additional line requested</span>'
+                old, proposed = 'Not established', '<b class="pending">Target or entry decision needed</b>'
+            elif change.get('operation') == 'add_line':
+                old, proposed = 'Additional line', self.line_table([change['proposed_value']])
             elif change.get('field') == 'line_quantity':
                 old = _value(_quantity(change.get('old_value'), change.get('unit')))
-                new = _value(_quantity(change.get('proposed_value'), change.get('unit'), True))
+                proposed = _value(_quantity(change.get('proposed_value'), change.get('unit'), True))
                 if change.get('requested_quantity_basis') == 'additional':
-                    new += f'<div class="cell-note">Requested as {esc(change.get("requested_value"))} additional. The displayed replacement is the total.</div>'
-                new += f'<div class="cell-note">Recorded net price: £{esc(change.get("recorded_net_unit_price_ex_vat", "Unknown"))} / {esc(change.get("unit", "unit unknown"))}. '
-                new += 'Quantity amendment only; no automatic repricing.</div>'
+                    proposed += '<span class="description">Customer requested ' + esc(change.get('requested_value')) + ' additional.</span>'
+                if change.get('recorded_net_unit_price_ex_vat'):
+                    retained_prices.append(esc(change.get('sku')) + ': £' + esc(change['recorded_net_unit_price_ex_vat'])
+                                           + ' net per ' + esc(change.get('unit')) + '; revised line net £' + esc(change['proposed_line_net']))
             elif change.get('operation') == 'remove_line':
-                old, new = _value(change.get('old_value')), 'Removal requested · confirm before applying'
+                old, proposed = _value(change.get('old_value')), 'Remove the identified line'
             else:
                 old = _value(change.get('old_value'))
                 if change.get('old_value_status'):
-                    old += '<div class="cell-note">' + esc(change['old_value_status']) + '</div>'
-                new = _value(change.get('proposed_value'))
-            old += self.refs(change.get('recorded_evidence_ids', []))
-            new += '<div class="cell-note">Unverified customer request · confirm before applying.</div>' + self.refs(change.get('evidence_ids', []))
-            amendments.append(f'<tr><td>{label}</td><td>{old}</td><td>{new}</td></tr>')
-        if amendments:
-            result.append('<div class="table-wrap"><table class="changes"><thead><tr><th>Changed field</th><th>Recorded old value</th>'
-                          '<th>Proposed replacement</th></tr></thead><tbody>' + ''.join(amendments) + '</tbody></table></div>')
-        totals = self.review.get('calculations')
-        if totals:
-            if totals.get('complete') is False:
-                result.append(f'<div class="notice"><strong>Incomplete calculation.</strong> Known lines only: £{esc(totals["known_lines_net_subtotal"])} ex VAT. '
-                              f'{esc(totals["reason"])}</div>')
+                    old += '<span class="description">' + esc(change['old_value_status']) + '</span>'
+                proposed = _value(change.get('proposed_value'))
+                if change.get('field') == 'delivery_date' and self.date_pending():
+                    value = change.get('proposed_value') or {}
+                    requested = value.get('raw') or value.get('value') if isinstance(value, dict) else value
+                    proposed = '<b class="pending">Awaiting revised or confirmed date</b><span class="description">Requested: ' + esc(requested) + '</span>'
+            rows.append('<tr><td>' + field + '</td><td>' + old + self.refs(change.get('recorded_evidence_ids'))
+                        + '</td><td class="replacement">' + proposed + '</td><td>' + self.refs(change.get('evidence_ids'), change.get('sku')) + '</td></tr>')
+        if not rows:
+            return '<p class="pending">No supported amendment fields were established.</p>'
+        body = ('<div class="table-wrap"><table class="changes"><thead><tr><th>Orbit field / line</th><th>Recorded value</th>'
+                '<th>Replacement to enter</th><th>Evidence</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>')
+        if retained_prices:
+            body += '<div class="completed"><b>Price retained</b>' + ''.join('<span>' + price + '</span>' for price in retained_prices)
+            body += '<span>Quantity change only. No repricing or extra band discount.</span></div>'
+        return body
+
+    def failure(self):
+        timeout = self.review.get('failure_reason') == 'timeout' or 'APITimeoutError' in self.review.get('error', '')
+        action = 'Retry preparation for this email.' if timeout else 'Correct the preparation/validation error, then prepare this email again.'
+        return ('<section class="decision"><h3>' + esc(self.outcome()) + '</h3><p>No validated entry values. Do not proceed with entry.</p>'
+                '<p><b>Recovery action:</b> ' + esc(action) + '</p><details class="diagnostic"><summary>Error detail</summary><pre>'
+                + esc(self.review.get('error', 'Preparation failed.')) + '</pre></details></section>')
+
+    def render(self):
+        failed = self.review['status'] == 'failed'
+        name = self.account.get('CUSNM') if self.matched else (self.prep.get('classification', {}).get('customer') or {}).get('name_as_stated') or 'Customer/account unresolved'
+        action = 'RESEND / DUPLICATE' if self.duplicate else {'new_order_request': 'NEW ORDER', 'amendment_request': 'AMEND EXISTING ORDER', 'uncertain': 'RESOLVE REQUEST'}.get(self.action, 'RESOLVE REQUEST')
+        intro = ('No new order entry is required.' if self.duplicate and self.orders else
+                 'Review the requested changes on the existing order.' if self.action == 'amendment_request' else
+                 'Prepare a new order on this customer account.' if self.action == 'new_order_request' else
+                 'Establish the required action before entry.')
+        colour = 'green' if self.duplicate and self.orders or self.review['readiness'] != 'Do not proceed' else 'amber'
+        body = [f'<article class="report" id="{_anchor(self.id)}"><header class="report-top"><div><span class="kicker">{esc(action)}</span>'
+                f'<h2>{esc(name)}</h2><p>{esc(intro)}</p></div><span class="badge {colour}">{esc(self.outcome())}</span></header>', self.identity()]
+        body.append('<p class="request-meta">Email ' + esc(self.trigger.get('email_id', 'Unknown')) + ' · Received ' + esc(_timestamp(self.trigger.get('received_at'))) + '</p>')
+        if self.doc.get('historical_review'):
+            body.append('<div class="notice preview">Historical evaluation as of ' + esc(self.doc.get('review_date')) + '. Revalidate before current entry.</div>')
+        if failed:
+            body.append(self.failure())
+        else:
+            if self.duplicate or self.action in {'amendment_request', 'uncertain'}:
+                body.append(self.status())
+            body.append(self.findings())
+            if self.duplicate:
+                numbers = ', '.join(str(order['header']['ORDNO']) for order in self.orders)
+                next_action = ('Open existing Orbit order ' + numbers + ' for this request.' if numbers else 'Locate the original order before taking action.')
+                body.append('<section class="disposition"><h3>Do not create another order.</h3><p><b>Priya’s action:</b> ' + esc(next_action)
+                            + ' There are no new order lines to enter.</p>' + self.refs([order['header']['source_id'] for order in self.orders]) + '</section>')
+            elif self.action in {'new_order_request', 'amendment_request'}:
+                title = 'Fields for the new order' if self.action == 'new_order_request' else 'Changes prepared for the existing order'
+                instruction = ('Resolve the decisions above before applying these prepared values.' if self.review['readiness'] == 'Do not proceed'
+                               else 'Prepared values for manual entry into Orbit.')
+                body.append('<section class="entry"><div class="section-heading"><span class="step">2</span><div><h3>' + title + '</h3><p>'
+                            + instruction + '</p></div></div>' + (self.new_order() if self.action == 'new_order_request' else self.amendments()) + '</section>')
             else:
-                result.append('<div class="totals"><dl><dt>Net</dt><dd>£' + esc(totals['net']) + '</dd><dt>VAT (' + esc(percent_text(totals['vat_rate'])) + '%)</dt><dd>£'
-                              + esc(totals['vat']) + '</dd><dt class="grand">Gross total</dt><dd class="grand">£'
-                              + esc(totals['gross']) + '</dd></dl></div><p class="calculation-note">'
-                              + esc(totals.get('basis', '')) + '</p>')
-        return ''.join(result) or '<p>No changed entry fields were established. Complete the checks before taking action.</p>'
+                body.append('<p class="pending">No order-entry fields are proposed until the requested action is resolved.</p>')
+        body += [self.evidence(), '</article>']
+        return ''.join(body)
 
     def evidence(self):
         entries = []
@@ -399,75 +500,59 @@ class _Report:
             content = '<pre>' + esc(text) + '</pre>' if text else '<p class="muted">No readable source content was retained.</p>'
             entries.append(f'<details class="evidence-item" id="{_anchor(self.id, key)}"><summary>{esc(self.label(key))}</summary>'
                            f'<div class="evidence-body">{meta}{link}{content}</div></details>')
-        interpretation = ''
-        if self.proposal.get('summary'):
-            interpretation += '<p><strong>Model interpretation — verify:</strong> ' + esc(self.proposal['summary']) + '</p>'
-        if self.prep.get('classification', {}).get('reason'):
-            interpretation += '<p><strong>Classification reason:</strong> ' + esc(self.prep['classification']['reason']) + '</p>'
-        metrics = self.prep.get('llm') or {}
-        if metrics:
-            interpretation += '<p class="meta">Model: ' + esc(metrics.get('model', 'Unknown')) + ' · Calls: '
-            interpretation += esc(metrics.get('call_count', 'Unknown')) + ' · Duration: ' + esc(metrics.get('duration_seconds', 'Unknown')) + ' seconds.</p>'
-            if metrics.get('usage'):
-                interpretation += '<pre>' + esc(json.dumps(metrics['usage'], indent=2)) + '</pre>'
-        if self.context.get('source_limitations'):
-            interpretation += '<ul>' + ''.join('<li>' + esc(value) + '</li>' for value in self.context['source_limitations']) + '</ul>'
-        body = ('<p class="muted">Preserved preparation context for diagnosing the failure; not validated entry values.</p>'
-                if self.review['status'] == 'failed' else '')
-        body += '<details class="evidence-group"><summary>View supporting evidence (' + str(len(entries)) + ' sources)</summary>'
-        body += ''.join(entries) + '<div class="interpretation">' + interpretation + '</div></details>'
-        return body if entries or interpretation else '<p class="muted">No supporting evidence was available for this failure.</p>'
-
-    def render(self):
-        po = (self.proposal.get('customer_po') or {}).get('value') or (self.prep.get('classification', {}).get('references') or {}).get('customer_po')
-        title = 'PO / reference ' + str(po) if po else 'Customer request · no PO/reference established'
-        readiness = self.review['readiness']
-        blocked = readiness == 'Do not proceed'
-        failed = self.review['status'] == 'failed'
-        badge = readiness
-        if failed:
-            badge = ('Preparation failed' if self.review.get('failure_stage') == 'preparation'
-                     or self.prep.get('status') == 'failed' else 'Validation failed')
-        account_label = (str(self.account.get('CUSNM', '')) + ' · ' + str(self.account.get('CUSNO', ''))) if self.matched else 'Customer/account unresolved'
-        html_parts = [f'<article class="report" id="{_anchor(self.id)}"><header class="report-header"><div><h3>{esc(title)}</h3>'
-                      '<p class="meta">' + esc(account_label) + '</p></div>'
-                      '<div class="badges"><span class="badge action">' + esc(ACTION_LABELS.get(self.action, 'Uncertain'))
-                      + '</span><span class="badge ' + ('blocked' if blocked else 'checks') + '">' + esc(badge) + '</span></div></header>']
-        if self.doc.get('review_date'):
-            review_date = esc(self.doc['review_date'])
-            if self.doc.get('historical_review'):
-                html_parts.append(f'<div class="notice preview"><strong>Historical evaluation as of {review_date}.</strong> '
-                                  'Revalidate against the current date and Orbit before entry.</div>')
-            else:
-                html_parts.append(f'<p class="meta">Rules evaluated as of {review_date}</p>')
-        if not self.matched:
-            candidates = self.match.get('candidate_account_ids') or []
-            html_parts.append('<div class="notice critical"><strong>Customer/account not established for validated entry.</strong> '
-                              'Confirm the correct account before proceeding.' + (' Candidate accounts (not assigned): ' + esc(', '.join(candidates)) if candidates else '') + '</div>')
-        orders = self.context.get('explicitly_matched_orders', []) if self.review['status'] == 'validated' else []
-        numbers = ', '.join(str(order['header']['ORDNO']) for order in orders) or 'No existing match established'
-        html_parts.append('<div class="report-meta"><div><span class="label">Trigger email</span>' + esc(self.trigger.get('email_id', 'Unknown'))
-                          + ' · ' + esc(_timestamp(self.trigger.get('received_at'))) + '</div><div><span class="label">Existing Orbit order</span>'
-                          + esc(numbers) + '</div><div class="meta"><span class="label">Report generated</span>' + esc(_timestamp(self.doc.get('generated_at')))
-                          + '</div><div class="meta"><span class="label">Report ID</span>' + esc(self.id) + '</div></div>')
-        html_parts.append('<div class="notice ' + ('critical' if blocked else '') + '">' +
-                          ('Do not proceed. Resolve the failure before attempting entry.' if failed else
-                           'Resolve the outstanding restrictions/checks before applying proposed values.' if blocked else
-                           'Complete the manual checks below before entering anything in Orbit. This is not automatic approval.') + '</div>')
-        html_parts += [self.section(1, 'Current order status', self.status()), self.findings(),
-                       self.section(4, self.review.get('entry_section_label', 'Proposed changes — do not apply yet'), self.changes()),
-                       self.section(5, 'Evidence', self.evidence()), '</article>']
-        return ''.join(html_parts)
+        if not entries:
+            return ''
+        return ('<details class="evidence-group"><summary>Source material (' + str(len(entries)) + ' sources)</summary>'
+                + ''.join(entries) + '</details>')
 
 
-SCRIPT = """document.addEventListener('click', function(event) {
-  const link = event.target.closest('a[data-evidence]');
-  if (!link) return;
-  const target = document.getElementById(link.getAttribute('href').slice(1));
-  if (!target) return;
-  let node = target;
-  while (node) { if (node.tagName === 'DETAILS') node.open = true; node = node.parentElement; }
-});"""
+SCRIPT = """const panels = [...document.querySelectorAll('article.report')];
+const navigation = [...document.querySelectorAll('a[data-panel]')];
+function selectPanel(id) {
+  if (!panels.some(panel => panel.id === id)) return;
+  panels.forEach(panel => panel.hidden = panel.id !== id);
+  navigation.forEach(link => {
+    if (link.dataset.panel === id) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+}
+const dialog = document.getElementById('source-dialog');
+let evidenceTrigger;
+document.addEventListener('click', event => {
+  const source = event.target.closest('a[data-evidence]');
+  if (source) {
+    const target = document.getElementById(source.getAttribute('href').slice(1));
+    const body = target && target.querySelector('.evidence-body');
+    if (!body) return;
+    event.preventDefault();
+    evidenceTrigger = source;
+    document.getElementById('source-title').textContent = target.querySelector('summary').textContent;
+    const content = body.cloneNode(true);
+    const text = content.querySelector('pre');
+    if (text && source.dataset.excerpt) {
+      const full = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.textContent = 'Full source text';
+      const original = text.cloneNode(true);
+      full.append(summary, original);
+      text.textContent = source.dataset.excerpt;
+      content.append(full);
+    }
+    document.getElementById('source-content').replaceChildren(content);
+    dialog.showModal();
+    return;
+  }
+  const link = event.target.closest('a[data-panel]');
+  if (link) {
+    event.preventDefault();
+    selectPanel(link.dataset.panel);
+    history.replaceState(null, '', link.getAttribute('href'));
+  }
+});
+dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+dialog.addEventListener('close', () => { if (evidenceTrigger) evidenceTrigger.focus(); });
+if (panels.length) selectPanel(panels.some(panel => '#' + panel.id === location.hash) ? location.hash.slice(1) : panels[0].id);
+"""
 
 
 def render_html(reviews, *, input_root, output_dir, previous_files=(), notice=None):
@@ -480,45 +565,43 @@ def render_html(reviews, *, input_root, output_dir, previous_files=(), notice=No
         reports.append(_Report(review, input_root, output_dir))
     groups = OrderedDict()
     for report in reports:
-        key = report.account['CUSNO'] if report.matched else None
-        groups.setdefault(key, []).append(report)
+        account = report.account['CUSNO'] if report.matched else None
+        groups.setdefault(account, []).append(report)
     contents, sections = [], []
     for account, members in groups.items():
-        name = members[0].account['CUSNM'] if account else 'Customer unresolved / validation failed'
-        anchor = _anchor('customer', account)
-        label = name + (' · ' + str(account) if account else '')
-        contents.append(f'<li><a href="#{anchor}">{esc(label)}<small>{len(members)} separate report(s)</small></a></li>')
-        heading = f'<div class="customer-heading"><h2>{esc(name)} <span class="account">{esc(account or "No account assigned")}</span></h2>'
-        heading += f'<div class="meta">{len(members)} separate report(s)</div></div>'
-        sections.append(f'<section class="customer" id="{anchor}">{heading}' + ''.join(member.render() for member in members) + '</section>')
-    now = datetime.now(timezone.utc).isoformat()
-    failed = sum(report.review['status'] == 'failed' for report in reports)
-    blocked = sum(report.review['status'] == 'validated' and report.review['readiness'] == 'Do not proceed'
-                  for report in reports)
-    checks = len(reports) - failed - blocked
+        name = members[0].account['CUSNM'] if account else 'Customer unresolved / processing failures'
+        buttons = []
+        for report in members:
+            anchor = _anchor(report.id)
+            reference = str(report.po or report.trigger.get('email_id', 'Customer request'))
+            action = 'Duplicate / resend' if report.duplicate else ACTION_LABELS.get(report.action, 'Uncertain')
+            buttons.append(f'<a class="nav" href="#{anchor}" data-panel="{anchor}"><b>{esc(reference)}</b>'
+                           f'<span>{esc(action)} · {esc(report.trigger.get("email_id", "Unknown email"))}</span>'
+                           f'<small>{esc(report.outcome())}</small></a>')
+        contents.append('<div class="nav-group"><h2>' + esc(name) + '</h2>' + ''.join(buttons) + '</div>')
+        sections.append('<section class="customer">' + ''.join(report.render() for report in members) + '</section>')
     css = files('meridian').joinpath('templates/report.css').read_text(encoding='utf-8')
-    banner = '<div class="notice preview">' + esc(notice) + '</div>' if notice else ''
+    banner = '<div class="preview">' + esc(notice) + '</div>' if notice else ''
+    failed = sum(report.review['status'] == 'failed' for report in reports)
+    duplicates = sum(report.duplicate and report.review['status'] == 'validated' for report in reports)
     earlier = ''
     if previous_files:
-        links = ''.join(f'<li><a href="{esc(quote(Path(path).name, safe=""))}">{esc(Path(path).name)}</a></li>' for path in previous_files)
-        earlier = '<details class="previous"><summary>Earlier HTML runs remain available</summary><ul>' + links + '</ul></details>'
+        links = ''.join(f'<li><a href="{esc(quote(Path(path).name, safe=""))}">Earlier report {index}</a></li>'
+                        for index, path in enumerate(previous_files, 1))
+        earlier = '<details class="previous"><summary>Previous reports</summary><ul>' + links + '</ul></details>'
     body = ''.join(sections) or '<p class="empty">No reviewed reports were supplied. No order entries are proposed.</p>'
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; script-src \'unsafe-inline\'; '
-            'connect-src \'none\'; base-uri \'none\'; form-action \'none\'">'
-            '<title>Meridian · Order preparation review</title><style>' + css + '</style></head><body><div class="page">'
-            '<header><div class="eyebrow">Meridian Catering Supplies</div><h1>Order preparation review</h1>'
-            '<p class="intro muted">Snapshot inputs · Human checks and manual Orbit entry · Stock and delivery are not guaranteed.</p>'
-            '<p class="meta">HTML generated ' + esc(_timestamp(now)) + '. Report and source timestamps are shown separately.</p>'
-            + banner + f'<div class="run-stats"><span class="stat">{len(reports)} separate reports</span><span class="stat">{len(groups)} customer groups</span>'
-            f'<span class="stat">{blocked} do not proceed</span><span class="stat">{checks} checks required</span>'
-            f'<span class="stat">{failed} processing failures</span></div></header><div class="layout"><nav class="contents" aria-label="Customer reports">'
-            '<p>Customers</p><ul>' + ''.join(contents) + '</ul></nav><main>' + body + '</main></div><footer class="footer">'
-            '<p><strong>Manual review is always required.</strong> A newer report does not prove earlier changes were applied or superseded. '
-            'Tom retains credit authority and Karen reviews pricing/delivery exceptions identified in the report.</p>'
-            '<p>Snapshot inputs only; no live connections or detection of later edits. No automatic reconciliation, tracking of Orbit entry, '
-            'writes to sources/Orbit, customer email sending or operational database. Recommendations depend on source completeness and correct matching.</p>'
-            + earlier + '</footer></div><script>' + SCRIPT + '</script></body></html>')
+            '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; '
+            'script-src \'unsafe-inline\'; connect-src \'none\'; base-uri \'none\'; form-action \'none\'">'
+            '<title>Meridian · Order preparation</title><style>' + css + '</style></head><body>' + banner
+            + '<div class="page"><header class="masthead"><div><div class="eyebrow">MERIDIAN CATERING SUPPLIES</div>'
+            '<h1>Order preparation</h1><p class="sub">Prepared details and remaining decisions for manual entry into Orbit.</p></div>'
+            f'<div class="run-stats">{len(reports)} reports · {duplicates} duplicate/resend · {failed} processing failures</div></header>'
+            '<div class="layout"><nav class="sidebar" aria-label="Customer reports">' + ''.join(contents) + '</nav><main>' + body
+            + '</main></div><footer class="endnote">Prepared for manual entry; no Orbit records have been changed.' + earlier
+            + '</footer></div><dialog id="source-dialog" aria-labelledby="source-title"><button class="close" aria-label="Close evidence">×</button>'
+            '<span class="kicker">SUPPORTING EVIDENCE</span><h2 id="source-title"></h2><div id="source-content"></div></dialog>'
+            '<script>' + SCRIPT + '</script></body></html>')
 
 
 def render_saved_reviews(input_path, *, output_dir, input_root, notice=None):

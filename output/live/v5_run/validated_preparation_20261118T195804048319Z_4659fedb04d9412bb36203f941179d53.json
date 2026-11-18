@@ -1,0 +1,1318 @@
+{
+  "schema_version": "1.0",
+  "report_id": "1451a5af0f4d4ff89784a15d7fb486eb",
+  "generated_at": "2026-11-18T19:58:04.042859+00:00",
+  "preparation": {
+    "schema_version": "1.0",
+    "report_id": "0d81fa4e1ebb480887be3db9bbd3415a",
+    "generated_at": "2026-11-18T19:51:06.303296+00:00",
+    "status": "prepared",
+    "business_rules_applied": false,
+    "requires_human_review": true,
+    "trigger": {
+      "email_id": "MSG-006",
+      "received_at": "2026-10-05T10:12:00+01:00"
+    },
+    "classification": {
+      "email_id": "MSG-006",
+      "customer": {
+        "name_as_stated": "Pasta Fresca",
+        "account_id_as_stated": null
+      },
+      "action_type": "uncertain",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": "48,028"
+      },
+      "related_email_ids": [],
+      "reason": "Reports missing goods and asks for them to be sent or credited.",
+      "uncertainties": [
+        "It is unclear which missing-item remedy or workflow is requested."
+      ]
+    },
+    "context": {
+      "email_id": "MSG-006",
+      "action_type": "uncertain",
+      "customer_match": {
+        "status": "matched",
+        "account_id": "PAST01",
+        "candidate_account_ids": [
+          "PAST01"
+        ],
+        "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+        "evidence_ids": [
+          "file:04_reference/customer_account_notes.md:section:9",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028"
+        ]
+      },
+      "customer_record": {
+        "CUSNO": "PAST01",
+        "CUSNM": "PASTA FRESCA LTD",
+        "ADR1": "3 Regent Street",
+        "ADR2": "Cambridge",
+        "PCODE": "CB2 1AB",
+        "TELNO": "01223 312098",
+        "ACSTAT": "A",
+        "CRLIM": 15000,
+        "PRCBND": "B",
+        "DTOPEN": "17/05/2017",
+        "NOTE1": "3 SITES - CHECK DEL ADDR. CONTRACT BLUE ROLL",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01"
+      },
+      "current_request": {
+        "id": "MSG-006",
+        "received": "2026-10-05T10:12:00+01:00",
+        "from": "Marco Bellini <marco@pastafresca.co.uk>",
+        "to": "orders@meridiancatering.co.uk",
+        "subject": "Order 48,028 - missing item",
+        "body": "Hi,\n\nOur delivery for order 48,028 came on Friday 25th but only 3 of the 4 items were there. No gastronorm pans (6 x 1/1 65mm).\n\nCan you send them or credit us please.\n\nMarco\nOperations | Pasta Fresca",
+        "attachments": [],
+        "in_reply_to": null,
+        "source_id": "email:MSG-006:body"
+      },
+      "explicitly_matched_orders": [
+        {
+          "header": {
+            "ORDNO": 48028,
+            "CUSNO": "PAST01",
+            "CUSREF": "PF/3391",
+            "ORDDT": "20260922",
+            "STAT": "I",
+            "DELDT": "20260925",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028"
+          },
+          "lines": [
+            {
+              "ORDNO": 48028,
+              "LNNO": 10,
+              "STKCD": "CON-BR-6",
+              "QTY": 4,
+              "QTYDS": 4,
+              "UPRC": 1550,
+              "DISC": 0.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10"
+            },
+            {
+              "ORDNO": 48028,
+              "LNNO": 20,
+              "STKCD": "CON-GL-BL-L",
+              "QTY": 4,
+              "QTYDS": 4,
+              "UPRC": 645,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20"
+            },
+            {
+              "ORDNO": 48028,
+              "LNNO": 30,
+              "STKCD": "SW-GN11-65",
+              "QTY": 6,
+              "QTYDS": 0,
+              "UPRC": 1195,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+            },
+            {
+              "ORDNO": 48028,
+              "LNNO": 40,
+              "STKCD": "SW-STOCK-20",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 4900,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40"
+            }
+          ],
+          "order_date_normalised": "2026-09-22"
+        }
+      ],
+      "supporting_history": [
+        {
+          "header": {
+            "ORDNO": 48028,
+            "CUSNO": "PAST01",
+            "CUSREF": "PF/3391",
+            "ORDDT": "20260922",
+            "STAT": "I",
+            "DELDT": "20260925",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028"
+          },
+          "lines": [
+            {
+              "ORDNO": 48028,
+              "LNNO": 10,
+              "STKCD": "CON-BR-6",
+              "QTY": 4,
+              "QTYDS": 4,
+              "UPRC": 1550,
+              "DISC": 0.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10"
+            },
+            {
+              "ORDNO": 48028,
+              "LNNO": 20,
+              "STKCD": "CON-GL-BL-L",
+              "QTY": 4,
+              "QTYDS": 4,
+              "UPRC": 645,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20"
+            },
+            {
+              "ORDNO": 48028,
+              "LNNO": 30,
+              "STKCD": "SW-GN11-65",
+              "QTY": 6,
+              "QTYDS": 0,
+              "UPRC": 1195,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+            },
+            {
+              "ORDNO": 48028,
+              "LNNO": 40,
+              "STKCD": "SW-STOCK-20",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 4900,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40"
+            }
+          ],
+          "order_date_normalised": "2026-09-22"
+        },
+        {
+          "header": {
+            "ORDNO": 47927,
+            "CUSNO": "PAST01",
+            "CUSREF": "PF/3390",
+            "ORDDT": "20260914",
+            "STAT": "I",
+            "DELDT": "20260916",
+            "OPID": "JD",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47927"
+          },
+          "lines": [
+            {
+              "ORDNO": 47927,
+              "LNNO": 10,
+              "STKCD": "CON-CF-450",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 995,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47927:10"
+            }
+          ],
+          "order_date_normalised": "2026-09-14"
+        },
+        {
+          "header": {
+            "ORDNO": 47885,
+            "CUSNO": "PAST01",
+            "CUSREF": "PF/3387",
+            "ORDDT": "20260910",
+            "STAT": "I",
+            "DELDT": "20260915",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47885"
+          },
+          "lines": [
+            {
+              "ORDNO": 47885,
+              "LNNO": 10,
+              "STKCD": "CON-GL-BL-M",
+              "QTY": 6,
+              "QTYDS": 6,
+              "UPRC": 645,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47885:10"
+            }
+          ],
+          "order_date_normalised": "2026-09-10"
+        }
+      ],
+      "history_limit": 3,
+      "customer_notes": [
+        {
+          "source_id": "file:04_reference/customer_account_notes.md:section:9",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "Pasta Fresca Ltd (Cambridge, 3 sites)",
+          "locator": "Section: Pasta Fresca Ltd (Cambridge, 3 sites)",
+          "timestamp": null,
+          "text": "Pasta Fresca Ltd (Cambridge, 3 sites)\n- Orbit: PAST01. Band B. One account for all three sites. **Check which site it's for.**\n- Sites: Regent Street (main, account address), Hills Road, Mill Road.\n- **Contract: blue roll (CON-BR-6) fixed at £15.50 a case.**\n- Marco Bellini (ops) for anything that's gone wrong.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      ],
+      "general_account_notes": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "account_constraints": [],
+      "export_parameters": {
+        "VATRT": {
+          "PKEY": "VATRT",
+          "PVAL": "17.5",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        },
+        "LASTEXP": {
+          "PKEY": "LASTEXP",
+          "PVAL": "20261008 231502",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+        },
+        "ACSTCDS": {
+          "PKEY": "ACSTCDS",
+          "PVAL": "A,H,C",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+        },
+        "STATCDS": {
+          "PKEY": "STATCDS",
+          "PVAL": "N,P,D,I,X,H",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+        }
+      },
+      "open_items": [
+        {
+          "Date": "22/09/26",
+          "Customer": "Pasta Fresca",
+          "Order / PO": "PF/3391",
+          "Issue": "deliver Regent St",
+          "Who": "PS",
+          "Status": "done",
+          "Notes": "",
+          "Closed": "22/09",
+          "source_id": "csv:02_open_items_log.csv:record:22"
+        },
+        {
+          "Date": "25/09",
+          "Customer": "Pasta Fresca",
+          "Order / PO": "48,028",
+          "Issue": "chase delivery",
+          "Who": "KH",
+          "Status": "Delivered - closed",
+          "Notes": "POD signed",
+          "Closed": "28/09",
+          "source_id": "csv:02_open_items_log.csv:record:26"
+        },
+        {
+          "Date": "05/10/26",
+          "Customer": "Pasta Fresca",
+          "Order / PO": "48028",
+          "Issue": "GN pans missing",
+          "Who": "PS",
+          "Status": "open",
+          "Notes": "",
+          "Closed": "",
+          "source_id": "csv:02_open_items_log.csv:record:46"
+        }
+      ],
+      "unresolved_open_items": [],
+      "catalogue_candidates": [
+        {
+          "sku": "CON-BR-6",
+          "description": "Blue centrefeed roll, case of 6",
+          "category": "Consumables",
+          "unit": "case",
+          "list_price_gbp": "18.95",
+          "band_b_gbp": "18.00",
+          "band_t_gbp": "17.06",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:50"
+        },
+        {
+          "sku": "CON-WR-6",
+          "description": "White centrefeed roll, case of 6",
+          "category": "Consumables",
+          "unit": "case",
+          "list_price_gbp": "17.95",
+          "band_b_gbp": "17.05",
+          "band_t_gbp": "16.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:51"
+        },
+        {
+          "sku": "CON-GL-BL-M",
+          "description": "Nitrile gloves, blue, medium, box of 100",
+          "category": "Consumables",
+          "unit": "box",
+          "list_price_gbp": "6.45",
+          "band_b_gbp": "6.13",
+          "band_t_gbp": "5.81",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:52"
+        },
+        {
+          "sku": "CON-GL-BL-L",
+          "description": "Nitrile gloves, blue, large, box of 100",
+          "category": "Consumables",
+          "unit": "box",
+          "list_price_gbp": "6.45",
+          "band_b_gbp": "6.13",
+          "band_t_gbp": "5.81",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:53"
+        },
+        {
+          "sku": "CON-CF-450",
+          "description": "Cling film, 450mm x 300m",
+          "category": "Consumables",
+          "unit": "roll",
+          "list_price_gbp": "9.95",
+          "band_b_gbp": "9.45",
+          "band_t_gbp": "8.96",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:54"
+        },
+        {
+          "sku": "SW-GN11-65",
+          "description": "Gastronorm pan 1/1, 65mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "11.95",
+          "band_b_gbp": "11.35",
+          "band_t_gbp": "10.75",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:62"
+        },
+        {
+          "sku": "SW-GN11-100",
+          "description": "Gastronorm pan 1/1, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "14.50",
+          "band_b_gbp": "13.77",
+          "band_t_gbp": "13.05",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:63"
+        },
+        {
+          "sku": "SW-GN13-100",
+          "description": "Gastronorm pan 1/3, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "7.95",
+          "band_b_gbp": "7.55",
+          "band_t_gbp": "7.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:64"
+        },
+        {
+          "sku": "SW-CB-SET",
+          "description": "Colour coded chopping boards, set of 6",
+          "category": "Smallwares",
+          "unit": "set",
+          "list_price_gbp": "79.00",
+          "band_b_gbp": "75.05",
+          "band_t_gbp": "71.10",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:65"
+        },
+        {
+          "sku": "SW-STOCK-20",
+          "description": "Stockpot, 20L, with lid",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "49.00",
+          "band_b_gbp": "46.55",
+          "band_t_gbp": "44.10",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:72"
+        }
+      ],
+      "stock_records": [
+        {
+          "STKCD": "CON-BR-6",
+          "DESC1": "BLUE ROLL C/FEED",
+          "DESC2": "CASE 6",
+          "UOM": "CS",
+          "LSTPR": 1895,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6"
+        },
+        {
+          "STKCD": "CON-CF-450",
+          "DESC1": "CLINGFILM 450",
+          "DESC2": "",
+          "UOM": "RL",
+          "LSTPR": 995,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450"
+        },
+        {
+          "STKCD": "CON-GL-BL-L",
+          "DESC1": "GLOVES NITRILE BLUE L",
+          "DESC2": "BX100",
+          "UOM": "BX",
+          "LSTPR": 645,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+        },
+        {
+          "STKCD": "CON-GL-BL-M",
+          "DESC1": "GLOVES NITRILE BLUE M",
+          "DESC2": "BX100",
+          "UOM": "BX",
+          "LSTPR": 645,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M"
+        },
+        {
+          "STKCD": "CON-WR-6",
+          "DESC1": "WHITE ROLL C/FEED",
+          "DESC2": "CASE 6",
+          "UOM": "CS",
+          "LSTPR": 1795,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+        },
+        {
+          "STKCD": "SW-CB-SET",
+          "DESC1": "CHOP BOARD SET 6",
+          "DESC2": "",
+          "UOM": "ST",
+          "LSTPR": 7900,
+          "SUPCD": "PRM",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-CB-SET"
+        },
+        {
+          "STKCD": "SW-GN11-100",
+          "DESC1": "GN PAN 1/1 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1450,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100"
+        },
+        {
+          "STKCD": "SW-GN11-65",
+          "DESC1": "GN PAN 1/1 65MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1195,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65"
+        },
+        {
+          "STKCD": "SW-GN13-100",
+          "DESC1": "GN PAN 1/3 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 795,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+        },
+        {
+          "STKCD": "SW-STOCK-20",
+          "DESC1": "STOCKPOT 20L",
+          "DESC2": "W/LID",
+          "UOM": "EA",
+          "LSTPR": 4900,
+          "SUPCD": "PRM",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-STOCK-20"
+        }
+      ],
+      "attachments": [],
+      "attachment_extractions": [],
+      "report_alerts": [],
+      "sources": {
+        "csv:02_open_items_log.csv:record:22": {
+          "source_id": "csv:02_open_items_log.csv:record:22",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 22",
+          "locator": "CSV record 22 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"22/09/26\", \"Customer\": \"Pasta Fresca\", \"Order / PO\": \"PF/3391\", \"Issue\": \"deliver Regent St\", \"Who\": \"PS\", \"Status\": \"done\", \"Notes\": \"\", \"Closed\": \"22/09\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:02_open_items_log.csv:record:26": {
+          "source_id": "csv:02_open_items_log.csv:record:26",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 26",
+          "locator": "CSV record 26 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"25/09\", \"Customer\": \"Pasta Fresca\", \"Order / PO\": \"48,028\", \"Issue\": \"chase delivery\", \"Who\": \"KH\", \"Status\": \"Delivered - closed\", \"Notes\": \"POD signed\", \"Closed\": \"28/09\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:02_open_items_log.csv:record:46": {
+          "source_id": "csv:02_open_items_log.csv:record:46",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 46",
+          "locator": "CSV record 46 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"05/10/26\", \"Customer\": \"Pasta Fresca\", \"Order / PO\": \"48028\", \"Issue\": \"GN pans missing\", \"Who\": \"PS\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:50": {
+          "source_id": "csv:04_reference/price_list.csv:record:50",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 50",
+          "locator": "CSV record 50 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-BR-6\", \"description\": \"Blue centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"18.95\", \"band_b_gbp\": \"18.00\", \"band_t_gbp\": \"17.06\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:51": {
+          "source_id": "csv:04_reference/price_list.csv:record:51",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 51",
+          "locator": "CSV record 51 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-WR-6\", \"description\": \"White centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"17.95\", \"band_b_gbp\": \"17.05\", \"band_t_gbp\": \"16.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:52": {
+          "source_id": "csv:04_reference/price_list.csv:record:52",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 52",
+          "locator": "CSV record 52 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-GL-BL-M\", \"description\": \"Nitrile gloves, blue, medium, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:53": {
+          "source_id": "csv:04_reference/price_list.csv:record:53",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 53",
+          "locator": "CSV record 53 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:54": {
+          "source_id": "csv:04_reference/price_list.csv:record:54",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 54",
+          "locator": "CSV record 54 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-CF-450\", \"description\": \"Cling film, 450mm x 300m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"9.95\", \"band_b_gbp\": \"9.45\", \"band_t_gbp\": \"8.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:62": {
+          "source_id": "csv:04_reference/price_list.csv:record:62",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 62",
+          "locator": "CSV record 62 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN11-65\", \"description\": \"Gastronorm pan 1/1, 65mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"11.95\", \"band_b_gbp\": \"11.35\", \"band_t_gbp\": \"10.75\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:63": {
+          "source_id": "csv:04_reference/price_list.csv:record:63",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 63",
+          "locator": "CSV record 63 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN11-100\", \"description\": \"Gastronorm pan 1/1, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"14.50\", \"band_b_gbp\": \"13.77\", \"band_t_gbp\": \"13.05\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:64": {
+          "source_id": "csv:04_reference/price_list.csv:record:64",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 64",
+          "locator": "CSV record 64 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:65": {
+          "source_id": "csv:04_reference/price_list.csv:record:65",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 65",
+          "locator": "CSV record 65 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-CB-SET\", \"description\": \"Colour coded chopping boards, set of 6\", \"category\": \"Smallwares\", \"unit\": \"set\", \"list_price_gbp\": \"79.00\", \"band_b_gbp\": \"75.05\", \"band_t_gbp\": \"71.10\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:72": {
+          "source_id": "csv:04_reference/price_list.csv:record:72",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 72",
+          "locator": "CSV record 72 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-STOCK-20\", \"description\": \"Stockpot, 20L, with lid\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"49.00\", \"band_b_gbp\": \"46.55\", \"band_t_gbp\": \"44.10\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "email:MSG-006:body": {
+          "source_id": "email:MSG-006:body",
+          "relative_path": "03_inbox_export/inbox.json",
+          "display_name": "MSG-006 — Marco Bellini <marco@pastafresca.co.uk> — Order 48,028 - missing item",
+          "locator": "JSON record 6, body",
+          "timestamp": "2026-10-05T10:12:00+01:00",
+          "text": "Hi,\n\nOur delivery for order 48,028 came on Friday 25th but only 3 of the 4 items were there. No gastronorm pans (6 x 1/1 65mm).\n\nCan you send them or credit us please.\n\nMarco\nOperations | Pasta Fresca",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:preamble": {
+          "source_id": "file:04_reference/customer_account_notes.md:preamble",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "customer_account_notes.md — introductory notes",
+          "locator": "Before first customer heading",
+          "timestamp": null,
+          "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:section:9": {
+          "source_id": "file:04_reference/customer_account_notes.md:section:9",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "Pasta Fresca Ltd (Cambridge, 3 sites)",
+          "locator": "Section: Pasta Fresca Ltd (Cambridge, 3 sites)",
+          "timestamp": null,
+          "text": "Pasta Fresca Ltd (Cambridge, 3 sites)\n- Orbit: PAST01. Band B. One account for all three sites. **Check which site it's for.**\n- Sites: Regent Street (main, account address), Hills Road, Mill Road.\n- **Contract: blue roll (CON-BR-6) fixed at £15.50 a case.**\n- Marco Bellini (ops) for anything that's gone wrong.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit CUST — CUSNO=PAST01",
+          "locator": "CUST: CUSNO=PAST01",
+          "timestamp": "20261008 231502",
+          "text": "{\"CUSNO\": \"PAST01\", \"CUSNM\": \"PASTA FRESCA LTD\", \"ADR1\": \"3 Regent Street\", \"ADR2\": \"Cambridge\", \"PCODE\": \"CB2 1AB\", \"TELNO\": \"01223 312098\", \"ACSTAT\": \"A\", \"CRLIM\": 15000, \"PRCBND\": \"B\", \"DTOPEN\": \"17/05/2017\", \"NOTE1\": \"3 SITES - CHECK DEL ADDR. CONTRACT BLUE ROLL\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47885": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47885",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47885",
+          "locator": "OHDR: ORDNO=47885",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47885, \"CUSNO\": \"PAST01\", \"CUSREF\": \"PF/3387\", \"ORDDT\": \"20260910\", \"STAT\": \"I\", \"DELDT\": \"20260915\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47927": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47927",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47927",
+          "locator": "OHDR: ORDNO=47927",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47927, \"CUSNO\": \"PAST01\", \"CUSREF\": \"PF/3390\", \"ORDDT\": \"20260914\", \"STAT\": \"I\", \"DELDT\": \"20260916\", \"OPID\": \"JD\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=48028",
+          "locator": "OHDR: ORDNO=48028",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48028, \"CUSNO\": \"PAST01\", \"CUSREF\": \"PF/3391\", \"ORDDT\": \"20260922\", \"STAT\": \"I\", \"DELDT\": \"20260925\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47885:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47885:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47885, LNNO=10",
+          "locator": "OLIN: ORDNO=47885, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47885, \"LNNO\": 10, \"STKCD\": \"CON-GL-BL-M\", \"QTY\": 6, \"QTYDS\": 6, \"UPRC\": 645, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47927:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47927:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47927, LNNO=10",
+          "locator": "OLIN: ORDNO=47927, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47927, \"LNNO\": 10, \"STKCD\": \"CON-CF-450\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 995, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48028, LNNO=10",
+          "locator": "OLIN: ORDNO=48028, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48028, \"LNNO\": 10, \"STKCD\": \"CON-BR-6\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 1550, \"DISC\": 0.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48028, LNNO=20",
+          "locator": "OLIN: ORDNO=48028, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48028, \"LNNO\": 20, \"STKCD\": \"CON-GL-BL-L\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 645, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48028, LNNO=30",
+          "locator": "OLIN: ORDNO=48028, LNNO=30",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48028, \"LNNO\": 30, \"STKCD\": \"SW-GN11-65\", \"QTY\": 6, \"QTYDS\": 0, \"UPRC\": 1195, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48028, LNNO=40",
+          "locator": "OLIN: ORDNO=48028, LNNO=40",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48028, \"LNNO\": 40, \"STKCD\": \"SW-STOCK-20\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 4900, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-BR-6",
+          "locator": "STK: STKCD=CON-BR-6",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-BR-6\", \"DESC1\": \"BLUE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1895, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-CF-450",
+          "locator": "STK: STKCD=CON-CF-450",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-CF-450\", \"DESC1\": \"CLINGFILM 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 995, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+          "locator": "STK: STKCD=CON-GL-BL-L",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-GL-BL-M",
+          "locator": "STK: STKCD=CON-GL-BL-M",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-GL-BL-M\", \"DESC1\": \"GLOVES NITRILE BLUE M\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-WR-6",
+          "locator": "STK: STKCD=CON-WR-6",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-WR-6\", \"DESC1\": \"WHITE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1795, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-CB-SET": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-CB-SET",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-CB-SET",
+          "locator": "STK: STKCD=SW-CB-SET",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-CB-SET\", \"DESC1\": \"CHOP BOARD SET 6\", \"DESC2\": \"\", \"UOM\": \"ST\", \"LSTPR\": 7900, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN11-100",
+          "locator": "STK: STKCD=SW-GN11-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN11-100\", \"DESC1\": \"GN PAN 1/1 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1450, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN11-65",
+          "locator": "STK: STKCD=SW-GN11-65",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN11-65\", \"DESC1\": \"GN PAN 1/1 65MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1195, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN13-100",
+          "locator": "STK: STKCD=SW-GN13-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-STOCK-20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-STOCK-20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-STOCK-20",
+          "locator": "STK: STKCD=SW-STOCK-20",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-STOCK-20\", \"DESC1\": \"STOCKPOT 20L\", \"DESC2\": \"W/LID\", \"UOM\": \"EA\", \"LSTPR\": 4900, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+          "locator": "SYSPARM: PKEY=ACSTCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+          "locator": "SYSPARM: PKEY=LASTEXP",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+          "locator": "SYSPARM: PKEY=STATCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=VATRT",
+          "locator": "SYSPARM: PKEY=VATRT",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      },
+      "source_limitations": [
+        "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+        "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+        "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+      ]
+    },
+    "report_alerts": [],
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 11.649445125,
+      "response_id": "resp_007cb764be5fd9e0016afe019ed8c487d2b2935f62818e3b15",
+      "usage": {
+        "input_tokens": 18069,
+        "input_tokens_details": {
+          "cache_write_tokens": 12742,
+          "cached_tokens": 5324,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 12742
+          }
+        },
+        "output_tokens": 1103,
+        "output_tokens_details": {
+          "reasoning_tokens": 788
+        },
+        "total_tokens": 19172
+      }
+    },
+    "shared_policy": {
+      "version": "1",
+      "pricing": {
+        "vat_rate": "0.20",
+        "currency": "GBP",
+        "rounding": "ROUND_HALF_UP",
+        "decimal_places": 2,
+        "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+        "orbit_price_unit": "pence",
+        "apply_orbit_discount_once": true,
+        "contract_overrides_band": true,
+        "use_recorded_band_prices": true,
+        "vat_authority": {
+          "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+          "sources": [
+            {
+              "path": "01_discovery_notes.md",
+              "location": "Priya Shah, VAT pricing note",
+              "support": "Customer totals include VAT at 20%."
+            },
+            {
+              "path": "04_reference/customer_account_notes.md",
+              "location": "St Anne’s C of E Primary",
+              "support": "Divide VAT-inclusive prices by 1.2."
+            }
+          ],
+          "conflicting_source": {
+            "path": "06_orbit_export/orbit_nightly.sqlite",
+            "location": "SYSPARM: VATRT",
+            "recorded_value": "17.5"
+          }
+        }
+      },
+      "review": {
+        "account_status_codes": {
+          "A": "active",
+          "H": "on_stop",
+          "C": "closed"
+        },
+        "manual_credit_check_required": false,
+        "credit_authority": "Tom / credit control",
+        "pricing_delivery_authority": "Karen / operations",
+        "customer_claims_authorise_exceptions": false,
+        "payment_confirmation_for_proforma_required": true,
+        "ocr_manual_review_required": true,
+        "stock_delivery_guaranteed": false,
+        "finding_levels": {
+          "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+          "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+          "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+        }
+      },
+      "source_authority": {
+        "account_status": "orbit_account",
+        "account_band": "orbit_account",
+        "current_account": "account_notes",
+        "contract_terms": "account_notes",
+        "recorded_order": "orbit_order",
+        "requested_values": "current_email_and_attachments",
+        "catalogue_and_band_prices": "price_list",
+        "spreadsheet": "supporting_context_only"
+      }
+    },
+    "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+    "proposal": {
+      "email_id": "MSG-006",
+      "action_type": "uncertain",
+      "summary": "Pasta Fresca reports six missing gastronorm pans from order 48,028; the requested remedy is unresolved.",
+      "unresolved_action": {
+        "possible_action_types": [
+          "uncertain"
+        ],
+        "explanation": "The email asks, “Can you send them or credit us please,” leaving the remedy undecided. The matched order records six SW-GN11-65 pans on line 30 with zero delivered.",
+        "evidence_ids": [
+          "email:MSG-006:body",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+        ]
+      },
+      "uncertainties": [
+        {
+          "question": "Should the six missing pans be sent, or should Pasta Fresca receive a credit?",
+          "affected_fields": [
+            "requested remedy for order 48,028 line 30"
+          ],
+          "next_action": "Ask the customer which remedy they want.",
+          "evidence_ids": [
+            "email:MSG-006:body",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+          ]
+        }
+      ],
+      "issues": []
+    }
+  },
+  "business_rules_applied": true,
+  "review_date": "2026-11-18",
+  "historical_review": false,
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": false,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+  "policy_origin": "preparation_snapshot",
+  "validation": {
+    "status": "validated",
+    "readiness": "Do not proceed",
+    "entry_section_label": "Proposed changes — do not apply yet",
+    "current_order_status": [
+      {
+        "orbit_order_number": 48028,
+        "status_code_raw": "I",
+        "status_meaning": "Undocumented; verify in Orbit",
+        "snapshot_timestamp_raw": "20261008 231502",
+        "snapshot_timezone": "Unknown",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48028"
+        ],
+        "lines": [
+          {
+            "sku": "CON-BR-6",
+            "ordered_quantity_raw": 4,
+            "dispatched_quantity_raw": 4,
+            "recorded_unit_raw": "CS",
+            "evidence_ids": [
+              "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:10"
+            ]
+          },
+          {
+            "sku": "CON-GL-BL-L",
+            "ordered_quantity_raw": 4,
+            "dispatched_quantity_raw": 4,
+            "recorded_unit_raw": "BX",
+            "evidence_ids": [
+              "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:20"
+            ]
+          },
+          {
+            "sku": "SW-GN11-65",
+            "ordered_quantity_raw": 6,
+            "dispatched_quantity_raw": 0,
+            "recorded_unit_raw": "EA",
+            "evidence_ids": [
+              "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+            ]
+          },
+          {
+            "sku": "SW-STOCK-20",
+            "ordered_quantity_raw": 1,
+            "dispatched_quantity_raw": 1,
+            "recorded_unit_raw": "EA",
+            "evidence_ids": [
+              "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:40"
+            ]
+          }
+        ]
+      }
+    ],
+    "changes_to_apply": [],
+    "calculations": null,
+    "issues": [
+      {
+        "code": "action_uncertain",
+        "description": "The requested order action remains unresolved.",
+        "next_action": "Resolve the stated action question before entry.",
+        "owner": "Order processor",
+        "blocks_entry": true,
+        "evidence_ids": [],
+        "origin": "deterministic_rule"
+      }
+    ],
+    "uncertainties": [
+      {
+        "question": "Should the six missing pans be sent, or should Pasta Fresca receive a credit?",
+        "affected_fields": [
+          "requested remedy for order 48,028 line 30"
+        ],
+        "next_action": "Ask the customer which remedy they want.",
+        "evidence_ids": [
+          "email:MSG-006:body",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48028:30"
+        ],
+        "blocks_entry": false
+      }
+    ],
+    "resolutions": [
+      {
+        "field": "vat_rate",
+        "value": "0.20",
+        "discarded_value": "17.5",
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        ]
+      },
+      {
+        "field": "customer_account",
+        "value": "PAST01",
+        "decision": "Orbit snapshot records active account status (A).",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:PAST01"
+        ]
+      }
+    ],
+    "vat_policy": {
+      "rate": "0.20",
+      "origin": "Shared policy",
+      "authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "requires_human_review": true
+  }
+}

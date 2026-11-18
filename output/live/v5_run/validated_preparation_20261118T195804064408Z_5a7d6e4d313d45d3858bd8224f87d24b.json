@@ -1,0 +1,1226 @@
+{
+  "schema_version": "1.0",
+  "report_id": "599560f252d549acbdb9914406061c30",
+  "generated_at": "2026-11-18T19:58:04.061093+00:00",
+  "preparation": {
+    "schema_version": "1.0",
+    "report_id": "00adf1ffa262408b8ef636544cd0b0bb",
+    "generated_at": "2026-11-18T19:53:02.264476+00:00",
+    "status": "prepared",
+    "business_rules_applied": false,
+    "requires_human_review": true,
+    "trigger": {
+      "email_id": "MSG-015",
+      "received_at": "2026-10-06T11:42:00+01:00"
+    },
+    "classification": {
+      "email_id": "MSG-015",
+      "customer": {
+        "name_as_stated": "Luca Moretti",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of goods by Friday.",
+      "uncertainties": []
+    },
+    "context": {
+      "email_id": "MSG-015",
+      "action_type": "new_order_request",
+      "customer_match": {
+        "status": "matched",
+        "account_id": "RIVR01",
+        "candidate_account_ids": [
+          "RIVR01"
+        ],
+        "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+        "evidence_ids": [
+          "file:04_reference/customer_account_notes.md:section:16",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+        ]
+      },
+      "customer_record": {
+        "CUSNO": "RIVR01",
+        "CUSNM": "RIVERSIDE BRASSERIE",
+        "ADR1": "The Quay",
+        "ADR2": "St Ives",
+        "PCODE": "PE27 5AR",
+        "TELNO": "01480 469901",
+        "ACSTAT": "H",
+        "CRLIM": 6000,
+        "PRCBND": "B",
+        "DTOPEN": "18/10/2016",
+        "NOTE1": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+      },
+      "current_request": {
+        "id": "MSG-015",
+        "received": "2026-10-06T11:42:00+01:00",
+        "from": "Luca Moretti <chef@riversidebrasserie.co.uk>",
+        "to": "orders@meridiancatering.co.uk",
+        "subject": "order",
+        "body": "hi guys can you send 2 x 1/1 gastro 100mm and 4 rolls clingfilm by friday. cheers Luca",
+        "attachments": [],
+        "in_reply_to": null,
+        "source_id": "email:MSG-015:body"
+      },
+      "explicitly_matched_orders": [],
+      "supporting_history": [
+        {
+          "header": {
+            "ORDNO": 47827,
+            "CUSNO": "RIVR01",
+            "CUSREF": "PHONE",
+            "ORDDT": "20260907",
+            "STAT": "H",
+            "DELDT": "",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47827"
+          },
+          "lines": [
+            {
+              "ORDNO": 47827,
+              "LNNO": 10,
+              "STKCD": "CON-BIN-BLK",
+              "QTY": 10,
+              "QTYDS": 0,
+              "UPRC": 2250,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47827:10"
+            },
+            {
+              "ORDNO": 47827,
+              "LNNO": 20,
+              "STKCD": "FRY-2T-8",
+              "QTY": 1,
+              "QTYDS": 0,
+              "UPRC": 64500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47827:20"
+            }
+          ],
+          "order_date_normalised": "2026-09-07"
+        },
+        {
+          "header": {
+            "ORDNO": 47817,
+            "CUSNO": "RIVR01",
+            "CUSREF": "PHONE",
+            "ORDDT": "20260904",
+            "STAT": "H",
+            "DELDT": "",
+            "OPID": "JD",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47817"
+          },
+          "lines": [
+            {
+              "ORDNO": 47817,
+              "LNNO": 10,
+              "STKCD": "CON-BIN-BLK",
+              "QTY": 2,
+              "QTYDS": 0,
+              "UPRC": 2250,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47817:10"
+            }
+          ],
+          "order_date_normalised": "2026-09-04"
+        },
+        {
+          "header": {
+            "ORDNO": 47742,
+            "CUSNO": "RIVR01",
+            "CUSREF": "",
+            "ORDDT": "20260831",
+            "STAT": "I",
+            "DELDT": "20260908",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47742"
+          },
+          "lines": [
+            {
+              "ORDNO": 47742,
+              "LNNO": 10,
+              "STKCD": "CON-DT-5L",
+              "QTY": 4,
+              "QTYDS": 4,
+              "UPRC": 1495,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47742:10"
+            }
+          ],
+          "order_date_normalised": "2026-08-31"
+        }
+      ],
+      "history_limit": 3,
+      "customer_notes": [
+        {
+          "source_id": "file:04_reference/customer_account_notes.md:section:16",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "Riverside Brasserie (St Ives)",
+          "locator": "Section: Riverside Brasserie (St Ives)",
+          "timestamp": null,
+          "text": "Riverside Brasserie (St Ives)\n- Orbit: RIVR01. Band B. Luca Moretti, head chef. Orders by email, very last minute.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      ],
+      "general_account_notes": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "account_constraints": [],
+      "export_parameters": {
+        "VATRT": {
+          "PKEY": "VATRT",
+          "PVAL": "17.5",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        },
+        "LASTEXP": {
+          "PKEY": "LASTEXP",
+          "PVAL": "20261008 231502",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+        },
+        "ACSTCDS": {
+          "PKEY": "ACSTCDS",
+          "PVAL": "A,H,C",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+        },
+        "STATCDS": {
+          "PKEY": "STATCDS",
+          "PVAL": "N,P,D,I,X,H",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+        }
+      },
+      "open_items": [],
+      "unresolved_open_items": [],
+      "catalogue_candidates": [
+        {
+          "sku": "FRY-2T-8",
+          "description": "Fryer, twin tank, 2 x 8L, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "645.00",
+          "band_b_gbp": "612.75",
+          "band_t_gbp": "580.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:22"
+        },
+        {
+          "sku": "CON-CF-450",
+          "description": "Cling film, 450mm x 300m",
+          "category": "Consumables",
+          "unit": "roll",
+          "list_price_gbp": "9.95",
+          "band_b_gbp": "9.45",
+          "band_t_gbp": "8.96",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:54"
+        },
+        {
+          "sku": "CON-DT-5L",
+          "description": "Dishwasher detergent, 5L",
+          "category": "Consumables",
+          "unit": "each",
+          "list_price_gbp": "14.95",
+          "band_b_gbp": "14.20",
+          "band_t_gbp": "13.46",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:56"
+        },
+        {
+          "sku": "CON-BIN-BLK",
+          "description": "Black bin liners, heavy duty, box of 200",
+          "category": "Consumables",
+          "unit": "box",
+          "list_price_gbp": "22.50",
+          "band_b_gbp": "21.38",
+          "band_t_gbp": "20.25",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:59"
+        },
+        {
+          "sku": "SW-GN11-100",
+          "description": "Gastronorm pan 1/1, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "14.50",
+          "band_b_gbp": "13.77",
+          "band_t_gbp": "13.05",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:63"
+        },
+        {
+          "sku": "SW-GN13-100",
+          "description": "Gastronorm pan 1/3, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "7.95",
+          "band_b_gbp": "7.55",
+          "band_t_gbp": "7.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:64"
+        }
+      ],
+      "stock_records": [
+        {
+          "STKCD": "CON-BIN-BLK",
+          "DESC1": "BIN LINER BLK HD",
+          "DESC2": "BX200",
+          "UOM": "BX",
+          "LSTPR": 2250,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BIN-BLK"
+        },
+        {
+          "STKCD": "CON-CF-450",
+          "DESC1": "CLINGFILM 450",
+          "DESC2": "",
+          "UOM": "RL",
+          "LSTPR": 995,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450"
+        },
+        {
+          "STKCD": "CON-DT-5L",
+          "DESC1": "DW DETERGENT 5L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1495,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L"
+        },
+        {
+          "STKCD": "FRY-2T-8",
+          "DESC1": "FRYER 2 TANK 2X8L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 64500,
+          "SUPCD": "KLD",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8"
+        },
+        {
+          "STKCD": "SW-GN11-100",
+          "DESC1": "GN PAN 1/1 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1450,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100"
+        },
+        {
+          "STKCD": "SW-GN13-100",
+          "DESC1": "GN PAN 1/3 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 795,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+        }
+      ],
+      "attachments": [],
+      "attachment_extractions": [],
+      "report_alerts": [],
+      "sources": {
+        "csv:04_reference/price_list.csv:record:22": {
+          "source_id": "csv:04_reference/price_list.csv:record:22",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 22",
+          "locator": "CSV record 22 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"FRY-2T-8\", \"description\": \"Fryer, twin tank, 2 x 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"645.00\", \"band_b_gbp\": \"612.75\", \"band_t_gbp\": \"580.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:54": {
+          "source_id": "csv:04_reference/price_list.csv:record:54",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 54",
+          "locator": "CSV record 54 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-CF-450\", \"description\": \"Cling film, 450mm x 300m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"9.95\", \"band_b_gbp\": \"9.45\", \"band_t_gbp\": \"8.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:56": {
+          "source_id": "csv:04_reference/price_list.csv:record:56",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 56",
+          "locator": "CSV record 56 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-DT-5L\", \"description\": \"Dishwasher detergent, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"14.95\", \"band_b_gbp\": \"14.20\", \"band_t_gbp\": \"13.46\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:59": {
+          "source_id": "csv:04_reference/price_list.csv:record:59",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 59",
+          "locator": "CSV record 59 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-BIN-BLK\", \"description\": \"Black bin liners, heavy duty, box of 200\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"22.50\", \"band_b_gbp\": \"21.38\", \"band_t_gbp\": \"20.25\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:63": {
+          "source_id": "csv:04_reference/price_list.csv:record:63",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 63",
+          "locator": "CSV record 63 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN11-100\", \"description\": \"Gastronorm pan 1/1, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"14.50\", \"band_b_gbp\": \"13.77\", \"band_t_gbp\": \"13.05\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:64": {
+          "source_id": "csv:04_reference/price_list.csv:record:64",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 64",
+          "locator": "CSV record 64 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "email:MSG-015:body": {
+          "source_id": "email:MSG-015:body",
+          "relative_path": "03_inbox_export/inbox.json",
+          "display_name": "MSG-015 — Luca Moretti <chef@riversidebrasserie.co.uk> — order",
+          "locator": "JSON record 15, body",
+          "timestamp": "2026-10-06T11:42:00+01:00",
+          "text": "hi guys can you send 2 x 1/1 gastro 100mm and 4 rolls clingfilm by friday. cheers Luca",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:preamble": {
+          "source_id": "file:04_reference/customer_account_notes.md:preamble",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "customer_account_notes.md — introductory notes",
+          "locator": "Before first customer heading",
+          "timestamp": null,
+          "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:section:16": {
+          "source_id": "file:04_reference/customer_account_notes.md:section:16",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "Riverside Brasserie (St Ives)",
+          "locator": "Section: Riverside Brasserie (St Ives)",
+          "timestamp": null,
+          "text": "Riverside Brasserie (St Ives)\n- Orbit: RIVR01. Band B. Luca Moretti, head chef. Orders by email, very last minute.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit CUST — CUSNO=RIVR01",
+          "locator": "CUST: CUSNO=RIVR01",
+          "timestamp": "20261008 231502",
+          "text": "{\"CUSNO\": \"RIVR01\", \"CUSNM\": \"RIVERSIDE BRASSERIE\", \"ADR1\": \"The Quay\", \"ADR2\": \"St Ives\", \"PCODE\": \"PE27 5AR\", \"TELNO\": \"01480 469901\", \"ACSTAT\": \"H\", \"CRLIM\": 6000, \"PRCBND\": \"B\", \"DTOPEN\": \"18/10/2016\", \"NOTE1\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47742": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47742",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47742",
+          "locator": "OHDR: ORDNO=47742",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47742, \"CUSNO\": \"RIVR01\", \"CUSREF\": \"\", \"ORDDT\": \"20260831\", \"STAT\": \"I\", \"DELDT\": \"20260908\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47817": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47817",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47817",
+          "locator": "OHDR: ORDNO=47817",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47817, \"CUSNO\": \"RIVR01\", \"CUSREF\": \"PHONE\", \"ORDDT\": \"20260904\", \"STAT\": \"H\", \"DELDT\": \"\", \"OPID\": \"JD\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47827": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47827",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47827",
+          "locator": "OHDR: ORDNO=47827",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47827, \"CUSNO\": \"RIVR01\", \"CUSREF\": \"PHONE\", \"ORDDT\": \"20260907\", \"STAT\": \"H\", \"DELDT\": \"\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47742:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47742:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47742, LNNO=10",
+          "locator": "OLIN: ORDNO=47742, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47742, \"LNNO\": 10, \"STKCD\": \"CON-DT-5L\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 1495, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47817:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47817:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47817, LNNO=10",
+          "locator": "OLIN: ORDNO=47817, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47817, \"LNNO\": 10, \"STKCD\": \"CON-BIN-BLK\", \"QTY\": 2, \"QTYDS\": 0, \"UPRC\": 2250, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47827:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47827:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47827, LNNO=10",
+          "locator": "OLIN: ORDNO=47827, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47827, \"LNNO\": 10, \"STKCD\": \"CON-BIN-BLK\", \"QTY\": 10, \"QTYDS\": 0, \"UPRC\": 2250, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47827:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47827:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47827, LNNO=20",
+          "locator": "OLIN: ORDNO=47827, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47827, \"LNNO\": 20, \"STKCD\": \"FRY-2T-8\", \"QTY\": 1, \"QTYDS\": 0, \"UPRC\": 64500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BIN-BLK": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BIN-BLK",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-BIN-BLK",
+          "locator": "STK: STKCD=CON-BIN-BLK",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-BIN-BLK\", \"DESC1\": \"BIN LINER BLK HD\", \"DESC2\": \"BX200\", \"UOM\": \"BX\", \"LSTPR\": 2250, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-CF-450",
+          "locator": "STK: STKCD=CON-CF-450",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-CF-450\", \"DESC1\": \"CLINGFILM 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 995, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-DT-5L",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-DT-5L",
+          "locator": "STK: STKCD=CON-DT-5L",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-DT-5L\", \"DESC1\": \"DW DETERGENT 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1495, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=FRY-2T-8",
+          "locator": "STK: STKCD=FRY-2T-8",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"FRY-2T-8\", \"DESC1\": \"FRYER 2 TANK 2X8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 64500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN11-100",
+          "locator": "STK: STKCD=SW-GN11-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN11-100\", \"DESC1\": \"GN PAN 1/1 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1450, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN13-100",
+          "locator": "STK: STKCD=SW-GN13-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+          "locator": "SYSPARM: PKEY=ACSTCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+          "locator": "SYSPARM: PKEY=LASTEXP",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+          "locator": "SYSPARM: PKEY=STATCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=VATRT",
+          "locator": "SYSPARM: PKEY=VATRT",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      },
+      "source_limitations": [
+        "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+        "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+        "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+      ]
+    },
+    "report_alerts": [],
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 21.425618749999984,
+      "response_id": "resp_0a3b0010127b0a78016afe0209237087d2b51b4562a9cc0c7b",
+      "usage": {
+        "input_tokens": 13699,
+        "input_tokens_details": {
+          "cache_write_tokens": 8372,
+          "cached_tokens": 5324,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 8372
+          }
+        },
+        "output_tokens": 2552,
+        "output_tokens_details": {
+          "reasoning_tokens": 1438
+        },
+        "total_tokens": 16251
+      }
+    },
+    "shared_policy": {
+      "version": "1",
+      "pricing": {
+        "vat_rate": "0.20",
+        "currency": "GBP",
+        "rounding": "ROUND_HALF_UP",
+        "decimal_places": 2,
+        "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+        "orbit_price_unit": "pence",
+        "apply_orbit_discount_once": true,
+        "contract_overrides_band": true,
+        "use_recorded_band_prices": true,
+        "vat_authority": {
+          "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+          "sources": [
+            {
+              "path": "01_discovery_notes.md",
+              "location": "Priya Shah, VAT pricing note",
+              "support": "Customer totals include VAT at 20%."
+            },
+            {
+              "path": "04_reference/customer_account_notes.md",
+              "location": "St Anne’s C of E Primary",
+              "support": "Divide VAT-inclusive prices by 1.2."
+            }
+          ],
+          "conflicting_source": {
+            "path": "06_orbit_export/orbit_nightly.sqlite",
+            "location": "SYSPARM: VATRT",
+            "recorded_value": "17.5"
+          }
+        }
+      },
+      "review": {
+        "account_status_codes": {
+          "A": "active",
+          "H": "on_stop",
+          "C": "closed"
+        },
+        "manual_credit_check_required": false,
+        "credit_authority": "Tom / credit control",
+        "pricing_delivery_authority": "Karen / operations",
+        "customer_claims_authorise_exceptions": false,
+        "payment_confirmation_for_proforma_required": true,
+        "ocr_manual_review_required": true,
+        "stock_delivery_guaranteed": false,
+        "finding_levels": {
+          "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+          "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+          "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+        }
+      },
+      "source_authority": {
+        "account_status": "orbit_account",
+        "account_band": "orbit_account",
+        "current_account": "account_notes",
+        "contract_terms": "account_notes",
+        "recorded_order": "orbit_order",
+        "requested_values": "current_email_and_attachments",
+        "catalogue_and_band_prices": "price_list",
+        "spreadsheet": "supporting_context_only"
+      }
+    },
+    "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+    "proposal": {
+      "email_id": "MSG-015",
+      "action_type": "new_order_request",
+      "summary": "New order for two 1/1 gastronorm pans and four rolls of clingfilm by Friday; account is on stop and clingfilm specification needs confirmation.",
+      "new_order": {
+        "header": {
+          "delivery_destination": {
+            "value": "Riverside Brasserie, The Quay, St Ives, PE27 5AR",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "file:04_reference/customer_account_notes.md:section:16",
+              "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+            ],
+            "reason": "The account notes identify Riverside Brasserie (St Ives) as Luca Moretti's account, and the matched Orbit customer record supplies its address."
+          },
+          "requested_delivery_date": {
+            "value": "by friday",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-015:body"
+            ]
+          }
+        },
+        "lines": [
+          {
+            "line_id": "1",
+            "description": {
+              "value": "1/1 gastro 100mm",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "sku": {
+              "value": "SW-GN11-100",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "email:MSG-015:body",
+                "csv:04_reference/price_list.csv:record:63"
+              ],
+              "reason": "The requested 1/1 gastronorm pan at 100mm matches the catalogue description “Gastronorm pan 1/1, 100mm, stainless”."
+            },
+            "quantity": {
+              "value": "2",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "unit": {
+              "value": "each",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:63"
+              ],
+              "reason": "The matching catalogue item is sold as “each”."
+            },
+            "quantity_basis": "order_total"
+          },
+          {
+            "line_id": "2",
+            "description": {
+              "value": "clingfilm",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "sku": {
+              "value": "CON-CF-450",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "email:MSG-015:body",
+                "csv:04_reference/price_list.csv:record:54"
+              ],
+              "reason": "This is the supplied current catalogue listing for cling film; it specifies 450mm x 300m, which the request does not specify."
+            },
+            "quantity": {
+              "value": "4",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "unit": {
+              "value": "rolls",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "quantity_basis": "order_total"
+          }
+        ],
+        "customer_quoted_totals": [],
+        "customer_discounts": []
+      },
+      "uncertainties": [
+        {
+          "question": "Does the customer require the catalogue cling film specification of 450mm x 300m?",
+          "affected_fields": [
+            "new_order.lines[2].sku",
+            "new_order.lines[2].description"
+          ],
+          "next_action": "Confirm the required cling film width and roll length with the customer.",
+          "evidence_ids": [
+            "email:MSG-015:body",
+            "csv:04_reference/price_list.csv:record:54"
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "category": "credit_stop",
+          "description": "The matched Orbit account RIVR01 has status H, configured as on_stop.",
+          "affected_fields": [
+            "new_order"
+          ],
+          "next_action": "Refer the order for the required stop review; do not enter it while the restriction remains.",
+          "owner": "Tom / credit control",
+          "evidence_ids": [
+            "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+          ]
+        }
+      ]
+    }
+  },
+  "business_rules_applied": true,
+  "review_date": "2026-11-18",
+  "historical_review": false,
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": false,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+  "policy_origin": "preparation_snapshot",
+  "validation": {
+    "status": "validated",
+    "readiness": "Do not proceed",
+    "entry_section_label": "Proposed changes — do not apply yet",
+    "current_order_status": [
+      {
+        "message": "No existing order matched in the supplied snapshot. Prepared new order for account RIVR01."
+      }
+    ],
+    "changes_to_apply": [
+      {
+        "operation": "new_order",
+        "header": {
+          "delivery_destination": {
+            "value": "Riverside Brasserie, The Quay, St Ives, PE27 5AR",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "file:04_reference/customer_account_notes.md:section:16",
+              "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+            ],
+            "reason": "The account notes identify Riverside Brasserie (St Ives) as Luca Moretti's account, and the matched Orbit customer record supplies its address."
+          },
+          "requested_delivery_date": {
+            "raw": "by friday",
+            "kind": "by",
+            "date": "2026-10-09",
+            "relative_to": "2026-10-06",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-015:body"
+            ]
+          }
+        },
+        "lines": [
+          {
+            "line_id": "1",
+            "requested_description": {
+              "value": "1/1 gastro 100mm",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "field_basis": {
+              "description": "explicit_request",
+              "sku": "inferred_suggestion",
+              "quantity": "explicit_request",
+              "unit": "inferred_suggestion"
+            },
+            "field_evidence": {
+              "description": [
+                "email:MSG-015:body"
+              ],
+              "sku": [
+                "email:MSG-015:body",
+                "csv:04_reference/price_list.csv:record:63"
+              ],
+              "quantity": [
+                "email:MSG-015:body"
+              ],
+              "unit": [
+                "csv:04_reference/price_list.csv:record:63"
+              ]
+            },
+            "evidence_ids": [
+              "email:MSG-015:body",
+              "csv:04_reference/price_list.csv:record:63"
+            ],
+            "sku": "SW-GN11-100",
+            "sku_basis": "inferred_suggestion",
+            "quantity": "2",
+            "unit": "each",
+            "quantity_basis": "order_total",
+            "description": "Gastronorm pan 1/1, 100mm, stainless",
+            "price": {
+              "unit_price_ex_vat": "13.77",
+              "currency": "GBP",
+              "unit": "each",
+              "basis": "Recorded band B; already net of band discount",
+              "discount_already_included": true,
+              "instruction": "This is a net unit price. Do not apply the band/contract discount again.",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:63",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+              ]
+            },
+            "line_net": "27.54",
+            "selection_reason": "The requested 1/1 gastronorm pan at 100mm matches the catalogue description “Gastronorm pan 1/1, 100mm, stainless”."
+          },
+          {
+            "line_id": "2",
+            "requested_description": {
+              "value": "clingfilm",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-015:body"
+              ]
+            },
+            "field_basis": {
+              "description": "explicit_request",
+              "sku": "inferred_suggestion",
+              "quantity": "explicit_request",
+              "unit": "explicit_request"
+            },
+            "field_evidence": {
+              "description": [
+                "email:MSG-015:body"
+              ],
+              "sku": [
+                "email:MSG-015:body",
+                "csv:04_reference/price_list.csv:record:54"
+              ],
+              "quantity": [
+                "email:MSG-015:body"
+              ],
+              "unit": [
+                "email:MSG-015:body"
+              ]
+            },
+            "evidence_ids": [
+              "email:MSG-015:body",
+              "csv:04_reference/price_list.csv:record:54"
+            ],
+            "sku": "CON-CF-450",
+            "sku_basis": "inferred_suggestion",
+            "quantity": "4",
+            "unit": "roll",
+            "quantity_basis": "order_total",
+            "description": "Cling film, 450mm x 300m",
+            "price": {
+              "unit_price_ex_vat": "9.45",
+              "currency": "GBP",
+              "unit": "roll",
+              "basis": "Recorded band B; already net of band discount",
+              "discount_already_included": true,
+              "instruction": "This is a net unit price. Do not apply the band/contract discount again.",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:54",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+              ]
+            },
+            "line_net": "37.80",
+            "selection_reason": "This is the supplied current catalogue listing for cling film; it specifies 450mm x 300m, which the request does not specify."
+          }
+        ]
+      }
+    ],
+    "calculations": {
+      "net": "65.34",
+      "vat_rate": "0.20",
+      "vat": "13.07",
+      "gross": "78.41",
+      "basis": "Unit prices rounded first (ROUND_HALF_UP, 2 decimal places); VAT rounded on net total; no unapproved extra discounts."
+    },
+    "issues": [
+      {
+        "code": "recorded_credit_restriction",
+        "description": "Orbit account RIVR01 is on stop (ACSTAT H).",
+        "next_action": "Tom must clear the stop on Orbit account RIVR01 before entry; CSV or customer claims cannot clear it.",
+        "owner": "Tom / credit control",
+        "blocks_entry": true,
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+        ],
+        "origin": "deterministic_rule",
+        "affected_fields": [
+          "customer_account"
+        ]
+      },
+      {
+        "code": "past_requested_date",
+        "description": "Requested delivery date or window (by friday) has expired as of 2026-11-18.",
+        "next_action": "Reconfirm current delivery requirements; do not promise or enter an expired date.",
+        "owner": "Karen / operations",
+        "blocks_entry": true,
+        "evidence_ids": [
+          "email:MSG-015:body"
+        ],
+        "origin": "deterministic_rule",
+        "affected_fields": [
+          "Delivery date"
+        ]
+      },
+      {
+        "code": "delivery_date_confirmation",
+        "description": "The requested date needs confirmation before making a delivery commitment.",
+        "next_action": "Confirm the intended date and delivery feasibility with Karen.",
+        "owner": "Karen / operations",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "email:MSG-015:body"
+        ],
+        "origin": "deterministic_rule",
+        "affected_fields": [
+          "Delivery date"
+        ]
+      },
+      {
+        "code": "model_reported_issue",
+        "description": "The matched Orbit account RIVR01 has status H, configured as on_stop.",
+        "next_action": "Refer the order for the required stop review; do not enter it while the restriction remains.",
+        "owner": "Tom / credit control",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:RIVR01"
+        ],
+        "origin": "llm_proposal"
+      }
+    ],
+    "uncertainties": [
+      {
+        "question": "Does the customer require the catalogue cling film specification of 450mm x 300m?",
+        "affected_fields": [
+          "new_order.lines[2].sku",
+          "new_order.lines[2].description"
+        ],
+        "next_action": "Confirm the required cling film width and roll length with the customer.",
+        "evidence_ids": [
+          "email:MSG-015:body",
+          "csv:04_reference/price_list.csv:record:54"
+        ],
+        "blocks_entry": true
+      }
+    ],
+    "resolutions": [
+      {
+        "field": "vat_rate",
+        "value": "0.20",
+        "discarded_value": "17.5",
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        ]
+      },
+      {
+        "field": "customer_po",
+        "value": null,
+        "decision": "No matching order found in the supplied Orbit snapshot; prepare a new order. The snapshot does not establish live completeness.",
+        "evidence_ids": []
+      },
+      {
+        "field": "new_order.lines[1].sku",
+        "value": "SW-GN11-100",
+        "decision": "The requested 1/1 gastronorm pan at 100mm matches the catalogue description “Gastronorm pan 1/1, 100mm, stainless”.",
+        "evidence_ids": [
+          "email:MSG-015:body",
+          "csv:04_reference/price_list.csv:record:63"
+        ]
+      },
+      {
+        "field": "new_order.lines[2].sku",
+        "value": "CON-CF-450",
+        "decision": "This is the supplied current catalogue listing for cling film; it specifies 450mm x 300m, which the request does not specify.",
+        "evidence_ids": [
+          "email:MSG-015:body",
+          "csv:04_reference/price_list.csv:record:54"
+        ]
+      }
+    ],
+    "vat_policy": {
+      "rate": "0.20",
+      "origin": "Shared policy",
+      "authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "requires_human_review": true
+  }
+}

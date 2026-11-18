@@ -1,0 +1,587 @@
+{
+  "schema_version": "1.0",
+  "report_id": "d30ab2d973944b2ba47cc3c4f857181d",
+  "generated_at": "2026-11-18T19:58:04.139784+00:00",
+  "preparation": {
+    "schema_version": "1.0",
+    "report_id": "927c894596ac4a74a5ffea1ee64faf27",
+    "generated_at": "2026-11-18T19:57:54.101504+00:00",
+    "status": "prepared",
+    "business_rules_applied": false,
+    "requires_human_review": true,
+    "trigger": {
+      "email_id": "MSG-042",
+      "received_at": "2026-10-09T11:30:00+01:00"
+    },
+    "classification": {
+      "email_id": "MSG-042",
+      "customer": {
+        "name_as_stated": "Lucy Marsh",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "FHG-4422",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests a change to the delivery destination for order reference FHG-4422.",
+      "uncertainties": []
+    },
+    "context": {
+      "email_id": "MSG-042",
+      "action_type": "amendment_request",
+      "customer_match": {
+        "status": "unresolved",
+        "account_id": null,
+        "candidate_account_ids": [
+          "FENS01"
+        ],
+        "reason": "Confirm the customer account: supplied identifiers are missing, ambiguous or conflicting.",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:FENS01",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206"
+        ]
+      },
+      "customer_record": null,
+      "current_request": {
+        "id": "MSG-042",
+        "received": "2026-10-09T11:30:00+01:00",
+        "from": "Lucy Marsh <purchasing@fenlandhotels.co.uk>",
+        "to": "orders@meridiancatering.co.uk",
+        "subject": "FHG-4422",
+        "body": "Hi,\n\nCan you confirm the delivery date for FHG-4422 please? Also it needs to go to The Lamb, not The George. Sorry, my mistake on the PO.\n\nLucy",
+        "attachments": [],
+        "in_reply_to": null,
+        "source_id": "email:MSG-042:body"
+      },
+      "explicitly_matched_orders": [],
+      "supporting_history": [],
+      "history_limit": 3,
+      "customer_notes": [],
+      "general_account_notes": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "account_constraints": [],
+      "export_parameters": {
+        "VATRT": {
+          "PKEY": "VATRT",
+          "PVAL": "17.5",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        },
+        "LASTEXP": {
+          "PKEY": "LASTEXP",
+          "PVAL": "20261008 231502",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+        },
+        "ACSTCDS": {
+          "PKEY": "ACSTCDS",
+          "PVAL": "A,H,C",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+        },
+        "STATCDS": {
+          "PKEY": "STATCDS",
+          "PVAL": "N,P,D,I,X,H",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+        }
+      },
+      "open_items": [],
+      "unresolved_open_items": [],
+      "catalogue_candidates": [],
+      "stock_records": [],
+      "attachments": [],
+      "attachment_extractions": [],
+      "report_alerts": [
+        {
+          "code": "customer_match_unresolved",
+          "title": "Customer match unresolved — do not proceed",
+          "message": "Confirm the correct account before entry. No customer history assigned. Candidates: FENS01",
+          "blocks_entry": true,
+          "placement": "report_header_and_things_to_confirm"
+        }
+      ],
+      "sources": {
+        "email:MSG-042:body": {
+          "source_id": "email:MSG-042:body",
+          "relative_path": "03_inbox_export/inbox.json",
+          "display_name": "MSG-042 — Lucy Marsh <purchasing@fenlandhotels.co.uk> — FHG-4422",
+          "locator": "JSON record 42, body",
+          "timestamp": "2026-10-09T11:30:00+01:00",
+          "text": "Hi,\n\nCan you confirm the delivery date for FHG-4422 please? Also it needs to go to The Lamb, not The George. Sorry, my mistake on the PO.\n\nLucy",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:preamble": {
+          "source_id": "file:04_reference/customer_account_notes.md:preamble",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "customer_account_notes.md — introductory notes",
+          "locator": "Before first customer heading",
+          "timestamp": null,
+          "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:FENS01": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:FENS01",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit CUST — CUSNO=FENS01",
+          "locator": "CUST: CUSNO=FENS01",
+          "timestamp": "20261008 231502",
+          "text": "{\"CUSNO\": \"FENS01\", \"CUSNM\": \"FENLAND HOTEL GROUP\", \"ADR1\": \"The George\", \"ADR2\": \"Market Square, Ely\", \"PCODE\": \"CB7 4LS\", \"TELNO\": \"01353 662009\", \"ACSTAT\": \"A\", \"CRLIM\": 30000, \"PRCBND\": \"T\", \"DTOPEN\": \"20200113\", \"NOTE1\": \"3 HOTELS. PO REQD\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=48206",
+          "locator": "OHDR: ORDNO=48206",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48206, \"CUSNO\": \"FENS01\", \"CUSREF\": \"FHG-4422\", \"ORDDT\": \"20261006\", \"STAT\": \"N\", \"DELDT\": \"20261013\", \"OPID\": \"KH\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+          "locator": "SYSPARM: PKEY=ACSTCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+          "locator": "SYSPARM: PKEY=LASTEXP",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+          "locator": "SYSPARM: PKEY=STATCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=VATRT",
+          "locator": "SYSPARM: PKEY=VATRT",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      },
+      "source_limitations": [
+        "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+        "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+        "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+      ]
+    },
+    "report_alerts": [
+      {
+        "code": "customer_match_unresolved",
+        "title": "Customer match unresolved — do not proceed",
+        "message": "Confirm the correct account before entry. No customer history assigned. Candidates: FENS01",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      },
+      {
+        "code": "entry_details_unresolved",
+        "title": "Entry details require confirmation",
+        "message": "Not established: existing amendment target",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 12.514560416999984,
+      "response_id": "resp_073670500e27897b016afe0335d5a487d29d630d2a707b8b38",
+      "usage": {
+        "input_tokens": 8093,
+        "input_tokens_details": {
+          "cache_write_tokens": 2766,
+          "cached_tokens": 5324,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 2766
+          }
+        },
+        "output_tokens": 1274,
+        "output_tokens_details": {
+          "reasoning_tokens": 821
+        },
+        "total_tokens": 9367
+      }
+    },
+    "shared_policy": {
+      "version": "1",
+      "pricing": {
+        "vat_rate": "0.20",
+        "currency": "GBP",
+        "rounding": "ROUND_HALF_UP",
+        "decimal_places": 2,
+        "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+        "orbit_price_unit": "pence",
+        "apply_orbit_discount_once": true,
+        "contract_overrides_band": true,
+        "use_recorded_band_prices": true,
+        "vat_authority": {
+          "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+          "sources": [
+            {
+              "path": "01_discovery_notes.md",
+              "location": "Priya Shah, VAT pricing note",
+              "support": "Customer totals include VAT at 20%."
+            },
+            {
+              "path": "04_reference/customer_account_notes.md",
+              "location": "St Anne’s C of E Primary",
+              "support": "Divide VAT-inclusive prices by 1.2."
+            }
+          ],
+          "conflicting_source": {
+            "path": "06_orbit_export/orbit_nightly.sqlite",
+            "location": "SYSPARM: VATRT",
+            "recorded_value": "17.5"
+          }
+        }
+      },
+      "review": {
+        "account_status_codes": {
+          "A": "active",
+          "H": "on_stop",
+          "C": "closed"
+        },
+        "manual_credit_check_required": false,
+        "credit_authority": "Tom / credit control",
+        "pricing_delivery_authority": "Karen / operations",
+        "customer_claims_authorise_exceptions": false,
+        "payment_confirmation_for_proforma_required": true,
+        "ocr_manual_review_required": true,
+        "stock_delivery_guaranteed": false,
+        "finding_levels": {
+          "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+          "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+          "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+        }
+      },
+      "source_authority": {
+        "account_status": "orbit_account",
+        "account_band": "orbit_account",
+        "current_account": "account_notes",
+        "contract_terms": "account_notes",
+        "recorded_order": "orbit_order",
+        "requested_values": "current_email_and_attachments",
+        "catalogue_and_band_prices": "price_list",
+        "spreadsheet": "supporting_context_only"
+      }
+    },
+    "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+    "proposal": {
+      "email_id": "MSG-042",
+      "action_type": "amendment_request",
+      "summary": "Requests changing the delivery destination to The Lamb; the delivery-date wording is an enquiry, not a requested date change. The order target and customer match remain unresolved.",
+      "customer_po": {
+        "value": "FHG-4422",
+        "basis": "explicit_request",
+        "evidence_ids": [
+          "email:MSG-042:body"
+        ]
+      },
+      "amendment": {
+        "changes": [
+          {
+            "change_id": "destination",
+            "operation": "replace",
+            "field": "delivery_destination",
+            "proposed_value": {
+              "value": "The Lamb",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-042:body"
+              ]
+            },
+            "evidence_ids": [
+              "email:MSG-042:body"
+            ]
+          }
+        ]
+      },
+      "uncertainties": [
+        {
+          "question": "Which explicitly matched Orbit order is to receive this destination change?",
+          "affected_fields": [
+            "amendment.changes[destination].target"
+          ],
+          "next_action": "Confirm and link the referenced order before entry; the supplied Orbit record is not listed as an explicitly matched order.",
+          "evidence_ids": [
+            "email:MSG-042:body",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206"
+          ]
+        },
+        {
+          "question": "What is the full delivery address for The Lamb?",
+          "affected_fields": [
+            "amendment.changes[destination].proposed_value"
+          ],
+          "next_action": "Ask the customer for the full address for The Lamb; the email supplies only the site name.",
+          "evidence_ids": [
+            "email:MSG-042:body"
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "category": "customer_match_unresolved",
+          "description": "The customer account match is unresolved; do not assign candidate account FENS01 or proceed with entry until the match is resolved.",
+          "affected_fields": [
+            "customer account",
+            "amendment"
+          ],
+          "next_action": "Resolve the customer account match before entry.",
+          "evidence_ids": [
+            "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:FENS01",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206"
+          ]
+        }
+      ]
+    }
+  },
+  "business_rules_applied": true,
+  "review_date": "2026-11-18",
+  "historical_review": false,
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": false,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "77edb54a4eb47fd99048313e0f489c48f2700c9ebdd42e0658354744ed2de98c",
+  "policy_origin": "preparation_snapshot",
+  "validation": {
+    "status": "validated",
+    "readiness": "Do not proceed",
+    "entry_section_label": "Proposed changes — do not apply yet",
+    "current_order_status": [
+      {
+        "message": "No existing order matched in the supplied snapshot."
+      }
+    ],
+    "changes_to_apply": [
+      {
+        "change_id": "destination",
+        "field": "delivery_destination",
+        "raw_request": {
+          "change_id": "destination",
+          "operation": "replace",
+          "field": "delivery_destination",
+          "proposed_value": {
+            "value": "The Lamb",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-042:body"
+            ]
+          },
+          "evidence_ids": [
+            "email:MSG-042:body"
+          ]
+        },
+        "applicable": false
+      }
+    ],
+    "calculations": null,
+    "issues": [
+      {
+        "code": "customer_match_unresolved",
+        "description": "Confirm the correct account before entry. No customer history assigned. Candidates: FENS01",
+        "next_action": "Resolve the highlighted check before applying affected values.",
+        "owner": "Order processor",
+        "blocks_entry": true,
+        "evidence_ids": [],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "customer_unresolved",
+        "description": "No reliable customer account has been established.",
+        "next_action": "Confirm the correct account; do not use another account’s history.",
+        "owner": "Order processor",
+        "blocks_entry": true,
+        "evidence_ids": [],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "amendment_unresolved",
+        "description": "destination: No unique explicitly matched amendment order",
+        "next_action": "Verify the original order and requested replacement values before entry.",
+        "owner": "Karen / operations",
+        "blocks_entry": true,
+        "evidence_ids": [
+          "email:MSG-042:body"
+        ],
+        "origin": "deterministic_rule",
+        "affected_fields": [
+          "amendment.changes[destination]"
+        ]
+      },
+      {
+        "code": "model_reported_issue",
+        "description": "The customer account match is unresolved; do not assign candidate account FENS01 or proceed with entry until the match is resolved.",
+        "next_action": "Resolve the customer account match before entry.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:FENS01",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206"
+        ],
+        "origin": "llm_proposal"
+      }
+    ],
+    "uncertainties": [
+      {
+        "question": "Which explicitly matched Orbit order is to receive this destination change?",
+        "affected_fields": [
+          "amendment.changes[destination].target"
+        ],
+        "next_action": "Confirm and link the referenced order before entry; the supplied Orbit record is not listed as an explicitly matched order.",
+        "evidence_ids": [
+          "email:MSG-042:body",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48206"
+        ],
+        "blocks_entry": true
+      },
+      {
+        "question": "What is the full delivery address for The Lamb?",
+        "affected_fields": [
+          "amendment.changes[destination].proposed_value"
+        ],
+        "next_action": "Ask the customer for the full address for The Lamb; the email supplies only the site name.",
+        "evidence_ids": [
+          "email:MSG-042:body"
+        ],
+        "blocks_entry": true
+      }
+    ],
+    "resolutions": [
+      {
+        "field": "vat_rate",
+        "value": "0.20",
+        "discarded_value": "17.5",
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        ]
+      }
+    ],
+    "vat_policy": {
+      "rate": "0.20",
+      "origin": "Shared policy",
+      "authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "requires_human_review": true
+  }
+}
