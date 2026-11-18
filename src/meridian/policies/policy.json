@@ -32,7 +32,7 @@
     }
   },
   "review": {
-    "manual_credit_check_required": true,
+    "manual_credit_check_required": false,
     "credit_authority": "Tom / credit control",
     "pricing_delivery_authority": "Karen / operations",
     "customer_claims_authorise_exceptions": false,
@@ -43,6 +43,21 @@
       "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
       "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
       "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+    },
+    "account_status_codes": {
+      "A": "active",
+      "H": "on_stop",
+      "C": "closed"
     }
+  },
+  "source_authority": {
+    "account_status": "orbit_account",
+    "current_account": "account_notes",
+    "contract_terms": "account_notes",
+    "recorded_order": "orbit_order",
+    "requested_values": "current_email_and_attachments",
+    "catalogue_and_band_prices": "price_list",
+    "spreadsheet": "supporting_context_only",
+    "account_band": "orbit_account"
   }
 }

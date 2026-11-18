@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-11-18T18:42:31.475699+00:00",
+  "selected_emails": 19,
+  "prepared": 18,
+  "failed": 1,
+  "results": [
+    {
+      "email_id": "MSG-001",
+      "report_id": "8929d6a806204608b18078c122a91a1a",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183603795649Z_cb786402ec55425291559ed48aadda26.json"
+    },
+    {
+      "email_id": "MSG-006",
+      "report_id": "538329ea292d4f40b01192689b17367f",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183615054947Z_8ae06566bd9e4cce9e212484605fe6fd.json"
+    },
+    {
+      "email_id": "MSG-011",
+      "report_id": "2e4be6a4f6224458a657efb703bf0a22",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183638094431Z_be4e212186b64d6690f93b6a63b2c944.json"
+    },
+    {
+      "email_id": "MSG-012",
+      "report_id": "539c247fba50485ab7052d378b9f5a92",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183656909685Z_0e04eb6b60da406abcc1d7b36603eb8b.json"
+    },
+    {
+      "email_id": "MSG-015",
+      "report_id": "0a3c4b06db3a495180a638700a9326b6",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183716922759Z_89281271d86b4de0bf926c568742d711.json"
+    },
+    {
+      "email_id": "MSG-016",
+      "report_id": "ed3493442d16466da77378c34e7ba801",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183725865044Z_ed22dde348e949a09532d6765ee61f32.json"
+    },
+    {
+      "email_id": "MSG-017",
+      "report_id": "5fa59eeed0354965b4b9b6fa2de59a5f",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183751488584Z_9f5a9af65b0443eb86aeaff76e9cebb7.json"
+    },
+    {
+      "email_id": "MSG-019",
+      "report_id": "fe03fbb030594c75979d7c14eac9f964",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183824578373Z_fba09046f0e946fa83b91f19727d9206.json"
+    },
+    {
+      "email_id": "MSG-020",
+      "report_id": "e43e1ec08f014565b518b0533372ca09",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183839532459Z_ac5b6eb49a4d45479eb6625da5ad50c9.json"
+    },
+    {
+      "email_id": "MSG-021",
+      "report_id": "2156f8e848d243d9a8f26e3a4f91fd54",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183917903350Z_0090864daeb84fc3885382c4df6cb15f.json"
+    },
+    {
+      "email_id": "MSG-024",
+      "report_id": "eb07ce636250470a92bfa0d00f5f7d1f",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T183931229964Z_b433668857da4aca8d2f86b62f2470eb.json"
+    },
+    {
+      "email_id": "MSG-028",
+      "report_id": "74009573bb434f15804ff910817f48d7",
+      "status": "failed",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184031336348Z_d964fca9403e437a9515bbdb5602052b.json"
+    },
+    {
+      "email_id": "MSG-036",
+      "report_id": "fc14605f78d2481598f430dce660914d",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184036876832Z_1d83fd78cae94f55898ef51113ac44de.json"
+    },
+    {
+      "email_id": "MSG-037",
+      "report_id": "4a35d55e9dd54333b90e11222c8ac5ce",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184104294242Z_8b67225f04b94da696891d35e4bb0733.json"
+    },
+    {
+      "email_id": "MSG-038",
+      "report_id": "2cefef3bdca44f64bfc8799b5d46fc63",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184120107932Z_fdec305db2cf41e0bbfa3b363f3c34c4.json"
+    },
+    {
+      "email_id": "MSG-039",
+      "report_id": "08af26d2c63a421ebe0dd84840da9c9c",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184144970644Z_53a67473c32e4b229f3e08b909c33b4b.json"
+    },
+    {
+      "email_id": "MSG-041",
+      "report_id": "9d08c452091f43bcb941580af7ae4abc",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184203014140Z_6a983f0700d04a85847660b149a9b679.json"
+    },
+    {
+      "email_id": "MSG-042",
+      "report_id": "5b678bb9f42148d4b0baa93a81aae889",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184214878921Z_3d4b5d938be445e8bad04c495c6e6e13.json"
+    },
+    {
+      "email_id": "MSG-045",
+      "report_id": "5f646f6dcbf342bc834c850c10c05e95",
+      "status": "prepared",
+      "path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_20261118T184231474155Z_daca5f899da7487a91ee8ab88d769a38.json"
+    }
+  ],
+  "call_count": 19,
+  "usage_available_for_calls": 18,
+  "usage_totals_when_available": {
+    "input_tokens": 329536,
+    "output_tokens": 43938,
+    "total_tokens": 373474
+  },
+  "processing_duration_seconds": 419.160469834
+}

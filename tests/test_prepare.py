@@ -319,6 +319,22 @@ class PreparationTests(unittest.TestCase):
             self.assertEqual(len(requests), 1)
             self.assertTrue(Path(summary['results'][0]['path']).exists())
 
+    def test_rejected_parsed_proposal_is_retained_without_accepting_it(self):
+        output = new_output(self.selected, self.context)
+        line = output['new_order']['lines'][0]
+        line['sku']['reason'] = None
+        client, requests = self.client([output])
+        with tempfile.TemporaryDirectory() as directory:
+            summary = prepare_classification({'actions': [self.selected]}, inbox=self.inbox,
+                internal=self.internal, input_root=PACK, client=client,
+                model='synthetic-test-model', output_dir=directory)
+            record = json.loads(Path(summary['results'][0]['path']).read_text())
+        self.assertEqual(len(requests), 1)
+        self.assertEqual(record['status'], 'failed')
+        self.assertNotIn('proposal', record)
+        self.assertEqual(record['rejected_proposal']['new_order']['lines'][0]['sku']['value'], line['sku']['value'])
+        self.assertIn('explanation', record['error'])
+
 
 if __name__ == '__main__':
     unittest.main()

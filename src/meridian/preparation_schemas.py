@@ -10,7 +10,8 @@ class SupportedValue(StructuredOutput):
     value: NonemptyText = Field(description='Requested or suggested value as text; preserve raw dates and amounts.')
     basis: Literal['explicit_request', 'recorded_internal', 'inferred_suggestion']
     evidence_ids: list[NonemptyText] = Field(min_length=1)
-    reason: Optional[NonemptyText] = None
+    reason: Optional[NonemptyText] = Field(default=None, description=
+        'A nonempty explanation is REQUIRED for every inferred_suggestion, including inferred units. Optional for explicit requests and recorded values.')
 
 
 class QuotedPrice(StructuredOutput):

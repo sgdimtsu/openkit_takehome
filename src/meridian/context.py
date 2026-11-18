@@ -295,24 +295,15 @@ class ContextRetriever:
                   'Unrecognised dates prevent reliable last-three selection. Check orders: ' +
                   ', '.join(map(str, self.history_problems[account])))
         notes = self.notes_by_customer.get(account, []) if account else []
-        items = self.items_by_customer.get(account, []) if account else []
         verified_refs = {reference_key(order['CUSREF']) for order in referenced if order.get('CUSREF')}
         verified_refs.update(reference_key(order['ORDNO']) for order in referenced)
-        def possibly_same_customer(row):
-            if not account:
-                return False
-            words = name_key(row.get('Customer', '')).split()
-            # Truncated spreadsheet names are suggestions only, never assignments.
-            return len(words) >= 2 and any(
-                account in accounts and len(words) <= len(alias.split()) and
-                all(target.startswith(word) for word, target in zip(words, alias.split()))
-                for alias, accounts in self.aliases.items())
+        for value in references.values():
+            if value and self._stated(value, email['subject'] + '\n' + email['body']):
+                verified_refs.add(reference_key(value))
+        items = [row for row in self.items_by_customer.get(account, [])
+                 if row.get('Order / PO') and reference_key(row['Order / PO']) in verified_refs]
         uncertain_items = [row for row in self.unassigned_items
-                           if reference_key(row.get('Order / PO', '')) in verified_refs
-                           or possibly_same_customer(row)]
-        if uncertain_items:
-            alert('spreadsheet_customer_unresolved', 'Spreadsheet customer match unresolved',
-                  'Potentially relevant spreadsheet entries have uncertain customer names; check them before use.')
+                           if row.get('Order / PO') and reference_key(row['Order / PO']) in verified_refs]
         attachment_paths = {self.sources[item['source_id']].relative_path for item in email['attachments']}
         attachment_sources = list(attachment_sources)
         attachment_results = list(attachment_results)

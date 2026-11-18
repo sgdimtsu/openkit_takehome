@@ -21,6 +21,7 @@ class LLMCallError(RuntimeError):
     def __init__(self, message, metrics):
         super().__init__(message)
         self.metrics = metrics
+        self.proposal = None
 
 
 def create_client(settings):

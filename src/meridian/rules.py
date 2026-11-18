@@ -9,7 +9,7 @@ from uuid import uuid4
 
 from .artifacts import save_json_artifact
 from .context import ContextRetriever, order_date, reference_key
-from .normalise import ( canonical_unit, decimal_number, discount_rate,
+from .normalise import (canonical_unit, decimal_number,
                         exclusive_amount, money, money_text, orbit_net_price, quantity, requested_date)
 from .preparation_schemas import PreparationOutput
 from .prepare import validate_preparation
@@ -30,6 +30,7 @@ class _Review:
         self.catalogue = self.pricing.catalogue
         self.issues, self.changes, self.lines = [], [], []
         self.totals = None
+        self.resolutions = list(self.pricing.resolutions)
         self.request_date = datetime.fromisoformat(context['current_request']['received']).date()
         for row in ([self.account] if self.account else []) + context['catalogue_candidates'] + context['stock_records'] + context['open_items']:
             self.check_record(row)
@@ -69,6 +70,10 @@ class _Review:
         ocr_sources = [source.source_id for source in context['sources'].values()
                        if source.requires_review and not source.extraction_error]
         for alert in context['report_alerts']:
+            if alert['code'] in {'spreadsheet_customer_unresolved', 'entry_details_unresolved'}:
+                continue
+            if alert['code'] == 'order_reference_unresolved' and proposal.new_order and not alert['blocks_entry']:
+                continue
             if alert['code'] == 'ocr_review_required' and ocr_sources:
                 continue
             next_action = 'Resolve the highlighted check before applying affected values.'
@@ -91,49 +96,44 @@ class _Review:
         elif context['customer_match']['account_id'] != self.account['CUSNO']:
             raise ValueError('Matched account ID conflicts with customer record')
         account_ids = [self.account['source_id']] if self.account else []
-        self.issue('manual_credit_check', 'Snapshot data cannot establish current credit release.',
-                   'Check current credit status manually in Orbit. Only Tom can authorise credit decisions.',
-                   owner=self.policy.review.credit_authority, evidence=account_ids)
-        self.issue('snapshot_limitations', 'Inputs are snapshots; reference freshness may be unknown.',
-                   'Verify current records. Generation time is not source freshness; no stock or delivery promise is implied.')
+        if self.policy.review.manual_credit_check_required:
+            self.issue('manual_credit_check', 'The retained policy requires a live credit check.',
+                       'Verify the current Orbit account status before entry.',
+                       owner=self.policy.review.credit_authority, evidence=account_ids)
         params = context.get('export_parameters', {})
         vat = params.get('VATRT')
         if vat:
-            try:
-                if decimal_number(vat['PVAL']) / 100 != self.policy.vat_rate:
-                    self.issue('vat_conflict', f"Export VATRT is {vat['PVAL']}%; proposed calculations use the configured {self.policy.vat_percent}%.",
-                               self.policy.pricing.vat_authority.decision,
-                               owner='Accounts', evidence=[vat['source_id']])
-            except ValueError:
-                self.issue('vat_unknown', 'Export VAT rate cannot be interpreted.',
-                           self.policy.pricing.vat_authority.decision, owner='Accounts', evidence=[vat['source_id']])
+            self.resolutions.append({'field': 'vat_rate', 'value': str(self.policy.vat_rate),
+                                     'discarded_value': vat['PVAL'],
+                                     'decision': self.policy.pricing.vat_authority.decision,
+                                     'evidence_ids': [vat['source_id']]})
         if self.account:
-            allowed = {value.strip() for value in params.get('ACSTCDS', {}).get('PVAL', '').split(',') if value.strip()}
-            raw = self.account.get('ACSTAT')
-            if allowed and raw not in allowed:
-                self.issue('unknown_account_status', f'Account status {raw!r} is not in the exported code list; its meaning is unknown.',
-                           'Confirm account restrictions in live Orbit.', owner=self.policy.review.credit_authority, block=True, evidence=account_ids)
+            raw = str(self.account.get('ACSTAT', '')).strip()
+            codes = self.policy.review.account_status_codes or {}
+            meaning = codes.get(raw)
+            account_number = self.account['CUSNO']
+            if meaning == 'on_stop':
+                self.issue('recorded_credit_restriction', f'Orbit account {account_number} is on stop (ACSTAT {raw}).',
+                           f'Tom must clear the stop on Orbit account {account_number} before entry; CSV or customer claims cannot clear it.',
+                           owner=self.policy.review.credit_authority, block=True, evidence=account_ids,
+                           affected_fields=['customer_account'])
+            elif meaning == 'closed':
+                self.issue('account_restriction', f'Orbit account {account_number} is closed (ACSTAT {raw}).',
+                           'Identify a valid current account before entry.', block=True, evidence=account_ids,
+                           affected_fields=['customer_account'])
+            elif meaning == 'active':
+                self.resolutions.append({'field': 'customer_account', 'value': account_number,
+                                         'decision': f'Orbit snapshot records active account status ({raw}).',
+                                         'evidence_ids': account_ids})
+            else:
+                self.issue('unknown_account_status', f'Account {account_number} status {raw!r} has no confirmed meaning in the retained policy.',
+                           f'Check account {account_number} in Orbit; do not infer status from spreadsheet wording.',
+                           owner=self.policy.review.credit_authority, block=True, evidence=account_ids,
+                           affected_fields=['customer_account'])
             internal_text = [(self.account.get('NOTE1', ''), self.account['source_id'])]
-            internal_text += [(s.text or '', s.source_id) for s in context['customer_notes'] + context.get('account_constraints', [])]
-            for row in context['open_items']:
-                status = row.get('Status', '').strip().lower()
-                closed = bool(re.search(r'\b(?:closed|done)\b', status))
-                if not closed:
-                    internal_text.append((' '.join(row.get(key, '') for key in ('Issue', 'Notes')), row['source_id']))
-                    current_refs = {reference_key(value) for value in self.context.get('selection_references', {}).values() if value}
-                    current_refs.update(reference_key(o['header']['CUSREF']) for o in context['explicitly_matched_orders'] if o['header'].get('CUSREF'))
-                    current_refs.update(reference_key(o['header']['ORDNO']) for o in context['explicitly_matched_orders'])
-                    if proposal.customer_po:
-                        current_refs.add(reference_key(proposal.customer_po.value))
-                    if not row.get('Order / PO') or reference_key(row['Order / PO']) in current_refs:
-                        self.issue('recorded_open_item', f"Recorded spreadsheet entry: {row.get('Issue', '')}; status {row.get('Status', '')!r}; date {row.get('Date', '')!r}.",
-                                   'Check whether this entry still applies. Spreadsheet status and Who are not verified current authority.',
-                                   evidence=[row['source_id']])
+            internal_text += [(source.text or '', source.source_id)
+                              for source in context['customer_notes'] + context.get('account_constraints', [])]
             for text, source_id in internal_text:
-                if re.search(r'\b(?:on stop|on hold|order held)\b', text, re.I):
-                    self.issue('recorded_credit_restriction', 'Internal evidence records a hold/on-stop restriction. Customer claims cannot clear it.',
-                               'Do not enter or release the order until Tom verifies current status in Orbit.',
-                               owner=self.policy.review.credit_authority, block=True, evidence=[source_id])
                 if re.search(r'\bproforma only\b', text, re.I):
                     self.issue('proforma_required', 'Recorded terms require proforma and payment confirmation before keying.',
                                'Arrange the proforma and wait for Tom to confirm payment for this request; old paid orders do not satisfy it.',
@@ -145,18 +145,20 @@ class _Review:
                                    'Confirm a valid current account before entry.', owner='Accounts', block=True, evidence=[source_id])
         if proposal.action_type == 'resend':
             self.issue('resend', 'Resend: another order must not be created.',
-                       'Verify the original submission and matched order; do not duplicate entry.', block=True)
+                       'Create no new order. Open the matched Orbit order listed in Current order status.', block=True)
         elif proposal.action_type == 'uncertain':
             self.issue('action_uncertain', 'The requested order action remains unresolved.',
                        'Resolve the stated action question before entry.', block=True)
         elif proposal.new_order:
             if context['explicitly_matched_orders']:
                 self.issue('duplicate_entry_risk', 'An existing order matches this new-order request.',
-                           'Check Orbit; do not create another order for the same request.', block=True,
+                           'Open Orbit order(s) ' + ', '.join(str(order['header']['ORDNO']) for order in context['explicitly_matched_orders']) + '; the PO is already represented. Create no duplicate order.', block=True,
                            evidence=[o['header']['source_id'] for o in context['explicitly_matched_orders']])
             else:
-                self.issue('existing_order_not_established', 'No existing order match was established in the snapshot.',
-                           'Search live Orbit before creating an order; snapshot absence does not establish that it is new.')
+                self.resolutions.append({'field': 'customer_po',
+                                         'value': proposal.customer_po.value if proposal.customer_po else None,
+                                         'decision': 'No matching order found in the supplied Orbit snapshot; prepare a new order. The snapshot does not establish live completeness.',
+                                         'evidence_ids': []})
 
     def date_value(self, supported, *, allow_urgency=False, field='Delivery date'):
         result = requested_date(supported.value, received_date=self.request_date)
@@ -193,7 +195,8 @@ class _Review:
                                                  for key in getattr(proposed, field).evidence_ids))}
         if proposed.sku is None or proposed.quantity is None or proposed.unit is None:
             self.issue('line_incomplete', f'Line {proposed.line_id} lacks a supported SKU, quantity or unit.',
-                       'Confirm the missing details before entry.', block=True, evidence=proposed.description.evidence_ids)
+                       'Confirm the missing details before entry.', block=True, evidence=proposed.description.evidence_ids,
+                       affected_fields=[f'new_order.lines[{proposed.line_id}]'])
             return item
         sku = proposed.sku.value
         item['sku'] = sku
@@ -212,9 +215,9 @@ class _Review:
                 self.issue('product_not_current', f"{sku} is recorded as {row.get('status')}; replacement: {row.get('replaced_by') or 'unknown'}.",
                            'Confirm a supported replacement and its specification/price; do not substitute automatically.',
                            owner=self.policy.review.pricing_delivery_authority, block=True, evidence=[row['source_id']])
-            if proposed.sku.basis == 'inferred_suggestion':
-                self.issue('inferred_product', f'{sku} is an inferred product suggestion.',
-                           'Double-check the product, specification and unit against the request.', evidence=proposed.sku.evidence_ids)
+            item['selection_reason'] = proposed.sku.reason or 'Product code stated in the request or recorded internal evidence.'
+            self.resolutions.append({'field': f'new_order.lines[{proposed.line_id}].sku', 'value': sku,
+                                     'decision': item['selection_reason'], 'evidence_ids': proposed.sku.evidence_ids})
             if proposed.customer_quoted_price:
                 quote = proposed.customer_quoted_price
                 if quote.currency.upper() != 'GBP':
@@ -228,13 +231,14 @@ class _Review:
                 item['quoted_price_matches'] = customer == expected
                 if customer != expected:
                     self.issue('price_conflict', f'{sku}: customer amount {self.money_text(customer)} ex VAT differs from recorded {self.money_text(expected)} ({quote.price_basis}).',
-                               'Karen must review the discrepancy before entry; do not treat the PO price as approval.',
+                               f'Karen: approve the recorded {sku} price of £{self.money_text(expected)} ({quote.price_basis}) versus £{self.money_text(customer)} quoted; difference £{self.money_text(expected - customer)}. The recorded price is already prepared.',
                                owner=self.policy.review.pricing_delivery_authority, block=True, evidence=quote.amount.evidence_ids + price.evidence_ids,
-                               affected_fields=[f'Line {proposed.line_id} price'])
+                               affected_fields=[f'new_order.lines[{proposed.line_id}].price'])
         except (ValueError, KeyError) as exc:
             self.issue('line_pricing_unresolved', f'Line {proposed.line_id}: {exc}',
                        'Confirm product, unit and pricing terms with Karen; do not guess.', owner=self.policy.review.pricing_delivery_authority, block=True,
-                       evidence=proposed.sku.evidence_ids + proposed.quantity.evidence_ids + proposed.unit.evidence_ids)
+                       evidence=proposed.sku.evidence_ids + proposed.quantity.evidence_ids + proposed.unit.evidence_ids,
+                       affected_fields=[f'new_order.lines[{proposed.line_id}]'])
         return item
 
     def new_order(self):
@@ -279,10 +283,9 @@ class _Review:
                     and all(line.get('quoted_price_matches') for line in self.lines)
                     and any(ContextRetriever._stated(description.value, self.context['sources'][key].text)
                             for key in description.evidence_ids)):
-                self.issue('recorded_contract_reference', 'The PO refers to contract pricing and its line prices match the calculated prices.',
-                           'Verify the recorded terms in Orbit before entry.',
-                           owner=self.policy.review.pricing_delivery_authority, evidence=description.evidence_ids + sorted(applied_contracts),
-                           affected_fields=['Order pricing'])
+                self.resolutions.append({'field': 'order_pricing', 'value': description.value,
+                                         'decision': 'Applied recorded contract precedence; all quoted line prices match calculated prices.',
+                                         'evidence_ids': description.evidence_ids + sorted(applied_contracts)})
                 continue
             self.issue('customer_discount_unapproved', f'Customer-requested discount: {discount.description.value}. It has not been applied to calculated prices.',
                        'Karen must confirm any exception against recorded terms; do not layer it onto net band/contract prices.',
@@ -315,9 +318,12 @@ class _Review:
                     else:
                         raise ValueError('Quoted total VAT basis is unknown')
                     if customer != expected:
-                        self.issue('quoted_total_conflict', f"Customer total {quoted.amount.value} ({quoted.label or quoted.vat_basis}) differs from the code-calculated amount.",
-                                   'Karen must review prices, quantities, VAT and any requested discounts.',
-                                   owner=self.policy.review.pricing_delivery_authority, block=True, evidence=quoted.amount.evidence_ids)
+                        self.issue('quoted_total_conflict', f"Quoted {quoted.label or quoted.vat_basis}: £{self.money_text(customer)}; prepared amount: £{self.money_text(expected)}; difference: £{self.money_text(expected - customer)}.",
+                                   ('Unit prices match; Karen must resolve the quoted total discrepancy before entry.'
+                                    if all(line.get('quoted_price_matches') for line in self.lines)
+                                    else 'Karen must approve the specific price/total differences shown; prepared values are retained.'),
+                                   owner=self.policy.review.pricing_delivery_authority, block=True, evidence=quoted.amount.evidence_ids,
+                                   affected_fields=['order_pricing'])
                 except ValueError as exc:
                     self.issue('quoted_total_unknown', str(exc), 'Confirm what the quoted total includes.',
                                owner=self.policy.review.pricing_delivery_authority, block=True, evidence=quoted.amount.evidence_ids)
@@ -361,9 +367,10 @@ class _Review:
                 elif change.operation == 'replace' and change.field in {'delivery_destination', 'delivery_instructions'}:
                     record.update(old_value=None, old_value_status='Not available in the order export',
                                   proposed_value=change.proposed_value.model_dump(exclude_none=True))
-                    self.issue('unverified_destination_change', 'The request changes delivery details, but the existing order destination/instructions are not exported.',
-                               'Verify the current order details in live Orbit and confirm the requested change with Karen.',
-                               owner=self.policy.review.pricing_delivery_authority, block=True, evidence=change.evidence_ids)
+                    self.resolutions.append({'field': f'amendment.changes[{change.change_id}].{change.field}',
+                                             'value': change.proposed_value.value,
+                                             'decision': 'Prepare the explicitly requested replacement on the matched order. The old value is not exported; its absence alone does not block replacement.',
+                                             'evidence_ids': change.evidence_ids})
                 elif change.operation == 'replace' and change.field == 'line_quantity':
                     if line is None:
                         raise ValueError('Quantity change has no established line target')
@@ -422,7 +429,8 @@ class _Review:
             except (ValueError, KeyError) as exc:
                 self.issue('amendment_unresolved', f'{change.change_id}: {exc}',
                            'Verify the original order and requested replacement values before entry.',
-                           owner=self.policy.review.pricing_delivery_authority, block=True, evidence=change.evidence_ids)
+                           owner=self.policy.review.pricing_delivery_authority, block=True, evidence=change.evidence_ids,
+                           affected_fields=[f'amendment.changes[{change.change_id}]'])
                 self.changes.append({'change_id': change.change_id, 'field': change.field,
                                      'raw_request': change.model_dump(exclude_none=True), 'applicable': False})
 
@@ -440,7 +448,9 @@ class _Review:
                                       'dispatched_quantity_raw': row['QTYDS'],
                                       'recorded_unit_raw': stock.get(row['STKCD'], {}).get('UOM'),
                                       'evidence_ids': [row['source_id']]} for row in order['lines']]})
-        return result or [{'message': 'No existing order match established; verify live Orbit before entry.'}]
+        return result or [{'message': 'No existing order matched in the supplied snapshot.' +
+                           (' Prepared new order for account ' + str(self.account['CUSNO']) + '.'
+                            if self.account and self.proposal.new_order else '')}]
 
     def run(self):
         self.baseline()
@@ -451,12 +461,21 @@ class _Review:
         for issue in self.proposal.issues:
             self.issue('model_reported_issue', issue.description, issue.next_action,
                        owner=issue.owner or 'Order processor', evidence=issue.evidence_ids, origin='llm_proposal')
-        blocked = any(issue['blocks_entry'] for issue in self.issues)
+        remaining_questions = []
+        for question in self.proposal.uncertainties:
+            fields = question.affected_fields
+            entry_critical = any(field.startswith(('new_order', 'amendment', 'customer', 'action_type'))
+                                 or field in {'sku', 'quantity', 'unit', 'delivery_destination',
+                                              'requested_delivery_date', 'delivery_date', 'order_pricing'}
+                                 for field in fields)
+            remaining_questions.append({**question.model_dump(), 'blocks_entry': entry_critical})
+        blocked = (any(issue['blocks_entry'] for issue in self.issues)
+                   or any(question['blocks_entry'] for question in remaining_questions))
         return {'status': 'validated', 'readiness': 'Do not proceed' if blocked else 'Checks required',
                 'entry_section_label': 'Proposed changes — do not apply yet' if blocked else 'Changes to apply',
                 'current_order_status': self.current_status(), 'changes_to_apply': self.changes,
                 'calculations': self.totals, 'issues': self.issues,
-                'uncertainties': [item.model_dump() for item in self.proposal.uncertainties],
+                'uncertainties': remaining_questions, 'resolutions': self.resolutions,
                 'vat_policy': {'rate': str(self.policy.vat_rate), 'origin': 'Shared policy', 'authority': self.policy.pricing.vat_authority.model_dump()},
                 'requires_human_review': True}
 

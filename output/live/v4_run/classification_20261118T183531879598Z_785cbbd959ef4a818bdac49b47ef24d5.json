@@ -1,0 +1,339 @@
+{
+  "actions": [
+    {
+      "email_id": "MSG-001",
+      "customer": {
+        "name_as_stated": "Harbour View Hotel",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "HV-2291",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits the attached purchase order for supply.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-006",
+      "customer": {
+        "name_as_stated": "Pasta Fresca",
+        "account_id_as_stated": null
+      },
+      "action_type": "uncertain",
+      "references": {
+        "customer_po": "48,028",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Reports missing goods and asks for them to be sent or credited.",
+      "uncertainties": [
+        "The required workflow for sending the missing goods versus issuing a credit is not established."
+      ]
+    },
+    {
+      "email_id": "MSG-011",
+      "customer": {
+        "name_as_stated": "St Anne's C of E Primary School",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "SA-7781",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits the attached purchase order.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-012",
+      "customer": {
+        "name_as_stated": "Willow Lodge Care",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of the listed goods.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-015",
+      "customer": {
+        "name_as_stated": "Luca Moretti",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of the listed goods by Friday.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-016",
+      "customer": {
+        "name_as_stated": "Lucy Marsh",
+        "account_id_as_stated": null
+      },
+      "action_type": "uncertain",
+      "references": {
+        "customer_po": "FHG-4398",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests collection and replacement of a damaged fridge.",
+      "uncertainties": [
+        "Whether collection and replacement require an order amendment or another workflow is unclear."
+      ]
+    },
+    {
+      "email_id": "MSG-017",
+      "customer": {
+        "name_as_stated": "Grafham Kitchen",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of the listed equipment.",
+      "uncertainties": [
+        "It is unclear whether the previous owners' account can be used."
+      ]
+    },
+    {
+      "email_id": "MSG-019",
+      "customer": {
+        "name_as_stated": null,
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Automated fax notification carries a PO-named attachment, indicating an order submission.",
+      "uncertainties": [
+        "The customer identity is not stated in the notification."
+      ]
+    },
+    {
+      "email_id": "MSG-020",
+      "customer": {
+        "name_as_stated": "Sarah Kemp",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "HV-2291",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [
+        "MSG-001"
+      ],
+      "reason": "Submits a revised order and requests changes to the existing order.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-021",
+      "customer": {
+        "name_as_stated": "Bramley Care Group",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "BCG-1102",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits the attached purchase order for the new Bramley Court home.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-024",
+      "customer": {
+        "name_as_stated": "Pasta Fresca Hills Road",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests the usual goods for Hills Road.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-028",
+      "customer": {
+        "name_as_stated": "The Royal Oak",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "ROY-5530",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits an attached order for the kitchen refit.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-036",
+      "customer": {
+        "name_as_stated": "Julie Barnes",
+        "account_id_as_stated": null
+      },
+      "action_type": "resend",
+      "references": {
+        "customer_po": "SA-7781",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [
+        "MSG-011"
+      ],
+      "reason": "Reattaches the previously sent order and asks for receipt confirmation.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-037",
+      "customer": {
+        "name_as_stated": "Josh Ainsley",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "TSK-88",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits an attached purchase order for replacement and additional equipment.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-038",
+      "customer": {
+        "name_as_stated": "Rachel Tunney",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": null,
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of a fridge and blue roll.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-039",
+      "customer": {
+        "name_as_stated": "Oakfield Academy Trust",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "OAK-301",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits the attached purchase order.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-041",
+      "customer": {
+        "name_as_stated": "Steve Ruddock",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "KH/2026/131",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of the listed goods against the stated reference.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-042",
+      "customer": {
+        "name_as_stated": "Lucy Marsh",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "FHG-4422",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests a delivery-destination correction for the stated order.",
+      "uncertainties": []
+    },
+    {
+      "email_id": "MSG-045",
+      "customer": {
+        "name_as_stated": "Gemma Lyle",
+        "account_id_as_stated": null
+      },
+      "action_type": "amendment_request",
+      "references": {
+        "customer_po": "ROY-5530",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [
+        "MSG-028"
+      ],
+      "reason": "Requests delivery-location and timing changes for the stated order.",
+      "uncertainties": []
+    }
+  ],
+  "schema_version": "1.0",
+  "metadata": {
+    "extracted_at": "2026-11-18T18:35:31.876930+00:00",
+    "total_emails_read": 45,
+    "total_emails_requiring_action": 19,
+    "total_emails_excluded": 26,
+    "breakdown_by_action": {
+      "new_order_request": 13,
+      "amendment_request": 3,
+      "resend": 1,
+      "uncertain": 2
+    },
+    "processing_duration_seconds": 44.568402959000004,
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 44.567823167,
+      "response_id": "resp_0f05860120c8c880016afdefc9088487d2a39aeb6919841211",
+      "usage": {
+        "input_tokens": 8322,
+        "input_tokens_details": {
+          "cache_write_tokens": 8319,
+          "cached_tokens": 0,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 8319
+          }
+        },
+        "output_tokens": 5036,
+        "output_tokens_details": {
+          "reasoning_tokens": 3598
+        },
+        "total_tokens": 13358
+      }
+    }
+  }
+}

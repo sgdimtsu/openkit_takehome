@@ -86,10 +86,13 @@ def requested_date(value, *, received_date=None):
         return {'raw': raw, 'kind': 'urgency'}
     # These qualifiers affect confirmation, not the date supplied by the customer.
     clean = re.sub(r'(?i)\s*\((?:ideally|if possible|preferred)\)\s*$', '', raw)
+    latest = re.fullmatch(r'(?i)(.+?)\s+latest', clean)
+    if latest:
+        clean = 'by ' + latest[1]
     kind, date_text = 'exact_date', clean
     for pattern, candidate in ((r'(?i)^w/c\s+', 'week_commencing'),
                                (r'(?i)^before\s+', 'before'),
-                               (r'(?i)^(?:by|on)\s+', 'by' if raw.lower().startswith('by') else 'exact_date')):
+                               (r'(?i)^(?:by|on)\s+', 'by' if clean.lower().startswith('by') else 'exact_date')):
         if re.search(pattern, clean):
             date_text = re.sub(pattern, '', clean).strip()
             kind = candidate

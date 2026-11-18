@@ -182,9 +182,9 @@ class ContextTests(unittest.TestCase):
     def test_truncated_spreadsheet_customer_is_not_silently_assigned(self):
         context = self.retriever.prepare(selection('MSG-015', 'Riverside Brasserie'))
         uncertain = context['unresolved_open_items']
-        self.assertTrue(any(row['Customer'] == 'Riverside Brass' for row in uncertain))
+        self.assertFalse(uncertain)
         self.assertFalse(any(row['Customer'] == 'Riverside Brass' for row in context['open_items']))
-        self.assertTrue(any(a['code'] == 'spreadsheet_customer_unresolved' for a in context['report_alerts']))
+        self.assertFalse(any(a['code'] == 'spreadsheet_customer_unresolved' for a in context['report_alerts']))
 
     def test_unknown_trigger_fails_and_retrieval_does_not_write(self):
         with self.assertRaisesRegex(ValueError, 'Unknown trigger'):

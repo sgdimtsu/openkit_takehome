@@ -59,7 +59,7 @@ class RenderTests(unittest.TestCase):
         groups = [attrs for tag, attrs in parsed.tags if tag == 'section' and attrs.get('class') == 'customer']
         self.assertEqual(len(articles), 3)
         self.assertEqual(len(groups), 2)
-        for title in ('Current order status', 'Things to confirm', 'Outstanding issues', 'Evidence'):
+        for title in ('Current order status', 'Outstanding issues', 'Evidence'):
             self.assertIn(title, text)
         self.assertIn('SECOND-TRIGGER', text)
         self.assertIn('HARB01', text)
@@ -118,7 +118,7 @@ class RenderTests(unittest.TestCase):
         self.assertIn('The Lamb', text)
         self.assertIn('Not available in the order export', text)
         self.assertIn('Unverified customer request', text)
-        self.assertIn('Do not proceed', text)
+        self.assertIn('Checks required', text)
 
     def test_unresolved_customer_prominent_and_unsupported_input_is_failure(self):
         selected = selection('MSG-017', 'Grafham Kitchen')
@@ -228,6 +228,20 @@ class RenderTests(unittest.TestCase):
             self.assertIn('1 processing failures', text)
             self.assertIn('MSG-038', text)
             self.assertIn('No validated entry values', text)
+
+    def test_blanket_data_notices_are_not_rendered_as_tasks_even_for_saved_reviews(self):
+        reviewed = copy.deepcopy(self.new)
+        for code, message in [('manual_credit_check', 'Blanket credit recheck'),
+                              ('snapshot_limitations', 'Blanket freshness warning'),
+                              ('vat_conflict', 'Blanket VAT warning')]:
+            reviewed['validation']['issues'].append({'code': code, 'description': message,
+                'next_action': 'Generic task', 'owner': 'Order processor', 'blocks_entry': False,
+                'evidence_ids': [], 'origin': 'deterministic_rule'})
+        text = self.html([reviewed])
+        for message in ['Blanket credit recheck', 'Blanket freshness warning', 'Blanket VAT warning']:
+            self.assertNotIn(message, text)
+        self.assertNotIn('Check current credit status in Orbit;', text)
+
 
 
 if __name__ == '__main__':

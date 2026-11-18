@@ -1,0 +1,1776 @@
+{
+  "schema_version": "1.0",
+  "report_id": "2f5d16dcff6f48b6bf3912dc24150463",
+  "generated_at": "2026-11-18T18:42:31.586572+00:00",
+  "preparation": {
+    "schema_version": "1.0",
+    "report_id": "74009573bb434f15804ff910817f48d7",
+    "generated_at": "2026-11-18T18:40:31.313732+00:00",
+    "status": "failed",
+    "business_rules_applied": false,
+    "requires_human_review": true,
+    "trigger": {
+      "email_id": "MSG-028",
+      "received_at": "2026-10-08T08:00:00+01:00"
+    },
+    "classification": {
+      "email_id": "MSG-028",
+      "customer": {
+        "name_as_stated": "The Royal Oak",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "ROY-5530",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Submits an attached order for the kitchen refit.",
+      "uncertainties": []
+    },
+    "context": {
+      "email_id": "MSG-028",
+      "action_type": "new_order_request",
+      "customer_match": {
+        "status": "matched",
+        "account_id": "ROYO02",
+        "candidate_account_ids": [
+          "ROYO02"
+        ],
+        "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+        "evidence_ids": [
+          "file:04_reference/customer_account_notes.md:section:2",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:ROYO02"
+        ]
+      },
+      "customer_record": {
+        "CUSNO": "ROYO02",
+        "CUSNM": "THE ROYAL OAK ST IVES",
+        "ADR1": "Bridge Street",
+        "ADR2": "St Ives",
+        "PCODE": "PE27 5EH",
+        "TELNO": "01480 462230",
+        "ACSTAT": "A",
+        "CRLIM": 8000,
+        "PRCBND": "B",
+        "DTOPEN": "20240311",
+        "NOTE1": "NEW OWNER G LYLE 03/24 USE THIS A/C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:ROYO02"
+      },
+      "current_request": {
+        "id": "MSG-028",
+        "received": "2026-10-08T08:00:00+01:00",
+        "from": "Gemma Lyle <gemma@theroyaloakstives.co.uk>",
+        "to": "orders@meridiancatering.co.uk",
+        "subject": "Order - ROY-5530",
+        "body": "Hi,\n\nPlease see attached order. We're refitting the kitchen so need these w/c 19th Oct ideally.\n\nThanks!\nGemma\nThe Royal Oak",
+        "attachments": [
+          {
+            "filename": "PO_ROY-5530.pdf",
+            "path": "05_orders/PO_ROY-5530.pdf",
+            "source_id": "file:05_orders/PO_ROY-5530.pdf",
+            "available": true
+          }
+        ],
+        "in_reply_to": null,
+        "source_id": "email:MSG-028:body"
+      },
+      "explicitly_matched_orders": [],
+      "supporting_history": [
+        {
+          "header": {
+            "ORDNO": 47873,
+            "CUSNO": "ROYO02",
+            "CUSREF": "ROY-5529",
+            "ORDDT": "20260909",
+            "STAT": "I",
+            "DELDT": "20260914",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47873"
+          },
+          "lines": [
+            {
+              "ORDNO": 47873,
+              "LNNO": 10,
+              "STKCD": "CON-FOIL-450",
+              "QTY": 3,
+              "QTYDS": 3,
+              "UPRC": 2150,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:10"
+            },
+            {
+              "ORDNO": 47873,
+              "LNNO": 20,
+              "STKCD": "CON-CF-450",
+              "QTY": 10,
+              "QTYDS": 10,
+              "UPRC": 995,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:20"
+            },
+            {
+              "ORDNO": 47873,
+              "LNNO": 30,
+              "STKCD": "GR-CHAR-600",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 59500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:30"
+            },
+            {
+              "ORDNO": 47873,
+              "LNNO": 40,
+              "STKCD": "CON-GL-BL-L",
+              "QTY": 6,
+              "QTYDS": 6,
+              "UPRC": 645,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:40"
+            },
+            {
+              "ORDNO": 47873,
+              "LNNO": 50,
+              "STKCD": "SW-TONGS",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 325,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:50"
+            },
+            {
+              "ORDNO": 47873,
+              "LNNO": 60,
+              "STKCD": "CON-WR-6",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 1795,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:60"
+            }
+          ],
+          "order_date_normalised": "2026-09-09"
+        },
+        {
+          "header": {
+            "ORDNO": 47858,
+            "CUSNO": "ROYO02",
+            "CUSREF": "ROY-5528",
+            "ORDDT": "46273",
+            "STAT": "I",
+            "DELDT": "46275",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47858"
+          },
+          "lines": [
+            {
+              "ORDNO": 47858,
+              "LNNO": 10,
+              "STKCD": "CON-GL-BL-L",
+              "QTY": 3,
+              "QTYDS": 3,
+              "UPRC": 645,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:10"
+            },
+            {
+              "ORDNO": 47858,
+              "LNNO": 20,
+              "STKCD": "FRY-1T-8",
+              "QTY": 2,
+              "QTYDS": 2,
+              "UPRC": 39500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:20"
+            },
+            {
+              "ORDNO": 47858,
+              "LNNO": 30,
+              "STKCD": "CON-WR-6",
+              "QTY": 2,
+              "QTYDS": 2,
+              "UPRC": 1795,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:30"
+            }
+          ],
+          "order_date_normalised": "2026-09-08"
+        },
+        {
+          "header": {
+            "ORDNO": 47823,
+            "CUSNO": "ROYO02",
+            "CUSREF": "ROY-5527",
+            "ORDDT": "20260904",
+            "STAT": "I",
+            "DELDT": "20260909",
+            "OPID": "KH",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47823"
+          },
+          "lines": [
+            {
+              "ORDNO": 47823,
+              "LNNO": 10,
+              "STKCD": "GR-CHAR-600",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 59500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:10"
+            },
+            {
+              "ORDNO": 47823,
+              "LNNO": 20,
+              "STKCD": "SW-FRYPAN-28",
+              "QTY": 12,
+              "QTYDS": 12,
+              "UPRC": 2250,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:20"
+            },
+            {
+              "ORDNO": 47823,
+              "LNNO": 30,
+              "STKCD": "CON-CF-450",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 995,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:30"
+            },
+            {
+              "ORDNO": 47823,
+              "LNNO": 40,
+              "STKCD": "FRY-1T-8",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 39500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:40"
+            }
+          ],
+          "order_date_normalised": "2026-09-04"
+        }
+      ],
+      "history_limit": 3,
+      "customer_notes": [
+        {
+          "source_id": "file:04_reference/customer_account_notes.md:section:2",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "The Royal Oak (St Ives)",
+          "locator": "Section: The Royal Oak (St Ives)",
+          "timestamp": null,
+          "text": "The Royal Oak (St Ives)\n- **Use ROYO02.** New owner Gemma Lyle took over in March 2024 and the account moved to band B.\n- ROYO01 is the old Pubco account. Should have been closed. Don't key anything on it.\n- Gemma is doing a kitchen refit this autumn, so expect equipment orders.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      ],
+      "general_account_notes": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "account_constraints": [],
+      "export_parameters": {
+        "VATRT": {
+          "PKEY": "VATRT",
+          "PVAL": "17.5",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        },
+        "LASTEXP": {
+          "PKEY": "LASTEXP",
+          "PVAL": "20261008 231502",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+        },
+        "ACSTCDS": {
+          "PKEY": "ACSTCDS",
+          "PVAL": "A,H,C",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+        },
+        "STATCDS": {
+          "PKEY": "STATCDS",
+          "PVAL": "N,P,D,I,X,H",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+        }
+      },
+      "open_items": [
+        {
+          "Date": "08/10",
+          "Customer": "Royal Oak",
+          "Order / PO": "ROY-5530",
+          "Issue": "combi price wrong on PO (old list)",
+          "Who": "PS",
+          "Status": "open",
+          "Notes": "",
+          "Closed": "",
+          "source_id": "csv:02_open_items_log.csv:record:60"
+        }
+      ],
+      "unresolved_open_items": [],
+      "catalogue_candidates": [
+        {
+          "sku": "CO-6G-ELE",
+          "description": "Combi oven, 6 grid, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "2349.00",
+          "band_b_gbp": "2231.55",
+          "band_t_gbp": "2114.10",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:14"
+        },
+        {
+          "sku": "CO-10G-ELE",
+          "description": "Combi oven, 10 grid, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "4295.00",
+          "band_b_gbp": "4080.25",
+          "band_t_gbp": "3865.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:15"
+        },
+        {
+          "sku": "CO-6G-GAS",
+          "description": "Combi oven, 6 grid, natural gas",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "2695.00",
+          "band_b_gbp": "2560.25",
+          "band_t_gbp": "2425.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:16"
+        },
+        {
+          "sku": "RG-6B-GAS",
+          "description": "Six burner range with oven, natural gas",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "1595.00",
+          "band_b_gbp": "1515.25",
+          "band_t_gbp": "1435.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:18"
+        },
+        {
+          "sku": "RG-4B-GAS",
+          "description": "Four burner range with oven, natural gas",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "1195.00",
+          "band_b_gbp": "1135.25",
+          "band_t_gbp": "1075.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:19"
+        },
+        {
+          "sku": "FRY-1T-6",
+          "description": "Fryer, single tank, 6L, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "345.00",
+          "band_b_gbp": "327.75",
+          "band_t_gbp": "310.50",
+          "status": "obsolete",
+          "replaced_by": "FRY-1T-8",
+          "source_id": "csv:04_reference/price_list.csv:record:20"
+        },
+        {
+          "sku": "FRY-1T-8",
+          "description": "Fryer, single tank, 8L, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "395.00",
+          "band_b_gbp": "375.25",
+          "band_t_gbp": "355.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:21"
+        },
+        {
+          "sku": "FRY-2T-8",
+          "description": "Fryer, twin tank, 2 x 8L, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "645.00",
+          "band_b_gbp": "612.75",
+          "band_t_gbp": "580.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:22"
+        },
+        {
+          "sku": "GR-CHAR-600",
+          "description": "Chargrill, 600mm, natural gas",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "595.00",
+          "band_b_gbp": "565.25",
+          "band_t_gbp": "535.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:23"
+        },
+        {
+          "sku": "PC-1200",
+          "description": "Stainless prep table, 1200mm",
+          "category": "Prep",
+          "unit": "each",
+          "list_price_gbp": "225.00",
+          "band_b_gbp": "213.75",
+          "band_t_gbp": "202.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:39"
+        },
+        {
+          "sku": "PC-1500",
+          "description": "Stainless prep table, 1500mm",
+          "category": "Prep",
+          "unit": "each",
+          "list_price_gbp": "255.00",
+          "band_b_gbp": "242.25",
+          "band_t_gbp": "229.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:40"
+        },
+        {
+          "sku": "PC-1800",
+          "description": "Stainless prep table, 1800mm",
+          "category": "Prep",
+          "unit": "each",
+          "list_price_gbp": "289.00",
+          "band_b_gbp": "274.55",
+          "band_t_gbp": "260.10",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:41"
+        },
+        {
+          "sku": "CON-WR-6",
+          "description": "White centrefeed roll, case of 6",
+          "category": "Consumables",
+          "unit": "case",
+          "list_price_gbp": "17.95",
+          "band_b_gbp": "17.05",
+          "band_t_gbp": "16.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:51"
+        },
+        {
+          "sku": "CON-GL-BL-L",
+          "description": "Nitrile gloves, blue, large, box of 100",
+          "category": "Consumables",
+          "unit": "box",
+          "list_price_gbp": "6.45",
+          "band_b_gbp": "6.13",
+          "band_t_gbp": "5.81",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:53"
+        },
+        {
+          "sku": "CON-CF-450",
+          "description": "Cling film, 450mm x 300m",
+          "category": "Consumables",
+          "unit": "roll",
+          "list_price_gbp": "9.95",
+          "band_b_gbp": "9.45",
+          "band_t_gbp": "8.96",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:54"
+        },
+        {
+          "sku": "CON-FOIL-450",
+          "description": "Catering foil, 450mm x 75m",
+          "category": "Consumables",
+          "unit": "roll",
+          "list_price_gbp": "21.50",
+          "band_b_gbp": "20.43",
+          "band_t_gbp": "19.35",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:55"
+        },
+        {
+          "sku": "SW-GN11-65",
+          "description": "Gastronorm pan 1/1, 65mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "11.95",
+          "band_b_gbp": "11.35",
+          "band_t_gbp": "10.75",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:62"
+        },
+        {
+          "sku": "SW-GN11-100",
+          "description": "Gastronorm pan 1/1, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "14.50",
+          "band_b_gbp": "13.77",
+          "band_t_gbp": "13.05",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:63"
+        },
+        {
+          "sku": "SW-GN13-100",
+          "description": "Gastronorm pan 1/3, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "7.95",
+          "band_b_gbp": "7.55",
+          "band_t_gbp": "7.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:64"
+        },
+        {
+          "sku": "SW-TONGS",
+          "description": "Tongs, stainless, 300mm",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "3.25",
+          "band_b_gbp": "3.09",
+          "band_t_gbp": "2.93",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:71"
+        },
+        {
+          "sku": "SW-FRYPAN-28",
+          "description": "Frying pan, non-stick, 28cm",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "22.50",
+          "band_b_gbp": "21.38",
+          "band_t_gbp": "20.25",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:73"
+        }
+      ],
+      "stock_records": [
+        {
+          "STKCD": "CO-10G-ELE",
+          "DESC1": "COMBI OVEN 10GRID ELEC",
+          "DESC2": "3PH",
+          "UOM": "EA",
+          "LSTPR": 429500,
+          "SUPCD": "KLD",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-10G-ELE"
+        },
+        {
+          "STKCD": "CO-6G-ELE",
+          "DESC1": "COMBI OVEN 6GRID ELEC",
+          "DESC2": "3PH",
+          "UOM": "EA",
+          "LSTPR": 234900,
+          "SUPCD": "KLD",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-6G-ELE"
+        },
+        {
+          "STKCD": "CO-6G-GAS",
+          "DESC1": "COMBI OVEN 6GRID GAS",
+          "DESC2": "NAT GAS",
+          "UOM": "EA",
+          "LSTPR": 269500,
+          "SUPCD": "KLD",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-6G-GAS"
+        },
+        {
+          "STKCD": "CON-CF-450",
+          "DESC1": "CLINGFILM 450",
+          "DESC2": "",
+          "UOM": "RL",
+          "LSTPR": 995,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450"
+        },
+        {
+          "STKCD": "CON-FOIL-450",
+          "DESC1": "FOIL 450",
+          "DESC2": "",
+          "UOM": "RL",
+          "LSTPR": 2150,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450"
+        },
+        {
+          "STKCD": "CON-GL-BL-L",
+          "DESC1": "GLOVES NITRILE BLUE L",
+          "DESC2": "BX100",
+          "UOM": "BX",
+          "LSTPR": 645,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+        },
+        {
+          "STKCD": "CON-WR-6",
+          "DESC1": "WHITE ROLL C/FEED",
+          "DESC2": "CASE 6",
+          "UOM": "CS",
+          "LSTPR": 1795,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+        },
+        {
+          "STKCD": "FRY-1T-6",
+          "DESC1": "FRYER 1 TANK 6L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 34500,
+          "SUPCD": "KLD",
+          "OBSFLG": "Y",
+          "RPLCD": "FRY-1T-8",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-6"
+        },
+        {
+          "STKCD": "FRY-1T-8",
+          "DESC1": "FRYER 1 TANK 8L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 39500,
+          "SUPCD": "KLD",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-8"
+        },
+        {
+          "STKCD": "FRY-2T-8",
+          "DESC1": "FRYER 2 TANK 2X8L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 64500,
+          "SUPCD": "KLD",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8"
+        },
+        {
+          "STKCD": "GR-CHAR-600",
+          "DESC1": "CHARGRILL 600 GAS",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 59500,
+          "SUPCD": "KLD",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GR-CHAR-600"
+        },
+        {
+          "STKCD": "PC-1200",
+          "DESC1": "SS TABLE 1200",
+          "DESC2": "W/UNDERSHELF",
+          "UOM": "EA",
+          "LSTPR": 22500,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1200"
+        },
+        {
+          "STKCD": "PC-1500",
+          "DESC1": "SS TABLE 1500",
+          "DESC2": "W/UNDERSHELF",
+          "UOM": "EA",
+          "LSTPR": 25500,
+          "SUPCD": "PRM",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1500"
+        },
+        {
+          "STKCD": "PC-1800",
+          "DESC1": "SS TABLE 1800",
+          "DESC2": "W/UNDERSHELF",
+          "UOM": "EA",
+          "LSTPR": 28900,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1800"
+        },
+        {
+          "STKCD": "RG-4B-GAS",
+          "DESC1": "RANGE 4 BURNER GAS",
+          "DESC2": "W/OVEN",
+          "UOM": "EA",
+          "LSTPR": 119500,
+          "SUPCD": "KLD",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-4B-GAS"
+        },
+        {
+          "STKCD": "RG-6B-GAS",
+          "DESC1": "RANGE 6 BURNER GAS",
+          "DESC2": "W/OVEN",
+          "UOM": "EA",
+          "LSTPR": 159500,
+          "SUPCD": "KLD",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-6B-GAS"
+        },
+        {
+          "STKCD": "SW-FRYPAN-28",
+          "DESC1": "FRYPAN 28CM NS",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 2250,
+          "SUPCD": "PRM",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-FRYPAN-28"
+        },
+        {
+          "STKCD": "SW-GN11-100",
+          "DESC1": "GN PAN 1/1 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1450,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100"
+        },
+        {
+          "STKCD": "SW-GN11-65",
+          "DESC1": "GN PAN 1/1 65MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1195,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65"
+        },
+        {
+          "STKCD": "SW-GN13-100",
+          "DESC1": "GN PAN 1/3 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 795,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+        },
+        {
+          "STKCD": "SW-TONGS",
+          "DESC1": "TONGS 300MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 325,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-TONGS"
+        }
+      ],
+      "attachments": [
+        {
+          "filename": "PO_ROY-5530.pdf",
+          "path": "05_orders/PO_ROY-5530.pdf",
+          "source_id": "file:05_orders/PO_ROY-5530.pdf",
+          "available": true
+        }
+      ],
+      "attachment_extractions": [
+        {
+          "relative_path": "05_orders/PO_ROY-5530.pdf",
+          "pages": [
+            {
+              "source": {
+                "source_id": "file:05_orders/PO_ROY-5530.pdf:page:1",
+                "relative_path": "05_orders/PO_ROY-5530.pdf",
+                "display_name": "PO_ROY-5530.pdf — page 1",
+                "locator": "Page 1",
+                "timestamp": null,
+                "text": "The Royal Oak\r\nBridge Street, St Ives PE27 5EH\r\ngemma@theroyaloakstives.co.uk\r\nPURCHASE ORDER\r\nPO number: ROY-5530\r\nDate: 08/10/2026\r\nSupplier\r\nMeridian Catering Supplies Ltd\r\nUnit 7, Stukeley Meadows\r\nHuntingdon PE29 6FY\r\nDeliver to\r\nThe Royal Oak, Bridge Street\r\nSt Ives PE27 5EH\r\nRequired by: w/c 19/10/2026\r\nRef Description Qty Unit £ Total £\r\nCombi oven 6 grid electric (CO-6G-ELE) 1 2,150.00 2,150.00\r\nStainless prep table 1500 with undershelf 1 242.25 242.25\r\nTwin tank fryer 2x8L electric 1 612.75 612.75\r\nGastronorm 1/1 100mm 8 13.78 110.24\r\nNet 3,115.24\r\nVAT 20% 623.05\r\nTotal 3,738.29\r\nKitchen refit. Prices as per your price list. Please call Gemma on 07700 900318 to book delivery.\r\nGemma Lyle, Proprietor",
+                "extraction_method": "pdf_text",
+                "requires_review": false,
+                "extraction_error": null
+              },
+              "page_number": 1,
+              "method": "pdf_text",
+              "status": "extracted",
+              "words": [],
+              "error": null
+            }
+          ],
+          "errors": [],
+          "duration_seconds": 0.028913332999991326
+        }
+      ],
+      "report_alerts": [
+        {
+          "code": "order_reference_unresolved",
+          "title": "Order reference requires checking",
+          "message": "No existing order match established for customer_po 'ROY-5530'; absence is not proof of a new order.",
+          "blocks_entry": false,
+          "placement": "report_header_and_things_to_confirm"
+        }
+      ],
+      "sources": {
+        "csv:02_open_items_log.csv:record:60": {
+          "source_id": "csv:02_open_items_log.csv:record:60",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 60",
+          "locator": "CSV record 60 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"08/10\", \"Customer\": \"Royal Oak\", \"Order / PO\": \"ROY-5530\", \"Issue\": \"combi price wrong on PO (old list)\", \"Who\": \"PS\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:14": {
+          "source_id": "csv:04_reference/price_list.csv:record:14",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 14",
+          "locator": "CSV record 14 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CO-6G-ELE\", \"description\": \"Combi oven, 6 grid, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"2349.00\", \"band_b_gbp\": \"2231.55\", \"band_t_gbp\": \"2114.10\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:15": {
+          "source_id": "csv:04_reference/price_list.csv:record:15",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 15",
+          "locator": "CSV record 15 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CO-10G-ELE\", \"description\": \"Combi oven, 10 grid, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"4295.00\", \"band_b_gbp\": \"4080.25\", \"band_t_gbp\": \"3865.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:16": {
+          "source_id": "csv:04_reference/price_list.csv:record:16",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 16",
+          "locator": "CSV record 16 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CO-6G-GAS\", \"description\": \"Combi oven, 6 grid, natural gas\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"2695.00\", \"band_b_gbp\": \"2560.25\", \"band_t_gbp\": \"2425.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:18": {
+          "source_id": "csv:04_reference/price_list.csv:record:18",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 18",
+          "locator": "CSV record 18 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"RG-6B-GAS\", \"description\": \"Six burner range with oven, natural gas\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"1595.00\", \"band_b_gbp\": \"1515.25\", \"band_t_gbp\": \"1435.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:19": {
+          "source_id": "csv:04_reference/price_list.csv:record:19",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 19",
+          "locator": "CSV record 19 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"RG-4B-GAS\", \"description\": \"Four burner range with oven, natural gas\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"1195.00\", \"band_b_gbp\": \"1135.25\", \"band_t_gbp\": \"1075.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:20": {
+          "source_id": "csv:04_reference/price_list.csv:record:20",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 20",
+          "locator": "CSV record 20 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"FRY-1T-6\", \"description\": \"Fryer, single tank, 6L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"345.00\", \"band_b_gbp\": \"327.75\", \"band_t_gbp\": \"310.50\", \"status\": \"obsolete\", \"replaced_by\": \"FRY-1T-8\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:21": {
+          "source_id": "csv:04_reference/price_list.csv:record:21",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 21",
+          "locator": "CSV record 21 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"FRY-1T-8\", \"description\": \"Fryer, single tank, 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"395.00\", \"band_b_gbp\": \"375.25\", \"band_t_gbp\": \"355.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:22": {
+          "source_id": "csv:04_reference/price_list.csv:record:22",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 22",
+          "locator": "CSV record 22 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"FRY-2T-8\", \"description\": \"Fryer, twin tank, 2 x 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"645.00\", \"band_b_gbp\": \"612.75\", \"band_t_gbp\": \"580.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:23": {
+          "source_id": "csv:04_reference/price_list.csv:record:23",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 23",
+          "locator": "CSV record 23 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"GR-CHAR-600\", \"description\": \"Chargrill, 600mm, natural gas\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"595.00\", \"band_b_gbp\": \"565.25\", \"band_t_gbp\": \"535.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:39": {
+          "source_id": "csv:04_reference/price_list.csv:record:39",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 39",
+          "locator": "CSV record 39 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"PC-1200\", \"description\": \"Stainless prep table, 1200mm\", \"category\": \"Prep\", \"unit\": \"each\", \"list_price_gbp\": \"225.00\", \"band_b_gbp\": \"213.75\", \"band_t_gbp\": \"202.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:40": {
+          "source_id": "csv:04_reference/price_list.csv:record:40",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 40",
+          "locator": "CSV record 40 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"PC-1500\", \"description\": \"Stainless prep table, 1500mm\", \"category\": \"Prep\", \"unit\": \"each\", \"list_price_gbp\": \"255.00\", \"band_b_gbp\": \"242.25\", \"band_t_gbp\": \"229.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:41": {
+          "source_id": "csv:04_reference/price_list.csv:record:41",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 41",
+          "locator": "CSV record 41 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"PC-1800\", \"description\": \"Stainless prep table, 1800mm\", \"category\": \"Prep\", \"unit\": \"each\", \"list_price_gbp\": \"289.00\", \"band_b_gbp\": \"274.55\", \"band_t_gbp\": \"260.10\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:51": {
+          "source_id": "csv:04_reference/price_list.csv:record:51",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 51",
+          "locator": "CSV record 51 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-WR-6\", \"description\": \"White centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"17.95\", \"band_b_gbp\": \"17.05\", \"band_t_gbp\": \"16.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:53": {
+          "source_id": "csv:04_reference/price_list.csv:record:53",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 53",
+          "locator": "CSV record 53 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:54": {
+          "source_id": "csv:04_reference/price_list.csv:record:54",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 54",
+          "locator": "CSV record 54 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-CF-450\", \"description\": \"Cling film, 450mm x 300m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"9.95\", \"band_b_gbp\": \"9.45\", \"band_t_gbp\": \"8.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:55": {
+          "source_id": "csv:04_reference/price_list.csv:record:55",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 55",
+          "locator": "CSV record 55 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-FOIL-450\", \"description\": \"Catering foil, 450mm x 75m\", \"category\": \"Consumables\", \"unit\": \"roll\", \"list_price_gbp\": \"21.50\", \"band_b_gbp\": \"20.43\", \"band_t_gbp\": \"19.35\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:62": {
+          "source_id": "csv:04_reference/price_list.csv:record:62",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 62",
+          "locator": "CSV record 62 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN11-65\", \"description\": \"Gastronorm pan 1/1, 65mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"11.95\", \"band_b_gbp\": \"11.35\", \"band_t_gbp\": \"10.75\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:63": {
+          "source_id": "csv:04_reference/price_list.csv:record:63",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 63",
+          "locator": "CSV record 63 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN11-100\", \"description\": \"Gastronorm pan 1/1, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"14.50\", \"band_b_gbp\": \"13.77\", \"band_t_gbp\": \"13.05\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:64": {
+          "source_id": "csv:04_reference/price_list.csv:record:64",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 64",
+          "locator": "CSV record 64 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:71": {
+          "source_id": "csv:04_reference/price_list.csv:record:71",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 71",
+          "locator": "CSV record 71 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-TONGS\", \"description\": \"Tongs, stainless, 300mm\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"3.25\", \"band_b_gbp\": \"3.09\", \"band_t_gbp\": \"2.93\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:73": {
+          "source_id": "csv:04_reference/price_list.csv:record:73",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 73",
+          "locator": "CSV record 73 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-FRYPAN-28\", \"description\": \"Frying pan, non-stick, 28cm\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"22.50\", \"band_b_gbp\": \"21.38\", \"band_t_gbp\": \"20.25\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "email:MSG-028:body": {
+          "source_id": "email:MSG-028:body",
+          "relative_path": "03_inbox_export/inbox.json",
+          "display_name": "MSG-028 — Gemma Lyle <gemma@theroyaloakstives.co.uk> — Order - ROY-5530",
+          "locator": "JSON record 28, body",
+          "timestamp": "2026-10-08T08:00:00+01:00",
+          "text": "Hi,\n\nPlease see attached order. We're refitting the kitchen so need these w/c 19th Oct ideally.\n\nThanks!\nGemma\nThe Royal Oak",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:preamble": {
+          "source_id": "file:04_reference/customer_account_notes.md:preamble",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "customer_account_notes.md — introductory notes",
+          "locator": "Before first customer heading",
+          "timestamp": null,
+          "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:section:2": {
+          "source_id": "file:04_reference/customer_account_notes.md:section:2",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "The Royal Oak (St Ives)",
+          "locator": "Section: The Royal Oak (St Ives)",
+          "timestamp": null,
+          "text": "The Royal Oak (St Ives)\n- **Use ROYO02.** New owner Gemma Lyle took over in March 2024 and the account moved to band B.\n- ROYO01 is the old Pubco account. Should have been closed. Don't key anything on it.\n- Gemma is doing a kitchen refit this autumn, so expect equipment orders.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:05_orders/PO_ROY-5530.pdf": {
+          "source_id": "file:05_orders/PO_ROY-5530.pdf",
+          "relative_path": "05_orders/PO_ROY-5530.pdf",
+          "display_name": "PO_ROY-5530.pdf",
+          "locator": "Whole file",
+          "timestamp": null,
+          "text": null,
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:ROYO02": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:ROYO02",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit CUST — CUSNO=ROYO02",
+          "locator": "CUST: CUSNO=ROYO02",
+          "timestamp": "20261008 231502",
+          "text": "{\"CUSNO\": \"ROYO02\", \"CUSNM\": \"THE ROYAL OAK ST IVES\", \"ADR1\": \"Bridge Street\", \"ADR2\": \"St Ives\", \"PCODE\": \"PE27 5EH\", \"TELNO\": \"01480 462230\", \"ACSTAT\": \"A\", \"CRLIM\": 8000, \"PRCBND\": \"B\", \"DTOPEN\": \"20240311\", \"NOTE1\": \"NEW OWNER G LYLE 03/24 USE THIS A/C\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47823": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47823",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47823",
+          "locator": "OHDR: ORDNO=47823",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47823, \"CUSNO\": \"ROYO02\", \"CUSREF\": \"ROY-5527\", \"ORDDT\": \"20260904\", \"STAT\": \"I\", \"DELDT\": \"20260909\", \"OPID\": \"KH\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47858": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47858",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47858",
+          "locator": "OHDR: ORDNO=47858",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47858, \"CUSNO\": \"ROYO02\", \"CUSREF\": \"ROY-5528\", \"ORDDT\": \"46273\", \"STAT\": \"I\", \"DELDT\": \"46275\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47873": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47873",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47873",
+          "locator": "OHDR: ORDNO=47873",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"CUSNO\": \"ROYO02\", \"CUSREF\": \"ROY-5529\", \"ORDDT\": \"20260909\", \"STAT\": \"I\", \"DELDT\": \"20260914\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47823, LNNO=10",
+          "locator": "OLIN: ORDNO=47823, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47823, \"LNNO\": 10, \"STKCD\": \"GR-CHAR-600\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 59500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47823, LNNO=20",
+          "locator": "OLIN: ORDNO=47823, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47823, \"LNNO\": 20, \"STKCD\": \"SW-FRYPAN-28\", \"QTY\": 12, \"QTYDS\": 12, \"UPRC\": 2250, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:30": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:30",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47823, LNNO=30",
+          "locator": "OLIN: ORDNO=47823, LNNO=30",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47823, \"LNNO\": 30, \"STKCD\": \"CON-CF-450\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 995, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:40": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47823:40",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47823, LNNO=40",
+          "locator": "OLIN: ORDNO=47823, LNNO=40",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47823, \"LNNO\": 40, \"STKCD\": \"FRY-1T-8\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 39500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47858, LNNO=10",
+          "locator": "OLIN: ORDNO=47858, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47858, \"LNNO\": 10, \"STKCD\": \"CON-GL-BL-L\", \"QTY\": 3, \"QTYDS\": 3, \"UPRC\": 645, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47858, LNNO=20",
+          "locator": "OLIN: ORDNO=47858, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47858, \"LNNO\": 20, \"STKCD\": \"FRY-1T-8\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 39500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:30": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47858:30",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47858, LNNO=30",
+          "locator": "OLIN: ORDNO=47858, LNNO=30",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47858, \"LNNO\": 30, \"STKCD\": \"CON-WR-6\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 1795, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47873, LNNO=10",
+          "locator": "OLIN: ORDNO=47873, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"LNNO\": 10, \"STKCD\": \"CON-FOIL-450\", \"QTY\": 3, \"QTYDS\": 3, \"UPRC\": 2150, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47873, LNNO=20",
+          "locator": "OLIN: ORDNO=47873, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"LNNO\": 20, \"STKCD\": \"CON-CF-450\", \"QTY\": 10, \"QTYDS\": 10, \"UPRC\": 995, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:30": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:30",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47873, LNNO=30",
+          "locator": "OLIN: ORDNO=47873, LNNO=30",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"LNNO\": 30, \"STKCD\": \"GR-CHAR-600\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 59500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:40": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:40",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47873, LNNO=40",
+          "locator": "OLIN: ORDNO=47873, LNNO=40",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"LNNO\": 40, \"STKCD\": \"CON-GL-BL-L\", \"QTY\": 6, \"QTYDS\": 6, \"UPRC\": 645, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:50": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:50",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47873, LNNO=50",
+          "locator": "OLIN: ORDNO=47873, LNNO=50",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"LNNO\": 50, \"STKCD\": \"SW-TONGS\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 325, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:60": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47873:60",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47873, LNNO=60",
+          "locator": "OLIN: ORDNO=47873, LNNO=60",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47873, \"LNNO\": 60, \"STKCD\": \"CON-WR-6\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 1795, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-10G-ELE": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-10G-ELE",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CO-10G-ELE",
+          "locator": "STK: STKCD=CO-10G-ELE",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CO-10G-ELE\", \"DESC1\": \"COMBI OVEN 10GRID ELEC\", \"DESC2\": \"3PH\", \"UOM\": \"EA\", \"LSTPR\": 429500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-6G-ELE": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-6G-ELE",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CO-6G-ELE",
+          "locator": "STK: STKCD=CO-6G-ELE",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CO-6G-ELE\", \"DESC1\": \"COMBI OVEN 6GRID ELEC\", \"DESC2\": \"3PH\", \"UOM\": \"EA\", \"LSTPR\": 234900, \"SUPCD\": \"KLD\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-6G-GAS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CO-6G-GAS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CO-6G-GAS",
+          "locator": "STK: STKCD=CO-6G-GAS",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CO-6G-GAS\", \"DESC1\": \"COMBI OVEN 6GRID GAS\", \"DESC2\": \"NAT GAS\", \"UOM\": \"EA\", \"LSTPR\": 269500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-CF-450",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-CF-450",
+          "locator": "STK: STKCD=CON-CF-450",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-CF-450\", \"DESC1\": \"CLINGFILM 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 995, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-FOIL-450",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-FOIL-450",
+          "locator": "STK: STKCD=CON-FOIL-450",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-FOIL-450\", \"DESC1\": \"FOIL 450\", \"DESC2\": \"\", \"UOM\": \"RL\", \"LSTPR\": 2150, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+          "locator": "STK: STKCD=CON-GL-BL-L",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-WR-6",
+          "locator": "STK: STKCD=CON-WR-6",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-WR-6\", \"DESC1\": \"WHITE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1795, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-6": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-6",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=FRY-1T-6",
+          "locator": "STK: STKCD=FRY-1T-6",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"FRY-1T-6\", \"DESC1\": \"FRYER 1 TANK 6L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 34500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"Y\", \"RPLCD\": \"FRY-1T-8\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-8": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-8",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=FRY-1T-8",
+          "locator": "STK: STKCD=FRY-1T-8",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"FRY-1T-8\", \"DESC1\": \"FRYER 1 TANK 8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 39500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=FRY-2T-8",
+          "locator": "STK: STKCD=FRY-2T-8",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"FRY-2T-8\", \"DESC1\": \"FRYER 2 TANK 2X8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 64500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GR-CHAR-600": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:GR-CHAR-600",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=GR-CHAR-600",
+          "locator": "STK: STKCD=GR-CHAR-600",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"GR-CHAR-600\", \"DESC1\": \"CHARGRILL 600 GAS\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 59500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1200": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1200",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=PC-1200",
+          "locator": "STK: STKCD=PC-1200",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"PC-1200\", \"DESC1\": \"SS TABLE 1200\", \"DESC2\": \"W/UNDERSHELF\", \"UOM\": \"EA\", \"LSTPR\": 22500, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1500": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1500",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=PC-1500",
+          "locator": "STK: STKCD=PC-1500",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"PC-1500\", \"DESC1\": \"SS TABLE 1500\", \"DESC2\": \"W/UNDERSHELF\", \"UOM\": \"EA\", \"LSTPR\": 25500, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1800": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:PC-1800",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=PC-1800",
+          "locator": "STK: STKCD=PC-1800",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"PC-1800\", \"DESC1\": \"SS TABLE 1800\", \"DESC2\": \"W/UNDERSHELF\", \"UOM\": \"EA\", \"LSTPR\": 28900, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-4B-GAS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-4B-GAS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=RG-4B-GAS",
+          "locator": "STK: STKCD=RG-4B-GAS",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"RG-4B-GAS\", \"DESC1\": \"RANGE 4 BURNER GAS\", \"DESC2\": \"W/OVEN\", \"UOM\": \"EA\", \"LSTPR\": 119500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-6B-GAS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-6B-GAS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=RG-6B-GAS",
+          "locator": "STK: STKCD=RG-6B-GAS",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"RG-6B-GAS\", \"DESC1\": \"RANGE 6 BURNER GAS\", \"DESC2\": \"W/OVEN\", \"UOM\": \"EA\", \"LSTPR\": 159500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-FRYPAN-28": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-FRYPAN-28",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-FRYPAN-28",
+          "locator": "STK: STKCD=SW-FRYPAN-28",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-FRYPAN-28\", \"DESC1\": \"FRYPAN 28CM NS\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 2250, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN11-100",
+          "locator": "STK: STKCD=SW-GN11-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN11-100\", \"DESC1\": \"GN PAN 1/1 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1450, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-65",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN11-65",
+          "locator": "STK: STKCD=SW-GN11-65",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN11-65\", \"DESC1\": \"GN PAN 1/1 65MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1195, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN13-100",
+          "locator": "STK: STKCD=SW-GN13-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-TONGS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-TONGS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-TONGS",
+          "locator": "STK: STKCD=SW-TONGS",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-TONGS\", \"DESC1\": \"TONGS 300MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 325, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+          "locator": "SYSPARM: PKEY=ACSTCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+          "locator": "SYSPARM: PKEY=LASTEXP",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+          "locator": "SYSPARM: PKEY=STATCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=VATRT",
+          "locator": "SYSPARM: PKEY=VATRT",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:05_orders/PO_ROY-5530.pdf:page:1": {
+          "source_id": "file:05_orders/PO_ROY-5530.pdf:page:1",
+          "relative_path": "05_orders/PO_ROY-5530.pdf",
+          "display_name": "PO_ROY-5530.pdf — page 1",
+          "locator": "Page 1",
+          "timestamp": null,
+          "text": "The Royal Oak\r\nBridge Street, St Ives PE27 5EH\r\ngemma@theroyaloakstives.co.uk\r\nPURCHASE ORDER\r\nPO number: ROY-5530\r\nDate: 08/10/2026\r\nSupplier\r\nMeridian Catering Supplies Ltd\r\nUnit 7, Stukeley Meadows\r\nHuntingdon PE29 6FY\r\nDeliver to\r\nThe Royal Oak, Bridge Street\r\nSt Ives PE27 5EH\r\nRequired by: w/c 19/10/2026\r\nRef Description Qty Unit £ Total £\r\nCombi oven 6 grid electric (CO-6G-ELE) 1 2,150.00 2,150.00\r\nStainless prep table 1500 with undershelf 1 242.25 242.25\r\nTwin tank fryer 2x8L electric 1 612.75 612.75\r\nGastronorm 1/1 100mm 8 13.78 110.24\r\nNet 3,115.24\r\nVAT 20% 623.05\r\nTotal 3,738.29\r\nKitchen refit. Prices as per your price list. Please call Gemma on 07700 900318 to book delivery.\r\nGemma Lyle, Proprietor",
+          "extraction_method": "pdf_text",
+          "requires_review": false,
+          "extraction_error": null
+        }
+      },
+      "source_limitations": [
+        "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+        "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+        "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+      ]
+    },
+    "report_alerts": [
+      {
+        "code": "order_reference_unresolved",
+        "title": "Order reference requires checking",
+        "message": "No existing order match established for customer_po 'ROY-5530'; absence is not proof of a new order.",
+        "blocks_entry": false,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 60.04275529199998,
+      "response_id": null,
+      "usage": null
+    },
+    "shared_policy": {
+      "version": "1",
+      "pricing": {
+        "vat_rate": "0.20",
+        "currency": "GBP",
+        "rounding": "ROUND_HALF_UP",
+        "decimal_places": 2,
+        "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+        "orbit_price_unit": "pence",
+        "apply_orbit_discount_once": true,
+        "contract_overrides_band": true,
+        "use_recorded_band_prices": true,
+        "vat_authority": {
+          "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+          "sources": [
+            {
+              "path": "01_discovery_notes.md",
+              "location": "Priya Shah, VAT pricing note",
+              "support": "Customer totals include VAT at 20%."
+            },
+            {
+              "path": "04_reference/customer_account_notes.md",
+              "location": "St Anne’s C of E Primary",
+              "support": "Divide VAT-inclusive prices by 1.2."
+            }
+          ],
+          "conflicting_source": {
+            "path": "06_orbit_export/orbit_nightly.sqlite",
+            "location": "SYSPARM: VATRT",
+            "recorded_value": "17.5"
+          }
+        }
+      },
+      "review": {
+        "account_status_codes": {
+          "A": "active",
+          "H": "on_stop",
+          "C": "closed"
+        },
+        "manual_credit_check_required": true,
+        "credit_authority": "Tom / credit control",
+        "pricing_delivery_authority": "Karen / operations",
+        "customer_claims_authorise_exceptions": false,
+        "payment_confirmation_for_proforma_required": true,
+        "ocr_manual_review_required": true,
+        "stock_delivery_guaranteed": false,
+        "finding_levels": {
+          "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+          "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+          "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+        }
+      },
+      "source_authority": {
+        "account_status": "orbit_account",
+        "account_band": "orbit_account",
+        "current_account": "account_notes",
+        "contract_terms": "account_notes",
+        "recorded_order": "orbit_order",
+        "requested_values": "current_email_and_attachments",
+        "catalogue_and_band_prices": "price_list",
+        "spreadsheet": "supporting_context_only"
+      }
+    },
+    "policy_sha256": "27dc382f8275db231c27202468e951f33b570d66b8681b18fe730ff724035dfd",
+    "error": "OpenAI request or schema validation failed (APITimeoutError); no result accepted."
+  },
+  "business_rules_applied": false,
+  "review_date": "2026-11-18",
+  "historical_review": false,
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "27dc382f8275db231c27202468e951f33b570d66b8681b18fe730ff724035dfd",
+  "policy_origin": "preparation_snapshot",
+  "validation": {
+    "status": "failed",
+    "readiness": "Do not proceed",
+    "entry_section_label": "Proposed changes — do not apply yet",
+    "error": "Preparation failed; no successful proposal is available to validate. OpenAI request or schema validation failed (APITimeoutError); no result accepted.",
+    "changes_to_apply": [],
+    "requires_human_review": true,
+    "failure_stage": "preparation",
+    "failure_reason": "timeout"
+  }
+}

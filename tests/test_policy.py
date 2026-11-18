@@ -33,6 +33,17 @@ class PolicyTests(unittest.TestCase):
         raw['pricing'].update(vat_rate=rate, decimal_places=precision)
         return SharedPolicy.model_validate(raw)
 
+    def test_legacy_policy_fingerprint_and_confirmed_status_meanings(self):
+        import hashlib
+        policy = load_policy()
+        self.assertEqual(policy.review.account_status_codes, {'A': 'active', 'H': 'on_stop', 'C': 'closed'})
+        raw = policy.model_dump()
+        raw.pop('source_authority')
+        raw['review'].pop('account_status_codes')
+        fingerprint = hashlib.sha256(json.dumps(raw, sort_keys=True, separators=(',', ':'),
+                                               ensure_ascii=False).encode()).hexdigest()
+        self.assertEqual(SharedPolicy.model_validate(raw).fingerprint, fingerprint)
+
     def test_invalid_and_unsupported_configuration_is_rejected(self):
         for field, value in [('vat_rate', 'NaN'), ('vat_rate', '-0.1'), ('vat_rate', '1.1'),
                              ('vat_rate', 0.2), ('rounding', 'ROUND_DOWN'), ('currency', 'USD'),
@@ -44,7 +55,7 @@ class PolicyTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     SharedPolicy.model_validate(raw)
         raw = load_policy().model_dump()
-        raw['review']['manual_credit_check_required'] = False
+        raw['review']['customer_claims_authorise_exceptions'] = True
         with self.assertRaises(ValueError):
             SharedPolicy.model_validate(raw)
         raw['unknown_setting'] = True
@@ -73,10 +84,10 @@ class PolicyTests(unittest.TestCase):
         totals = reviewed['validation']['calculations']
         self.assertEqual(Decimal(totals['vat']), money(Decimal(totals['net']) * Decimal('0.05')))
         self.assertEqual(totals['vat_rate'], '0.05')
-        issue = next(i for i in reviewed['validation']['issues'] if i['code'] == 'vat_conflict')
-        self.assertIn('configured 5%', issue['description'])
-        self.assertFalse(issue['blocks_entry'])
-        self.assertEqual(issue['next_action'], self.policy().pricing.vat_authority.decision)
+        resolution = next(i for i in reviewed['validation']['resolutions'] if i['field'] == 'vat_rate')
+        self.assertEqual(resolution['value'], '0.05')
+        self.assertEqual(resolution['decision'], self.policy().pricing.vat_authority.decision)
+        self.assertNotIn('vat_conflict', {i['code'] for i in reviewed['validation']['issues']})
         text = render_html([reviewed], input_root=fixtures.PACK, output_dir=fixtures.PACK.parent)
         self.assertIn('VAT (5%)', text)
         self.assertNotIn('VAT (20%)', text)

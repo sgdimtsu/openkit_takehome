@@ -46,6 +46,10 @@ unspecified products do not, by themselves, make the action uncertain. Keep the
 established action type and record known information gaps in uncertainties. You
 cannot assess attachment readability from a filename alone.
 
+Missing-item requests to send goods or issue a credit must remain selected as
+uncertain when the required workflow is not established; do not silently exclude
+them as a status enquiry.
+
 Collection/replacement requests may require order action: select as uncertain if
 entry/amendment requirements cannot be established, rather than inventing a process.
 

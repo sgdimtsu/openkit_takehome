@@ -43,10 +43,10 @@ def validate_preparation(output, context, selection):
     for order in context['supporting_history'] + context['explicitly_matched_orders']:
         known_skus.update(line['STKCD'] for line in order['lines'])
 
-    def check(node):
+    def check(node, path):
         if isinstance(node, list):
-            for item in node:
-                check(item)
+            for index, item in enumerate(node):
+                check(item, f"{path}[{index}]")
         elif isinstance(node, dict):
             if 'evidence_ids' in node:
                 ids = node['evidence_ids']
@@ -61,12 +61,12 @@ def validate_preparation(output, context, selection):
                 if node['basis'] == 'recorded_internal' and not set(ids).difference(request_ids):
                     raise ValueError('Recorded internal values require internal evidence')
                 if node['basis'] == 'inferred_suggestion' and not node['reason']:
-                    raise ValueError('Inferred suggestions require an explanation')
+                    raise ValueError(f'{path}: inferred suggestions require an explanation')
             if isinstance(node.get('sku'), dict) and node['sku']['value'] not in known_skus:
                 raise ValueError('Preparation proposes a SKU absent from supplied catalogue/stock/history')
-            for value in node.values():
-                check(value)
-    check(output.model_dump())
+            for key, value in node.items():
+                check(value, f"{path}.{key}")
+    check(output.model_dump(), "proposal")
     if output.customer_po and not any(
             ContextRetriever._stated(output.customer_po.value, sources[key].text or '')
             or (key == request['source_id'] and
@@ -146,7 +146,9 @@ def prepare_email(selection, context, *, client, model, policy=None):
     try:
         validate_preparation(output, context, selection)
     except ValueError as exc:
-        raise LLMCallError(f'Preparation validation failed: {exc}', metrics) from exc
+        error = LLMCallError(f'Preparation validation failed: {exc}', metrics)
+        error.proposal = output.model_dump(exclude_none=True)
+        raise error from exc
     result = _record(selection, context, status='prepared', metrics=metrics, policy=policy)
     result['proposal'] = output.model_dump(exclude_none=True)
     # Keep missing entry information visible even if the model omits its question.
@@ -190,6 +192,8 @@ def prepare_classification(classification, *, inbox, internal, input_root, clien
         except LLMCallError as exc:
             record = _record(selection, context, status='failed', metrics=exc.metrics, policy=policy)
             record['error'] = str(exc)
+            if exc.proposal is not None:
+                record['rejected_proposal'] = exc.proposal
         except Exception as exc:
             record = _record(selection, context, status='failed', metrics=CallMetrics(0, model), policy=policy)
             record['error'] = f'Context/input preparation failed ({type(exc).__name__}): {exc}'

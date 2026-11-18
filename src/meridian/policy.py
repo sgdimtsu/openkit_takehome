@@ -4,7 +4,7 @@ import json
 from decimal import Decimal
 from importlib.resources import files
 from pathlib import Path
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -62,8 +62,20 @@ class FindingLevels(PolicySection):
     information: str = Field(min_length=1)
 
 
+class SourceAuthority(PolicySection):
+    account_status: Literal['orbit_account']
+    account_band: Literal['orbit_account']
+    current_account: Literal['account_notes']
+    contract_terms: Literal['account_notes']
+    recorded_order: Literal['orbit_order']
+    requested_values: Literal['current_email_and_attachments']
+    catalogue_and_band_prices: Literal['price_list']
+    spreadsheet: Literal['supporting_context_only']
+
+
 class ReviewPolicy(PolicySection):
-    manual_credit_check_required: Literal[True]
+    account_status_codes: Optional[dict[str, Literal['active', 'on_stop', 'closed']]] = None
+    manual_credit_check_required: bool
     credit_authority: Literal['Tom / credit control']
     pricing_delivery_authority: Literal['Karen / operations']
     customer_claims_authorise_exceptions: Literal[False]
@@ -77,6 +89,7 @@ class SharedPolicy(PolicySection):
     version: Literal['1']
     pricing: PricingPolicy
     review: ReviewPolicy
+    source_authority: Optional[SourceAuthority] = None
 
     @property
     def vat_rate(self):
@@ -88,7 +101,7 @@ class SharedPolicy(PolicySection):
 
     @property
     def fingerprint(self):
-        canonical = json.dumps(self.model_dump(), sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+        canonical = json.dumps(self.model_dump(exclude_none=True), sort_keys=True, separators=(',', ':'), ensure_ascii=False)
         return hashlib.sha256(canonical.encode()).hexdigest()
 
 

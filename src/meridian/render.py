@@ -83,7 +83,7 @@ def _value(value):
 
 def _origin(basis):
     labels = {'explicit_request': 'Customer request · unverified', 'recorded_internal': 'Recorded internal value',
-              'inferred_suggestion': 'Inferred suggestion · double-check'}
+              'inferred_suggestion': 'Matched using supplied evidence'}
     if not basis:
         return ''
     css = 'origin inferred' if basis == 'inferred_suggestion' else 'origin'
@@ -248,6 +248,8 @@ class _Report:
     def findings(self):
         checks, issues = [], []
         for item in self.review.get('issues', []):
+            if item.get('code') in {'manual_credit_check', 'snapshot_limitations', 'vat_conflict', 'vat_unknown'}:
+                continue
             model = item.get('origin') == 'llm_proposal'
             origin = '<span class="origin inferred">Model-reported issue · verify</span>' if model else ''
             row = f'<li><p class="item-title">{esc(item["description"])}</p>{origin}'
@@ -513,7 +515,7 @@ def render_html(reviews, *, input_root, output_dir, previous_files=(), notice=No
             f'<span class="stat">{failed} processing failures</span></div></header><div class="layout"><nav class="contents" aria-label="Customer reports">'
             '<p>Customers</p><ul>' + ''.join(contents) + '</ul></nav><main>' + body + '</main></div><footer class="footer">'
             '<p><strong>Manual review is always required.</strong> A newer report does not prove earlier changes were applied or superseded. '
-            'Check current credit status in Orbit; Tom retains credit authority and Karen reviews pricing/delivery exceptions.</p>'
+            'Tom retains credit authority and Karen reviews pricing/delivery exceptions identified in the report.</p>'
             '<p>Snapshot inputs only; no live connections or detection of later edits. No automatic reconciliation, tracking of Orbit entry, '
             'writes to sources/Orbit, customer email sending or operational database. Recommendations depend on source completeness and correct matching.</p>'
             + earlier + '</footer></div><script>' + SCRIPT + '</script></body></html>')

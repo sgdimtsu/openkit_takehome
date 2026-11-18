@@ -43,6 +43,7 @@ class PricingRules:
         self.catalogue = {row['sku']: row for row in context['catalogue_candidates']}
         self.contracts = []
         self.errors = []
+        self.resolutions = []
         for source in context['customer_notes']:
             if self.account:
                 declared = {value.upper() for value in re.findall(r'(?i)\bband\s+([A-Za-z]+)\b', source.text or '')}
@@ -51,7 +52,10 @@ class PricingRules:
                     f'band_{value.lower()}_gbp' in row for row in self.catalogue.values())}
                 actual = self.account['PRCBND'].upper()
                 if declared and declared != {actual}:
-                    self.errors.append(('Account-note band conflicts with the recorded Orbit band', source.source_id))
+                    self.resolutions.append({'field': 'price_band', 'value': actual,
+                                             'discarded_value': sorted(declared),
+                                             'decision': 'Use the recorded Orbit account band; account-note band wording does not override it. Applicable contracts still override band prices.',
+                                             'evidence_ids': [self.account['source_id'], source.source_id]})
             for raw in (source.text or '').splitlines():
                 line = raw.replace('*', '')
                 if not re.search(r'\bcontract\b', line, re.I):

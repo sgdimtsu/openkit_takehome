@@ -1,0 +1,378 @@
+{
+  "schema_version": "1.0",
+  "report_id": "5f646f6dcbf342bc834c850c10c05e95",
+  "generated_at": "2026-11-18T18:42:31.471187+00:00",
+  "status": "prepared",
+  "business_rules_applied": false,
+  "requires_human_review": true,
+  "trigger": {
+    "email_id": "MSG-045",
+    "received_at": "2026-10-09T15:55:00+01:00"
+  },
+  "classification": {
+    "email_id": "MSG-045",
+    "customer": {
+      "name_as_stated": "Gemma Lyle",
+      "account_id_as_stated": null
+    },
+    "action_type": "amendment_request",
+    "references": {
+      "customer_po": "ROY-5530",
+      "orbit_order_number": null
+    },
+    "related_email_ids": [
+      "MSG-028"
+    ],
+    "reason": "Requests delivery-location and timing changes for the stated order.",
+    "uncertainties": []
+  },
+  "context": {
+    "email_id": "MSG-045",
+    "action_type": "amendment_request",
+    "customer_match": {
+      "status": "unresolved",
+      "account_id": null,
+      "candidate_account_ids": [],
+      "reason": "Confirm the customer account: supplied identifiers are missing, ambiguous or conflicting.",
+      "evidence_ids": []
+    },
+    "customer_record": null,
+    "current_request": {
+      "id": "MSG-045",
+      "received": "2026-10-09T15:55:00+01:00",
+      "from": "Gemma Lyle <gemma@theroyaloakstives.co.uk>",
+      "to": "orders@meridiancatering.co.uk",
+      "subject": "RE: Order - ROY-5530",
+      "body": "Sorry, should have said: please deliver to the new kitchen entrance round the back (Bridge Street car park side). And could it all come before the 16th rather than w/c 19th? Builders have moved things forward.\n\nGemma",
+      "attachments": [],
+      "in_reply_to": "MSG-028",
+      "source_id": "email:MSG-045:body"
+    },
+    "explicitly_matched_orders": [],
+    "supporting_history": [],
+    "history_limit": 3,
+    "customer_notes": [],
+    "general_account_notes": {
+      "source_id": "file:04_reference/customer_account_notes.md:preamble",
+      "relative_path": "04_reference/customer_account_notes.md",
+      "display_name": "customer_account_notes.md — introductory notes",
+      "locator": "Before first customer heading",
+      "timestamp": null,
+      "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+      "extraction_method": null,
+      "requires_review": false,
+      "extraction_error": null
+    },
+    "account_constraints": [],
+    "export_parameters": {
+      "VATRT": {
+        "PKEY": "VATRT",
+        "PVAL": "17.5",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+      },
+      "LASTEXP": {
+        "PKEY": "LASTEXP",
+        "PVAL": "20261008 231502",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+      },
+      "ACSTCDS": {
+        "PKEY": "ACSTCDS",
+        "PVAL": "A,H,C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+      },
+      "STATCDS": {
+        "PKEY": "STATCDS",
+        "PVAL": "N,P,D,I,X,H",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+      }
+    },
+    "open_items": [],
+    "unresolved_open_items": [],
+    "catalogue_candidates": [],
+    "stock_records": [],
+    "attachments": [],
+    "attachment_extractions": [],
+    "report_alerts": [
+      {
+        "code": "customer_match_unresolved",
+        "title": "Customer match unresolved — do not proceed",
+        "message": "Confirm the correct account before entry. No customer history assigned. Candidates: none established",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      },
+      {
+        "code": "order_reference_unresolved",
+        "title": "Order reference requires checking",
+        "message": "No existing order match established for customer_po 'ROY-5530'; absence is not proof of a new order.",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "sources": {
+      "email:MSG-045:body": {
+        "source_id": "email:MSG-045:body",
+        "relative_path": "03_inbox_export/inbox.json",
+        "display_name": "MSG-045 — Gemma Lyle <gemma@theroyaloakstives.co.uk> — RE: Order - ROY-5530",
+        "locator": "JSON record 45, body",
+        "timestamp": "2026-10-09T15:55:00+01:00",
+        "text": "Sorry, should have said: please deliver to the new kitchen entrance round the back (Bridge Street car park side). And could it all come before the 16th rather than w/c 19th? Builders have moved things forward.\n\nGemma",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:preamble": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+        "locator": "SYSPARM: PKEY=ACSTCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+        "locator": "SYSPARM: PKEY=LASTEXP",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+        "locator": "SYSPARM: PKEY=STATCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=VATRT",
+        "locator": "SYSPARM: PKEY=VATRT",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      }
+    },
+    "source_limitations": [
+      "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+      "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+      "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+    ]
+  },
+  "report_alerts": [
+    {
+      "code": "customer_match_unresolved",
+      "title": "Customer match unresolved — do not proceed",
+      "message": "Confirm the correct account before entry. No customer history assigned. Candidates: none established",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "order_reference_unresolved",
+      "title": "Order reference requires checking",
+      "message": "No existing order match established for customer_po 'ROY-5530'; absence is not proof of a new order.",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "entry_details_unresolved",
+      "title": "Entry details require confirmation",
+      "message": "Not established: existing amendment target",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    }
+  ],
+  "llm": {
+    "call_count": 1,
+    "model": "gpt-6-luna",
+    "duration_seconds": 16.582436416999997,
+    "response_id": "resp_00208056d6600d7a016afdf1870b4087d2ad6a2b5b0a45cb71",
+    "usage": {
+      "input_tokens": 7696,
+      "input_tokens_details": {
+        "cache_write_tokens": 2416,
+        "cached_tokens": 5277,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 2416
+        }
+      },
+      "output_tokens": 1928,
+      "output_tokens_details": {
+        "reasoning_tokens": 1435
+      },
+      "total_tokens": 9624
+    }
+  },
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "27dc382f8275db231c27202468e951f33b570d66b8681b18fe730ff724035dfd",
+  "proposal": {
+    "email_id": "MSG-045",
+    "action_type": "amendment_request",
+    "summary": "Requests a delivery-point change and delivery before the 16th; the Orbit order target and full address are not established.",
+    "customer_po": {
+      "value": "ROY-5530",
+      "basis": "explicit_request",
+      "evidence_ids": [
+        "email:MSG-045:body"
+      ]
+    },
+    "amendment": {
+      "changes": [
+        {
+          "change_id": "delivery-destination",
+          "operation": "replace",
+          "field": "delivery_destination",
+          "proposed_value": {
+            "value": "new kitchen entrance",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-045:body"
+            ]
+          },
+          "evidence_ids": [
+            "email:MSG-045:body"
+          ]
+        },
+        {
+          "change_id": "delivery-instructions",
+          "operation": "replace",
+          "field": "delivery_instructions",
+          "proposed_value": {
+            "value": "round the back (Bridge Street car park side)",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-045:body"
+            ]
+          },
+          "evidence_ids": [
+            "email:MSG-045:body"
+          ]
+        },
+        {
+          "change_id": "delivery-date",
+          "operation": "replace",
+          "field": "delivery_date",
+          "proposed_value": {
+            "value": "before the 16th",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-045:body"
+            ]
+          },
+          "evidence_ids": [
+            "email:MSG-045:body"
+          ]
+        }
+      ]
+    },
+    "uncertainties": [
+      {
+        "question": "Which Orbit order corresponds to PO ROY-5530?",
+        "affected_fields": [
+          "amendment.changes[].target"
+        ],
+        "next_action": "Match the PO to an Orbit order and associate the requested changes with that order.",
+        "evidence_ids": [
+          "email:MSG-045:body"
+        ]
+      },
+      {
+        "question": "What is the full delivery address for the new kitchen entrance?",
+        "affected_fields": [
+          "amendment.changes[delivery_destination]"
+        ],
+        "next_action": "Check the matched order for the full address; if it does not identify this entrance, obtain the full address from the customer.",
+        "evidence_ids": [
+          "email:MSG-045:body"
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

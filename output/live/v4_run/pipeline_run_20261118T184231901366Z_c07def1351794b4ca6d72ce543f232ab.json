@@ -1,0 +1,85 @@
+{
+  "shared_policy": {
+    "version": "1",
+    "pricing": {
+      "vat_rate": "0.20",
+      "currency": "GBP",
+      "rounding": "ROUND_HALF_UP",
+      "decimal_places": 2,
+      "calculation_order": "round_unit_then_line_then_vat_on_net_total",
+      "orbit_price_unit": "pence",
+      "apply_orbit_discount_once": true,
+      "contract_overrides_band": true,
+      "use_recorded_band_prices": true,
+      "vat_authority": {
+        "decision": "Use the approved policy rate for this prototype; retain the Orbit VATRT value as an informational discrepancy, not an unresolved rate decision.",
+        "sources": [
+          {
+            "path": "01_discovery_notes.md",
+            "location": "Priya Shah, VAT pricing note",
+            "support": "Customer totals include VAT at 20%."
+          },
+          {
+            "path": "04_reference/customer_account_notes.md",
+            "location": "St Anne’s C of E Primary",
+            "support": "Divide VAT-inclusive prices by 1.2."
+          }
+        ],
+        "conflicting_source": {
+          "path": "06_orbit_export/orbit_nightly.sqlite",
+          "location": "SYSPARM: VATRT",
+          "recorded_value": "17.5"
+        }
+      }
+    },
+    "review": {
+      "account_status_codes": {
+        "A": "active",
+        "H": "on_stop",
+        "C": "closed"
+      },
+      "manual_credit_check_required": true,
+      "credit_authority": "Tom / credit control",
+      "pricing_delivery_authority": "Karen / operations",
+      "customer_claims_authorise_exceptions": false,
+      "payment_confirmation_for_proforma_required": true,
+      "ocr_manual_review_required": true,
+      "stock_delivery_guaranteed": false,
+      "finding_levels": {
+        "blocking": "Missing or conflicting entry-critical evidence, account restrictions or required approval: do not enter affected changes.",
+        "check": "A required operational check, without evidence of a blocking restriction; not automatic approval.",
+        "information": "An explained policy/source discrepancy or background fact; no additional decision is required solely for this finding."
+      }
+    },
+    "source_authority": {
+      "account_status": "orbit_account",
+      "account_band": "orbit_account",
+      "current_account": "account_notes",
+      "contract_terms": "account_notes",
+      "recorded_order": "orbit_order",
+      "requested_values": "current_email_and_attachments",
+      "catalogue_and_band_prices": "price_list",
+      "spreadsheet": "supporting_context_only"
+    }
+  },
+  "policy_sha256": "27dc382f8275db231c27202468e951f33b570d66b8681b18fe730ff724035dfd",
+  "classification_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/classification_20261118T183531879598Z_785cbbd959ef4a818bdac49b47ef24d5.json",
+  "preparation_manifest_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/preparation_run_20261118T184231476181Z_5ffbe7ad3f0048b3bf16f34ab1891d4d.json",
+  "validation_manifest_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/validation_run_20261118T184231630265Z_43861312f83b4ff4a8fc0878ae76e6cb.json",
+  "html_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/v4_run/meridian_reports_20261118T184231898643Z_6e6e176e21404761808da7a5f10e7e7f.html",
+  "selected_emails": 19,
+  "preparation_failures": 1,
+  "validation_failures": 1,
+  "calls": {
+    "classification": 1,
+    "preparation": 19,
+    "total": 20
+  },
+  "usage_available_for_calls": 19,
+  "usage_totals_when_available": {
+    "input_tokens": 337858,
+    "output_tokens": 48974,
+    "total_tokens": 386832
+  },
+  "processing_duration_seconds": 464.59244429200004
+}

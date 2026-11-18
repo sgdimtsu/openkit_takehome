@@ -118,7 +118,7 @@ class RuleTests(unittest.TestCase):
         order['customer_discounts'] = [
             {'description': supported('Prices per contract OAT/MER/2024', evidence)}]
         findings = {issue['code'] for issue in self.reviewed(record)['issues']}
-        self.assertIn('recorded_contract_reference', findings)
+        self.assertTrue(any(item['field'] == 'order_pricing' for item in self.reviewed(record)['resolutions']))
         self.assertNotIn('customer_discount_unapproved', findings)
         order['lines'][0]['customer_quoted_price']['amount']['value'] = '18.00'
         findings = {issue['code'] for issue in self.reviewed(record)['issues']}
@@ -194,7 +194,7 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(result['changes_to_apply'][0]['lines'][0]['customer_quoted_price_ex_vat'], '18.95')
         codes = {issue['code'] for issue in result['issues']}
         self.assertNotIn('price_conflict', codes)
-        self.assertIn('vat_conflict', codes)
+        self.assertNotIn('vat_conflict', codes)
         self.assertIn('duplicate_entry_risk', codes)
 
     def amendment_record(self, *, additional=False, destination=False):
@@ -248,8 +248,8 @@ class RuleTests(unittest.TestCase):
         self.assertIsNone(change['old_value'])
         self.assertEqual(change['proposed_value']['value'], 'The Lamb')
         self.assertIn('Unverified', change['request_status'])
-        self.assertEqual(result['readiness'], 'Do not proceed')
-        self.assertIn('unverified_destination_change', {issue['code'] for issue in result['issues']})
+        self.assertEqual(result['readiness'], 'Checks required')
+        self.assertNotIn('unverified_destination_change', {issue['code'] for issue in result['issues']})
         self.assertEqual(result['current_order_status'][0]['status_code_raw'], 'N')
         self.assertIn('Undocumented', result['current_order_status'][0]['status_meaning'])
 
@@ -344,7 +344,8 @@ class RuleTests(unittest.TestCase):
         self.assertEqual(result['readiness'], 'Checks required')
         self.assertEqual(result['entry_section_label'], 'Changes to apply')
         self.assertTrue(result['requires_human_review'])
-        self.assertIn('existing_order_not_established', {item['code'] for item in result['issues']})
+        self.assertNotIn('existing_order_not_established', {item['code'] for item in result['issues']})
+        self.assertTrue(any(item['field'] == 'customer_po' for item in result['resolutions']))
 
     def test_csv_band_price_is_used_as_recorded_including_rounding_difference(self):
         selected = selection('MSG-028', 'The Royal Oak', po='ROY-5530')
@@ -378,7 +379,7 @@ class RuleTests(unittest.TestCase):
         self.assertIn('account_restriction', {item['code'] for item in result['issues']})
         self.assertEqual(result['readiness'], 'Do not proceed')
 
-    def test_unmapped_status_meaning_is_not_invented_from_h(self):
+    def test_confirmed_orbit_h_status_blocks_without_spreadsheet(self):
         selected = selection('MSG-015', 'Riverside Brasserie')
         record, _ = self.new_record(selected, [('CON-CF-450', 4)])
         self.assertEqual(record['context']['customer_record']['ACSTAT'], 'H')
@@ -386,8 +387,10 @@ class RuleTests(unittest.TestCase):
         record['context']['report_alerts'] = []
         record['report_alerts'] = []
         result = self.reviewed(record)
-        self.assertNotIn('recorded_credit_restriction', {item['code'] for item in result['issues']})
-        self.assertIn('manual_credit_check', {item['code'] for item in result['issues']})
+        restriction = next(item for item in result['issues'] if item['code'] == 'recorded_credit_restriction')
+        self.assertEqual(restriction['evidence_ids'], [record['context']['customer_record']['source_id']])
+        self.assertIn('RIVR01', restriction['next_action'])
+        self.assertNotIn('manual_credit_check', {item['code'] for item in result['issues']})
 
     def test_preparation_blocking_alerts_remain_blocking(self):
         selected = selection('MSG-038', 'The Mill House')
@@ -433,6 +436,76 @@ class RuleTests(unittest.TestCase):
         result = self.reviewed(record)
         self.assertIn('line_pricing_unresolved', {item['code'] for item in result['issues']})
         self.assertEqual(result['readiness'], 'Do not proceed')
+
+    def test_supported_product_is_prepared_without_generic_inference_check(self):
+        record, _ = self.new_record(selection('MSG-028', 'The Royal Oak', po='ROY-5530'), [('FRY-2T-8', 1)])
+        result = self.reviewed(record)
+        line = result['changes_to_apply'][0]['lines'][0]
+        self.assertEqual(line['sku'], 'FRY-2T-8')
+        self.assertIn('line_net', line)
+        self.assertTrue(line['selection_reason'])
+        self.assertNotIn('inferred_product', {item['code'] for item in result['issues']})
+        self.assertFalse(any(item['blocks_entry'] for item in result['issues']))
+
+    def test_csv_hold_and_ambiguous_attribution_cannot_block_active_orbit_account(self):
+        record, _ = self.new_record(selection('MSG-038', 'The Mill House'), [('CON-BR-6', 1)])
+        source_id = 'test:csv:old-order'
+        row = {'Customer': 'Mill House?', 'Issue': 'on stop', 'Status': 'open', 'Notes': '',
+               'Order / PO': 'AN-OLD-ORDER'}
+        record['context']['sources'][source_id] = {
+            'source_id': source_id, 'relative_path': '02_open_items_log.csv', 'display_name': 'Old issue',
+            'locator': 'fixture row', 'timestamp': None, 'text': json.dumps(row)}
+        record['context']['open_items'] = [{**row, 'source_id': source_id}]
+        record['report_alerts'].append({'code': 'spreadsheet_customer_unresolved', 'title': 'Uncertain CSV name',
+                                        'blocks_entry': True})
+        result = self.reviewed(record)
+        self.assertEqual(result['readiness'], 'Checks required')
+        self.assertNotIn('recorded_credit_restriction', {item['code'] for item in result['issues']})
+        self.assertNotIn('spreadsheet_customer_unresolved', {item['code'] for item in result['issues']})
+
+    def test_material_question_blocks_affected_entry_even_when_a_sku_is_populated(self):
+        record, evidence = self.new_record(selection('MSG-028', 'The Royal Oak', po='ROY-5530'), [('FRY-2T-8', 1)])
+        record['proposal']['uncertainties'] = [{'question': 'Electric or gas?',
+            'affected_fields': ['new_order.lines[L1].sku'], 'next_action': 'Confirm the required fuel.',
+            'evidence_ids': [evidence]}]
+        result = self.reviewed(record)
+        self.assertEqual(result['readiness'], 'Do not proceed')
+        question = result['uncertainties'][0]
+        self.assertTrue(question['blocks_entry'])
+        self.assertEqual(question['affected_fields'], ['new_order.lines[L1].sku'])
+        self.assertEqual(result['changes_to_apply'][0]['lines'][0]['sku'], 'FRY-2T-8')
+        self.assertEqual(len(result['uncertainties']), 1)  # No second issue repeats the same question.
+
+    def test_missing_new_destination_is_separate_from_unknown_old_destination(self):
+        record = self.amendment_record(destination=True)
+        evidence = record['context']['current_request']['source_id']
+        record['proposal']['uncertainties'] = [{'question': 'What is the address for The Lamb?',
+            'affected_fields': ['amendment.changes[C1].proposed_value'],
+            'next_action': 'Obtain the destination address.', 'evidence_ids': [evidence]}]
+        result = self.reviewed(record)
+        self.assertIsNone(result['changes_to_apply'][0]['old_value'])
+        self.assertEqual(result['readiness'], 'Do not proceed')
+        self.assertFalse(any(item['blocks_entry'] for item in result['issues']))
+        self.assertTrue(result['uncertainties'][0]['blocks_entry'])
+
+    def test_orbit_band_resolves_conflicting_note_band_without_extra_check(self):
+        selected = selection('MSG-038', 'The Mill House')
+        record, _ = self.new_record(selected, [('CON-BR-6', 1)])
+        note = record['context']['customer_notes'][0]
+        note['text'] = note['text'].replace('Band B', 'Band T')
+        record['context']['sources'][note['source_id']]['text'] = note['text']
+        result = self.reviewed(record)
+        self.assertEqual(result['readiness'], 'Checks required')
+        resolution = next(item for item in result['resolutions'] if item['field'] == 'price_band')
+        self.assertEqual(resolution['value'], 'B')
+        self.assertEqual(resolution['discarded_value'], ['T'])
+        self.assertIn('band B', result['changes_to_apply'][0]['lines'][0]['price']['basis'])
+
+    def test_latest_deadline_is_prepared_with_raw_wording(self):
+        value = requested_date('15/10/2026 latest')
+        self.assertEqual(value['kind'], 'by')
+        self.assertEqual(value['date'], '2026-10-15')
+        self.assertEqual(value['raw'], '15/10/2026 latest')
 
 
 if __name__ == '__main__':
