@@ -24,13 +24,21 @@ def main() -> None:
                            help="Print the generated classification JSON Schema without an API call")
     operation.add_argument("--classification-input", type=Path,
                            help="Validate/read a saved classification JSON without an API call")
+    operation.add_argument("--prepare", type=Path,
+                           help="Read classification JSON and send one preparation request per selected email")
+    operation.add_argument("--preparation-schema", action="store_true",
+                           help="Print the preparation output schema without an API call")
     parser.add_argument("--output-dir", type=Path, default=Path("output"),
-                        help="Directory for retained classification JSON (default: ./output)")
+                        help="Directory for retained pipeline JSON (default: ./output)")
     parser.add_argument("--model", help="OpenAI model ID; overrides OPENAI_MODEL")
     args = parser.parse_args()
     if args.classification_schema:
         from .schemas import ClassificationOutput
         print(json.dumps(ClassificationOutput.model_json_schema(), indent=2))
+        return
+    if args.preparation_schema:
+        from .preparation_schemas import PreparationOutput
+        print(json.dumps(PreparationOutput.model_json_schema(), indent=2))
         return
     if args.pdf:
         from dataclasses import asdict
@@ -45,9 +53,27 @@ def main() -> None:
         return
     try:
         loaded = load_inbox(args.input_root, args.inbox)
-        internal = load_internal(args.input_root) if args.include_internal else None
+        internal = load_internal(args.input_root) if args.include_internal or args.prepare else None
     except (OSError, ValueError) as exc:
         parser.exit(1, f"Input loading failed: {exc}\n")
+    if args.prepare:
+        from .classification_artifacts import load_classification
+        from .config import OpenAISettings
+        from .llm import create_client
+        from .prepare import prepare_classification
+        try:
+            classification = load_classification(args.prepare, loaded)
+            settings = OpenAISettings.from_env(args.model)
+            with create_client(settings) as client:
+                summary = prepare_classification(classification, inbox=loaded, internal=internal,
+                                                 input_root=args.input_root, client=client,
+                                                 model=settings.model, output_dir=args.output_dir)
+        except (OSError, ValueError) as exc:
+            parser.exit(1, f"Preparation failed: {exc}\n")
+        print(json.dumps(summary, indent=2, ensure_ascii=False))
+        if summary['failed']:
+            parser.exit(1)
+        return
     if args.classification_input:
         from .classification_artifacts import load_classification
         try:

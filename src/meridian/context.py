@@ -301,6 +301,13 @@ class ContextRetriever:
         catalogue = [row for sku, row in self.data.prices_by_sku.items()
                      if sku in skus or sku.casefold() in request_text.casefold()
                      or len(words.intersection(name_key(row.get('description', '')).split())) >= 2]
+        # Follow explicitly recorded catalogue replacements; do not invent SKUs.
+        candidates = {row['sku']: row for row in catalogue}
+        for row in catalogue:
+            replacement = row.get('replaced_by')
+            if replacement in self.data.prices_by_sku:
+                candidates[replacement] = self.data.prices_by_sku[replacement]
+        catalogue = list(candidates.values())
         stock = [self.data.stock_by_sku[sku] for sku in
                  sorted(skus | {row['sku'] for row in catalogue})
                  if sku in self.data.stock_by_sku]

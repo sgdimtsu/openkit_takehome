@@ -1,11 +1,10 @@
 """Retained JSON classification output for the next pipeline stage."""
 import json
 from collections import Counter
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal, get_args
-from uuid import uuid4
 
+from .artifacts import save_json_artifact
 from .schemas import ActionType, ClassificationOutput, validate_action_ids
 
 
@@ -16,19 +15,7 @@ class ClassificationDocument(ClassificationOutput):
 
 def save_classification(result, directory):
     document = ClassificationDocument.model_validate(result)
-    text = json.dumps(document.model_dump(), indent=2, ensure_ascii=False) + '\n'
-    directory = Path(directory)
-    directory.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
-    path = directory / f'classification_{stamp}_{uuid4().hex}.json'
-    # Exclusive creation protects earlier output, even in the unlikely event of a collision.
-    with path.open('x', encoding='utf-8') as handle:
-        try:
-            handle.write(text)
-        except OSError:
-            path.unlink(missing_ok=True)
-            raise
-    return path
+    return save_json_artifact(document.model_dump(), directory, prefix='classification')
 
 
 def load_classification(path, inbox):
