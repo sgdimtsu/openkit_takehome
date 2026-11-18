@@ -59,3 +59,13 @@ I used AI to help develop the validation rules and iterate on the report layout.
 
 1. **Giving the spreadsheet too much authority.** The agent treated ambiguous or unrelated entries in the open-items log as reasons to block new orders. I changed the rules so the log provides supporting context. Credit decisions depend on the account status in Orbit.
 2. **Producing a checklist instead of preparing the order.** Early reports asked Priya to repeat lookups the tool could already complete from the supplied records. I changed the report to put the prepared account, product codes, quantities, units and prices in the main view. It now flags the specific decisions that still need staff input and keeps the evidence available for review.
+
+## What I would have added with some extra time
+
+1. Automatic ingestion of all data sources: I deferred folder-wide discovery, which matters as new files are added. I would scan the data folder, extract supported formats, preserve source references and retrieve relevant evidence for each email.
+
+2. Additional context retrieval: The prototype can leave questions unresolved when the answer is outside the supplied context. I would add a targeted lookup for the missing information before asking the user—for example, searching older orders for a previously purchased product.
+
+3. Formal evaluations: I compared live runs but did not build a repeatable evaluation suite for model quality. I would create labelled examples and measure classification accuracy, extraction correctness, evidence support and unnecessary questions across repeated runs.
+
+4. API failure recovery: Timeouts can leave reports incomplete. I would add a controlled way to retry only failed emails, preserving successful results and recording each attempt.
