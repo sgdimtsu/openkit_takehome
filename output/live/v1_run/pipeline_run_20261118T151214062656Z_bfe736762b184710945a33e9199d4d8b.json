@@ -1,0 +1,21 @@
+{
+  "classification_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/classification_20261118T150231024313Z_c57a1969f0e1430ab97a63a5a87bf23d.json",
+  "preparation_manifest_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/preparation_run_20261118T151210193372Z_4fc4dd50f34942959f647cc9ab1e18a9.json",
+  "validation_manifest_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/validation_run_20261118T151212051120Z_6169d81ebb1f412fbaff94aaf7a49be6.json",
+  "html_path": "/Users/saradimtsu/Documents/Coding/openkit_takehome/output/live/meridian_reports_20261118T151214054565Z_12b12fdfff424436ba6931993f720b1d.html",
+  "selected_emails": 18,
+  "preparation_failures": 3,
+  "validation_failures": 3,
+  "calls": {
+    "classification": 1,
+    "preparation": 18,
+    "total": 19
+  },
+  "usage_available_for_calls": 18,
+  "usage_totals_when_available": {
+    "input_tokens": 287820,
+    "output_tokens": 47929,
+    "total_tokens": 335749
+  },
+  "processing_duration_seconds": 533.6057464170001
+}

@@ -1,0 +1,1691 @@
+{
+  "schema_version": "1.0",
+  "report_id": "9dc4684aa545411fb02b2a3d32d59140",
+  "generated_at": "2026-11-18T15:12:12.026014+00:00",
+  "preparation": {
+    "schema_version": "1.0",
+    "report_id": "22d32187160b4890ae8805036ee82481",
+    "generated_at": "2026-11-18T15:11:42.078528+00:00",
+    "status": "prepared",
+    "business_rules_applied": false,
+    "requires_human_review": true,
+    "trigger": {
+      "email_id": "MSG-041",
+      "received_at": "2026-10-09T10:40:00+01:00"
+    },
+    "classification": {
+      "email_id": "MSG-041",
+      "customer": {
+        "name_as_stated": "King's Hall School",
+        "account_id_as_stated": null
+      },
+      "action_type": "new_order_request",
+      "references": {
+        "customer_po": "KH/2026/131",
+        "orbit_order_number": null
+      },
+      "related_email_ids": [],
+      "reason": "Requests supply of listed products against KH/2026/131.",
+      "uncertainties": []
+    },
+    "context": {
+      "email_id": "MSG-041",
+      "action_type": "new_order_request",
+      "customer_match": {
+        "status": "matched",
+        "account_id": "KING01",
+        "candidate_account_ids": [
+          "KING01"
+        ],
+        "reason": "Unique account supported by supplied names, account notes or explicit order reference.",
+        "evidence_ids": [
+          "file:04_reference/customer_account_notes.md:section:11",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+        ]
+      },
+      "customer_record": {
+        "CUSNO": "KING01",
+        "CUSNM": "KINGS HALL SCHOOL",
+        "ADR1": "Kings Hall",
+        "ADR2": "Huntingdon",
+        "PCODE": "PE29 3BN",
+        "TELNO": "01480 452990",
+        "ACSTAT": "A",
+        "CRLIM": 12000,
+        "PRCBND": "B",
+        "DTOPEN": "05/09/2010",
+        "NOTE1": "INDEPENDENT. PO FORMAT KH/YYYY/NNN",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+      },
+      "current_request": {
+        "id": "MSG-041",
+        "received": "2026-10-09T10:40:00+01:00",
+        "from": "Steve Ruddock <catering@kingshallschool.org.uk>",
+        "to": "orders@meridiancatering.co.uk",
+        "subject": "Order KH/2026/131",
+        "body": "Hi,\n\nPlease supply the following against KH/2026/131:\n\n6 x white centrefeed roll\n4 x boxes large blue gloves\n2 x digital probe thermometers\n\nTotal £208.08 inc VAT\n\nDeliver to kitchen entrance please.\n\nSteve",
+        "attachments": [],
+        "in_reply_to": null,
+        "source_id": "email:MSG-041:body"
+      },
+      "explicitly_matched_orders": [],
+      "supporting_history": [
+        {
+          "header": {
+            "ORDNO": 48144,
+            "CUSNO": "KING01",
+            "CUSREF": "KH2026118",
+            "ORDDT": "46296",
+            "STAT": "P",
+            "DELDT": "46307",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48144"
+          },
+          "lines": [
+            {
+              "ORDNO": 48144,
+              "LNNO": 10,
+              "STKCD": "SW-GN11-100",
+              "QTY": 10,
+              "QTYDS": 0,
+              "UPRC": 1450,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:10"
+            },
+            {
+              "ORDNO": 48144,
+              "LNNO": 20,
+              "STKCD": "SW-GN13-100",
+              "QTY": 12,
+              "QTYDS": 0,
+              "UPRC": 795,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:20"
+            },
+            {
+              "ORDNO": 48144,
+              "LNNO": 30,
+              "STKCD": "BM-4",
+              "QTY": 1,
+              "QTYDS": 0,
+              "UPRC": 24500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:30"
+            }
+          ],
+          "order_date_normalised": "2026-10-01"
+        },
+        {
+          "header": {
+            "ORDNO": 47934,
+            "CUSNO": "KING01",
+            "CUSREF": "KH2026117",
+            "ORDDT": "20260915",
+            "STAT": "I",
+            "DELDT": "20260921",
+            "OPID": "PS",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47934"
+          },
+          "lines": [
+            {
+              "ORDNO": 47934,
+              "LNNO": 10,
+              "STKCD": "CON-RA-5L",
+              "QTY": 2,
+              "QTYDS": 2,
+              "UPRC": 1595,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47934:10"
+            },
+            {
+              "ORDNO": 47934,
+              "LNNO": 20,
+              "STKCD": "CON-WR-6",
+              "QTY": 2,
+              "QTYDS": 2,
+              "UPRC": 1795,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47934:20"
+            }
+          ],
+          "order_date_normalised": "2026-09-15"
+        },
+        {
+          "header": {
+            "ORDNO": 47864,
+            "CUSNO": "KING01",
+            "CUSREF": "KH2026114",
+            "ORDDT": "20260909",
+            "STAT": "I",
+            "DELDT": "20260916",
+            "OPID": "JD",
+            "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47864"
+          },
+          "lines": [
+            {
+              "ORDNO": 47864,
+              "LNNO": 10,
+              "STKCD": "FR-GN2-DD",
+              "QTY": 1,
+              "QTYDS": 1,
+              "UPRC": 189500,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:10"
+            },
+            {
+              "ORDNO": 47864,
+              "LNNO": 20,
+              "STKCD": "CON-SAN-5L",
+              "QTY": 2,
+              "QTYDS": 2,
+              "UPRC": 1295,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:20"
+            },
+            {
+              "ORDNO": 47864,
+              "LNNO": 30,
+              "STKCD": "SW-KN-CHEF",
+              "QTY": 4,
+              "QTYDS": 4,
+              "UPRC": 2495,
+              "DISC": 5.0,
+              "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:30"
+            }
+          ],
+          "order_date_normalised": "2026-09-09"
+        }
+      ],
+      "history_limit": 3,
+      "customer_notes": [
+        {
+          "source_id": "file:04_reference/customer_account_notes.md:section:11",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "King's Hall School (Huntingdon)",
+          "locator": "Section: King's Hall School (Huntingdon)",
+          "timestamp": null,
+          "text": "King's Hall School (Huntingdon)\n- Orbit: KING01. Band B. Independent school.\n- Steve Ruddock, catering manager. PO numbers look like KH/2026/123.\n- Like St Anne's, Steve sometimes quotes totals including VAT.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      ],
+      "general_account_notes": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "account_constraints": [],
+      "export_parameters": {
+        "VATRT": {
+          "PKEY": "VATRT",
+          "PVAL": "17.5",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        },
+        "LASTEXP": {
+          "PKEY": "LASTEXP",
+          "PVAL": "20261008 231502",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+        },
+        "ACSTCDS": {
+          "PKEY": "ACSTCDS",
+          "PVAL": "A,H,C",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+        },
+        "STATCDS": {
+          "PKEY": "STATCDS",
+          "PVAL": "N,P,D,I,X,H",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+        }
+      },
+      "open_items": [
+        {
+          "Date": "18/09",
+          "Customer": "King's Hall",
+          "Order / PO": "",
+          "Issue": "statement request",
+          "Who": "TR",
+          "Status": "done",
+          "Notes": "",
+          "Closed": "",
+          "source_id": "csv:02_open_items_log.csv:record:15"
+        },
+        {
+          "Date": "01/10",
+          "Customer": "Kings Hall",
+          "Order / PO": "KH/2026/118",
+          "Issue": "bain marie needed by 14th!",
+          "Who": "PS",
+          "Status": "open",
+          "Notes": "",
+          "Closed": "",
+          "source_id": "csv:02_open_items_log.csv:record:37"
+        },
+        {
+          "Date": "08/10",
+          "Customer": "Kings Hall",
+          "Order / PO": "",
+          "Issue": "pot wash quote",
+          "Who": "KH",
+          "Status": "open",
+          "Notes": "",
+          "Closed": "",
+          "source_id": "csv:02_open_items_log.csv:record:62"
+        }
+      ],
+      "unresolved_open_items": [],
+      "catalogue_candidates": [
+        {
+          "sku": "FR-GN2-DD",
+          "description": "Gastronorm upright fridge, double door, 1300L",
+          "category": "Refrigeration",
+          "unit": "each",
+          "list_price_gbp": "1895.00",
+          "band_b_gbp": "1800.25",
+          "band_t_gbp": "1705.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:3"
+        },
+        {
+          "sku": "FRY-2T-8",
+          "description": "Fryer, twin tank, 2 x 8L, electric",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "645.00",
+          "band_b_gbp": "612.75",
+          "band_t_gbp": "580.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:22"
+        },
+        {
+          "sku": "BM-4",
+          "description": "Bain marie, 4 pot, wet well",
+          "category": "Cooking",
+          "unit": "each",
+          "list_price_gbp": "245.00",
+          "band_b_gbp": "232.75",
+          "band_t_gbp": "220.50",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:29"
+        },
+        {
+          "sku": "CON-BR-6",
+          "description": "Blue centrefeed roll, case of 6",
+          "category": "Consumables",
+          "unit": "case",
+          "list_price_gbp": "18.95",
+          "band_b_gbp": "18.00",
+          "band_t_gbp": "17.06",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:50"
+        },
+        {
+          "sku": "CON-WR-6",
+          "description": "White centrefeed roll, case of 6",
+          "category": "Consumables",
+          "unit": "case",
+          "list_price_gbp": "17.95",
+          "band_b_gbp": "17.05",
+          "band_t_gbp": "16.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:51"
+        },
+        {
+          "sku": "CON-GL-BL-M",
+          "description": "Nitrile gloves, blue, medium, box of 100",
+          "category": "Consumables",
+          "unit": "box",
+          "list_price_gbp": "6.45",
+          "band_b_gbp": "6.13",
+          "band_t_gbp": "5.81",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:52"
+        },
+        {
+          "sku": "CON-GL-BL-L",
+          "description": "Nitrile gloves, blue, large, box of 100",
+          "category": "Consumables",
+          "unit": "box",
+          "list_price_gbp": "6.45",
+          "band_b_gbp": "6.13",
+          "band_t_gbp": "5.81",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:53"
+        },
+        {
+          "sku": "CON-RA-5L",
+          "description": "Rinse aid, 5L",
+          "category": "Consumables",
+          "unit": "each",
+          "list_price_gbp": "15.95",
+          "band_b_gbp": "15.15",
+          "band_t_gbp": "14.36",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:57"
+        },
+        {
+          "sku": "CON-SAN-5L",
+          "description": "Food-safe sanitiser, 5L",
+          "category": "Consumables",
+          "unit": "each",
+          "list_price_gbp": "12.95",
+          "band_b_gbp": "12.30",
+          "band_t_gbp": "11.66",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:58"
+        },
+        {
+          "sku": "SW-GN11-100",
+          "description": "Gastronorm pan 1/1, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "14.50",
+          "band_b_gbp": "13.77",
+          "band_t_gbp": "13.05",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:63"
+        },
+        {
+          "sku": "SW-GN13-100",
+          "description": "Gastronorm pan 1/3, 100mm, stainless",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "7.95",
+          "band_b_gbp": "7.55",
+          "band_t_gbp": "7.16",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:64"
+        },
+        {
+          "sku": "SW-KN-CHEF",
+          "description": "Chef's knife, 25cm",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "24.95",
+          "band_b_gbp": "23.70",
+          "band_t_gbp": "22.46",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:66"
+        },
+        {
+          "sku": "SW-PROBE",
+          "description": "Digital probe thermometer",
+          "category": "Smallwares",
+          "unit": "each",
+          "list_price_gbp": "19.95",
+          "band_b_gbp": "18.95",
+          "band_t_gbp": "17.96",
+          "status": "current",
+          "replaced_by": "",
+          "source_id": "csv:04_reference/price_list.csv:record:68"
+        }
+      ],
+      "stock_records": [
+        {
+          "STKCD": "BM-4",
+          "DESC1": "BAIN MARIE 4 POT",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 24500,
+          "SUPCD": "KLD",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:BM-4"
+        },
+        {
+          "STKCD": "CON-BR-6",
+          "DESC1": "BLUE ROLL C/FEED",
+          "DESC2": "CASE 6",
+          "UOM": "CS",
+          "LSTPR": 1895,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6"
+        },
+        {
+          "STKCD": "CON-GL-BL-L",
+          "DESC1": "GLOVES NITRILE BLUE L",
+          "DESC2": "BX100",
+          "UOM": "BX",
+          "LSTPR": 645,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+        },
+        {
+          "STKCD": "CON-GL-BL-M",
+          "DESC1": "GLOVES NITRILE BLUE M",
+          "DESC2": "BX100",
+          "UOM": "BX",
+          "LSTPR": 645,
+          "SUPCD": "BCS",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M"
+        },
+        {
+          "STKCD": "CON-RA-5L",
+          "DESC1": "RINSE AID 5L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1595,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-RA-5L"
+        },
+        {
+          "STKCD": "CON-SAN-5L",
+          "DESC1": "SANITISER 5L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1295,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-SAN-5L"
+        },
+        {
+          "STKCD": "CON-WR-6",
+          "DESC1": "WHITE ROLL C/FEED",
+          "DESC2": "CASE 6",
+          "UOM": "CS",
+          "LSTPR": 1795,
+          "SUPCD": "BCS",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+        },
+        {
+          "STKCD": "FR-GN2-DD",
+          "DESC1": "FRIDGE UPRT GN 2DR",
+          "DESC2": "1300L SS",
+          "UOM": "EA",
+          "LSTPR": 189500,
+          "SUPCD": "NGR",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-GN2-DD"
+        },
+        {
+          "STKCD": "FRY-2T-8",
+          "DESC1": "FRYER 2 TANK 2X8L",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 64500,
+          "SUPCD": "KLD",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8"
+        },
+        {
+          "STKCD": "SW-GN11-100",
+          "DESC1": "GN PAN 1/1 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1450,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100"
+        },
+        {
+          "STKCD": "SW-GN13-100",
+          "DESC1": "GN PAN 1/3 100MM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 795,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100"
+        },
+        {
+          "STKCD": "SW-KN-CHEF",
+          "DESC1": "KNIFE CHEFS 25CM",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 2495,
+          "SUPCD": "PRM",
+          "OBSFLG": "N",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-KN-CHEF"
+        },
+        {
+          "STKCD": "SW-PROBE",
+          "DESC1": "PROBE THERMOMETER",
+          "DESC2": "",
+          "UOM": "EA",
+          "LSTPR": 1995,
+          "SUPCD": "PRM",
+          "OBSFLG": "",
+          "RPLCD": "",
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE"
+        }
+      ],
+      "attachments": [],
+      "attachment_extractions": [],
+      "report_alerts": [
+        {
+          "code": "order_reference_unresolved",
+          "title": "Order reference requires checking",
+          "message": "No existing order match established for customer_po 'KH/2026/131'; absence is not proof of a new order.",
+          "blocks_entry": true,
+          "placement": "report_header_and_things_to_confirm"
+        }
+      ],
+      "sources": {
+        "csv:02_open_items_log.csv:record:15": {
+          "source_id": "csv:02_open_items_log.csv:record:15",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 15",
+          "locator": "CSV record 15 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"18/09\", \"Customer\": \"King's Hall\", \"Order / PO\": \"\", \"Issue\": \"statement request\", \"Who\": \"TR\", \"Status\": \"done\", \"Notes\": \"\", \"Closed\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:02_open_items_log.csv:record:37": {
+          "source_id": "csv:02_open_items_log.csv:record:37",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 37",
+          "locator": "CSV record 37 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"01/10\", \"Customer\": \"Kings Hall\", \"Order / PO\": \"KH/2026/118\", \"Issue\": \"bain marie needed by 14th!\", \"Who\": \"PS\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:02_open_items_log.csv:record:62": {
+          "source_id": "csv:02_open_items_log.csv:record:62",
+          "relative_path": "02_open_items_log.csv",
+          "display_name": "02_open_items_log.csv — record 62",
+          "locator": "CSV record 62 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"Date\": \"08/10\", \"Customer\": \"Kings Hall\", \"Order / PO\": \"\", \"Issue\": \"pot wash quote\", \"Who\": \"KH\", \"Status\": \"open\", \"Notes\": \"\", \"Closed\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:22": {
+          "source_id": "csv:04_reference/price_list.csv:record:22",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 22",
+          "locator": "CSV record 22 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"FRY-2T-8\", \"description\": \"Fryer, twin tank, 2 x 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"645.00\", \"band_b_gbp\": \"612.75\", \"band_t_gbp\": \"580.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:29": {
+          "source_id": "csv:04_reference/price_list.csv:record:29",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 29",
+          "locator": "CSV record 29 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"BM-4\", \"description\": \"Bain marie, 4 pot, wet well\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"245.00\", \"band_b_gbp\": \"232.75\", \"band_t_gbp\": \"220.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:3": {
+          "source_id": "csv:04_reference/price_list.csv:record:3",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 3",
+          "locator": "CSV record 3 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"FR-GN2-DD\", \"description\": \"Gastronorm upright fridge, double door, 1300L\", \"category\": \"Refrigeration\", \"unit\": \"each\", \"list_price_gbp\": \"1895.00\", \"band_b_gbp\": \"1800.25\", \"band_t_gbp\": \"1705.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:50": {
+          "source_id": "csv:04_reference/price_list.csv:record:50",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 50",
+          "locator": "CSV record 50 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-BR-6\", \"description\": \"Blue centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"18.95\", \"band_b_gbp\": \"18.00\", \"band_t_gbp\": \"17.06\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:51": {
+          "source_id": "csv:04_reference/price_list.csv:record:51",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 51",
+          "locator": "CSV record 51 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-WR-6\", \"description\": \"White centrefeed roll, case of 6\", \"category\": \"Consumables\", \"unit\": \"case\", \"list_price_gbp\": \"17.95\", \"band_b_gbp\": \"17.05\", \"band_t_gbp\": \"16.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:52": {
+          "source_id": "csv:04_reference/price_list.csv:record:52",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 52",
+          "locator": "CSV record 52 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-GL-BL-M\", \"description\": \"Nitrile gloves, blue, medium, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:53": {
+          "source_id": "csv:04_reference/price_list.csv:record:53",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 53",
+          "locator": "CSV record 53 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-GL-BL-L\", \"description\": \"Nitrile gloves, blue, large, box of 100\", \"category\": \"Consumables\", \"unit\": \"box\", \"list_price_gbp\": \"6.45\", \"band_b_gbp\": \"6.13\", \"band_t_gbp\": \"5.81\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:57": {
+          "source_id": "csv:04_reference/price_list.csv:record:57",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 57",
+          "locator": "CSV record 57 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-RA-5L\", \"description\": \"Rinse aid, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"15.95\", \"band_b_gbp\": \"15.15\", \"band_t_gbp\": \"14.36\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:58": {
+          "source_id": "csv:04_reference/price_list.csv:record:58",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 58",
+          "locator": "CSV record 58 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"CON-SAN-5L\", \"description\": \"Food-safe sanitiser, 5L\", \"category\": \"Consumables\", \"unit\": \"each\", \"list_price_gbp\": \"12.95\", \"band_b_gbp\": \"12.30\", \"band_t_gbp\": \"11.66\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:63": {
+          "source_id": "csv:04_reference/price_list.csv:record:63",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 63",
+          "locator": "CSV record 63 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN11-100\", \"description\": \"Gastronorm pan 1/1, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"14.50\", \"band_b_gbp\": \"13.77\", \"band_t_gbp\": \"13.05\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:64": {
+          "source_id": "csv:04_reference/price_list.csv:record:64",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 64",
+          "locator": "CSV record 64 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-GN13-100\", \"description\": \"Gastronorm pan 1/3, 100mm, stainless\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"7.95\", \"band_b_gbp\": \"7.55\", \"band_t_gbp\": \"7.16\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:66": {
+          "source_id": "csv:04_reference/price_list.csv:record:66",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 66",
+          "locator": "CSV record 66 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-KN-CHEF\", \"description\": \"Chef's knife, 25cm\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"24.95\", \"band_b_gbp\": \"23.70\", \"band_t_gbp\": \"22.46\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "csv:04_reference/price_list.csv:record:68": {
+          "source_id": "csv:04_reference/price_list.csv:record:68",
+          "relative_path": "04_reference/price_list.csv",
+          "display_name": "price_list.csv — record 68",
+          "locator": "CSV record 68 (header is record 1)",
+          "timestamp": null,
+          "text": "{\"sku\": \"SW-PROBE\", \"description\": \"Digital probe thermometer\", \"category\": \"Smallwares\", \"unit\": \"each\", \"list_price_gbp\": \"19.95\", \"band_b_gbp\": \"18.95\", \"band_t_gbp\": \"17.96\", \"status\": \"current\", \"replaced_by\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "email:MSG-041:body": {
+          "source_id": "email:MSG-041:body",
+          "relative_path": "03_inbox_export/inbox.json",
+          "display_name": "MSG-041 — Steve Ruddock <catering@kingshallschool.org.uk> — Order KH/2026/131",
+          "locator": "JSON record 41, body",
+          "timestamp": "2026-10-09T10:40:00+01:00",
+          "text": "Hi,\n\nPlease supply the following against KH/2026/131:\n\n6 x white centrefeed roll\n4 x boxes large blue gloves\n2 x digital probe thermometers\n\nTotal £208.08 inc VAT\n\nDeliver to kitchen entrance please.\n\nSteve",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:preamble": {
+          "source_id": "file:04_reference/customer_account_notes.md:preamble",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "customer_account_notes.md — introductory notes",
+          "locator": "Before first customer heading",
+          "timestamp": null,
+          "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "file:04_reference/customer_account_notes.md:section:11": {
+          "source_id": "file:04_reference/customer_account_notes.md:section:11",
+          "relative_path": "04_reference/customer_account_notes.md",
+          "display_name": "King's Hall School (Huntingdon)",
+          "locator": "Section: King's Hall School (Huntingdon)",
+          "timestamp": null,
+          "text": "King's Hall School (Huntingdon)\n- Orbit: KING01. Band B. Independent school.\n- Steve Ruddock, catering manager. PO numbers look like KH/2026/123.\n- Like St Anne's, Steve sometimes quotes totals including VAT.\n\n",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit CUST — CUSNO=KING01",
+          "locator": "CUST: CUSNO=KING01",
+          "timestamp": "20261008 231502",
+          "text": "{\"CUSNO\": \"KING01\", \"CUSNM\": \"KINGS HALL SCHOOL\", \"ADR1\": \"Kings Hall\", \"ADR2\": \"Huntingdon\", \"PCODE\": \"PE29 3BN\", \"TELNO\": \"01480 452990\", \"ACSTAT\": \"A\", \"CRLIM\": 12000, \"PRCBND\": \"B\", \"DTOPEN\": \"05/09/2010\", \"NOTE1\": \"INDEPENDENT. PO FORMAT KH/YYYY/NNN\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47864": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47864",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47864",
+          "locator": "OHDR: ORDNO=47864",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47864, \"CUSNO\": \"KING01\", \"CUSREF\": \"KH2026114\", \"ORDDT\": \"20260909\", \"STAT\": \"I\", \"DELDT\": \"20260916\", \"OPID\": \"JD\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47934": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:47934",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=47934",
+          "locator": "OHDR: ORDNO=47934",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47934, \"CUSNO\": \"KING01\", \"CUSREF\": \"KH2026117\", \"ORDDT\": \"20260915\", \"STAT\": \"I\", \"DELDT\": \"20260921\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48144": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OHDR:48144",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OHDR — ORDNO=48144",
+          "locator": "OHDR: ORDNO=48144",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48144, \"CUSNO\": \"KING01\", \"CUSREF\": \"KH2026118\", \"ORDDT\": \"46296\", \"STAT\": \"P\", \"DELDT\": \"46307\", \"OPID\": \"PS\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47864, LNNO=10",
+          "locator": "OLIN: ORDNO=47864, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47864, \"LNNO\": 10, \"STKCD\": \"FR-GN2-DD\", \"QTY\": 1, \"QTYDS\": 1, \"UPRC\": 189500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47864, LNNO=20",
+          "locator": "OLIN: ORDNO=47864, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47864, \"LNNO\": 20, \"STKCD\": \"CON-SAN-5L\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 1295, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:30": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47864:30",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47864, LNNO=30",
+          "locator": "OLIN: ORDNO=47864, LNNO=30",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47864, \"LNNO\": 30, \"STKCD\": \"SW-KN-CHEF\", \"QTY\": 4, \"QTYDS\": 4, \"UPRC\": 2495, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47934:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47934:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47934, LNNO=10",
+          "locator": "OLIN: ORDNO=47934, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47934, \"LNNO\": 10, \"STKCD\": \"CON-RA-5L\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 1595, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47934:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:47934:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=47934, LNNO=20",
+          "locator": "OLIN: ORDNO=47934, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 47934, \"LNNO\": 20, \"STKCD\": \"CON-WR-6\", \"QTY\": 2, \"QTYDS\": 2, \"UPRC\": 1795, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:10": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:10",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48144, LNNO=10",
+          "locator": "OLIN: ORDNO=48144, LNNO=10",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48144, \"LNNO\": 10, \"STKCD\": \"SW-GN11-100\", \"QTY\": 10, \"QTYDS\": 0, \"UPRC\": 1450, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:20": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:20",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48144, LNNO=20",
+          "locator": "OLIN: ORDNO=48144, LNNO=20",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48144, \"LNNO\": 20, \"STKCD\": \"SW-GN13-100\", \"QTY\": 12, \"QTYDS\": 0, \"UPRC\": 795, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:30": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:OLIN:48144:30",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit OLIN — ORDNO=48144, LNNO=30",
+          "locator": "OLIN: ORDNO=48144, LNNO=30",
+          "timestamp": "20261008 231502",
+          "text": "{\"ORDNO\": 48144, \"LNNO\": 30, \"STKCD\": \"BM-4\", \"QTY\": 1, \"QTYDS\": 0, \"UPRC\": 24500, \"DISC\": 5.0}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:BM-4": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:BM-4",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=BM-4",
+          "locator": "STK: STKCD=BM-4",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"BM-4\", \"DESC1\": \"BAIN MARIE 4 POT\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 24500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-BR-6",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-BR-6",
+          "locator": "STK: STKCD=CON-BR-6",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-BR-6\", \"DESC1\": \"BLUE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1895, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-GL-BL-L",
+          "locator": "STK: STKCD=CON-GL-BL-L",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-GL-BL-L\", \"DESC1\": \"GLOVES NITRILE BLUE L\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-M",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-GL-BL-M",
+          "locator": "STK: STKCD=CON-GL-BL-M",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-GL-BL-M\", \"DESC1\": \"GLOVES NITRILE BLUE M\", \"DESC2\": \"BX100\", \"UOM\": \"BX\", \"LSTPR\": 645, \"SUPCD\": \"BCS\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-RA-5L": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-RA-5L",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-RA-5L",
+          "locator": "STK: STKCD=CON-RA-5L",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-RA-5L\", \"DESC1\": \"RINSE AID 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1595, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-SAN-5L": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-SAN-5L",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-SAN-5L",
+          "locator": "STK: STKCD=CON-SAN-5L",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-SAN-5L\", \"DESC1\": \"SANITISER 5L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1295, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=CON-WR-6",
+          "locator": "STK: STKCD=CON-WR-6",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"CON-WR-6\", \"DESC1\": \"WHITE ROLL C/FEED\", \"DESC2\": \"CASE 6\", \"UOM\": \"CS\", \"LSTPR\": 1795, \"SUPCD\": \"BCS\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-GN2-DD": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FR-GN2-DD",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=FR-GN2-DD",
+          "locator": "STK: STKCD=FR-GN2-DD",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"FR-GN2-DD\", \"DESC1\": \"FRIDGE UPRT GN 2DR\", \"DESC2\": \"1300L SS\", \"UOM\": \"EA\", \"LSTPR\": 189500, \"SUPCD\": \"NGR\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=FRY-2T-8",
+          "locator": "STK: STKCD=FRY-2T-8",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"FRY-2T-8\", \"DESC1\": \"FRYER 2 TANK 2X8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 64500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN11-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN11-100",
+          "locator": "STK: STKCD=SW-GN11-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN11-100\", \"DESC1\": \"GN PAN 1/1 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1450, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-GN13-100",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-GN13-100",
+          "locator": "STK: STKCD=SW-GN13-100",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-GN13-100\", \"DESC1\": \"GN PAN 1/3 100MM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 795, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-KN-CHEF": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-KN-CHEF",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-KN-CHEF",
+          "locator": "STK: STKCD=SW-KN-CHEF",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-KN-CHEF\", \"DESC1\": \"KNIFE CHEFS 25CM\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 2495, \"SUPCD\": \"PRM\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit STK — STKCD=SW-PROBE",
+          "locator": "STK: STKCD=SW-PROBE",
+          "timestamp": "20261008 231502",
+          "text": "{\"STKCD\": \"SW-PROBE\", \"DESC1\": \"PROBE THERMOMETER\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 1995, \"SUPCD\": \"PRM\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+          "locator": "SYSPARM: PKEY=ACSTCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+          "locator": "SYSPARM: PKEY=LASTEXP",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+          "locator": "SYSPARM: PKEY=STATCDS",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        },
+        "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+          "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+          "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+          "display_name": "Orbit SYSPARM — PKEY=VATRT",
+          "locator": "SYSPARM: PKEY=VATRT",
+          "timestamp": "20261008 231502",
+          "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+          "extraction_method": null,
+          "requires_review": false,
+          "extraction_error": null
+        }
+      },
+      "source_limitations": [
+        "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+        "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+        "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+      ]
+    },
+    "report_alerts": [
+      {
+        "code": "order_reference_unresolved",
+        "title": "Order reference requires checking",
+        "message": "No existing order match established for customer_po 'KH/2026/131'; absence is not proof of a new order.",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "llm": {
+      "call_count": 1,
+      "model": "gpt-6-luna",
+      "duration_seconds": 23.63479612499998,
+      "response_id": "resp_0c7aa97910cbd7ab016afdc0169ff887d28fba8fa448696a38",
+      "usage": {
+        "input_tokens": 16752,
+        "input_tokens_details": {
+          "cache_write_tokens": 13994,
+          "cached_tokens": 2755,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 13994
+          }
+        },
+        "output_tokens": 2604,
+        "output_tokens_details": {
+          "reasoning_tokens": 821
+        },
+        "total_tokens": 19356
+      }
+    },
+    "proposal": {
+      "email_id": "MSG-041",
+      "action_type": "new_order_request",
+      "summary": "Customer requests products against PO KH/2026/131. No matching Orbit order is established; check the reference for a possible duplicate before entry.",
+      "customer_po": {
+        "value": "KH/2026/131",
+        "basis": "explicit_request",
+        "evidence_ids": [
+          "email:MSG-041:body"
+        ]
+      },
+      "new_order": {
+        "header": {
+          "delivery_instructions": {
+            "value": "Deliver to kitchen entrance",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-041:body"
+            ]
+          }
+        },
+        "lines": [
+          {
+            "line_id": "line-1",
+            "description": {
+              "value": "white centrefeed roll",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "sku": {
+              "value": "CON-WR-6",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:51",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+              ],
+              "reason": "Catalogue and stock descriptions identify a white centrefeed roll SKU, but it is packaged as a case of 6; the email's unit wording needs confirmation."
+            },
+            "quantity": {
+              "value": "6",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "unit": {
+              "value": "rolls",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "quantity_basis": "order_total"
+          },
+          {
+            "line_id": "line-2",
+            "description": {
+              "value": "large blue gloves",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "sku": {
+              "value": "CON-GL-BL-L",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:53",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+              ],
+              "reason": "Catalogue and stock descriptions support blue large nitrile gloves, boxed as 100."
+            },
+            "quantity": {
+              "value": "4",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "unit": {
+              "value": "boxes",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "quantity_basis": "order_total"
+          },
+          {
+            "line_id": "line-3",
+            "description": {
+              "value": "digital probe thermometers",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "sku": {
+              "value": "SW-PROBE",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:68",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE"
+              ],
+              "reason": "Catalogue and stock descriptions support a digital probe thermometer."
+            },
+            "quantity": {
+              "value": "2",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "unit": {
+              "value": "each",
+              "basis": "inferred_suggestion",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:68",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE"
+              ],
+              "reason": "Catalogue and stock records list the thermometer unit as each."
+            },
+            "quantity_basis": "order_total"
+          }
+        ],
+        "customer_quoted_totals": [
+          {
+            "label": "Total",
+            "amount": {
+              "value": "£208.08",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "currency": "GBP",
+            "vat_basis": "inclusive",
+            "price_basis": "order_total"
+          }
+        ],
+        "customer_discounts": []
+      },
+      "uncertainties": [
+        {
+          "question": "Does the requested quantity of 6 white centrefeed rolls mean six individual rolls or six catalogue cases, each containing 6 rolls?",
+          "affected_fields": [
+            "new_order.lines[line-1].quantity",
+            "new_order.lines[line-1].unit",
+            "new_order.lines[line-1].sku"
+          ],
+          "next_action": "Confirm the intended packaging and quantity with the customer before entry.",
+          "evidence_ids": [
+            "email:MSG-041:body",
+            "csv:04_reference/price_list.csv:record:51",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+          ]
+        },
+        {
+          "question": "Is KH/2026/131 already represented by an order in Orbit?",
+          "affected_fields": [
+            "customer_po",
+            "new_order"
+          ],
+          "next_action": "Check the PO reference in Orbit and resolve the duplicate-entry check before proceeding.",
+          "evidence_ids": [
+            "email:MSG-041:body"
+          ]
+        },
+        {
+          "question": "Has the current credit status been checked in Orbit?",
+          "affected_fields": [
+            "new_order"
+          ],
+          "next_action": "Verify current credit status manually in Orbit before entry; the supplied account snapshot is not a current-status check.",
+          "evidence_ids": [
+            "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01",
+            "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "category": "order_reference_unresolved",
+          "description": "No matching Orbit order is established for KH/2026/131; absence of a match does not prove this is a new order.",
+          "affected_fields": [
+            "customer_po",
+            "new_order"
+          ],
+          "next_action": "Check the PO reference in Orbit and perform a duplicate check before entry.",
+          "evidence_ids": [
+            "email:MSG-041:body"
+          ]
+        },
+        {
+          "category": "quoted_price_review",
+          "description": "The customer quoted an unverified order total of £208.08 including VAT. It is a customer request, not an approved price or total.",
+          "affected_fields": [
+            "new_order.customer_quoted_totals"
+          ],
+          "next_action": "Have Karen review pricing as required by the workflow; do not treat the quoted amount as approved.",
+          "owner": "Karen",
+          "evidence_ids": [
+            "email:MSG-041:body"
+          ]
+        }
+      ]
+    }
+  },
+  "business_rules_applied": true,
+  "validation": {
+    "status": "validated",
+    "readiness": "Do not proceed",
+    "entry_section_label": "Proposed changes — do not apply yet",
+    "current_order_status": [
+      {
+        "message": "No existing order match established; verify live Orbit before entry."
+      }
+    ],
+    "changes_to_apply": [
+      {
+        "operation": "new_order",
+        "header": {
+          "delivery_instructions": {
+            "value": "Deliver to kitchen entrance",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-041:body"
+            ]
+          },
+          "recorded_account_address": {
+            "value": "Kings Hall, Huntingdon, PE29 3BN",
+            "basis": "recorded_internal",
+            "evidence_ids": [
+              "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+            ]
+          }
+        },
+        "lines": [
+          {
+            "line_id": "line-1",
+            "requested_description": {
+              "value": "white centrefeed roll",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "field_basis": {
+              "description": "explicit_request",
+              "sku": "inferred_suggestion",
+              "quantity": "explicit_request",
+              "unit": "explicit_request"
+            },
+            "evidence_ids": [
+              "email:MSG-041:body",
+              "csv:04_reference/price_list.csv:record:51",
+              "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+            ],
+            "sku": "CON-WR-6",
+            "sku_basis": "inferred_suggestion"
+          },
+          {
+            "line_id": "line-2",
+            "requested_description": {
+              "value": "large blue gloves",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "field_basis": {
+              "description": "explicit_request",
+              "sku": "inferred_suggestion",
+              "quantity": "explicit_request",
+              "unit": "explicit_request"
+            },
+            "evidence_ids": [
+              "email:MSG-041:body",
+              "csv:04_reference/price_list.csv:record:53",
+              "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+            ],
+            "sku": "CON-GL-BL-L",
+            "sku_basis": "inferred_suggestion",
+            "quantity": "4",
+            "unit": "box",
+            "quantity_basis": "order_total",
+            "description": "Nitrile gloves, blue, large, box of 100",
+            "price": {
+              "unit_price_ex_vat": "6.13",
+              "currency": "GBP",
+              "unit": "box",
+              "basis": "Recorded band B; already net of band discount",
+              "discount_already_included": true,
+              "instruction": "This is a net unit price. Do not apply the band/contract discount again.",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:53",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+              ]
+            },
+            "line_net": "24.52"
+          },
+          {
+            "line_id": "line-3",
+            "requested_description": {
+              "value": "digital probe thermometers",
+              "basis": "explicit_request",
+              "evidence_ids": [
+                "email:MSG-041:body"
+              ]
+            },
+            "field_basis": {
+              "description": "explicit_request",
+              "sku": "inferred_suggestion",
+              "quantity": "explicit_request",
+              "unit": "inferred_suggestion"
+            },
+            "evidence_ids": [
+              "email:MSG-041:body",
+              "csv:04_reference/price_list.csv:record:68",
+              "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE"
+            ],
+            "sku": "SW-PROBE",
+            "sku_basis": "inferred_suggestion",
+            "quantity": "2",
+            "unit": "each",
+            "quantity_basis": "order_total",
+            "description": "Digital probe thermometer",
+            "price": {
+              "unit_price_ex_vat": "18.95",
+              "currency": "GBP",
+              "unit": "each",
+              "basis": "Recorded band B; already net of band discount",
+              "discount_already_included": true,
+              "instruction": "This is a net unit price. Do not apply the band/contract discount again.",
+              "evidence_ids": [
+                "csv:04_reference/price_list.csv:record:68",
+                "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+              ]
+            },
+            "line_net": "37.90"
+          }
+        ]
+      }
+    ],
+    "calculations": {
+      "known_lines_net_subtotal": "62.42",
+      "complete": false,
+      "reason": "At least one line cannot be calculated; no complete order total is asserted."
+    },
+    "issues": [
+      {
+        "code": "order_reference_unresolved",
+        "description": "No existing order match established for customer_po 'KH/2026/131'; absence is not proof of a new order.",
+        "next_action": "Resolve the highlighted check before applying affected values.",
+        "owner": "Order processor",
+        "blocks_entry": true,
+        "evidence_ids": [],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "manual_credit_check",
+        "description": "Snapshot data cannot establish current credit release.",
+        "next_action": "Check current credit status manually in Orbit. Only Tom can authorise credit decisions.",
+        "owner": "Tom / credit control",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "snapshot_limitations",
+        "description": "Inputs are snapshots; reference freshness may be unknown.",
+        "next_action": "Verify current records. Generation time is not source freshness; no stock or delivery promise is implied.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "vat_conflict",
+        "description": "Export VATRT is 17.5%; proposed calculations use the user-approved 20%.",
+        "next_action": "Confirm the applicable VAT treatment before entry; do not reuse the export rate blindly.",
+        "owner": "Accounts",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "recorded_open_item",
+        "description": "Recorded spreadsheet entry: pot wash quote; status 'open'; date '08/10'.",
+        "next_action": "Check whether this entry still applies. Spreadsheet status and Who are not verified current authority.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "csv:02_open_items_log.csv:record:62"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "existing_order_not_established",
+        "description": "No existing order match was established in the snapshot.",
+        "next_action": "Search live Orbit before creating an order; snapshot absence does not establish that it is new.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "delivery_destination_confirmation",
+        "description": "A delivery destination was not established from this request; the account address is supporting information only.",
+        "next_action": "Confirm the delivery site and full address.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "line_pricing_unresolved",
+        "description": "Line line-1: Requested unit 'rolls' does not establish catalogue unit 'case'",
+        "next_action": "Confirm product, unit and pricing terms with Karen; do not guess.",
+        "owner": "Karen / operations",
+        "blocks_entry": true,
+        "evidence_ids": [
+          "csv:04_reference/price_list.csv:record:51",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6",
+          "email:MSG-041:body"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "inferred_product",
+        "description": "CON-GL-BL-L is an inferred product suggestion.",
+        "next_action": "Double-check the product, specification and unit against the request.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "csv:04_reference/price_list.csv:record:53",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-GL-BL-L"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "inferred_product",
+        "description": "SW-PROBE is an inferred product suggestion.",
+        "next_action": "Double-check the product, specification and unit against the request.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "csv:04_reference/price_list.csv:record:68",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:STK:SW-PROBE"
+        ],
+        "origin": "deterministic_rule"
+      },
+      {
+        "code": "model_reported_issue",
+        "description": "No matching Orbit order is established for KH/2026/131; absence of a match does not prove this is a new order.",
+        "next_action": "Check the PO reference in Orbit and perform a duplicate check before entry.",
+        "owner": "Order processor",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "email:MSG-041:body"
+        ],
+        "origin": "llm_proposal"
+      },
+      {
+        "code": "model_reported_issue",
+        "description": "The customer quoted an unverified order total of £208.08 including VAT. It is a customer request, not an approved price or total.",
+        "next_action": "Have Karen review pricing as required by the workflow; do not treat the quoted amount as approved.",
+        "owner": "Karen",
+        "blocks_entry": false,
+        "evidence_ids": [
+          "email:MSG-041:body"
+        ],
+        "origin": "llm_proposal"
+      }
+    ],
+    "uncertainties": [
+      {
+        "question": "Does the requested quantity of 6 white centrefeed rolls mean six individual rolls or six catalogue cases, each containing 6 rolls?",
+        "affected_fields": [
+          "new_order.lines[line-1].quantity",
+          "new_order.lines[line-1].unit",
+          "new_order.lines[line-1].sku"
+        ],
+        "next_action": "Confirm the intended packaging and quantity with the customer before entry.",
+        "evidence_ids": [
+          "email:MSG-041:body",
+          "csv:04_reference/price_list.csv:record:51",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:STK:CON-WR-6"
+        ]
+      },
+      {
+        "question": "Is KH/2026/131 already represented by an order in Orbit?",
+        "affected_fields": [
+          "customer_po",
+          "new_order"
+        ],
+        "next_action": "Check the PO reference in Orbit and resolve the duplicate-entry check before proceeding.",
+        "evidence_ids": [
+          "email:MSG-041:body"
+        ]
+      },
+      {
+        "question": "Has the current credit status been checked in Orbit?",
+        "affected_fields": [
+          "new_order"
+        ],
+        "next_action": "Verify current credit status manually in Orbit before entry; the supplied account snapshot is not a current-status check.",
+        "evidence_ids": [
+          "orbit:06_orbit_export/orbit_nightly.sqlite:CUST:KING01",
+          "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+        ]
+      }
+    ],
+    "vat_policy": {
+      "rate": "0.20",
+      "origin": "User-approved prototype rule"
+    },
+    "requires_human_review": true
+  }
+}

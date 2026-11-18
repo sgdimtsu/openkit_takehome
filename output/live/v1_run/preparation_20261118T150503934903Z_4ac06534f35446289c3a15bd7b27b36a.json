@@ -1,0 +1,602 @@
+{
+  "schema_version": "1.0",
+  "report_id": "a2eb943469db4c5e9c08a6337ccf46b3",
+  "generated_at": "2026-11-18T15:05:03.932221+00:00",
+  "status": "prepared",
+  "business_rules_applied": false,
+  "requires_human_review": true,
+  "trigger": {
+    "email_id": "MSG-017",
+    "received_at": "2026-10-06T14:30:00+01:00"
+  },
+  "classification": {
+    "email_id": "MSG-017",
+    "customer": {
+      "name_as_stated": "Grafham Kitchen",
+      "account_id_as_stated": null
+    },
+    "action_type": "new_order_request",
+    "references": {
+      "customer_po": null,
+      "orbit_order_number": null
+    },
+    "related_email_ids": [],
+    "reason": "Requests supply of listed equipment and asks to place the order on the previous owners' account.",
+    "uncertainties": [
+      "The previous owners' account is not identified, and eligibility to use it is unresolved."
+    ]
+  },
+  "context": {
+    "email_id": "MSG-017",
+    "action_type": "new_order_request",
+    "customer_match": {
+      "status": "unresolved",
+      "account_id": null,
+      "candidate_account_ids": [],
+      "reason": "Confirm the customer account: supplied identifiers are missing, ambiguous or conflicting.",
+      "evidence_ids": []
+    },
+    "customer_record": null,
+    "current_request": {
+      "id": "MSG-017",
+      "received": "2026-10-06T14:30:00+01:00",
+      "from": "Will Ashworth <will@grafhamkitchen.co.uk>",
+      "to": "orders@meridiancatering.co.uk",
+      "subject": "Ordering - ex Lakeside Bistro",
+      "body": "Hello,\n\nWe've taken over the old Lakeside Bistro site at Grafham Water and are reopening as Grafham Kitchen next month. The previous owners used you. Could we order on their account to get going?\n\nWe need:\n1 x 6 burner range\n1 x twin tank fryer\n2 x 1500 prep tables\n\nThanks,\nWill Ashworth",
+      "attachments": [],
+      "in_reply_to": null,
+      "source_id": "email:MSG-017:body"
+    },
+    "explicitly_matched_orders": [],
+    "supporting_history": [],
+    "history_limit": 3,
+    "customer_notes": [],
+    "general_account_notes": {
+      "source_id": "file:04_reference/customer_account_notes.md:preamble",
+      "relative_path": "04_reference/customer_account_notes.md",
+      "display_name": "customer_account_notes.md — introductory notes",
+      "locator": "Before first customer heading",
+      "timestamp": null,
+      "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+      "extraction_method": null,
+      "requires_review": false,
+      "extraction_error": null
+    },
+    "account_constraints": [],
+    "export_parameters": {
+      "VATRT": {
+        "PKEY": "VATRT",
+        "PVAL": "17.5",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT"
+      },
+      "LASTEXP": {
+        "PKEY": "LASTEXP",
+        "PVAL": "20261008 231502",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP"
+      },
+      "ACSTCDS": {
+        "PKEY": "ACSTCDS",
+        "PVAL": "A,H,C",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS"
+      },
+      "STATCDS": {
+        "PKEY": "STATCDS",
+        "PVAL": "N,P,D,I,X,H",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS"
+      }
+    },
+    "open_items": [],
+    "unresolved_open_items": [],
+    "catalogue_candidates": [
+      {
+        "sku": "RG-6B-GAS",
+        "description": "Six burner range with oven, natural gas",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "1595.00",
+        "band_b_gbp": "1515.25",
+        "band_t_gbp": "1435.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:18"
+      },
+      {
+        "sku": "RG-4B-GAS",
+        "description": "Four burner range with oven, natural gas",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "1195.00",
+        "band_b_gbp": "1135.25",
+        "band_t_gbp": "1075.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:19"
+      },
+      {
+        "sku": "FRY-1T-6",
+        "description": "Fryer, single tank, 6L, electric",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "345.00",
+        "band_b_gbp": "327.75",
+        "band_t_gbp": "310.50",
+        "status": "obsolete",
+        "replaced_by": "FRY-1T-8",
+        "source_id": "csv:04_reference/price_list.csv:record:20"
+      },
+      {
+        "sku": "FRY-1T-8",
+        "description": "Fryer, single tank, 8L, electric",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "395.00",
+        "band_b_gbp": "375.25",
+        "band_t_gbp": "355.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:21"
+      },
+      {
+        "sku": "FRY-2T-8",
+        "description": "Fryer, twin tank, 2 x 8L, electric",
+        "category": "Cooking",
+        "unit": "each",
+        "list_price_gbp": "645.00",
+        "band_b_gbp": "612.75",
+        "band_t_gbp": "580.50",
+        "status": "current",
+        "replaced_by": "",
+        "source_id": "csv:04_reference/price_list.csv:record:22"
+      }
+    ],
+    "stock_records": [
+      {
+        "STKCD": "FRY-1T-6",
+        "DESC1": "FRYER 1 TANK 6L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 34500,
+        "SUPCD": "KLD",
+        "OBSFLG": "Y",
+        "RPLCD": "FRY-1T-8",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-6"
+      },
+      {
+        "STKCD": "FRY-1T-8",
+        "DESC1": "FRYER 1 TANK 8L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 39500,
+        "SUPCD": "KLD",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-8"
+      },
+      {
+        "STKCD": "FRY-2T-8",
+        "DESC1": "FRYER 2 TANK 2X8L",
+        "DESC2": "",
+        "UOM": "EA",
+        "LSTPR": 64500,
+        "SUPCD": "KLD",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8"
+      },
+      {
+        "STKCD": "RG-4B-GAS",
+        "DESC1": "RANGE 4 BURNER GAS",
+        "DESC2": "W/OVEN",
+        "UOM": "EA",
+        "LSTPR": 119500,
+        "SUPCD": "KLD",
+        "OBSFLG": "",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-4B-GAS"
+      },
+      {
+        "STKCD": "RG-6B-GAS",
+        "DESC1": "RANGE 6 BURNER GAS",
+        "DESC2": "W/OVEN",
+        "UOM": "EA",
+        "LSTPR": 159500,
+        "SUPCD": "KLD",
+        "OBSFLG": "N",
+        "RPLCD": "",
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-6B-GAS"
+      }
+    ],
+    "attachments": [],
+    "attachment_extractions": [],
+    "report_alerts": [
+      {
+        "code": "customer_match_unresolved",
+        "title": "Customer match unresolved — do not proceed",
+        "message": "Confirm the correct account before entry. No customer history assigned. Candidates: none established",
+        "blocks_entry": true,
+        "placement": "report_header_and_things_to_confirm"
+      }
+    ],
+    "sources": {
+      "csv:04_reference/price_list.csv:record:18": {
+        "source_id": "csv:04_reference/price_list.csv:record:18",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 18",
+        "locator": "CSV record 18 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"RG-6B-GAS\", \"description\": \"Six burner range with oven, natural gas\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"1595.00\", \"band_b_gbp\": \"1515.25\", \"band_t_gbp\": \"1435.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:19": {
+        "source_id": "csv:04_reference/price_list.csv:record:19",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 19",
+        "locator": "CSV record 19 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"RG-4B-GAS\", \"description\": \"Four burner range with oven, natural gas\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"1195.00\", \"band_b_gbp\": \"1135.25\", \"band_t_gbp\": \"1075.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:20": {
+        "source_id": "csv:04_reference/price_list.csv:record:20",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 20",
+        "locator": "CSV record 20 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FRY-1T-6\", \"description\": \"Fryer, single tank, 6L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"345.00\", \"band_b_gbp\": \"327.75\", \"band_t_gbp\": \"310.50\", \"status\": \"obsolete\", \"replaced_by\": \"FRY-1T-8\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:21": {
+        "source_id": "csv:04_reference/price_list.csv:record:21",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 21",
+        "locator": "CSV record 21 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FRY-1T-8\", \"description\": \"Fryer, single tank, 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"395.00\", \"band_b_gbp\": \"375.25\", \"band_t_gbp\": \"355.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "csv:04_reference/price_list.csv:record:22": {
+        "source_id": "csv:04_reference/price_list.csv:record:22",
+        "relative_path": "04_reference/price_list.csv",
+        "display_name": "price_list.csv — record 22",
+        "locator": "CSV record 22 (header is record 1)",
+        "timestamp": null,
+        "text": "{\"sku\": \"FRY-2T-8\", \"description\": \"Fryer, twin tank, 2 x 8L, electric\", \"category\": \"Cooking\", \"unit\": \"each\", \"list_price_gbp\": \"645.00\", \"band_b_gbp\": \"612.75\", \"band_t_gbp\": \"580.50\", \"status\": \"current\", \"replaced_by\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "email:MSG-017:body": {
+        "source_id": "email:MSG-017:body",
+        "relative_path": "03_inbox_export/inbox.json",
+        "display_name": "MSG-017 — Will Ashworth <will@grafhamkitchen.co.uk> — Ordering - ex Lakeside Bistro",
+        "locator": "JSON record 17, body",
+        "timestamp": "2026-10-06T14:30:00+01:00",
+        "text": "Hello,\n\nWe've taken over the old Lakeside Bistro site at Grafham Water and are reopening as Grafham Kitchen next month. The previous owners used you. Could we order on their account to get going?\n\nWe need:\n1 x 6 burner range\n1 x twin tank fryer\n2 x 1500 prep tables\n\nThanks,\nWill Ashworth",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "file:04_reference/customer_account_notes.md:preamble": {
+        "source_id": "file:04_reference/customer_account_notes.md:preamble",
+        "relative_path": "04_reference/customer_account_notes.md",
+        "display_name": "customer_account_notes.md — introductory notes",
+        "locator": "Before first customer heading",
+        "timestamp": null,
+        "text": "# Customer account notes\n\nKaren's notes for the order desk. Kept in Drive. Last properly tidied March 2026. Prices are ex VAT unless it says otherwise.\n\n**Price bands:** List = full price list. **B** = 5% off list. **T** = 10% off list. The band is set on the account in Orbit. Contract deals below override the band for the items listed.\n\n---\n",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-6": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-6",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FRY-1T-6",
+        "locator": "STK: STKCD=FRY-1T-6",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FRY-1T-6\", \"DESC1\": \"FRYER 1 TANK 6L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 34500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"Y\", \"RPLCD\": \"FRY-1T-8\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-8": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-1T-8",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FRY-1T-8",
+        "locator": "STK: STKCD=FRY-1T-8",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FRY-1T-8\", \"DESC1\": \"FRYER 1 TANK 8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 39500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:FRY-2T-8",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=FRY-2T-8",
+        "locator": "STK: STKCD=FRY-2T-8",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"FRY-2T-8\", \"DESC1\": \"FRYER 2 TANK 2X8L\", \"DESC2\": \"\", \"UOM\": \"EA\", \"LSTPR\": 64500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-4B-GAS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-4B-GAS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=RG-4B-GAS",
+        "locator": "STK: STKCD=RG-4B-GAS",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"RG-4B-GAS\", \"DESC1\": \"RANGE 4 BURNER GAS\", \"DESC2\": \"W/OVEN\", \"UOM\": \"EA\", \"LSTPR\": 119500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-6B-GAS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:STK:RG-6B-GAS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit STK — STKCD=RG-6B-GAS",
+        "locator": "STK: STKCD=RG-6B-GAS",
+        "timestamp": "20261008 231502",
+        "text": "{\"STKCD\": \"RG-6B-GAS\", \"DESC1\": \"RANGE 6 BURNER GAS\", \"DESC2\": \"W/OVEN\", \"UOM\": \"EA\", \"LSTPR\": 159500, \"SUPCD\": \"KLD\", \"OBSFLG\": \"N\", \"RPLCD\": \"\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:ACSTCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=ACSTCDS",
+        "locator": "SYSPARM: PKEY=ACSTCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"ACSTCDS\", \"PVAL\": \"A,H,C\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:LASTEXP",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=LASTEXP",
+        "locator": "SYSPARM: PKEY=LASTEXP",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"LASTEXP\", \"PVAL\": \"20261008 231502\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:STATCDS",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=STATCDS",
+        "locator": "SYSPARM: PKEY=STATCDS",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"STATCDS\", \"PVAL\": \"N,P,D,I,X,H\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      },
+      "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT": {
+        "source_id": "orbit:06_orbit_export/orbit_nightly.sqlite:SYSPARM:VATRT",
+        "relative_path": "06_orbit_export/orbit_nightly.sqlite",
+        "display_name": "Orbit SYSPARM — PKEY=VATRT",
+        "locator": "SYSPARM: PKEY=VATRT",
+        "timestamp": "20261008 231502",
+        "text": "{\"PKEY\": \"VATRT\", \"PVAL\": \"17.5\"}",
+        "extraction_method": null,
+        "requires_review": false,
+        "extraction_error": null
+      }
+    },
+    "source_limitations": [
+      "Reference file freshness is unknown; CSV dates are retained as raw record values.",
+      "Orbit LASTEXP is a raw export timestamp; its timezone is not supplied.",
+      "Account notes contain their own freshness limitations; spreadsheet Who is unverified."
+    ]
+  },
+  "report_alerts": [
+    {
+      "code": "customer_match_unresolved",
+      "title": "Customer match unresolved — do not proceed",
+      "message": "Confirm the correct account before entry. No customer history assigned. Candidates: none established",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    },
+    {
+      "code": "entry_details_unresolved",
+      "title": "Entry details require confirmation",
+      "message": "Not established: L3.sku",
+      "blocks_entry": true,
+      "placement": "report_header_and_things_to_confirm"
+    }
+  ],
+  "llm": {
+    "call_count": 1,
+    "model": "gpt-6-luna",
+    "duration_seconds": 13.56580224999999,
+    "response_id": "resp_03ef9ffa27c41bbb016afdbe9297f087d29d02f7b85498c0d1",
+    "usage": {
+      "input_tokens": 7735,
+      "input_tokens_details": {
+        "cache_write_tokens": 4977,
+        "cached_tokens": 2755,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 4977
+        }
+      },
+      "output_tokens": 1306,
+      "output_tokens_details": {
+        "reasoning_tokens": 330
+      },
+      "total_tokens": 9041
+    }
+  },
+  "proposal": {
+    "email_id": "MSG-017",
+    "action_type": "new_order_request",
+    "summary": "Will Ashworth requests a new order for a 6 burner range, a twin tank fryer and two 1500 prep tables. He asks to use the previous owners’ account, but that account and eligibility to use it are unverified.",
+    "new_order": {
+      "header": {},
+      "lines": [
+        {
+          "line_id": "L1",
+          "description": {
+            "value": "6 burner range",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ]
+          },
+          "sku": {
+            "value": "RG-6B-GAS",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "email:MSG-017:body",
+              "csv:04_reference/price_list.csv:record:18"
+            ],
+            "reason": "Catalogue description is a current six-burner range with oven, natural gas; confirm gas type and specification."
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ],
+            "reason": "The request says “1 x” the item."
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "L2",
+          "description": {
+            "value": "twin tank fryer",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ]
+          },
+          "sku": {
+            "value": "FRY-2T-8",
+            "basis": "inferred_suggestion",
+            "evidence_ids": [
+              "email:MSG-017:body",
+              "csv:04_reference/price_list.csv:record:22"
+            ],
+            "reason": "Catalogue description is a current twin-tank fryer; confirm tank capacity and electric specification."
+          },
+          "quantity": {
+            "value": "1",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ],
+            "reason": "The request says “1 x” the item."
+          },
+          "quantity_basis": "order_total"
+        },
+        {
+          "line_id": "L3",
+          "description": {
+            "value": "1500 prep tables",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ]
+          },
+          "quantity": {
+            "value": "2",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ]
+          },
+          "unit": {
+            "value": "each",
+            "basis": "explicit_request",
+            "evidence_ids": [
+              "email:MSG-017:body"
+            ],
+            "reason": "The request says “2 x” the item."
+          },
+          "quantity_basis": "order_total"
+        }
+      ],
+      "customer_quoted_totals": [],
+      "customer_discounts": []
+    },
+    "uncertainties": [
+      {
+        "question": "Which previous owners’ account does Will mean, and is Grafham Kitchen eligible and authorised to order on it?",
+        "affected_fields": [
+          "customer account",
+          "account eligibility"
+        ],
+        "next_action": "Confirm the correct customer account and eligibility in Orbit before entry; do not use an unverified previous owner’s account.",
+        "evidence_ids": [
+          "email:MSG-017:body"
+        ]
+      },
+      {
+        "question": "What exact product/specification is intended by “1500 prep tables,” and which catalogue item, if any, matches it?",
+        "affected_fields": [
+          "new_order.lines[L3].sku",
+          "new_order.lines[L3].description"
+        ],
+        "next_action": "Confirm the table dimensions and required specification, then check the catalogue for a supported match.",
+        "evidence_ids": [
+          "email:MSG-017:body"
+        ]
+      },
+      {
+        "question": "Does the proposed range need a different fuel or specification, and what capacity/specification is required for the twin tank fryer?",
+        "affected_fields": [
+          "new_order.lines[L1].sku",
+          "new_order.lines[L2].sku"
+        ],
+        "next_action": "Confirm product specifications with the customer before selecting catalogue items.",
+        "evidence_ids": [
+          "email:MSG-017:body",
+          "csv:04_reference/price_list.csv:record:18",
+          "csv:04_reference/price_list.csv:record:22"
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "category": "customer_match_unresolved",
+        "description": "No customer account is established, and the request to use the previous owners’ account is not verification that the account can be used. Confirm the customer match and eligibility before entry.",
+        "affected_fields": [
+          "customer account",
+          "account eligibility"
+        ],
+        "next_action": "Manually confirm the correct account and eligibility in Orbit; keep the unresolved-match alert in view.",
+        "evidence_ids": [
+          "email:MSG-017:body"
+        ]
+      }
+    ]
+  }
+}
