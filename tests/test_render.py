@@ -64,7 +64,7 @@ class RenderTests(unittest.TestCase):
         self.assertIn('SECOND-TRIGGER', text)
         self.assertIn('HARB01', text)
         self.assertIn('FENS01', text)
-        self.assertIn('2026-10-21', text)
+        self.assertIn('21/10/2026', text)
         self.assertIn('12 boxes total', ''.join(parsed.text))
         self.assertNotIn('22 boxes total', text)
 
@@ -253,7 +253,10 @@ class RenderTests(unittest.TestCase):
         self.assertNotIn('Current order status', text)
         self.assertNotIn('recorded status', text)
         self.assertNotIn('Order number needed', text)
-        self.assertNotIn('Before entry', text)  # No empty decision section.
+        without_decisions = copy.deepcopy(self.new)
+        without_decisions['validation']['issues'] = []
+        without_decisions['validation']['uncertainties'] = []
+        self.assertNotIn('Before entry', self.html([without_decisions]))
         self.assertNotIn('Report ID', text)
         self.assertNotIn('Model interpretation', text)
         self.assertNotIn('input_tokens', text)

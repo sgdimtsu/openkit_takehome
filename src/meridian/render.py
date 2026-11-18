@@ -251,7 +251,7 @@ class _Report:
                 label = 'Account notes'
             elif filename.lower().endswith('.pdf'):
                 page = re.search(r'(?i)\bpage\s+(\d+)', source.get('locator', ''))
-                label = filename + (' · p' + page[1] if page else '')
+                label = ('PO' if filename.upper().startswith('PO') else filename) + (', p' + page[1] if page else '')
             else:
                 label = full
             excerpt = ''

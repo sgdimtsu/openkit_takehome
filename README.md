@@ -1,85 +1,61 @@
-# openkit_takehome
-openkit take home test
+# Meridian order preparation prototype
 
-# Meridian prototype — component 1
+This prototype prepares customer orders and amendments for staff to review and enter manually in Orbit. It reads the supplied Meridian data pack and generates a timestamped HTML report with proposed entry fields, outstanding decisions and supporting evidence.
 
-Implemented: inbox loading and source identification only. Python 3.9+;
-uses the Python standard library. Set up a virtual environment as below.
-No API credentials are needed for this component.
+## How to run it
 
-## Repository layout
+The saved v5 report is in [`output/live/v5_run/`](output/live/v5_run/). Open the `meridian_reports_*.html` file in a browser. You can view it without an API key.
 
-```text
-src/meridian/   Python application code
-tests/         Unit and supplied-data integration checks
-data/          Supplied input pack, including PDFs and Orbit snapshot
-requirements.txt Virtual-environment installation entry point
-pyproject.toml Package configuration and runtime dependencies
-```
-
-The input pack is included for independent local runs. Attachment paths remain
-relative to `data/`, preserving their original directory structure. Discovery
-notes describe requirements; they are not live operational records. Generated
-HTML mocks and macOS metadata from Downloads are not copied into the input pack.
-
-## Run and verify
-
-From the repository directory, create and activate a virtual environment, then
-install the requirements:
-
+To generate a fresh report, run the following commands from the repository root.
 ```sh
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -r requirements.txt
-python3 -m meridian
-python3 -m unittest discover -s tests -v
+python -m pip install -r requirements.txt
 ```
 
-`requirements.txt` installs the local package in editable mode, making its `src/`
-package importable without setting `PYTHONPATH`. Runtime dependencies are declared
-in `pyproject.toml` and installed through the same command as components are added.
-There are no third-party runtime dependencies yet. The build backend is setuptools,
-which pip installs into an isolated build environment when needed.
+In the same terminal, run the following commands. Paste your OpenAI API key at the prompt and press Enter. The key is hidden as you type and is passed to the prototype through the `OPENAI_API_KEY` environment variable.
 
-The default input root is `./data`, relative to the working directory.
-`--input-root /path/to/pack` selects another pack; `--inbox` specifies an inbox
-JSON path relative to that root. The command prints a summary and warnings and
-does not write files. Tests use repository data by default; optionally set
-`MERIDIAN_TEST_INPUT_ROOT` to test another pack.
+```sh
+printf 'OpenAI API key: '
+read -rs OPENAI_API_KEY
+printf '\n'
+export OPENAI_API_KEY
 
-## Interface and boundaries
+python -m meridian --run --model gpt-6-luna --output-dir output/live/v6_run
 
-`meridian.inbox.load_inbox(root, inbox_path)` returns `LoadedInbox` containing:
+unset OPENAI_API_KEY
+```
 
-- `emails`: original fields preserved, with IDs assigned if absent, an email
-  `source_id`, and attachment `source_id` / `available` fields added.
-- `sources`: an in-memory dictionary mapping source IDs to readable labels,
-  relative paths, locators, original timestamps and email body text.
-- `warnings`: missing attachments and unavailable reply references.
+`gpt-6-luna` was used for v5. If your API account uses a different compatible model, pass its ID with `--model`. The live run sends inbox content and relevant order context to OpenAI. It reads the bundled `data/` pack by default. To use another pack, pass `--input-root /path/to/pack`.
 
-Existing email IDs and timestamp strings are preserved exactly. Missing IDs use
-SHA-256 of canonical record content, excluding the ID field. Identical records
-without IDs are rejected as duplicate IDs rather than silently merged. IDs remain
-stable across record reordering; changing content changes a generated email ID.
-Email bodies are not rewritten or interpreted, including literal escape sequences
-in supplied text. Received timestamps must include a timezone.
+The command prints the generated HTML path and saves the classification, preparation and validation results alongside it. Open the HTML file in a browser. Use a fresh output directory for each run to keep the results easy to compare.
 
-Email source IDs identify the email body. File source IDs identify an attachment
-path, shared across emails that attach that file. Attachment contents are not read
-in this component. File timestamps are unknown: filesystem modification times are
-not treated as document freshness. Page-level identification belongs to the later
-PDF extraction component. IDs identify locations, not content versions.
 
-The source catalogue exists only during the run. A later renderer will embed cited
-evidence and readable source locations into retained HTML reports. No catalogue
-persistence or report rendering is implemented yet.
+## What I built and why I chose this workflow
 
-Malformed records, duplicate IDs and paths escaping the input root fail explicitly.
-Missing attachments remain visible with `available: false` and a warning.
+The tool brings customer requests, purchase orders, Orbit records, pricing and account notes into a consistent HTML report. For each request, it shows the proposed order entry or amendment, any outstanding decisions and the supporting evidence. Staff can review the prepared fields and enter them manually in Orbit.
 
-No classification, customer matching, Orbit access, PDF/OCR extraction, OpenAI
-calls, calculations or HTML generation is implemented. Source files and the
-existing HTML mock remain untouched. Source content is data, never executable
-instructions. This is snapshot processing with no live connections, reconciliation,
-entry tracking, operational database, email sending, stock guarantees or delivery
-promises. Later recommendations will depend on source completeness and matching.
+The workflow uses one LLM call to identify relevant emails. The code then gathers the customer and order context for each selected email and makes a separate call to interpret that request. Python applies the business rules, calculates prices and totals, and generates the report. Processing each request separately makes it easier to trace a proposal back to its sources. Outputs are timestamped and retained, so staff can review earlier requests alongside later amendments.
+
+The discovery conversations highlighted two problems: order preparation took time, and mistakes were costly. Karen and Priya spent about three hours each per day keying orders. Preparing those orders meant gathering information from emails, attachments, Orbit and reference documents. Resent POs and amendments could lead to duplicate deliveries. Unclear product descriptions made it harder to select the right items, and missed credit checks exposed Meridian to financial loss.
+
+I chose this workflow to give Priya the information she needs “on one screen”, with the proposed fields ready to review and the evidence available when she needs it. Staff keep control of what gets keyed, as Karen wanted, and the prototype works alongside Orbit, as Mike required.
+
+## What I deliberately left out
+
+1. **Automatically resolving ambiguity.** I flagged unreadable parts of scans, uncertain product matches and conflicting information for staff to clarify. Guessing a quantity, product code or pack size could lead to an incorrect order.
+2. **Automating every inbox task.** I focused on preparing new orders and amendments. Delivery enquiries, invoice queries and unrelated requests were outside the initial scope, so I could concentrate on the workflow Karen and Priya identified as a priority.
+3. **Batching requests by customer.** I processed each selected email separately to reduce the risk of mixing details from multiple orders or amendments for the same customer. I deferred batching until I could establish a baseline for reliability, usage and API costs.
+
+## What surprised me in the data and how I handled it
+
+The supplied sources sometimes disagreed, so I used the discovery notes, account guidance and shared policy to decide which source to use for each field. Where customers had duplicate accounts or multiple delivery sites, I used the account notes to identify the current account and kept the requested delivery site separate. Documented contracts took precedence over the standard price band for the products they covered, and Orbit remained the authority for credit status. The Orbit export recorded a VAT setting of 17.5%, which conflicted with the documented practice. I used the prototype’s 20% VAT policy for calculations and retained the export value in the evidence.
+
+The other surprise was how inconsistently values were represented. Dates appeared as Excel serial numbers and in several written formats, Orbit stored prices in pence, and discounts appeared as both fractions and percentages. I found these differences by inspecting the raw exports and comparing them with the price list and purchase orders. I added rules to normalise supported values before comparing dates or calculating prices, while preserving the original values for review. If a value could reasonably mean more than one thing, the report flagged it for clarification.
+
+## Where AI helped and what I corrected
+
+I used AI to help develop the validation rules and iterate on the report layout. In the prototype itself, the model identifies relevant emails and interprets each request using the supporting records. Reviewing its output exposed two problems I corrected:
+
+1. **Giving the spreadsheet too much authority.** The agent treated ambiguous or unrelated entries in the open-items log as reasons to block new orders. I changed the rules so the log provides supporting context. Credit decisions depend on the account status in Orbit.
+2. **Producing a checklist instead of preparing the order.** Early reports asked Priya to repeat lookups the tool could already complete from the supplied records. I changed the report to put the prepared account, product codes, quantities, units and prices in the main view. It now flags the specific decisions that still need staff input and keeps the evidence available for review.
